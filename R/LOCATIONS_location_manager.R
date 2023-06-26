@@ -59,6 +59,41 @@ get.location.code <- function(location.names, types, search.aliases = TRUE)
   LOCATION.MANAGER$get.codes.from.names(location.names, types, search.aliases)
 }
 
+#'@title get.location.code.if.unique
+#'
+#'@description Get the location code for a name and a type.  The difference between this function and get.location.code
+#'             is that get.location.code returns a list with multiple entries, and this function returns a named vector
+#'             of results only if the location name matches one location uniquely.  This function uses get.location.code
+#'             and converts the output.
+#'
+#'@param location.names A list of names to get the location code for
+#'@param types A corresponding list of types (or one type to be applied to each)
+#'@param search.aliases A boolean flag indicating whether we want to check the aliases if the name check fails. Default = TRUE
+#'
+#'@return A named vector of location.codes, with names corresponding to the location names.  If there are multiple results or no results,
+#'        the result in the vector will be NA
+#'
+#'@export
+get.location.code.if.unique <- function(location.names, types, search.aliases = TRUE)
+{
+  if (length(types) != 1 && length(types) != length(location.names)) {
+    stop("get.location.code.if.unique: Length of types can either be 1 or it must be the length of the location.names")
+  }
+  if (length(types) == 1) {
+    types = rep(types, length(location.names))
+  }
+  list.results <- LOCATION.MANAGER$get.codes.from.names(location.names, types, search.aliases)
+  
+  #We have a list; convert to a named vector, but only if the list values are unique.
+  sapply(list.results, function(x) {
+    if (length(x) == 1) {
+      return (x)
+    } else {
+      return (NA)
+    }
+  })
+}
+
 #'@title get.location.name.alias
 #'
 #'@description Get an Name alias Associated with a Location
@@ -185,6 +220,25 @@ is.location.valid <- function(locations, suggest.options = F)
   # How do we handle NAs?
   # we could return FALSE
   LOCATION.MANAGER$check.many.locations(locations, suggest.options)
+}
+
+# We need to map location names to cbsa data
+
+#'@title get.cbsa.for.msa.name
+#'
+#'@description We are reading data in from .csv files, and these files do not have proper cbsa codes; instead the are indexed by cbsa name.  We need
+#'             to take a vector of msa names and return a named vector of cbsa location codes.
+#'
+#'@param names A vector of msa names to convert into cbsa location codes
+#'
+#'@return A named vector of string location codes, with NAs where no result was found
+#'
+#'@export
+get.cbsa.for.msa.name <- function(names)
+{
+  # We want to make the actual LOCATION.MANAGER functionality generic, so 
+  # include the known type at this stage (CBSA)
+  LOCATION.MANAGER$get.type.by.name(names,"CBSA")
 }
 
 ##-------------##

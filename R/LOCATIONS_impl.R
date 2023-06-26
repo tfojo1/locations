@@ -71,13 +71,19 @@ Location <- R6Class("Location",
 )
 
 Location.Manager = R6Class("LocationManager",
-#  class = FALSE,
+  class = FALSE,
   clone = FALSE,
   private = list (
     location.list = list(),
     alias.names = list(),
     alias.codes = list(),
     types = list(),
+    check.is.type = function (type) {
+      if (type %in% names(private$types)) {
+        return (TRUE)
+      }
+      return (FALSE)
+    },
     check.code.validity = function(code) {
       #We allow only characters, numbers, periods or dashes
       grepl("^[A-Za-z0-9.-]*$", code)
@@ -155,6 +161,9 @@ Location.Manager = R6Class("LocationManager",
         if (is.na(location)) {
           return (NA)
         }
+        if (location %in% names(private$location.list) && private$location.list[[location]]$return.type == type) {
+          return (location)
+        }
         #Build a list of all names of 'type'
         all.of.type = sapply(private$location.list, function(li) {ifelse(li$return.type == type,li$return.name,"")})
         
@@ -202,6 +211,62 @@ Location.Manager = R6Class("LocationManager",
       names(returned.types) = locations
       
       returned.types
+    },
+    get.type.by.name = function(names, chosen.type) {
+      
+      trim.white.space <- function(x) {
+        gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)
+      }
+      
+      chosen.type = toupper(chosen.type)
+      #Verify that the type is registered
+      if (!private$check.is.type(chosen.type)) {
+        stop(paste0("Calling get.type.from.name with invalid type ", chosen.type))
+      }
+      setNames(sapply(names, function(name) {
+        #Split the strings on commas, remove everything in brackets, trim
+        split = trim.white.space(gsub("\\(.*?\\)", "", strsplit(name,",")[[1]]))
+        #Stage1: Assume that the first component of the split is the name
+        #Check the name against get.codes.from.names; search aliases too
+        name.check = self$get.codes.from.names(split[1], chosen.type, T)[[1]]
+        if (is.na(name.check[1])) {
+          # No such luck from get.codes.from.names; try and split again on the
+          # dash and take the first result, see if that helps
+          
+          second.split = trim.white.space(strsplit(split[1], "-")[[1]])
+          name.check = self$get.codes.from.names(second.split[1], chosen.type, T)[[1]]
+          if (is.na (name.check[1])) {          
+            #Skip everything with the string 'division' in it
+            if (!grepl("division",name,ignore.case=T)) {
+              warning(paste0("Couldn't find anything for ", name, ", even after '-' split"))
+            }
+            return (NA)
+          }
+        }
+        if (length(name.check) == 1) {
+          #We have only one result, return it
+          return (name.check)
+        } else {
+          #We have multiple results, check the state
+          additional.splits = length(split) - 1
+          if (additional.splits == 0) {
+            #There was no comma, we don't know the state
+            warning(paste0("Muiltiple results for ", name, " without additional data"))
+            return (NA)
+          } else if (additional.splits == 1) {
+            #There is one additional part of the string after the name, suppose it's the state
+            state = split[2]
+            #For each result, check to see if its containing state matches the desired state
+            index = which(sapply(name.check, function(possibility) {
+              self$get.super(possibility, "STATE", T)
+            }) == state)
+            return (name.check[index])
+          } else {
+            warning(paste0("More than 2 divisions for ", name))
+            return (NA)
+          }
+        }
+      }), names)
     },
     get.prefix = function(location.types) {
   
