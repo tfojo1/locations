@@ -432,7 +432,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      rv
+      setNames(rv, locations)
     },
     get.super = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
@@ -566,7 +566,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      rv
+      setNames(rv, locations)
     },
     get.name.aliases = function(locations, alias.name, throw.error.if.unregistered.alias) {
       # return A character vector of aliases, with length(locations) and names=locations. If location codes are not registered
