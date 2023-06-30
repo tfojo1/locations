@@ -7,9 +7,9 @@
 #We are currently registering 4 types:
 
 # State; "STATE",  No Prefix
-# County: "COUNTY", 'FIPS.' prefix (location code is 2 digit state + 3 digit local fips code)
-# CBSA: "CBSA", 'CBSA.' prefix (location code is 5 digit cbsa code)
-# zipcode : "ZIPCODE", 'ZIP.' prefix (location code is zipcode)
+# County: "COUNTY", No prefix (location code is 2 digit state + 3 digit local fips code)
+# CBSA: "CBSA", 'C.' prefix (location code is 5 digit cbsa code)
+# zipcode : "ZIPCODE", 'Z.' prefix (location code is zip code)
 
 source("R/LOCATIONS_location_manager.R") 
 source("R/LOCATIONS_impl.R")
@@ -241,7 +241,7 @@ cbsa.prefix.longform = "Community Based Statistical Area"
 
 zipcode.type = "zipcode"
 zipcode.prefix = "z."
-zipcode.prefix.longform = "Zipcode"
+zipcode.prefix.longform = "Zip code"
 
 # Create the initial LOCATION.MANAGER object
 LOCATION.MANAGER = Location.Manager$new()

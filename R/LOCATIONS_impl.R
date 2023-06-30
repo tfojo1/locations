@@ -73,6 +73,11 @@ Location <- R6Class("Location",
 Location.Manager = R6Class("LocationManager",
   class = FALSE,
   clone = FALSE,
+  active = list (
+    read.location.list = function() {
+      return(private$location.list)
+    }
+  ),
   private = list (
     location.list = list(),
     alias.names = list(),
@@ -133,8 +138,73 @@ Location.Manager = R6Class("LocationManager",
         }
       }
       code
+    },
+    trim.white.space = function(x) {
+      gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)
+    },
+    normalize.dashes = function(x) {
+      x <- gsub("\u2013", "-", x)  # Replace En Dash
+      x <- gsub("\u2014", "-", x)  # Replace Em Dash
+      x <- gsub("\u2010", "-", x)  # Replace Hyphen
+      x <- gsub("\u2011", "-", x)  # Replace Non-Breaking Hyphen
+      return(x)
+    },
+    normalize.names = function(val) {
+      vals = private$normalize.dashes(val)
+      state.map= list("OHIO" = "OH", 
+                      "N MEX" = "NM", 
+                      "TEX" = "TX", 
+                      "CALIF" = "CA", 
+                      "ALA" = "AL", 
+                      "IDAHO" = "ID",
+                      "MASS" = "MA",
+                      "NHA" = "NH",
+                      "CONN" = "CT",
+                      "FLA" = "FL",
+                      "ILL" = "IL",
+                      "IND" = "IN",
+                      "WIS" = "WI",
+                      "COLO" = "CO",
+                      "IOWA" = "IA",
+                      "MICH" = "MI",
+                      "HAWAII" = "HI",
+                      "MISS" = "MS",
+                      "KANS" = "KS",
+                      "TENN" = "TN",
+                      "NEV" = "NV",
+                      "ARK" = "AR",
+                      "MINN" = "MN",
+                      "OKLA" = "OK",
+                      "NEB" = "NE",
+                      "DEL" = "DE",
+                      "ARIZ" = "AZ",
+                      "MAINE" = "ME",
+                      "ORE" = "OR",
+                      "WASH" = "WA",
+                      "UTAH" = "UT")
+      sapply(strsplit(vals,","), function(name) {
+        # Name, State(s),
+        #check the length, should be 2
+        if (length(name) == 2) {
+          #Keep the name the same (we have already normalized dashes)
+          #Check if we need to replace states
+          #Convert the state to uppercase, remove all periods and extra space
+          state.split = trimws(toupper(gsub("\\.","",strsplit(name[2], "-")[[1]])))
+          # state.split = trimws(toupper(strsplit(name[2], "-")[[1]]))
+          state.replace = sapply(state.split, function(res) {
+            if (res %in% names(state.map)) {
+              return (state.map[res])
+            }
+            return (res)
+          })
+          state.final = paste(state.replace, collapse = "-")
+          return (paste0(name[1], ", ", state.final))
+        } else if (length(name) != 1)  {
+          warning(paste0("An additional split on ", as.vector(name)))
+        }
+        return (paste(name, collapse=","))
+      })
     }
-    
   ),
   public = list (
     initialize = function () {
@@ -213,19 +283,14 @@ Location.Manager = R6Class("LocationManager",
       returned.types
     },
     get.type.by.name = function(names, chosen.type) {
-      
-      trim.white.space <- function(x) {
-        gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)
-      }
-      
       chosen.type = toupper(chosen.type)
       #Verify that the type is registered
       if (!private$check.is.type(chosen.type)) {
         stop(paste0("Calling get.type.from.name with invalid type ", chosen.type))
       }
-      setNames(sapply(names, function(name) {
+      setNames(sapply(private$normalize.names(names), function(name) {
         #Split the strings on commas, remove everything in brackets, trim
-        split = trim.white.space(gsub("\\(.*?\\)", "", strsplit(name,",")[[1]]))
+        split = private$trim.white.space(gsub("\\(.*?\\)", "", strsplit(name,",")[[1]]))
         #Stage1: Assume that the first component of the split is the name
         #Check the name against get.codes.from.names; search aliases too
         name.check = self$get.codes.from.names(split[1], chosen.type, T)[[1]]
@@ -233,7 +298,7 @@ Location.Manager = R6Class("LocationManager",
           # No such luck from get.codes.from.names; try and split again on the
           # dash and take the first result, see if that helps
           
-          second.split = trim.white.space(strsplit(split[1], "-")[[1]])
+          second.split = private$trim.white.space(strsplit(split[1], "-")[[1]])
           name.check = self$get.codes.from.names(second.split[1], chosen.type, T)[[1]]
           if (is.na (name.check[1])) {          
             #Skip everything with the string 'division' in it
