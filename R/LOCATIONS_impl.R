@@ -153,6 +153,7 @@ Location.Manager = R6Class("LocationManager",
       vals = private$normalize.dashes(val)
       state.map= list("OHIO" = "OH", 
                       "N MEX" = "NM", 
+                      "NMEX" = "NM",
                       "TEX" = "TX", 
                       "CALIF" = "CA", 
                       "ALA" = "AL", 
@@ -176,10 +177,12 @@ Location.Manager = R6Class("LocationManager",
                       "MINN" = "MN",
                       "OKLA" = "OK",
                       "NEB" = "NE",
+                      "NEBR" = "NE",
                       "DEL" = "DE",
                       "ARIZ" = "AZ",
                       "MAINE" = "ME",
                       "ORE" = "OR",
+                      "OREG" = "OR",
                       "WASH" = "WA",
                       "UTAH" = "UT")
       sapply(strsplit(vals,","), function(name) {
@@ -188,20 +191,23 @@ Location.Manager = R6Class("LocationManager",
         if (length(name) == 2) {
           #Keep the name the same (we have already normalized dashes)
           #Check if we need to replace states
-          #Convert the state to uppercase, remove all periods and extra space
+          #Convert the state to uppercase, remove all periods and extra space, split on '-'
           state.split = trimws(toupper(gsub("\\.","",strsplit(name[2], "-")[[1]])))
-          # state.split = trimws(toupper(strsplit(name[2], "-")[[1]]))
+          #Replace any non-standard state with the standard 2 digit code
           state.replace = sapply(state.split, function(res) {
             if (res %in% names(state.map)) {
               return (state.map[res])
             }
             return (res)
           })
+          #Collapse it all back together with the '-' as separator
           state.final = paste(state.replace, collapse = "-")
+          #Return the full name
           return (paste0(name[1], ", ", state.final))
         } else if (length(name) != 1)  {
           warning(paste0("An additional split on ", as.vector(name)))
         }
+        #If there weren't two splits, join everything back up and send it back
         return (paste(name, collapse=","))
       })
     }
