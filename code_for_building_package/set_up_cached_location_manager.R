@@ -79,11 +79,10 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   states = fips.data[ fips.data[1] == 040, ] #Get only the state data from the fips info
   
   #Column 2 is the state code
-  state.codes = states[[2]]
+  state.codes = sprintf("%02d",states[[2]])
   
   #Counties
   counties = fips.data[ fips.data[1] == 050, ] #Get only the county data from the fips info.
-  
   #Column 3 is the county code
   county.codes = counties[[2]] * 1000 + counties[[3]]
   
@@ -95,11 +94,12 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   #Column 7 is the names of the counties
   LM$register(types, remove.non.locale(counties[[7]]), county.codes)
   #Now register the county codes as aliases:
-  for (code in county.codes) {
-    LM$register.code.aliases( 
-      paste0(LM$get.prefix(fips.typename),code), #These will be the location codes
-      code)
-  }
+  # We don't need aliases as fips codes have no prefix and are registered directy
+  # for (code in county.codes) {
+  #   LM$register.code.aliases( 
+  #     paste0(LM$get.prefix(fips.typename),code), #These will be the location codes
+  #     code)
+  # }
   
   #There appear to be entries in the county code that don't have a corresponding
   #registered state.  Refrain from trying to create a connect to the non-existent
@@ -115,7 +115,6 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   # corresponding.states.with.fips.prefix = sprintf("%s%s",LM$get.prefix(fips.typename), corresponding.states)
   #Where previously I could use the code alias here, I can instead use the fips state number and the type
   corresponding.states.location.code = LM$get.by.alias (corresponding.states, "STATE")
-  
   #Register the counties as completely contained by the states
   LM$register.hierarchy(counties.of.states.with.fips.prefix, corresponding.states.location.code, rep(TRUE,length(counties.of.states)))
   LM
