@@ -255,4 +255,4 @@ LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
-LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
+# LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
