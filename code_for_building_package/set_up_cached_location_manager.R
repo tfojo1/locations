@@ -25,6 +25,16 @@ remove.non.locale = function(string_list) {
   return(cleaned_strings)
 }
 
+register.united.states = function(LM) {
+  # We register the country type; empty prefix.
+  LM$register.types("COUNTRY", "", "Type for top level; the United States")
+  
+  # We register the "US" as the code.
+  LM$register("COUNTRY", "United States", "US")
+  
+  LM
+}
+
 register.state.abbrev = function(LM, filename) {
   #Check if the file exists
   if (!file.exists(filename)) {
@@ -36,6 +46,10 @@ register.state.abbrev = function(LM, filename) {
   types = rep("state", nrow(abbrev.data))
   # Name is in column 1, abbreviation is in column 2
   LM$register(types, abbrev.data[[1]], abbrev.data[[2]])
+  
+  # Register each state as a sub state to the US
+  LM$register.hierarchy(abbrev.data[[2]], rep("US", times=length(abbrev.data[[2]])), 
+                        rep(T, times=length(abbrev.data[[2]])))
   
   #We need to do this first to register the states with their abbreviations as their 
   #location codes
@@ -251,6 +265,7 @@ register.types(c(county.type,            zipcode.type,            cbsa.type,    
 
 DATA.DIR = 'data-raw'
 
+LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
