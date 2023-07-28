@@ -4,11 +4,14 @@
 \alias{get.location.types}
 \title{get.location.types}
 \usage{
-get.location.types()
+get.location.types(simple = TRUE)
+}
+\arguments{
+\item{simple}{A boolean; TRUE if asking for simple list of types, FALSE if you want a list of types and prefixes.  Defaults to TRUE}
 }
 \value{
-A list the same length as the registered number of types, with each list item being the name, the prefix and the longform prefix name.  If there are no registered types it will return an empty list
+If simple=TRUE, a simple vector of named types; else a list the same length as the registered number of types, with each list item being the name, the prefix and the longform prefix name.  If there are no registered types it will return an empty list
 }
 \description{
-Get a list vector of registered location types, prefixes and longform prefix names.
+Get a vector of type names, or a list of registered location types, prefixes and longform prefix names.
 }
