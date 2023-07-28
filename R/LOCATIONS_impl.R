@@ -703,11 +703,15 @@ Location.Manager = R6Class("LocationManager",
         }
       }, type, prefix, prefix.longform))
     },
-    get.registered.types = function () {
+    get.registered.types = function (simple) {
       #No parameters; return a list of currently registered types, their longform prefix name and their prefix
-      lapply(names(private$types), function(name) {
-        list("TypeName" = name, "TypePrefix" = private$types[[name]][1], "TypeLongform" = private$types[[name]][2])
-      })
+      if (!simple) {
+        lapply(names(private$types), function(name) {
+          list("TypeName" = name, "TypePrefix" = private$types[[name]][1], "TypeLongform" = private$types[[name]][2])
+        })
+      } else {
+        return(names(private$types))
+      }
     },
     register = function (types, location.names, codes) {
       #codes and types are all uppercase; case insensitive
