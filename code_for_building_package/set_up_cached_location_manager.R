@@ -155,6 +155,7 @@ register.additional.fips = function(LM, fips.typename) {
     c("51560","Clifton Forge City","VA"),
     c("02280","Wrangell-Petersburg Census Area","AK"),
     c("02231","Skagway-Yakutat-Angoon Census Area","AK"),
+    c("02323","Skagway-Hoonah-Angoon Census Area","AK"),
     c("12025","Dade County","FL"),
     c("30113","Yellowstone County","MT"),
     c("51780","South Boston","VA"),
