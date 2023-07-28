@@ -713,6 +713,17 @@ Location.Manager = R6Class("LocationManager",
         return(names(private$types))
       }
     },
+    get.all.type = function(type) {
+      type = toupper(type)
+      if (!type %in% names(private$types)) {
+        # This type isn't valid, return
+        return (NA)
+      }
+      # Find all those location codes that have this type
+      match_type = sapply(private$location.list, function(obj) { return (obj$return.type == type) })
+      # Return a vector of all of their location.codes
+      return (names(private$location.list)[match_type])
+    },
     register = function (types, location.names, codes) {
       #codes and types are all uppercase; case insensitive
       codes <- toupper(codes)
