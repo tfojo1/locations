@@ -107,13 +107,6 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   
   #Column 7 is the names of the counties
   LM$register(types, remove.non.locale(counties[[7]]), county.codes)
-  #Now register the county codes as aliases:
-  # We don't need aliases as fips codes have no prefix and are registered directy
-  # for (code in county.codes) {
-  #   LM$register.code.aliases( 
-  #     paste0(LM$get.prefix(fips.typename),code), #These will be the location codes
-  #     code)
-  # }
   
   #There appear to be entries in the county code that don't have a corresponding
   #registered state.  Refrain from trying to create a connect to the non-existent
@@ -134,51 +127,17 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   LM
 }
 
-register.additional.fips = function(LM, fips.typename) {
+register.additional.fips = function(LM, filename, fips.typename) {
   fips.typename = toupper(fips.typename)
   
   #Registers additional fips locations that were not previously registered
-  to_add <- list (
-    c("09110","Capital Planning Region", "CT"),
-    c("09120","Greater Bridgeport Planning Region", "CT"),
-    c("09130","Lower Connecticut River Valley Planning Region", "CT"),
-    c("09140","Naugatuck Valley Planning Region", "CT"),
-    c("09150","Northeastern Connecticut Planning Region", "CT"),
-    c("09160","Northwest Hills Planning Region", "CT"),
-    c("09170","South Central Connecticut Planning Region", "CT"),
-    c("09180","Southeastern Connecticut Planning Region", "CT"),
-    c("09190","Western Connecticut Planning Region", "CT"),
-    c("02270","Wade-Hampton Census Area","AK"),
-    c("46113","Shannon County","SD"),
-    c("51515","Bedford City","VA"), 
-    c("02201","Ketchikan Census Area","AK"),
-    c("51560","Clifton Forge City","VA"),
-    c("02280","Wrangell-Petersburg Census Area","AK"),
-    c("02231","Skagway-Yakutat-Angoon Census Area","AK"),
-    c("02232","Skagway-Hoonah-Angoon Census Area","AK"),
-    c("12025","Dade County","FL"),
-    c("30113","Yellowstone County","MT"),
-    c("51780","South Boston","VA"),
-    c("02010","Aleutian Islands","AK"),
-    c("02030","Angoon","AK"),
-    c("02040","Barrow","AK"),
-    c("02080","Cordova-Mc Carthy","AK"),
-    c("02120","Kenai-Cook Inlet","AK"),
-    c("02140","Kobuk","AK"),
-    c("02160","Kuskokwim","AK"),
-    c("02190","Outer Ketchikan","AK"),
-    c("02200","Prince Of Wales","AK"),
-    c("02210","Seward","AK"),
-    c("02250","Upper Yukon","AK"),
-    c("02260","Valdez-Chitina-Whittier","AK"),
-    c("29193","Ste Genevieve","MO"),
-    c("46131","Washabaugh","SD"),
-    c("51123","Nansemond","VA")
-  )
+  #We have moved them to the csv file
   
-  codes <- sapply(to_add,"[",1)
-  names <- sapply(to_add,"[",2)
-  states <- sapply(to_add,"[",3)
+  new_fips = read.csv(file=filename, stringsAsFactors=FALSE)
+  
+  codes = sprintf("%05d",new_fips[['fipscode']])
+  names = new_fips[['name']]
+  states = new_fips[['state']]
   
   # Register the fips counties
   LM$register(rep(fips.typename,length(codes)), names, codes)
@@ -324,6 +283,6 @@ LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
-LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, fips.typename = county.type) #Set the fips typename
+LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)

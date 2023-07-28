@@ -535,8 +535,6 @@ Summary,Level,State,Code,(FIPS),County,Code,(FIPS),County,Subdivision,Code,(FIPS
 50,2,20,0,0,0,Anchorage,Municipality,,,,,,,,,,,,,,,,,
 50,2,50,0,0,0,Bethel,Census,Area,,,,,,,,,,,,,,,,
 50,2,60,0,0,0,Bristol,Bay,Borough,,,,,,,,,,,,,,,,
-50,2,63,0,0,0,Chugach Census Area,MANUAL-JP,,,,,,,,,,,,,,,,,
-50,2,66,0,0,0,Copper River Census Area,MANUAL-JP,,,,,,,,,,,,,,,,,
 50,2,68,0,0,0,Denali,Borough,,,,,,,,,,,,,,,,,
 50,2,70,0,0,0,Dillingham,Census,Area,,,,,,,,,,,,,,,,
 50,2,90,0,0,0,Fairbanks,North,Star,Borough,,,,,,,,,,,,,,,
