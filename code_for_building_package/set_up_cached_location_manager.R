@@ -186,6 +186,19 @@ register.zipcodes = function(LM, filename, fips.typename = "county", zip.typenam
   LM
 }
 
+register.nsduh = function(LM, filename, nsduh.typename = "nsduh") {
+  nsduh.typename = toupper(nsduh.typename)
+  
+  if (!file.exists(filename)) {
+    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", filename))
+  }
+  nsduh.data = read.csv(file = filename)
+  
+  # At this point, we are only going to add the nsduh as a sub-member
+  # of the state; will work on MSAs later
+  LM
+}
+
 register.cbsa = function(LM, filename, cbsa.typename = "cbsa", fips.typename = "county") {
   
   cbsa.typename <- toupper(cbsa.typename)
@@ -270,12 +283,16 @@ zipcode.type = "zipcode"
 zipcode.prefix = "z."
 zipcode.prefix.longform = "Zip code"
 
+nsduh.type = "nsduh"
+nsduh.prefix = ""
+nsduh.prefix.longform = "National Surveys on Drug Use and Health"
+
 # Create the initial LOCATION.MANAGER object
 LOCATION.MANAGER = Location.Manager$new()
 
-register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type), #Typename
-               c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix), #Prefix
-               c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform)) #Longform Name
+register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type), #Typename
+               c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix), #Prefix
+               c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform)) #Longform Name
 
 DATA.DIR = 'data-raw'
 
@@ -285,4 +302,5 @@ LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
+LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
