@@ -189,7 +189,10 @@ Location.Manager = R6Class("LocationManager",
         # Name, State(s),
         #check the length, should be 2
         if (length(name) == 2) {
-          #Keep the name the same (we have already normalized dashes)
+          #Keep the name the same (we have already normalized dashes),
+          #except when we encounter Saint Louis, which is swapped to St. Louis
+          name[1] <- sub("(Saint)(.*Louis)", "St.\\2", name[1])
+
           #Check if we need to replace states
           #Convert the state to uppercase, remove all periods and extra space, split on '-'
           state.split = trimws(toupper(gsub("\\.","",strsplit(name[2], "-")[[1]])))
@@ -206,6 +209,10 @@ Location.Manager = R6Class("LocationManager",
           return (paste0(name[1], ", ", state.final))
         } else if (length(name) != 1)  {
           warning(paste0("An additional split on ", as.vector(name)))
+        } else {
+          # Length of split was 1, no comma
+          # Sometimes the state is the last element of the spaces
+          name = unlist(strsplit(name, " (?=[^ ]*$)", perl = TRUE))
         }
         #If there weren't two splits, join everything back up and send it back
         return (paste(name, collapse=","))
@@ -288,13 +295,14 @@ Location.Manager = R6Class("LocationManager",
       
       returned.types
     },
-    get.type.by.name = function(names, chosen.type) {
+    get.type.by.name = function(names, chosen.type, warnings = T) {
       chosen.type = toupper(chosen.type)
+      print(names)
       #Verify that the type is registered
       if (!private$check.is.type(chosen.type)) {
         stop(paste0("Calling get.type.from.name with invalid type ", chosen.type))
       }
-      setNames(sapply(private$normalize.names(names), function(name) {
+      sapply(private$normalize.names(names), function(name) {
         #Split the strings on commas, remove everything in brackets, trim
         split = private$trim.white.space(gsub("\\(.*?\\)", "", strsplit(name,",")[[1]]))
         #Stage1: Assume that the first component of the split is the name
@@ -304,12 +312,17 @@ Location.Manager = R6Class("LocationManager",
           # No such luck from get.codes.from.names; try and split again on the
           # dash and take the first result, see if that helps
           
-          second.split = private$trim.white.space(strsplit(split[1], "-")[[1]])
+          second.split = private$trim.white.space(strsplit(split[1], "[-/]+")[[1]])
           name.check = self$get.codes.from.names(second.split[1], chosen.type, T)[[1]]
           if (is.na (name.check[1])) {          
             #Skip everything with the string 'division' in it
             if (!grepl("division",name,ignore.case=T)) {
-              warning(paste0("Couldn't find anything for ", name, ", even after '-' split"))
+              msg = paste0("Couldn't find anything for ", name, ", even after '-' split")
+              if (warnings) {
+                warning(msg)
+              } else {
+                print(msg)
+              }
             }
             return (NA)
           }
@@ -322,7 +335,12 @@ Location.Manager = R6Class("LocationManager",
           additional.splits = length(split) - 1
           if (additional.splits == 0) {
             #There was no comma, we don't know the state
-            warning(paste0("Muiltiple results for ", name, " without additional data"))
+            msg = paste0("Muiltiple results for ", name, " without additional data")
+            if (warnings) {
+              warning(msg)
+            } else {
+              print (msg)
+            }
             return (NA)
           } else if (additional.splits == 1) {
             #There is one additional part of the string after the name, suppose it's the state
@@ -333,11 +351,16 @@ Location.Manager = R6Class("LocationManager",
             }) == state)
             return (name.check[index])
           } else {
-            warning(paste0("More than 2 divisions for ", name))
+            msg = paste0("More than 2 divisions for ", name)
+            if (warnings) {
+              warning(msg)
+            } else {
+              print (msg)
+            }
             return (NA)
           }
         }
-      }), names)
+      })
     },
     get.prefix = function(location.types) {
   
