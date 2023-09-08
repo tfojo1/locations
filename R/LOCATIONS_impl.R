@@ -297,7 +297,6 @@ Location.Manager = R6Class("LocationManager",
     },
     get.type.by.name = function(names, chosen.type, warnings = T) {
       chosen.type = toupper(chosen.type)
-      print(names)
       #Verify that the type is registered
       if (!private$check.is.type(chosen.type)) {
         stop(paste0("Calling get.type.from.name with invalid type ", chosen.type))
