@@ -7,10 +7,23 @@ location.plot <- function(data,
                           ...)
 {
     # Set lon lat into mapping
-    mapping$lon = x
-    mapping$lat = y
+    data$lon = x
+    data$lat = y
   
+    mapping$x = lon
+    mapping$y = lat
+    
     # A call to ggmap
+    ggmap(US.MAP) + 
+      geom_point(data=data, mapping=mapping, ...)
+}
+
+add.lat.lon.to.data <- function(data)
+{
+    data$lon = x
+    data$lat = y
+    
+    data
 }
 
 #-- THIS IS THE OLD CODE WHICH WE CAN BASE OFF OF --#
