@@ -192,6 +192,8 @@ Location.Manager = R6Class("LocationManager",
           #Keep the name the same (we have already normalized dashes),
           #except when we encounter Saint Louis, which is swapped to St. Louis
           name[1] <- sub("(Saint)(.*Louis)", "St.\\2", name[1])
+          #special case for strange New Haven, CT name
+          name[1] <- sub("N Havn","New Haven", name[1])
 
           #Check if we need to replace states
           #Convert the state to uppercase, remove all periods and extra space, split on '-'
@@ -309,7 +311,7 @@ Location.Manager = R6Class("LocationManager",
         name.check = self$get.codes.from.names(split[1], chosen.type, T)[[1]]
         if (is.na(name.check[1])) {
           # No such luck from get.codes.from.names; try and split again on the
-          # dash and take the first result, see if that helps
+          # dash and slash and take the first result, see if that helps
           
           second.split = private$trim.white.space(strsplit(split[1], "[-/]+")[[1]])
           name.check = self$get.codes.from.names(second.split[1], chosen.type, T)[[1]]
