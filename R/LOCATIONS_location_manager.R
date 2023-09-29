@@ -160,32 +160,30 @@ get.prefix.for.type <- function(location.types)
   LOCATION.MANAGER$get.prefix(location.types)
 }
 
-#'@title get.sub.locations
+#'@title get.contained.locations
 #'
-#'@description Get Locations that Fall Within a Location
+#'@description Get Locations that Fall Completely Within a Location
 #'
 #'@param locations A character vector of location codes
 #'@param sub.type The type (geographic resolution) of locations requested for the sub-locations
-#'@param limit.to.completely.enclosing A single logical value indicating whether ONLY sub-locations that fall COMPLETELY within the given locations should be returned
 #'@param return.list A single logical value indicating whether the return value should be a list with one element for each location, or whether all sub-locations should be 'unlisted' into a vector
 #'@param throw.error.if.unregistered.type A single logical value indicating whether the function should throw an error if sub.type has not been registered as a location type
 #'
 #'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations
 #'
 #'@export
-get.sub.locations <- function(locations, sub.type,
-                              limit.to.completely.enclosing,
-                              return.list=F,
-                              throw.error.if.unregistered.type=T)
+get.contained.locations <- function(locations, sub.type,
+                                    return.list=F,
+                                    throw.error.if.unregistered.type=T)
 {
    if (length(sub.type) != 1) {
      stop("get.sub.locations: sub.type must be a single character type")
    } 
-   if (!is.logical(c(limit.to.completely.enclosing,return.list,throw.error.if.unregistered.type))
-       || length(c(limit.to.completely.enclosing,return.list,throw.error.if.unregistered.type)) != 3) {
+   if (!is.logical(c(return.list,throw.error.if.unregistered.type))
+       || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
      stop("get.sub.locations: error in one of the logical types limit.to.completely.enclosing, return.list or throw.error.if.unregistered.type")
    }
-   LOCATION.MANAGER$get.sub(locations, sub.type, limit.to.completely.enclosing, return.list, throw.error.if.unregistered.type)
+   LOCATION.MANAGER$get.contained(locations, sub.type, return.list, throw.error.if.unregistered.type)
 }
 
 

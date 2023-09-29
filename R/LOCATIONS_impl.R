@@ -387,7 +387,7 @@ Location.Manager = R6Class("LocationManager",
       names(rv) = locations
       return (rv)
     },
-    get.sub = function(locations, sub.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
+    get.contained = function(locations, sub.type, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
       #with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector
       #(arbitrary length) containing all sub-locations that fall within ANY of the given locations
@@ -406,10 +406,6 @@ Location.Manager = R6Class("LocationManager",
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
       #Here I need create sub locations with the following logic:
-      #If A completely contains B, and B completely contains C, then A completely contains C
-      #If A completely contains B, and B partially contains C, then we can say that A partially contains C (unless we have specified elsewhere that A completely contains C)
-      #If A partially contains B, and B completely contains C, we cannot make any inferences about A and C
-      #If A partially contains B, and B partially contains C, we cannot make any inferences about A and C
     
       #We need to do the fully enclosed search in both cases
       #Here we ask each location code for a list of the regions it contains completely.  Then we ask each of those location codes for a list of the regions it contains
@@ -464,25 +460,6 @@ Location.Manager = R6Class("LocationManager",
       #print("Before adding")
       #print(all.sub.locations)
     
-      if (!limit.to.completely.enclosing) {
-        #We want fully and partially enclosed lists
-        #We ask each location for a list of those places it partially includes, add them on to the list
-        partially.contained.children = function(locations) {
-          unlist(lapply(locations, function(x) {location.contained.collector(x,FALSE)}))
-        }
-        # Add the location itself to the locations to check for partially.contained.children
-        all.sub.locations = mapply(function(x, code) c(code, x), all.sub.locations, codes, SIMPLIFY = FALSE)
-    
-        partially.contained = lapply(all.sub.locations, partially.contained.children)
-    
-        #Now we have to add these lists into the main lists and then unique the whole thing:
-    
-        #LOOP FIXME
-        for (i in seq_along(all.sub.locations)) {
-          all.sub.locations[[i]] = unique(c(all.sub.locations[[i]], na.omit(partially.contained[[i]])))
-        }
-      }
-    
       #all.sub.locations is a list, each entry contains a list of things this location contains, from top to bottom
       #this includes locations of all types.  The types are later filtered with the mask.collector algorithm.
       #print(all.sub.locations)
@@ -511,7 +488,10 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      names(all.sub.locations) = locations
+      #browser()
+      for (i in 1:length(all.sub.locations)) {
+        names(all.sub.locations[[i]]) =  sapply(all.sub.locations[[i]], function(loc_id) get.location.name(loc_id))
+      }
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
       if (return.list) {
@@ -527,7 +507,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      setNames(rv, locations)
+      setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
     },
     get.super = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
