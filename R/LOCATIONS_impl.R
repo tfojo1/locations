@@ -544,8 +544,8 @@ Location.Manager = R6Class("LocationManager",
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
       # Now we can call both the contained and containing functions 
-      contained.results = self$get.contained(codes, type, return.list, throw.error.if.unregistered.type)
-      containing.results = self$get.containing(codes, type, return.list, throw.error.if.unregistered.type)
+      contained.results = self$get.contained(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
+      containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
       print(contained.results)
       print(containing.results)
     
