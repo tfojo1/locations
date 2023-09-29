@@ -488,7 +488,6 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      #browser()
       for (i in 1:length(all.sub.locations)) {
         names(all.sub.locations[[i]]) =  sapply(all.sub.locations[[i]], function(loc_id) get.location.name(loc_id))
       }
@@ -509,7 +508,7 @@ Location.Manager = R6Class("LocationManager",
     
       setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
     },
-    get.super = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
+    get.containing = function(locations, super.type, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
       #with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector
       #(arbitrary length) containing all sub-locations that fall within ANY of the given locations
@@ -579,28 +578,6 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      if (!limit.to.completely.enclosing) {
-        #We want fully and partially enclosed lists
-        #We ask each location for a list of those places that partially include it, add them on to the list
-        partially.contained.parents = function(locations) {
-          unlist(lapply(locations, function(x) {location.contained_by.collector(x,FALSE)}))
-        }
-        # Add the location itself to the locations to check for partially.contained.parents
-        all.super.locations = mapply(function(x, code) c(code, x), all.super.locations, codes, SIMPLIFY = FALSE)
-    
-        partially.contained = lapply(all.super.locations, partially.contained.parents)
-    
-        #Now we have to add these lists into the main lists and then unique the whole thing:
-    
-        #LOOP FIXME
-        for (i in seq_along(all.super.locations)) {
-          all.super.locations[[i]] = unique(c(all.super.locations[[i]], na.omit(partially.contained[[i]])))
-        }
-      }
-      #all.super.locations is a list, each entry contains a list of locations containing this location
-      #this includes locations of all types.  The types are later filtered with the mask.collector algorithm.
-      #print(all.sub.locations)
-    
       mask.collector = function (locations) {
         if (anyNA(locations)) {
           return (NA)
@@ -625,7 +602,9 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      names(all.super.locations) = locations
+      for (i in 1:length(all.super.locations)) {
+        names(all.super.locations[[i]]) =  sapply(all.super.locations[[i]], function(loc_id) get.location.name(loc_id))
+      }
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
       if (return.list) {
@@ -641,7 +620,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      setNames(rv, locations)
+      setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
     },
     get.name.aliases = function(locations, alias.name, throw.error.if.unregistered.alias) {
       # return A character vector of aliases, with length(locations) and names=locations. If location codes are not registered

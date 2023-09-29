@@ -181,38 +181,36 @@ get.contained.locations <- function(locations, sub.type,
    } 
    if (!is.logical(c(return.list,throw.error.if.unregistered.type))
        || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
-     stop("get.sub.locations: error in one of the logical types limit.to.completely.enclosing, return.list or throw.error.if.unregistered.type")
+     stop("get.sub.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
    }
    LOCATION.MANAGER$get.contained(locations, sub.type, return.list, throw.error.if.unregistered.type)
 }
 
 
-#'@title get.super.locations
+#'@title get.containing.locations
 #'
 #'@description Get Locations that Enclose a Location
 #'
 #'@param locations A character vector of location codes
 #'@param super.type The type (geographic resolution) of locations requested for the super-locations
-#'@param limit.to.completely.enclosing A single logical value indicating whether ONLY super-locations that COMPLETELY enclose the given locations should be returned
 #'@param return.list A single logical value indicating whether the return value should be a list with one element for each location, or whether all super-locations should be 'unlisted' into a vector
 #'@param throw.error.if.unregistered.type A single logical value indicating whether the function should throw an error if super.type has not been registered as a location type
 #'
 #'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to super-locations. If return.list=F, returns a character vector (arbitrary length) containing all super-locations that contain ANY of the given locations
 #'
 #'@export
-get.super.locations <- function(locations, super.type,
-                                limit.to.completely.enclosing,
-                                return.list=F,
-                                throw.error.if.unregistered.type=T)
+get.containing.locations <- function(locations, super.type,
+                                    return.list=F,
+                                    throw.error.if.unregistered.type=T)
 {
   if (length(super.type) != 1) {
     stop("get.super.locations: sub.type must be a single character type")
   } 
-  if (!is.logical(c(limit.to.completely.enclosing,return.list,throw.error.if.unregistered.type))
-      || length(c(limit.to.completely.enclosing,return.list,throw.error.if.unregistered.type)) != 3) {
-    stop("get.super.locations: error in one of the logical types limit.to.completely.enclosing, return.list or throw.error.if.unregistered.type")
+  if (!is.logical(c(return.list,throw.error.if.unregistered.type))
+      || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
+    stop("get.super.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
   }
-  LOCATION.MANAGER$get.super(locations, super.type, limit.to.completely.enclosing, return.list, throw.error.if.unregistered.type)
+  LOCATION.MANAGER$get.containing(locations, super.type, return.list, throw.error.if.unregistered.type)
 }
 
 ##--------------##
