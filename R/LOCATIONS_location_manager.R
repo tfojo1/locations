@@ -209,7 +209,7 @@ get.contained.locations <- function(locations, sub.type,
        || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
      stop("get.contained.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
    }
-   LOCATION.MANAGER$get.contained(locations, sub.type, return.list, throw.error.if.unregistered.type)
+   LOCATION.MANAGER$get.contained(locations, sub.type, TRUE, return.list, throw.error.if.unregistered.type)
 }
 
 
@@ -236,7 +236,7 @@ get.containing.locations <- function(locations, super.type,
       || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
     stop("get.containing.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
   }
-  LOCATION.MANAGER$get.containing(locations, super.type, return.list, throw.error.if.unregistered.type)
+  LOCATION.MANAGER$get.containing(locations, super.type, TRUE, return.list, throw.error.if.unregistered.type)
 }
 
 ##--------------##
