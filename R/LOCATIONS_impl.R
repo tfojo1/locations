@@ -398,7 +398,7 @@ Location.Manager = R6Class("LocationManager",
       if (throw.error.if.unregistered.type) {
         #Check the type against the type list;
         if (!sub.type %in% names(private$types)) {
-          stop(paste0("LOCATION.MANAGER$get.sub: Type ", sub.type," not registered, aborting"))
+          stop(paste0("LOCATION.MANAGER$get.contained: Type ", sub.type," not registered, aborting"))
         }
       }
     
@@ -508,6 +508,50 @@ Location.Manager = R6Class("LocationManager",
     
       setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
     },
+    get.overlapping = function(locations, type, return.list = F, throw.error.if.unregistered.type = T) {
+      #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
+      #with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector
+      #(arbitrary length) containing all sub-locations that fall within ANY of the given locations
+    
+      #Capitalize the type
+      type = toupper(type)
+    
+      if (throw.error.if.unregistered.type) {
+        #Check the type against the type list;
+        if (!type %in% names(private$types)) {
+          stop(paste0("LOCATION.MANAGER$get.overlapping: Type ", super.type," not registered, aborting"))
+        }
+      }
+    
+      #Resolve the location codes, preserving NAs and missing codes as NAs
+      codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
+    
+      # Now we can call both the contained and containing functions 
+      contained.results = self$get.contained(codes, type, return.list, throw.error.if.unregistered.type)
+      containing.results = self$get.containing(codes, type, return.list, throw.error.if.unregistered.type)
+      print(contained.results)
+      print(containing.results)
+    
+      # for (i in 1:length(all.super.locations)) {
+      #   names(all.super.locations[[i]]) =  sapply(all.super.locations[[i]], function(loc_id) get.location.name(loc_id))
+      # }
+      # 
+      # #Now sub.locations is a proper list; if we want a list returned, return it now
+      # if (return.list) {
+      #   return (all.super.locations)
+      # }
+      # 
+      # #Return a collapsed vector of valid entries for all locations
+      # rv = unname(unlist(lapply(all.super.locations, function (l) {
+      #   l[!is.na(l)]
+      # })))
+      # 
+      # if (length(rv) == 0) {
+      #   return (character())
+      # }
+      # 
+      # setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
+    },
     get.containing = function(locations, super.type, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
       #with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector
@@ -519,7 +563,7 @@ Location.Manager = R6Class("LocationManager",
       if (throw.error.if.unregistered.type) {
         #Check the type against the type list;
         if (!super.type %in% names(private$types)) {
-          stop(paste0("LOCATION.MANAGER$get.super: Type ", super.type," not registered, aborting"))
+          stop(paste0("LOCATION.MANAGER$get.containing: Type ", super.type," not registered, aborting"))
         }
       }
     

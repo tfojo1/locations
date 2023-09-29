@@ -160,6 +160,32 @@ get.prefix.for.type <- function(location.types)
   LOCATION.MANAGER$get.prefix(location.types)
 }
 
+#'@title get.overlapping.locations
+#'
+#'@description Get all locations that overlap a Location
+#'
+#'@param locations A character vector of location codes
+#'@param type The type (geographic resolution) of locations requested for the sub-locations
+#'@param return.list A single logical value indicating whether the return value should be a list with one element for each location, or whether all sub-locations should be 'unlisted' into a vector
+#'@param throw.error.if.unregistered.type A single logical value indicating whether the function should throw an error if sub.type has not been registered as a location type
+#'
+#'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations
+#'
+#'@export
+get.overlapping.locations <- function(locations, type,
+                                      return.list=F,
+                                      throw.error.if.unregistered.type=T)
+{
+   if (length(type) != 1) {
+     stop("get.overlapping.locations: type must be a single character type")
+   } 
+   if (!is.logical(c(return.list,throw.error.if.unregistered.type))
+       || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
+     stop("get.overlapping.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
+   }
+   LOCATION.MANAGER$get.overlapping(locations, type, return.list, throw.error.if.unregistered.type)
+}
+
 #'@title get.contained.locations
 #'
 #'@description Get Locations that Fall Completely Within a Location
@@ -177,11 +203,11 @@ get.contained.locations <- function(locations, sub.type,
                                     throw.error.if.unregistered.type=T)
 {
    if (length(sub.type) != 1) {
-     stop("get.sub.locations: sub.type must be a single character type")
+     stop("get.contained.locations: sub.type must be a single character type")
    } 
    if (!is.logical(c(return.list,throw.error.if.unregistered.type))
        || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
-     stop("get.sub.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
+     stop("get.contained.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
    }
    LOCATION.MANAGER$get.contained(locations, sub.type, return.list, throw.error.if.unregistered.type)
 }
@@ -204,11 +230,11 @@ get.containing.locations <- function(locations, super.type,
                                     throw.error.if.unregistered.type=T)
 {
   if (length(super.type) != 1) {
-    stop("get.super.locations: sub.type must be a single character type")
+    stop("get.containing.locations: sub.type must be a single character type")
   } 
   if (!is.logical(c(return.list,throw.error.if.unregistered.type))
       || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
-    stop("get.super.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
+    stop("get.containing.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
   }
   LOCATION.MANAGER$get.containing(locations, super.type, return.list, throw.error.if.unregistered.type)
 }
