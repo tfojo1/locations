@@ -787,6 +787,9 @@ Location.Manager = R6Class("LocationManager",
       # Return a vector of all of their location.codes
       return (names(private$location.list)[match_type])
     },
+    get.aliases.for.type = function(type) {
+      return (private$alias.codes[[toupper(type)]])
+    },
     register = function (types, location.names, codes) {
       #codes and types are all uppercase; case insensitive
       codes <- toupper(codes)

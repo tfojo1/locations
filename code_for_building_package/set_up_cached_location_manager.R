@@ -196,6 +196,46 @@ register.nsduh = function(LM, filename, nsduh.typename = "nsduh") {
   
   # At this point, we are only going to add the nsduh as a sub-member
   # of the state; will work on MSAs later
+  # We can add counties 
+  # Get a list of viable state numerical codes
+  known.states = LM$get.aliases.for.type("state")
+  all.known.state.codes = as.numeric(names(known.states))
+  #For each of our known state codes
+  for (code in all.known.state.codes) {
+    state.data = nsduh.data[nsduh.data$state == code, ]
+    if (nrow(state.data) > 0) {
+      #If there are entries with this state code:
+      #Get the two letter for this state
+      code.ch = sprintf("%02g",code)
+      state = known.states[[code.ch]]
+      
+      # Get all the unique nsduh region names for this state
+      region.names = unique(state.data$SBST18N)
+      # for each unique region name
+      for (name in region.names) {
+        # We can guarantee that the [1] element exists through the previous
+        # code
+        numeric.code = state.data[state.data$SBST18N == name, "SBST18"][1]
+        
+        # Add this location to the location manager
+        # Create a name for this location
+        region.name = sprintf("%s %s", get.location.name(state), name)
+        # Create a code for this location
+        region.code = sprintf("%s.%g", state, numeric.code)
+        LM$register("nsduh", region.name, region.code)
+        
+        #Register this region as contained by their states
+        LM$register.hierarchy(region.code, state, TRUE, TRUE)
+        
+        #Register the contained counties
+        contained.counties = state.data[state.data$SBST18N == name, "county"]
+        full.county.fips.codes = sprintf("%s%03g",code.ch, contained.counties)
+        for (county.code in full.county.fips.codes) {
+          LM$register.hierarchy(county.code, region.code, TRUE, TRUE)
+        }
+      }
+    }
+  }
   LM
 }
 
