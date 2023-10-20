@@ -186,13 +186,16 @@ register.zipcodes = function(LM, filename, fips.typename = "county", zip.typenam
   LM
 }
 
-register.nsduh = function(LM, filename, nsduh.typename = "nsduh") {
+register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = "nsduh") {
   nsduh.typename = toupper(nsduh.typename)
   
-  if (!file.exists(filename)) {
-    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", filename))
+  if (!file.exists(county.filename)) {
+    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", county.filename))
   }
-  nsduh.data = read.csv(file = filename)
+  if (!file.exists(tract.filename)) {
+    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", tract.filename))
+  }
+  nsduh.county.data = read.csv(file = county.filename)
   
   # At this point, we are only going to add the nsduh as a sub-member
   # of the state; will work on MSAs later
@@ -202,7 +205,7 @@ register.nsduh = function(LM, filename, nsduh.typename = "nsduh") {
   all.known.state.codes = as.numeric(names(known.states))
   #For each of our known state codes
   for (code in all.known.state.codes) {
-    state.data = nsduh.data[nsduh.data$state == code, ]
+    state.data = nsduh.county.data[nsduh.county.data$state == code, ]
     if (nrow(state.data) > 0) {
       #If there are entries with this state code:
       #Get the two letter for this state
@@ -232,6 +235,66 @@ register.nsduh = function(LM, filename, nsduh.typename = "nsduh") {
         full.county.fips.codes = sprintf("%s%03g",code.ch, contained.counties)
         for (county.code in full.county.fips.codes) {
           LM$register.hierarchy(county.code, region.code, TRUE, TRUE)
+        }
+      }
+    }
+  }
+  # Some regions are not divided by county, but by census tract.  Most regions
+  # in California, for instance, have a single county or multiple counties contained
+  # within, where LA county has multiple regions for only one county.  Relationship
+  # must be checked to differentiate between contained and overlapping relationships
+  nsduh.tract.data = read.csv(file = tract.filename)
+  
+  # Remove 'tract' column
+  nsduh.tract.data <- nsduh.tract.data[, !(names(nsduh.tract.data) %in% "tract")]
+  
+  # Remove duplicate rows
+  nsduh.tract.data <- nsduh.tract.data[!duplicated(nsduh.tract.data), ]
+    
+  for (code in all.known.state.codes) {
+    state.data = nsduh.tract.data[nsduh.tract.data$state == code, ]
+    if (nrow(state.data) > 0) {
+      #If there are entries with this state code:
+      #Get the two letter for this state
+      code.ch = sprintf("%02g",code)
+      state = known.states[[code.ch]]
+      
+      # Get all the unique nsduh region names for this state
+      region.names = unique(state.data$SBST18N)
+      # for each unique region name
+      counties.per.region = sapply(unique(state.data$SBST18N), function(reg.name) { state.data[state.data$SBST18N == reg.name, "county"] })
+      unlist.counties.per.region = unlist(counties.per.region)
+      for (name in region.names) {
+        # We can guarantee that the [1] element exists through the previous
+        # code
+        numeric.code = state.data[state.data$SBST18N == name, "SBST18"][1]
+        
+        # Add this location to the location manager
+        # Create a name for this location
+        region.name = sprintf("%s %s", get.location.name(state), name)
+        # Create a code for this location
+        region.code = sprintf("%s.%g", state, numeric.code)
+        LM$register("nsduh", region.name, region.code)
+        
+        #Register this region as contained by their states
+        LM$register.hierarchy(region.code, state, TRUE, TRUE)
+        
+        #Register the contained counties
+        
+        #Get a list of claimed counties
+        claimed.counties = counties.per.region[[name]]
+        full.county.fips.codes = sprintf("%s%03g",code.ch, claimed.counties)
+        
+        for (county.code.index in 1:length(claimed.counties)) {
+          # Check if there is more than one instance of this county.code
+          # across all the regions in this state
+          if ( sum(unlist.counties.per.region == claimed.counties[county.code.index]) <= 1) {
+            #This is the only region to contain this county, we can add as a contains relationship
+            LM$register.hierarchy(full.county.fips.codes[county.code.index], region.code, TRUE, TRUE)
+          } else {
+            # There are multiple regions claiming this county, we must add as overlapping
+            LM$register.hierarchy(full.county.fips.codes[county.code.index], region.code, FALSE, TRUE)
+          }
         }
       }
     }
@@ -342,5 +405,5 @@ LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
-LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
+LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)

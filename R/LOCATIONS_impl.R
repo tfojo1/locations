@@ -546,28 +546,9 @@ Location.Manager = R6Class("LocationManager",
       # Now we can call both the contained and containing functions 
       contained.results = self$get.contained(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
       containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
-      print(contained.results)
-      print(containing.results)
     
-      # for (i in 1:length(all.super.locations)) {
-      #   names(all.super.locations[[i]]) =  sapply(all.super.locations[[i]], function(loc_id) get.location.name(loc_id))
-      # }
-      # 
-      # #Now sub.locations is a proper list; if we want a list returned, return it now
-      # if (return.list) {
-      #   return (all.super.locations)
-      # }
-      # 
-      # #Return a collapsed vector of valid entries for all locations
-      # rv = unname(unlist(lapply(all.super.locations, function (l) {
-      #   l[!is.na(l)]
-      # })))
-      # 
-      # if (length(rv) == 0) {
-      #   return (character())
-      # }
-      # 
-      # setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
+      # Will work for both lists and vectors  
+      return (c(contained.results, containing.results))
     },
     get.containing = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
