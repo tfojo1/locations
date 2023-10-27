@@ -105,11 +105,15 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   #Convert the county.codes to 0 padded 5 char
   county.codes = sprintf("%05d", county.codes)
   
-  #Column 7 is the names of the counties
-  LM$register(types, remove.non.locale(counties[[7]]), county.codes)
+  #Column 7 is only one name; it's actually columns 7-10 that count.
+  #get a list of all the proper names
+  #Paste collapses them into a string, but if there are trailing NAs there are
+  #extra spaces at the end; the sub gets rid of them, removing all spaces but anchored at the back
+  proper.county.names = sub("\\s+$", "", apply(counties[7:10], 1, function(row) { paste(row[!is.na(row)],collapse=" ") }))
+  LM$register(types, remove.non.locale(proper.county.names), county.codes)
   
   #There appear to be entries in the county code that don't have a corresponding
-  #registered state.  Refrain from trying to create a connect to the non-existent
+  #registered state.  Refrain from trying to create a connection to the non-existent
   #state
   #This list is checked against the state.codes above to make sure the state
   #is registered before we create a hierarchy.
