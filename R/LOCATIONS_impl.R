@@ -10,6 +10,12 @@ Location <- R6Class("Location",
       private$type <- args[2]
       private$contains <- list()
       private$contained_by <- list()
+      private$lat <- NA
+      private$long <- NA
+    },
+    set.lat.and.long = function(lat, long) {
+      private$lat <- lat
+      private$long <- long
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -56,12 +62,20 @@ Location <- R6Class("Location",
     },
     return.name = function() {
       private$name
+    },
+    return.lat = function() {
+      private$lat
+    },
+    return.long = function() {
+      private$long
     }
   ),
   private = list(  type = NULL, # vector of characters
                    name = NULL, # string
                    contains = NULL, # list of vector pairs c("token","BOOL"),
-                   contained_by = NULL # list of vector pairs c("token","BOOL"),
+                   contained_by = NULL, # list of vector pairs c("token","BOOL"),
+                   lat = NULL, # Valid Latitude data for mapping if known
+                   long = NULL # Valid Longitude data for mapping if known
                    # where BOOL is a textual repr. of boolean
                    # values, where the value is TRUE if the
                    # current location completely encases
@@ -348,7 +362,7 @@ Location.Manager = R6Class("LocationManager",
             state = split[2]
             #For each result, check to see if its containing state matches the desired state
             index = which(sapply(name.check, function(possibility) {
-              self$get.super(possibility, "STATE", T)
+              self$get.containing(possibility, "STATE", T)
             }) == state)
             return (name.check[index])
           } else {
@@ -835,6 +849,12 @@ Location.Manager = R6Class("LocationManager",
       
       #Assign the aliases
       private$alias.codes[[location.type]][code.aliases] = code
+    },
+    register.lat.long = function(code, lat, long) {
+      # We have one location value, and valid lat and long
+      code <- private$resolve.code(code)
+      
+      private$location.list[code]$set.lat.and.long(lat,long)
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
     
