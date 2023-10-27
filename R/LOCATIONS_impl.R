@@ -267,7 +267,10 @@ Location.Manager = R6Class("LocationManager",
         all.of.type = sapply(private$location.list, function(li) {ifelse(li$return.type == type,li$return.name,"")})
         
         #Find the indexes that match the location
-        indexes = grep(location, all.of.type)
+        indexes = which (all.of.type == location)
+        if (length(indexes) == 0) {
+          indexes = grep(location, all.of.type)
+        }
         
         rv = names(private$location.list)[indexes]
         
@@ -854,7 +857,7 @@ Location.Manager = R6Class("LocationManager",
       # We have one location value, and valid lat and long
       code <- private$resolve.code(code)
       
-      private$location.list[code]$set.lat.and.long(lat,long)
+      private$location.list[[code]]$set.lat.and.long(lat,long)
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
     

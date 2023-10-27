@@ -383,6 +383,34 @@ register.code.aliases <- function(location = NA,
   LOCATION.MANAGER$register.code.aliases(location, location.aliases)
 }
 
+#'@title register.lat.and.long
+#'
+#'@description Register a valid latitude and longitude for a location code
+#'
+#'@param location A previously registered location code, or a registered location code alias.
+#'@param lat A single numeric value between -90 and 90
+#'@param long A single numeric value between -180 and 180
+#'
+#'@export
+register.lat.and.long <- function(location = NA, lat = NA, long = NA)
+{
+  if (anyNA(c(location,location.aliases))) {
+    stop("register.code.aliases: NA values not allowed for location or location.aliases")
+  }
+  if (length(location) > 1) {
+    stop("register.code.aliases: You can only provide one location code at a time")
+  }
+  #Check the lat and long
+  # The latitude must be a number between -90 and 90 and the longitude between -180 and 180.
+  # The first condition checks if they are any non numeric, and will short circuit.  The subsequent
+  # conditions assume that the first condition is false; ie that lat and long are numbers
+  if (!all(is.numeric(c(lat,long))) || (lat < -90 || lat > 90 ) || (long < -180 || long > 180)) {
+    stop(paste0("Invalid lat (", lat, "), or long (", long, ") for ", location, ", not set"))
+  }
+  
+  LOCATION.MANAGER$register.lat.long(location, lat, long)
+}
+
 #'@title register.sub.and.super.locations
 #'
 #'@description Register hierarchical sub-super relationships
