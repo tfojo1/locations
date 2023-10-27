@@ -855,9 +855,12 @@ Location.Manager = R6Class("LocationManager",
     },
     register.lat.long = function(code, lat, long) {
       # We have one location value, and valid lat and long
-      code <- private$resolve.code(code)
-      
-      private$location.list[[code]]$set.lat.and.long(lat,long)
+      valid.code <- private$resolve.code(code, F)
+      if (is.na(valid.code)) {
+        warning(paste0("Code ", code, " not found, lat and long not set"))
+      } else {
+        private$location.list[[valid.code]]$set.lat.and.long(lat,long)
+      }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
     

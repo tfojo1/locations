@@ -152,9 +152,8 @@ register.additional.fips = function(LM, filename, fips.typename) {
   LM
 }
 
-register.fips.lat.and.long = function(LM, filename, fips.typename) {
+register.fips.lat.and.long = function(LM, filename) {
   #Set the latitude and longitude for locations, provided we have them
-  fips.typename = toupper(fips.typename)
   
   lat.long.data = read.csv(file=filename, stringsAsFactors=FALSE, sep ="\t")
   
@@ -389,6 +388,23 @@ register.cbsa = function(LM, filename, cbsa.typename = "cbsa", fips.typename = "
   
   LM
 }
+
+register.cbsa.lat.and.long = function(LM, filename) {
+  #Set the known longitude and latitude for cbsa locations
+  lat.long.data = read.csv(file=filename, stringsAsFactors=FALSE, sep ="\t")
+  
+  cbsa.codes = sprintf("C.%05d",as.numeric(lat.long.data[, "GEOID"]))
+  latitude = as.numeric(lat.long.data[,"INTPTLAT"])
+  longitude = as.numeric(lat.long.data[,"INTPTLONG"])
+  
+  #Unregistered CBSA C.14160 Bluffton, IN Micro Area	2	953341275	5596377	368.087	2.161	40.735273	-85.212974 
+  
+  for (i in 1:nrow(lat.long.data)) {
+    LM$register.lat.long(cbsa.codes[i], latitude[i], longitude[i])
+  }
+  
+  LM
+}
 #Prefix and type are auto capitalized
 
 state.type = "state"
@@ -425,7 +441,8 @@ LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
-LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt"), fips.typename = county.type) #Set the latitude and longitude for locations, provided we have them
+LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
+LOCATION.MANAGER = register.cbsa.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_cbsa_national.txt")) #Set the known longitude and latitude for cbsa locations
 LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
