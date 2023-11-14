@@ -6,16 +6,30 @@ location.plot <- function(data,
                           mapping,
                           ...)
 {
-    # Set lon lat into mapping
-    data$lon = x
-    data$lat = y
+  # Check to make sure that 'data' is a data.frame
+  if (!is.data.frame(data)) {
+    stop("Parameter 'data' is not a data.frame")
+  }
+  # Sanity checks: make sure that 'data' has a column named 'locations'
+  if (!("locations" %in% names(data))) {
+    stop("No 'locations' column in the data.frame")
+  }
   
-    mapping$x = lon
-    mapping$y = lat
-    
-    # A call to ggmap
-    ggmap(US.MAP) + 
-      geom_point(data=data, mapping=mapping, ...)
+  coordinates = get.location.coords(data[['locations']])
+  xycoords = lapply(strsplit(coordinates, split=","), function (v) { v = as.numeric(v); return(list(x=v[1],y=v[2])) } )
+  
+  ggmap(US.MAP) + geom_point(data=coordinates, mapping=xycords)
+  
+    # # Set lon lat into mapping
+    # data$lon = x
+    # data$lat = y
+    # 
+    # mapping$x = lon
+    # mapping$y = lat
+    # 
+    # # A call to ggmap
+    # ggmap(US.MAP) + 
+    #   geom_point(data=data, mapping=mapping, ...)
 }
 
 add.lat.lon.to.data <- function(data)
@@ -25,6 +39,11 @@ add.lat.lon.to.data <- function(data)
     
     data
 }
+name_data <- c('New York', 'Baltimore', 'Austin')
+locations_data <- c('C.35620', 'C.12580', 'C.12420')
+
+# Create the dataframe
+tdf <- data.frame(name=name_data, locations=locations_data)
 
 #-- THIS IS THE OLD CODE WHICH WE CAN BASE OFF OF --#
 
@@ -86,56 +105,56 @@ plot.us.hiv.map <- function(locations,
 ##-- THE GENERAL PLOT FUNCTION AND NECESSARY DATA --##
 ##--------------------------------------------------##
 
-US.MAP = get_stamenmap(bbox=c(left=-125,bottom=24, right=-66, top=50),zoom=4, maptype='toner-background')
-attr_map <- attr(US.MAP, "bb")    # save attributes from original
+#US.MAP = get_stamenmap(bbox=c(left=-125,bottom=24, right=-66, top=50),zoom=4, maptype='toner-background')
+#attr_map <- attr(US.MAP, "bb")    # save attributes from original
 
-# change color in raster
-US.MAP[US.MAP == "#000000"] <- "#C0C0C0"
+## change color in raster
+#US.MAP[US.MAP == "#000000"] <- "#C0C0C0"
 
-# correct class, attributes
-class(US.MAP) <- c("ggmap", "raster")
-attr(US.MAP, "bb") <- attr_map
+## correct class, attributes
+#class(US.MAP) <- c("ggmap", "raster")
+#attr(US.MAP, "bb") <- attr_map
 
-plot.us.map <- function(latitude,
-                        longitude,
-                        size=1,
-                        color=1,
-                        size.range=c(1,5),
-                        color.range=c('blue', 'red'),
-                        pch=21,
-                        size.label='',
-                        color.label='',
-                        alpha=1)
-{
-  df = data.frame(lon=longitude,
-                  lat=latitude,
-                  size=size,
-                  color=color)
+#plot.us.map <- function(latitude,
+                        #longitude,
+                        #size=1,
+                        #color=1,
+                        #size.range=c(1,5),
+                        #color.range=c('blue', 'red'),
+                        #pch=21,
+                        #size.label='',
+                        #color.label='',
+                        #alpha=1)
+#{
+  #df = data.frame(lon=longitude,
+                  #lat=latitude,
+                  #size=size,
+                  #color=color)
   
-  rv = ggmap(US.MAP) + 
-    geom_point(data=df, aes(lon, lat, size=size, fill=color), shape=pch, alpha=alpha) +
-    theme(panel.background = element_rect(fill='white'), axis.ticks = element_blank(), 
-          axis.text = element_blank(), axis.title = element_blank())
+  #rv = ggmap(US.MAP) + 
+    #geom_point(data=df, aes(lon, lat, size=size, fill=color), shape=pch, alpha=alpha) +
+    #theme(panel.background = element_rect(fill='white'), axis.ticks = element_blank(), 
+          #axis.text = element_blank(), axis.title = element_blank())
   
-  if (!is.null(size.range))
-    rv = rv + scale_size_continuous(name=size.label, range=size.range)
-  else
-  {
-    sizes = unique(df$size)
-    names(sizes) = sizes
+  #if (!is.null(size.range))
+    #rv = rv + scale_size_continuous(name=size.label, range=size.range)
+  #else
+  #{
+    #sizes = unique(df$size)
+    #names(sizes) = sizes
     
-    rv = rv + scale_size_manual(guide='none', values=sizes)
-  }
+    #rv = rv + scale_size_manual(guide='none', values=sizes)
+  #}
   
-  if (!is.null(color.range))
-    rv = rv + scale_fill_gradient(name=color.label, low=color.range[1], high=color.range[2])
-  else
-  {
-    colors = unique(df$color)
-    names(colors) = colors
+  #if (!is.null(color.range))
+    #rv = rv + scale_fill_gradient(name=color.label, low=color.range[1], high=color.range[2])
+  #else
+  #{
+    #colors = unique(df$color)
+    #names(colors) = colors
     
-    rv = rv + scale_fill_manual(guide='none', values=colors)
-  }
+    #rv = rv + scale_fill_manual(guide='none', values=colors)
+  #}
   
-  rv
-}
+  #rv
+#}

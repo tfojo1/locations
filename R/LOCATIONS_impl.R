@@ -239,6 +239,22 @@ Location.Manager = R6Class("LocationManager",
     initialize = function () {
       #Already initialized
     },
+    get.coords = function(locations) {
+      # return A character vector of string location coordinates, separated by commas, with length(locations) and names=locations. 
+      # If location codes are not registered (or if they were NA), the corresponding returned name is NA
+      returned.coords = unlist(lapply(locations, function(x){private$resolve.code(x,F)}))
+      returned.coords[!is.na(returned.coords)] = unlist(lapply(returned.coords[!is.na(returned.coords)], function(x) {
+        lat = private$location.list[[x]]$return.lat
+        long = private$location.list[[x]]$return.long
+        if (any(is.na(c(lat,long)))) {
+          return (NA)
+        } else {
+          return(paste(lat,long,sep=","))
+        }
+      }))
+      names(returned.coords) = locations
+      returned.coords
+    },
     get.names = function(locations) {
       # return A character vector of location names, with length(locations) and names=locations. If location codes are not registered (or if they were NA), 
       # the corresponding returned name is NA

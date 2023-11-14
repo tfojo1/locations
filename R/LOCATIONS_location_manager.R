@@ -53,6 +53,23 @@ get.location.name <- function(locations)
   LOCATION.MANAGER$get.names(locations)
 }
 
+#'@title get.location.coords
+#'
+#'@description Get the latitude and longitude of a location, provided it is known
+#'
+#'@param locations A character vector of location codes
+#'
+#'@return A character vector of string location coordinates, separated by commas (latitude first, longitude second), with length(locations) and names=locations. If location codes are not registered (or if they were NA), the corresponding returned name is NA
+#'
+#'@export
+get.location.coords <- function(locations)
+{
+  # How do we handle NAs?
+  # we could return NA value
+  LOCATION.MANAGER$get.coords(locations)
+}
+
+
 #'@title get.location.code
 #'
 #'@description Get the location code for a name and a type
