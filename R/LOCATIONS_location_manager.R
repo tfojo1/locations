@@ -296,6 +296,23 @@ get.cbsa.for.msa.name <- function(names)
   LOCATION.MANAGER$get.type.by.name(names,"CBSA")
 }
 
+#'@title sanitize
+#'
+#'@description There are values that we will accept as location codes (eg. 'c.12580' will work for Baltimore, but Baltimore's actual code is 'C.12580').
+#'             This function converts codes we will accept into codes that are correct.  The function should fail on unrecognized location code.
+#'             
+#'@param codes A character vector of location codes, or acceptable location codes
+#'
+#'@return A named character vector of location codes
+#'
+#'@export
+sanitize <- function(codes) {
+  if (typeof(codes) != "character") {
+    stop("sanitize: Codes must be character arrays")
+  }
+  LOCATION.MANAGER$sanitize.codes(codes)
+}
+
 ##-------------##
 ##-- Setters --##
 ##-------------##

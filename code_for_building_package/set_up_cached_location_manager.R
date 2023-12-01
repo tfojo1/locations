@@ -398,6 +398,7 @@ register.cbsa.lat.and.long = function(LM, filename) {
   longitude = as.numeric(lat.long.data[,"INTPTLONG"])
   
   #Unregistered CBSA C.14160 Bluffton, IN Micro Area	2	953341275	5596377	368.087	2.161	40.735273	-85.212974 
+  #Leaving the warning in as we may get information later; ask Todd
   
   for (i in 1:nrow(lat.long.data)) {
     LM$register.lat.long(cbsa.codes[i], latitude[i], longitude[i])
