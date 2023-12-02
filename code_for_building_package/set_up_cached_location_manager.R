@@ -406,6 +406,21 @@ register.cbsa.lat.and.long = function(LM, filename) {
   
   LM
 }
+
+register.type.relationships = function(LM) {
+  
+  #Set the defaults
+  LM$register.type.relationship("STATE","COUNTY",TRUE)
+  LM$register.type.relationship("CBSA", "COUNTY", TRUE)
+  LM$register.type.relationship("NSDUH", "COUNTY", TRUE)
+  LM$register.type.relationship("COUNTRY", "STATE", TRUE)
+  LM$register.type.relationship("COUNTRY", "COUNTY", TRUE)
+  LM$register.type.relationship("COUNTRY", "NSDUH", TRUE)
+  LM$register.type.relationship("COUNTRY", "ZIPCODE", TRUE)
+  LM$register.type.relationship("COUNTRY", "CBSA", TRUE)
+  
+  LM
+}
 #Prefix and type are auto capitalized
 
 state.type = "state"
@@ -435,9 +450,13 @@ register.types(c(county.type,            zipcode.type,            cbsa.type,    
                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix), #Prefix
                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform)) #Longform Name
 
+LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
+
+#Define relationships between types
+LOCATION.MANAGER = register.type.relationships(LOCATION.MANAGER)
+
 DATA.DIR = 'data-raw'
 
-LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename

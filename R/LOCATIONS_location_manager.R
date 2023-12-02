@@ -306,11 +306,36 @@ get.cbsa.for.msa.name <- function(names)
 #'@return A named character vector of location codes
 #'
 #'@export
-sanitize <- function(codes) {
+sanitize <- function(codes) 
+{
   if (typeof(codes) != "character") {
     stop("sanitize: Codes must be character arrays")
   }
   LOCATION.MANAGER$sanitize.codes(codes)
+}
+
+#'@title location.type.comprises
+#'
+#'@description This function allows us to understand the relationship between two different location types.  Some location types contain other
+#'             location types completely (as states contain counties, for instance), while some are not comparable or disjoint in other ways (states and CBSAs).
+#'             This function takes two location types (super.location.type and sub.location.type), and returns TRUE or FALSE depending on whether the types overlap 
+#'             perfectly or not.
+#'
+#'@param super.location.type The location type into which we are attempting to arrange another sub-type
+#'@param sub.location.type The location type we are trying to fit inside the super-type             
+#'
+#'@return A Boolean TRUE or FALSE, representing whether members of the sub.location.type fit perfectly in the super.location.type
+#'@export
+location.type.comprises <- function(super.location.type, sub.location.type) 
+{
+  #Both super.location.type and sub.location.type must be single length character vectors
+  if (typeof(super.location.type) != "character" || length(super.location.type) != 1) {
+    stop(paste0("location.type.comprises: super.location.type ", super.location.type, " must be a single length character vector"))
+  }
+  if (typeof(sub.location.type) != "character" || length(sub.location.type) != 1) {
+    stop(paste0("location.type.comprises: sub.location.type ", sub.location.type, " must be a single length character vector"))
+  }
+  LOCATION.MANAGER$type.composition(super.location.type, sub.location.type)
 }
 
 ##-------------##
@@ -338,6 +363,30 @@ register.types <- function(type,
     stop("register.types: All parameters must be characters/strings")
   }
   LOCATION.MANAGER$register.types(type, prefix, prefix.longform)
+}
+
+#'@title register.relationships.between.types
+#'
+#'@description Register a relationship between location types; by default the types are independent; setting
+#'             the value to TRUE indicates that the super.type contains the sub.type completely
+#'
+#'@param super.type A character vector of super types
+#'@param sub.type A character vector of sub types of the same length
+#'@param value A vector of boolean values indicating the whether the sub.type is contained completely in the super type, or not
+#'
+#'@export
+register.relationship.between.types <- function(super.type, sub.type, value) 
+{
+  if (length(super.type) != length(sub.type) || length(sub.type) != length(value)) {
+    stop("register.relationship.between.types: Lengths of the 3 parameters must be equal")
+  }
+  if (any(c(typeof(super.type),typeof(sub.type)) != "character")) {
+    stop("register.relationship.between.types: All types must be characters/strings")
+  }
+  if (typeof(value) != "logical") {
+    stop("register.relationship.between.types: value vector must be bool")
+  }
+  LOCATION.MANAGER$register.type.relationship(super.type, sub.type, value)
 }
 
 #'@title register.locations

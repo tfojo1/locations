@@ -88,6 +88,9 @@ Location.Manager = R6Class("LocationManager",
   class = FALSE,
   clone = FALSE,
   active = list (
+    get.type.matrix = function() { #FIXME
+      return(private$type.matrix)
+    },
     read.location.list = function() {
       return(private$location.list)
     }
@@ -97,6 +100,7 @@ Location.Manager = R6Class("LocationManager",
     alias.names = list(),
     alias.codes = list(),
     types = list(),
+    type.matrix = matrix(nrow = 0, ncol = 0),
     check.is.type = function (type) {
       if (type %in% names(private$types)) {
         return (TRUE)
@@ -243,6 +247,18 @@ Location.Manager = R6Class("LocationManager",
       # Function should error if we get an unrecognized code
       clean.codes = unlist(lapply(codes,private$resolve.code))
       setNames(clean.codes,codes)
+    },
+    type.composition = function(super.location.type, sub.location.type) {
+      #Return a true or false, checking the composition of types
+      if (super.location.type %in% rownames(private$type.matrix)) {
+        if (sub.location.type %in% rownames(private$type.matrix)) {
+          return(private$type.matrix[super.location.type, sub.location.type])
+        } else {
+          stop(paste0("LOCATION.MANAGER$type.composition: Couldn't find type ", sub.location.type, ", aborting"))
+        }
+      } else {
+        stop(paste0("LOCATION.MANAGER$type.composition: Couldn't find type ", super.location.type, ", aborting"))
+      }
     },
     get.coords = function(locations) {
       # return A character vector of string location coordinates, separated by commas, with length(locations) and names=locations. 
@@ -763,6 +779,21 @@ Location.Manager = R6Class("LocationManager",
     
       result
     },
+    register.type.relationship = function (super.type, sub.type, b) {
+      #Lengths have been checked a level up, they all match
+      iterations = length(super.type)
+      for (i in 1:iterations) {
+        if (super.type[i] %in% rownames(private$type.matrix)) {
+          if (sub.type[i] %in% rownames(private$type.matrix)) {
+            private$type.matrix[super.type[i], sub.type[i]] = b
+          } else {
+            stop(paste0("LOCATION.MANAGER$register.type.relationship: Couldn't find type ", sub.type[i], ", aborting"))
+          }
+        } else {
+          stop(paste0("LOCATION.MANAGER$register.type.relationship: Couldn't find type ", super.type[i], ", aborting"))
+        }
+      }
+    },
     register.types = function (type, prefix, prefix.longform) {
       #Sizes have been checked a step up
       type <- toupper(type)
@@ -779,6 +810,28 @@ Location.Manager = R6Class("LocationManager",
           private$types[[t]] = c(p, p.l)
           #Add entry for the aliases to the code alias object
           private$alias.codes[[t]] = list()
+          #Add a column and a row for the type.matrix relationship object.  Default to FALSE
+          if (nrow(private$type.matrix) == 0) {
+            private$type.matrix = matrix(FALSE,nrow = 1, ncol = 1)
+            rownames(private$type.matrix) = t
+            colnames(private$type.matrix) = t
+          } else {
+            matrix.values <- rep(FALSE, nrow(private$type.matrix) + 1)
+            # Add the new row and column
+            suppressWarnings ({
+              #I'm getting miss-sized binding here, but it sets the value as I want it
+              #And I'd rather not copy the matrix every time
+              private$type.matrix <- rbind(private$type.matrix, matrix.values)
+              private$type.matrix <- cbind(private$type.matrix, matrix.values)
+            })
+            
+            # Update the row and column names
+            new.names <- c(rownames(private$type.matrix)[-length(rownames(private$type.matrix))], t)
+            rownames(private$type.matrix) <- new.names
+            colnames(private$type.matrix) <- new.names
+            
+          }
+          
         } else {
           # the type name already exists
           stop(paste0("LOCATION.MANAGER$register.types: Type ",t, " already exists in the system, aborting"))
