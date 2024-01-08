@@ -55,12 +55,12 @@ location.plot <- function(data,
   }
   
   
-  state.data = poly.data [ poly.data$NAME %in% c("Washington","Florida", "Wyoming"), ]
+  state.data = poly.data [ poly.data$NAME %in% c("Washington","Florida", "Wyoming", "Michigan"), ]
   # state.data = poly.data
   
   plot = ggmap(US.MAP) +
     geom_point(data=data, mapping, shape = pch, alpha = alpha) +
-    geom_polygon(data = state.data, aes(x = longitude, y = latitude, group=poly), fill = "cyan", color = "black", alpha = 1.0) +
+    geom_polygon(data = state.data, aes(x = longitude, y = latitude, group=poly), fill = "blue", color = "black", alpha = 0.4) +
     theme(panel.background = element_rect(fill='white'), 
           axis.ticks = element_blank(),
           axis.text = element_blank(), 
@@ -104,14 +104,15 @@ class(US.MAP) <- c("ggmap", "raster")
 attr(US.MAP, "bb") <- attr_map
 
 # Load the state polygon data
+# US Census Data, low-vertex count
 poly.data = read.csv("data-raw/geom_data.csv", stringsAsFactors = FALSE)
 
 # Initialize the "poly" column
 poly.data$poly <- rep(1, nrow(poly.data))
 
-# Variables to store the first point of the first polygon in each state
-first_lat <-  poly.data$latitude[1]
-first_long <- poly.data$longitude[1]
+# Variables to store the first point of the current polygon
+current_lat <-  poly.data$latitude[1]
+current_long <- poly.data$longitude[1]
 poly.index <- 1
 poly.reset = FALSE
 
@@ -123,11 +124,11 @@ for (i in 2:nrow(poly.data)) {
   poly.data$poly[i] = poly.index
   
   if (poly.reset) {
-    first_lat = poly.data$latitude[i]
-    first_long = poly.data$longitude[i]
+    current_lat = poly.data$latitude[i]
+    current_long = poly.data$longitude[i]
   }
   
-  if (poly.data$latitude[i] == first_lat && poly.data$longitude[i] == first_long && !poly.reset) {
+  if (poly.data$latitude[i] == current_lat && poly.data$longitude[i] == current_long && !poly.reset) {
     #This is the end of a polygon
     poly.index = poly.index + 1
     poly.reset = TRUE
