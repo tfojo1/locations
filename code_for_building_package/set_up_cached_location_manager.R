@@ -407,6 +407,63 @@ register.cbsa.lat.and.long = function(LM, filename) {
   LM
 }
 
+register.poly.data = function(LM, filename) {
+  #For those locations that have polygon data (States), set the polygon data
+  # Load the state polygon data
+  # US Census Data, low-vertex count
+  poly.data = read.csv(filename, stringsAsFactors = FALSE)
+  
+  # Initialize the "poly" column
+  poly.data$poly <- rep(1, nrow(poly.data))
+  
+  # Variables to store the first point of the current polygon
+  current_lat <-  poly.data$latitude[1]
+  current_long <- poly.data$longitude[1]
+  poly.index <- 1
+  poly.reset = FALSE
+  
+  # Iterate through rows to increment "poly" when a new polygon starts
+  # Here we are counting polygons in the set; some states have multiple polygons
+  # and geom_polygon has a group= feature that allows you to group by polygon.
+  # So we are numbering the polygons here
+  for (i in 2:nrow(poly.data)) {
+    poly.data$poly[i] = poly.index
+    
+    if (poly.reset) {
+      current_lat = poly.data$latitude[i]
+      current_long = poly.data$longitude[i]
+    }
+    
+    if (poly.data$latitude[i] == current_lat && poly.data$longitude[i] == current_long && !poly.reset) {
+      #This is the end of a polygon
+      poly.index = poly.index + 1
+      poly.reset = TRUE
+    } else {
+      poly.reset = FALSE
+    }
+  }
+  
+  #Convert the poly list data into a data-frame
+  poly.df = as.data.frame(poly.data)
+  
+  #Get all the fips codes available from the poly data.
+  poly.fips.codes = sprintf("%02g",unique(poly.data$STATEFP))
+  
+  #Iterate over all the polygon data and assign to the proper location
+  for (i in seq_along(poly.fips.codes)) {
+    # Get the relevant location code for the location
+    location.code = LM$get.by.alias(poly.fips.codes[i], "STATE")
+    # Get the relevant data
+    state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.fips.codes[i]), ]
+    # Strip out the STATEFP and the Name column
+    state.poly.data = state.poly.data [, -which(names(state.poly.data) %in% c("STATEFP", "NAME"))]
+    # Register the polygon data
+    LM$register.polygons(location.code, state.poly.data)
+  }
+  
+  LM
+}
+
 register.type.relationships = function(LM) {
   
   #Set the defaults
@@ -461,8 +518,9 @@ LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
-LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
 LOCATION.MANAGER = register.cbsa.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_cbsa_national.txt")) #Set the known longitude and latitude for cbsa locations
 LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
+LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
+LOCATION.MANAGER = register.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "geom_data.csv")) #Give each location the proper polygon data (states only at this time)

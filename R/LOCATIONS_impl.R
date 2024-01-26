@@ -12,10 +12,14 @@ Location <- R6Class("Location",
       private$contained_by <- list()
       private$lat <- NA
       private$long <- NA
+      private$poly <- NA
     },
     set.lat.and.long = function(lat, long) {
       private$lat <- lat
       private$long <- long
+    },
+    set.poly.data = function(poly.data) {
+      private$poly <- poly.data
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -68,6 +72,12 @@ Location <- R6Class("Location",
     },
     return.long = function() {
       private$long
+    },
+    has.poly.data = function() {
+      return (!is.na(private$poly))
+    },
+    return.poly.data = function() {
+      private$poly
     }
   ),
   private = list(  type = NULL, # vector of characters
@@ -75,7 +85,8 @@ Location <- R6Class("Location",
                    contains = NULL, # list of vector pairs c("token","BOOL"),
                    contained_by = NULL, # list of vector pairs c("token","BOOL"),
                    lat = NULL, # Valid Latitude data for mapping if known
-                   long = NULL # Valid Longitude data for mapping if known
+                   long = NULL, # Valid Longitude data for mapping if known
+                   poly = NULL # Polygon data if known
                    # where BOOL is a textual repr. of boolean
                    # values, where the value is TRUE if the
                    # current location completely encases
@@ -934,6 +945,14 @@ Location.Manager = R6Class("LocationManager",
         warning(paste0("Code ", code, " not found, lat and long not set"))
       } else {
         private$location.list[[valid.code]]$set.lat.and.long(lat,long)
+      }
+    },
+    register.polygons = function(code, poly.data) {
+      valid.code <- private$resolve.code(code, F)
+      if (is.na(valid.code)) {
+        warning(paste0("Code ", code, " not found, polygon data not set"))
+      } else {
+        private$location.list[[valid.code]]$set.poly.data(poly.data)
       }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
