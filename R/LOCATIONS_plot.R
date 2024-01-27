@@ -4,7 +4,7 @@ library(ggmap)
 #'@title location.plot
 #'@description Create a plot of various points in the US located in a data frame with
 #'             an accompanying ggplot2 aesthetic (aes()).
-#'        
+#'
 #'@param data A data frame with a column labeled 'location', containing a location code 
 #'
 #'@param mapping Aesthetics to pass to the ggplot object, created by aes()
