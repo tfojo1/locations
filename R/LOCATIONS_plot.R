@@ -46,7 +46,6 @@ location.plot <- function(data,
   point.df = data[ data$locations %in% locations.list$point, ]
   poly.df = data [ data$locations %in% locations.list$poly, ]
   
-  browser()
   # First, point.locations
   
   # Get the coordinates for all the locations included in the point data.frame; they
