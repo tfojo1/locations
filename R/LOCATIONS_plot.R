@@ -4,7 +4,7 @@ library(ggmap)
 #'@title location.plot
 #'@description Create a plot of various points in the US located in a data frame with
 #'             an accompanying ggplot2 aesthetic (aes()).
-#'             
+#'        
 #'@param data A data frame with a column labeled 'location', containing a location code 
 #'
 #'@param mapping Aesthetics to pass to the ggplot object, created by aes()
@@ -15,7 +15,6 @@ library(ggmap)
 location.plot <- function(data,
                           mapping,
                           title=NA,
-                          poly.data=NA,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
                           pch=19,
@@ -32,17 +31,35 @@ location.plot <- function(data,
     stop("No 'locations' column in the data.frame")
   }
   
-  # Get the coordinates for all the locations included in the data.frame; they
+  location.ids.types = get.location.type(data[['locations']])
+  
+  locations.list = list()
+    
+  for (i in seq_along(location.ids.types)) {
+    if (location.ids.types[[i]] == "STATE") {
+      locations.list$polygon = c(locations.list$polygon, names(location.ids.types[i]))
+    } else {
+      locations.list$point = c(locations.list$point, names(location.ids.types[i]))
+    }
+  }
+  
+  point.df = data[ data$locations %in% locations.list$point, ]
+  poly.df = data [ data$locations %in% locations.list$poly, ]
+  
+  browser()
+  # First, point.locations
+  
+  # Get the coordinates for all the locations included in the point data.frame; they
   # are returned as a character value with two values separated by a comma.
   # The first value is latitude, the second value is longitude
-  coordinates = get.location.coords(data[['locations']])
+  coordinates = get.location.coords(point.df$locations)
   
   lat.lon = strsplit(coordinates, ",")
-  data["latitude"] = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
-  data["longitude"] = as.numeric(sapply(lat.lon, function(x) {return(x[2])}))
+  point.df$latitude = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
+  point.df$longitude = as.numeric(sapply(lat.lon, function(x) {return(x[2])}))
   
   # Are any of the locations NA?  This is a result of missing location data.
-  na.indexes = which(is.na(data["latitude"]))
+  na.indexes = which(is.na(point.df$latitude))
   
   # If there are any NA locations, display a list
   if (length(na.indexes) > 0) {
@@ -50,17 +67,40 @@ location.plot <- function(data,
     for (i in seq_along(na.indexes)) {
       # We could print the name in those dataframes that contain it, but all we know for 
       # sure is that this dataframe contains a locations column
-      cat(paste0(i, ". ", data[["locations"]][na.indexes[i]],"\n"))
+      cat(paste0(i, ". ", point.df$locations[na.indexes[i]],"\n"))
     }
   }
+  # Now, polygon locations
+  poly.data.list = list()
+  for (location.code in poly.df$locations) {
+    poly.data.list[[location.code]] = get.location.polygon(location.code)
+  }
   
+  merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
+    original.row = poly.df[i, , drop = FALSE]
+    row.location.code = poly.df$locations[i]
+    
+    location.poly.data = poly.data.list[[row.location.code]]
+    original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
+    merged.poly.data = cbind(original.replicated, location.poly.data)
+    return (merged.poly.data)
+  })
   
-  state.data = poly.data [ poly.data$NAME %in% c("Washington","Florida", "Wyoming", "Michigan"), ]
-  # state.data = poly.data
+  final.poly.df = do.call(rbind, merged.poly.df)
   
-  plot = ggmap(US.MAP) +
-    geom_point(data=data, mapping, shape = pch, alpha = alpha) +
-    geom_polygon(data = state.data, aes(x = longitude, y = latitude, group=poly), fill = "blue", color = "black", alpha = 0.4) +
+  #Plot
+  
+  plot = ggmap(US.MAP)
+  
+  if (nrow(point.df) > 0) {
+    plot = plot + geom_point(data=point.df, mapping, shape = pch, alpha = alpha)
+  }
+  
+  if (nrow(final.poly.df) > 0) {
+    plot = plot + geom_polygon(data = final.poly.df, aes(x = longitude, y = latitude, fill=color, group=poly), color = "black", alpha = 0.4)
+  }
+  
+  plot = plot + 
     theme(panel.background = element_rect(fill='white'), 
           axis.ticks = element_blank(),
           axis.text = element_blank(), 
@@ -140,9 +180,10 @@ for (i in 2:nrow(poly.data)) {
 # Test plot: State CBSAs
 state.cbsa = get.contained.locations("TX","CBSA")
 state2.cbsa = get.contained.locations("OH", "CBSA")
-name_data = c(names(state.cbsa),names(state2.cbsa))
-code_data = c(unname(state.cbsa),unname(state2.cbsa))
+# name_data = c(names(state.cbsa),names(state2.cbsa))
+state_data = c("MD","MI","WA")
+code_data = c(unname(state.cbsa),unname(state2.cbsa), state_data)
 
-state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=seq(1,length(code_data)))
+state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=rev(seq(1,length(code_data))))
 
-location.plot(state.df,aes(x=longitude, y=latitude,size=size,color=color), "State CBSAs", poly.data)
+location.plot(state.df,aes(x=longitude, y=latitude,size=size,fill=color), "State CBSAs")

@@ -69,6 +69,22 @@ get.location.coords <- function(locations)
   LOCATION.MANAGER$get.coords(locations)
 }
 
+#'@title get.location.polygon
+#'
+#'@description Get the polygon dataframe of a location, provided it is known
+#'
+#'@param locations A single location code
+#'
+#'@return A data frame containing the polygon data from the location code, or NA if not found
+#'
+#'@export
+get.location.polygon <- function(location)
+{
+  # How do we handle NAs?
+  # we could return NA value
+  LOCATION.MANAGER$get.polygon(location)
+}
+
 
 #'@title get.location.code
 #'

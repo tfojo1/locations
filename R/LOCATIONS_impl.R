@@ -287,6 +287,19 @@ Location.Manager = R6Class("LocationManager",
       names(returned.coords) = locations
       returned.coords
     },
+    get.polygon = function(location) {
+      #Return the polygon data for a valid location
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      #Get the poly data 
+      poly.data = private$location.list[[clean.code]]$return.poly.data
+      if (length(poly.data) == 1 && is.na(poly.data)) {
+        return (NA)
+      }
+      return (poly.data)
+    },
     get.names = function(locations) {
       # return A character vector of location names, with length(locations) and names=locations. If location codes are not registered (or if they were NA), 
       # the corresponding returned name is NA
