@@ -33,18 +33,11 @@ location.plot <- function(data,
   
   location.ids.types = get.location.type(data[['locations']])
   
-  locations.list = list()
-    
-  for (i in seq_along(location.ids.types)) {
-    if (location.ids.types[[i]] == "STATE") {
-      locations.list$polygon = c(locations.list$polygon, names(location.ids.types[i]))
-    } else {
-      locations.list$point = c(locations.list$point, names(location.ids.types[i]))
-    }
-  }
+  polygon.ids = names(location.ids.types)[location.ids.types == "STATE"]
+  point.ids = names(location.ids.types)[location.ids.types != "STATE"]
   
-  point.df = data[ data$locations %in% locations.list$point, ]
-  poly.df = data [ data$locations %in% locations.list$poly, ]
+  point.df = data[ data$locations %in% point.ids, ]
+  poly.df = data [ data$locations %in% polygon.ids, ]
   
   # First, point.locations
   
@@ -70,10 +63,8 @@ location.plot <- function(data,
     }
   }
   # Now, polygon locations
-  poly.data.list = list()
-  for (location.code in poly.df$locations) {
-    poly.data.list[[location.code]] = get.location.polygon(location.code)
-  }
+  poly.data.list = lapply (poly.df$locations, get.location.polygon)
+  names(poly.data.list) <- poly.df$locations
   
   merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
     original.row = poly.df[i, , drop = FALSE]
