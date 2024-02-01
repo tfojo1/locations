@@ -251,6 +251,7 @@ Location.Manager = R6Class("LocationManager",
     }
   ),
   public = list (
+    US.MAP.BZIP2 = NULL,
     initialize = function () {
       #Already initialized
     },

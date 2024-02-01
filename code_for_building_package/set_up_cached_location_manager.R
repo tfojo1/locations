@@ -478,6 +478,33 @@ register.type.relationships = function(LM) {
   
   LM
 }
+
+fetch.us.map = function(LM, api_key) {
+  
+  register_stadiamaps(api_key)
+  US.MAP = get_stadiamap(bbox=c(left=-125,bottom=24,right=-66, top=50), zoom = 5, maptype = "stamen_toner_background")
+  
+  attr_map <- attr(US.MAP, "bb")    # save attributes from original
+  # 
+  # ## change color in raster; change the black background to a nicer gray
+  US.MAP[US.MAP == "#000000"] <- "#C0C0C0"
+  # Some background is colored with almost-black, change it as well
+  US.MAP[US.MAP == "#010101"] <- "#C0C0C0"
+  # 
+  # ## correct class, attributes
+  class(US.MAP) <- c("ggmap", "raster")
+  attr(US.MAP, "bb") <- attr_map
+  
+  # Create a compressed version of the US.MAP, put it in the location manager
+  # Reduces the in-memory usage from 8.1MB to 70k
+  LM$US.MAP.BZIP2 = memCompress(serialize(US.MAP, NULL), type = "bzip2")
+  
+  # Remove the uncompressed version from the environment
+  rm(US.MAP)
+  
+  LM
+}
+
 #Prefix and type are auto capitalized
 
 state.type = "state"
@@ -524,3 +551,4 @@ LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-c
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
 LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
 LOCATION.MANAGER = register.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "geom_data.csv")) #Give each location the proper polygon data (states only at this time)
+LOCATION.MANAGER = fetch.us.map(LOCATION.MANAGER, Sys.getenv("STADIA_MAPS_API_KEY"))

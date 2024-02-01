@@ -80,7 +80,10 @@ location.plot <- function(data,
   
   #Plot
   
-  plot = ggmap(US.MAP)
+  # Decompress the US.MAP.GZIP
+  US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
+  
+  plot = ggmap(US.MAP.UNCOMPRESSED)
   
   if (nrow(point.df) > 0) {
     plot = plot + geom_point(data=point.df, mapping, shape = pch, alpha = alpha)
@@ -114,66 +117,3 @@ location.plot <- function(data,
   
   plot
 }
-
-##--------------------------------------------------##
-##-- THE GENERAL PLOT FUNCTION AND NECESSARY DATA --##
-##--------------------------------------------------##
-register_stadiamaps(Sys.getenv("STADIA_MAPS_API_KEY"))
-US.MAP = get_stadiamap(bbox=c(left=-125,bottom=24,right=-66, top=50), zoom = 5, maptype = "stamen_toner_background")
-
-# ALL ON BEFORE JP
-attr_map <- attr(US.MAP, "bb")    # save attributes from original
-# 
-# ## change color in raster; change the black background to a nicer gray
-US.MAP[US.MAP == "#000000"] <- "#C0C0C0"
-# Some background is colored with almost-black, change it as well
-US.MAP[US.MAP == "#010101"] <- "#C0C0C0"
-# 
-# ## correct class, attributes
-class(US.MAP) <- c("ggmap", "raster")
-attr(US.MAP, "bb") <- attr_map
-
-# Load the state polygon data
-# US Census Data, low-vertex count
-poly.data = read.csv("data-raw/geom_data.csv", stringsAsFactors = FALSE)
-
-# Initialize the "poly" column
-poly.data$poly <- rep(1, nrow(poly.data))
-
-# Variables to store the first point of the current polygon
-current_lat <-  poly.data$latitude[1]
-current_long <- poly.data$longitude[1]
-poly.index <- 1
-poly.reset = FALSE
-
-# Iterate through rows to increment "poly" when a new polygon starts
-# Here we are counting polygons in the set; some states have multiple polygons
-# and geom_polygon has a group= feature that allows you to group by polygon.
-# So we are numbering the polygons here
-for (i in 2:nrow(poly.data)) {
-  poly.data$poly[i] = poly.index
-  
-  if (poly.reset) {
-    current_lat = poly.data$latitude[i]
-    current_long = poly.data$longitude[i]
-  }
-  
-  if (poly.data$latitude[i] == current_lat && poly.data$longitude[i] == current_long && !poly.reset) {
-    #This is the end of a polygon
-    poly.index = poly.index + 1
-    poly.reset = TRUE
-  } else {
-    poly.reset = FALSE
-  }
-}
-
-# Test plot: State CBSAs
-state.cbsa = get.contained.locations("TX","CBSA")
-state2.cbsa = get.contained.locations("OH", "CBSA")
-# name_data = c(names(state.cbsa),names(state2.cbsa))
-state_data = c("MD","MI","WA")
-code_data = c(unname(state.cbsa),unname(state2.cbsa), state_data)
-
-state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=rev(seq(1,length(code_data))))
-
-location.plot(state.df,aes(x=longitude, y=latitude, size=size, color=color, fill=color), "State CBSAs")
