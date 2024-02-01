@@ -80,7 +80,7 @@ location.plot <- function(data,
   
   #Plot
   
-  # Decompress the US.MAP.GZIP
+  # Decompress the US.MAP.BZIP2
   US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
   
   plot = ggmap(US.MAP.UNCOMPRESSED)
