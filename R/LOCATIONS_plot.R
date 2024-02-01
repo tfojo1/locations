@@ -87,7 +87,7 @@ location.plot <- function(data,
   }
   
   if (nrow(final.poly.df) > 0) {
-    plot = plot + geom_polygon(data = final.poly.df, aes(x = longitude, y = latitude, fill=color, group=poly), color = "black", alpha = 0.4)
+    plot = plot + geom_polygon(data = final.poly.df, aes(x = longitude, y = latitude, fill=color, color=color, group=poly), alpha = 0.4)
   }
   
   plot = plot + 
@@ -109,6 +109,7 @@ location.plot <- function(data,
   
   if (!is.null(color.range)) {
     plot = plot + scale_fill_gradient(name=color.label, low=color.range[1], high=color.range[2])
+    plot = plot + scale_color_gradient(name=color.label, low=color.range[1], high=color.range[2])
   } 
   
   plot
@@ -176,4 +177,4 @@ code_data = c(unname(state.cbsa),unname(state2.cbsa), state_data)
 
 state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=rev(seq(1,length(code_data))))
 
-location.plot(state.df,aes(x=longitude, y=latitude,size=size,fill=color), "State CBSAs")
+location.plot(state.df,aes(x=longitude, y=latitude, size=size, color=color, fill=color), "State CBSAs")
