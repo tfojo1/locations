@@ -496,11 +496,8 @@ fetch.us.map = function(LM, api_key) {
   attr(US.MAP, "bb") <- attr_map
   
   # Create a compressed version of the US.MAP, put it in the location manager
-  # Reduces the in-memory usage from 8.1MB to 70k
+  # Reduces the in-memory usage from 8.1MB to 70k (99% reduction)
   LM$US.MAP.BZIP2 = memCompress(serialize(US.MAP, NULL), type = "bzip2")
-  
-  # Remove the uncompressed version from the environment
-  rm(US.MAP)
   
   LM
 }
