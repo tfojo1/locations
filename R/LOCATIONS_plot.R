@@ -118,8 +118,7 @@ location.plot <- function(data,
 ##--------------------------------------------------##
 ##-- THE GENERAL PLOT FUNCTION AND NECESSARY DATA --##
 ##--------------------------------------------------##
-register_stadiamaps(api_key)
-#US.MAP = get_stamenmap(bbox=c(left=-125,bottom=24, right=-66, top=50),zoom=4, maptype='toner-background')
+register_stadiamaps(Sys.getenv("STADIA_MAPS_API_KEY"))
 US.MAP = get_stadiamap(bbox=c(left=-125,bottom=24,right=-66, top=50), zoom = 5, maptype = "stamen_toner_background")
 
 # ALL ON BEFORE JP
