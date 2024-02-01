@@ -90,7 +90,9 @@ location.plot <- function(data,
   }
   
   if (nrow(final.poly.df) > 0) {
-    plot = plot + geom_polygon(data = final.poly.df, aes(x = longitude, y = latitude, fill=color, color=color, group=poly), alpha = 0.4)
+    mapping$size = NULL #Polygons don't have a size mapping
+    mapping = modifyList(mapping, aes(group = poly)) #We have to add the group
+    plot = plot + geom_polygon(data = final.poly.df, mapping, alpha = alpha)
   }
   
   plot = plot + 
