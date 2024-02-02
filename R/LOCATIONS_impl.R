@@ -74,7 +74,7 @@ Location <- R6Class("Location",
       private$long
     },
     has.poly.data = function() {
-      return (!is.na(private$poly))
+      return (is.data.frame(private$poly))
     },
     return.poly.data = function() {
       private$poly
@@ -286,6 +286,17 @@ Location.Manager = R6Class("LocationManager",
       }))
       names(returned.coords) = locations
       returned.coords
+    },
+    has.polygon = function(location) {
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      return (private$location.list[[clean.code]]$has.poly.data)
+    },
+    has.location = function(location) {
+      clean.code = private$resolve.code(location,F)
+      return (!is.na(clean.code))
     },
     get.polygon = function(location) {
       #Return the polygon data for a valid location

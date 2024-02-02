@@ -30,52 +30,54 @@ location.plot <- function(data,
     stop("No 'locations' column in the data.frame")
   }
   
-  location.ids.types = get.location.type(data[['locations']])
+  # Determine if the locations have polygon data
+  location.has.poly = sapply(data[['locations']], LOCATION.MANAGER$has.polygon)
   
-  polygon.ids = names(location.ids.types)[location.ids.types == "STATE"]
-  point.ids = names(location.ids.types)[location.ids.types != "STATE"]
-  
-  point.df = data[ data$locations %in% point.ids, ]
-  poly.df = data [ data$locations %in% polygon.ids, ]
+  point.df = data[ !location.has.poly, ]
+  poly.df = data [ location.has.poly, ]
   
   # First, point.locations
   
   # Get the coordinates for all the locations included in the point data.frame; they
   # are returned as a character value with two values separated by a comma.
   # The first value is latitude, the second value is longitude
-  coordinates = get.location.coords(point.df$locations)
-  
-  lat.lon = strsplit(coordinates, ",")
-  point.df$latitude = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
-  point.df$longitude = as.numeric(sapply(lat.lon, function(x) {return(x[2])}))
-  
-  # Are any of the locations NA?  This is a result of missing location data.
-  na.indexes = which(is.na(point.df$latitude))
-  
-  # If there are any NA locations, display a list
-  if (length(na.indexes) > 0) {
-    cat(paste0("Unable to plot ", length(na.indexes)," locations, no location data :\n"))
-    for (i in seq_along(na.indexes)) {
-      # We could print the name in those dataframes that contain it, but all we know for 
-      # sure is that this dataframe contains a locations column
-      cat(paste0(i, ". ", point.df$locations[na.indexes[i]],"\n"))
+  if (nrow(point.df) > 0) {
+    coordinates = get.location.coords(point.df$locations)
+    
+    lat.lon = strsplit(coordinates, ",")
+    point.df$latitude = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
+    point.df$longitude = as.numeric(sapply(lat.lon, function(x) {return(x[2])}))
+    
+    # Are any of the locations NA?  This is a result of missing location data.
+    na.indexes = which(is.na(point.df$latitude))
+    
+    # If there are any NA locations, display a list
+    if (length(na.indexes) > 0) {
+      cat(paste0("Unable to plot ", length(na.indexes)," locations, no location data :\n"))
+      for (i in seq_along(na.indexes)) {
+        # We could print the name in those dataframes that contain it, but all we know for 
+        # sure is that this dataframe contains a locations column
+        cat(paste0(i, ". ", point.df$locations[na.indexes[i]],"\n"))
+      }
     }
   }
   # Now, polygon locations
-  poly.data.list = lapply (poly.df$locations, get.location.polygon)
-  names(poly.data.list) <- poly.df$locations
-  
-  merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
-    original.row = poly.df[i, , drop = FALSE]
-    row.location.code = poly.df$locations[i]
+  if (nrow(poly.df) > 0) {
+    poly.data.list = lapply (poly.df$locations, get.location.polygon)
+    names(poly.data.list) <- poly.df$locations
     
-    location.poly.data = poly.data.list[[row.location.code]]
-    original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
-    merged.poly.data = cbind(original.replicated, location.poly.data)
-    return (merged.poly.data)
-  })
-  
-  final.poly.df = do.call(rbind, merged.poly.df)
+    merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
+      original.row = poly.df[i, , drop = FALSE]
+      row.location.code = poly.df$locations[i]
+      
+      location.poly.data = poly.data.list[[row.location.code]]
+      original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
+      merged.poly.data = cbind(original.replicated, location.poly.data)
+      return (merged.poly.data)
+    })
+    
+    final.poly.df = do.call(rbind, merged.poly.df)
+  }
   
   #Plot
   
@@ -88,7 +90,7 @@ location.plot <- function(data,
     plot = plot + geom_point(data=point.df, mapping, shape = pch, alpha = alpha)
   }
   
-  if (nrow(final.poly.df) > 0) {
+  if (nrow(poly.df) > 0) {
     mapping$size = NULL #Polygons don't have a size mapping
     mapping = modifyList(mapping, aes(group = poly)) #We have to add the group
     plot = plot + geom_polygon(data = final.poly.df, mapping, alpha = alpha)
