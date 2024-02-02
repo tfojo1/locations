@@ -13,8 +13,8 @@
 
 source("R/LOCATIONS_location_manager.R") 
 source("R/LOCATIONS_impl.R")
-# We shouldn't source here as we are potentially sourcing this file from location_manager
-# New way to load all the code is now in location_manager; run it.
+
+library(ggmap) #register_stadiamaps
 
 remove.non.locale = function(string_list) {
   # Go through each string

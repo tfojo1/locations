@@ -1,5 +1,4 @@
 library(ggplot2)
-library(ggmap)
 
 #'@title location.plot
 #'@description Create a plot of various points in the US located in a data frame with
