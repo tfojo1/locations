@@ -427,8 +427,9 @@ Location.Manager = R6Class("LocationManager",
             state = split[2]
             #For each result, check to see if its containing state matches the desired state
             index = which(sapply(name.check, function(possibility) {
-              self$get.containing(possibility, "STATE", T)
-            }) == state)
+              returned.states = self$get.containing(possibility, "STATE", F)
+              any(returned.states %in% state) 
+            }) == TRUE)
             return (name.check[index])
           } else {
             msg = paste0("More than 2 divisions for ", name)
