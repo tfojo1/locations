@@ -137,7 +137,6 @@ Location.Manager = R6Class("LocationManager",
         
         #For each type:
         for (type in types) {
-          # browser()
           if (location %in% names(private$alias.codes[[type]])) {
             #Found as alias to type 'type'
             #Display results
