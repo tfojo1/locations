@@ -401,7 +401,9 @@ register.cbsa.lat.and.long = function(LM, filename) {
   #Leaving the warning in as we may get information later; ask Todd
   
   for (i in 1:nrow(lat.long.data)) {
-    LM$register.lat.long(cbsa.codes[i], latitude[i], longitude[i])
+    if (LM$has.location(cbsa.codes[i])) {
+      LM$register.lat.long(cbsa.codes[i], latitude[i], longitude[i])
+    }
   }
   
   LM
@@ -450,16 +452,16 @@ register.cbsa.poly.data = function(LM, filename) {
   
   poly.df = as.data.frame(number.polygons(poly.data))
   
-  #Get all the fips codes available from the poly data.
-  poly.fips.codes = sprintf("%05g",unique(poly.data$CBSAFP))
+  #Get all the codes available from the poly data.
+  poly.codes = sprintf("%05g",unique(poly.data$CBSAFP))
   
   #Iterate over all the polygon data and assign to the proper location
-  for (i in seq_along(poly.fips.codes)) {
-    # the location code is the poly.fips.code for counties 
-    location.code = paste0("C.", poly.fips.codes[i])
+  for (i in seq_along(poly.codes)) {
+    # the location code is the poly.code for counties 
+    location.code = paste0("C.", poly.codes[i])
     if (LM$has.location(location.code)) {
       # Get the relevant data
-      cbsa.poly.data = poly.df [ poly.df$CBSAFP == as.numeric(poly.fips.codes[i]), ]
+      cbsa.poly.data = poly.df [ poly.df$CBSAFP == as.numeric(poly.codes[i]), ]
       # Strip out CBSAFP
       cbsa.poly.data$CBSAFP = NULL
       # Register the polygon data
@@ -478,19 +480,47 @@ register.county.poly.data = function(LM, filename) {
   
   poly.df = as.data.frame(number.polygons(poly.data))
   
-  #Get all the fips codes available from the poly data.
-  poly.fips.codes = sprintf("%05g",unique(poly.data$COUNTYFP))
+  #Get all the codes available from the poly data.
+  poly.codes = sprintf("%05g",unique(poly.data$COUNTYFP))
   
   #Iterate over all the polygon data and assign to the proper location
-  for (i in seq_along(poly.fips.codes)) {
-    # the location code is the poly.fips.code for counties 
-    if (LM$has.location(poly.fips.codes[i])) {
+  for (i in seq_along(poly.codes)) {
+    # the location code is the poly.code for counties 
+    if (LM$has.location(poly.codes[i])) {
       # Get the relevant data
-      county.poly.data = poly.df [ poly.df$COUNTYFP == as.numeric(poly.fips.codes[i]), ]
+      county.poly.data = poly.df [ poly.df$COUNTYFP == as.numeric(poly.codes[i]), ]
       # Strip out COUNTYFP
       county.poly.data$COUNTYFP = NULL
       # Register the polygon data
-      LM$register.polygons(poly.fips.codes[i], county.poly.data)
+      LM$register.polygons(poly.codes[i], county.poly.data)
+    }
+  }
+  
+  LM
+}
+
+register.zip.poly.data = function(LM, filename) {
+  #For those locations that have polygon data (Counties), set the polygon data
+  # Load the zipcode polygon data
+  # US Census Data, low-vertex count
+  poly.data = read.csv(filename, stringsAsFactors = FALSE)
+  
+  poly.df = as.data.frame(number.polygons(poly.data))
+  
+  #Get all the codes available from the poly data.
+  poly.codes = sprintf("%05g",unique(poly.data$ZIPCODE))
+  
+  #Iterate over all the polygon data and assign to the proper location
+  for (i in seq_along(poly.codes)) {
+    # the location code is the poly.code for counties 
+    location.code = paste0("Z.", poly.codes[i])
+    if (LM$has.location(location.code)) {
+      # Get the relevant data
+      zip.poly.data = poly.df [ poly.df$ZIPCODE == as.numeric(poly.codes[i]), ]
+      # Strip out ZIPCODE
+      zip.poly.data$ZIPCODE = NULL
+      # Register the polygon data
+      LM$register.polygons(location.code, zip.poly.data)
     }
   }
   
@@ -505,16 +535,16 @@ register.state.poly.data = function(LM, filename) {
   
   poly.df = as.data.frame(number.polygons(poly.data))
   
-  #Get all the fips codes available from the poly data.
-  poly.fips.codes = sprintf("%02g",unique(poly.data$STATEFP))
+  #Get all the codes available from the poly data.
+  poly.codes = sprintf("%02g",unique(poly.data$STATEFP))
   
   #Iterate over all the polygon data and assign to the proper location
-  for (i in seq_along(poly.fips.codes)) {
+  for (i in seq_along(poly.codes)) {
     # Get the relevant location code for the location
-    location.code = LM$get.by.alias(poly.fips.codes[i], "STATE")
+    location.code = LM$get.by.alias(poly.codes[i], "STATE")
     if (LM$has.location(location.code)) {
       # Get the relevant data
-      state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.fips.codes[i]), ]
+      state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.codes[i]), ]
       # Strip out the STATEFP and the Name column
       state.poly.data = state.poly.data [, -which(names(state.poly.data) %in% c("STATEFP", "NAME"))]
       # Register the polygon data
@@ -599,7 +629,7 @@ LOCATION.MANAGER = register.type.relationships(LOCATION.MANAGER)
 
 DATA.DIR = 'data-raw'
 
-# Make this global so no polygons have the same index
+#Used by number.polygons; make this global so no polygons have the same index
 poly.index = 1
 
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
@@ -613,5 +643,9 @@ LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-c
 LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
 LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "state_geom_data.csv")) #Give each location the proper polygon data (states)
 LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv")) #Give each location the proper polygon data (counties)
-LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv")) #Give each location the proper polygon data (counties)
+LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv")) #Give each location the proper polygon data (cbsa)
+# LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv")) #Give each location the proper polygon data (zip)
 LOCATION.MANAGER = fetch.us.map(LOCATION.MANAGER, Sys.getenv("STADIA_MAPS_API_KEY"))
+
+rm(poly.index)
+rm(DATA.DIR)
