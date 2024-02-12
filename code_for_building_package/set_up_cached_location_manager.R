@@ -472,8 +472,9 @@ register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
       cbsa.poly.data = poly.df [ poly.df$CBSAFP == as.numeric(poly.codes[i]), ]
       # Strip out CBSAFP
       cbsa.poly.data$CBSAFP = NULL
+      bb = bbox.calculation(cbsa.poly.data)
       # Register the polygon data
-      LM$register.polygons(location.code)
+      LM$register.polygons(location.code, bb)
       
       cbsa.poly.data$location.code = rep(location.code, nrow(cbsa.poly.data))
       
@@ -507,8 +508,9 @@ register.county.poly.data = function(LM, filename, county.type) {
       county.poly.data = poly.df [ poly.df$COUNTYFP == as.numeric(poly.codes[i]), ]
       # Strip out COUNTYFP
       county.poly.data$COUNTYFP = NULL
+      bb = bbox.calculation(county.poly.data)
       # Register the polygon data
-      LM$register.polygons(poly.codes[i])
+      LM$register.polygons(poly.codes[i], bb)
       
       county.poly.data$location.code = rep(poly.codes[i], nrow(county.poly.data))
       
@@ -545,7 +547,8 @@ register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
       # Strip out ZIPCODE
       zip.poly.data$ZIPCODE = NULL
       # Register the polygon data
-      LM$register.polygons(location.code)
+      bb = bbox.calculation(zip.poly.data)
+      LM$register.polygons(location.code, bb)
       
       zip.poly.data$location.code = rep(location.code, nrow(zip.poly.data))
       
@@ -579,8 +582,9 @@ register.state.poly.data = function(LM, filename, state.type) {
       # Get the relevant data
       state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.codes[i]), ]
       state.poly.data = state.poly.data [, -which(names(state.poly.data) %in% c("STATEFP", "NAME"))]
+      bb = bbox.calculation(state.poly.data)
       # Register the polygon data
-      LM$register.polygons(location.code)
+      LM$register.polygons(location.code, bb)
       
       state.poly.data$location.code = rep(location.code, nrow(state.poly.data))
       full.df <- rbind(full.df, state.poly.data)
@@ -589,6 +593,20 @@ register.state.poly.data = function(LM, filename, state.type) {
   
   LM$add.poly.data(state.type, full.df)
   LM
+}
+
+bbox.calculation = function(poly.data) {
+  bb = c(left=min(poly.data$longitude), 
+         bottom=min(poly.data$latitude), 
+         right=max(poly.data$longitude), 
+         top=max(poly.data$latitude))
+  height.outeredge = (bb[['top']] - bb[['bottom']]) * bb.edge
+  width.outeredge = (bb[['right']] - bb[['left']]) * bb.edge
+  bb[['top']] = bb[['top']] + height.outeredge
+  bb[['bottom']] = bb[['bottom']] - height.outeredge
+  bb[['right']] = bb[['right']] + width.outeredge
+  bb[['left']] = bb[['left']] - width.outeredge
+  return (bb)
 }
 
 register.type.relationships = function(LM) {
@@ -667,6 +685,8 @@ DATA.DIR = 'data-raw'
 
 #Used by number.polygons; make this global so no polygons have the same index
 poly.index = 1
+#Used by the bounding box calculation; what percent of extra edge to include
+bb.edge = 0.1 #10%
 
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename

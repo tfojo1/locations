@@ -12,14 +12,16 @@ Location <- R6Class("Location",
       private$contained_by <- list()
       private$lat <- NA
       private$long <- NA
+      private$bb <- NA
       private$poly <- FALSE
     },
     set.lat.and.long = function(lat, long) {
       private$lat <- lat
       private$long <- long
     },
-    set.poly.data = function() {
+    set.poly.data = function(bb) {
       private$poly <- TRUE
+      private$bb <- bb
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -81,14 +83,16 @@ Location <- R6Class("Location",
                    name = NULL, # string
                    contains = NULL, # list of vector pairs c("token","BOOL"),
                    contained_by = NULL, # list of vector pairs c("token","BOOL"),
-                   lat = NULL, # Valid Latitude data for mapping if known
-                   long = NULL, # Valid Longitude data for mapping if known
-                   poly = NULL # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
                    # where BOOL is a textual repr. of boolean
                    # values, where the value is TRUE if the
                    # current location completely encases
                    # the contained region.  The token field
                    # is the token of the contained region
+                   lat = NULL, # Valid Latitude data for mapping if known
+                   long = NULL, # Valid Longitude data for mapping if known
+                   poly = NULL, # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
+                   bb = NULL # The bounding box for the polygon for this location code
+                   # format for bb: c(top=,right=,left=,bottom=)
                  )
 )
 
@@ -980,12 +984,12 @@ Location.Manager = R6Class("LocationManager",
         private$location.list[[valid.code]]$set.lat.and.long(lat,long)
       }
     },
-    register.polygons = function(code) {
+    register.polygons = function(code, bb) {
       valid.code <- private$resolve.code(code, F)
       if (is.na(valid.code)) {
         warning(paste0("Code ", code, " not found, polygon data not set"))
       } else {
-        private$location.list[[valid.code]]$set.poly.data()
+        private$location.list[[valid.code]]$set.poly.data(bb)
       }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
