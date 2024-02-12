@@ -63,8 +63,17 @@ location.plot <- function(data,
   }
   # Now, polygon locations
   if (nrow(poly.df) > 0) {
-    poly.data.list = lapply (poly.df$locations, get.location.polygon)
+    # Get all the polygon data for the location codes
+    location.types = unname(get.location.type(poly.df$locations))
+    unique.location.types = unique(location.types)
+    polygon.data = setNames(lapply (unique.location.types, get.polygons.for.type), unique.location.types)
+    
+    poly.data.list = lapply (seq_along(poly.df$locations), function (idx) {
+      df = polygon.data[[location.types[idx]]]
+      return(df[ df$location.code == poly.df$locations[idx], ])
+    })
     names(poly.data.list) <- poly.df$locations
+    # poly.data.list is a list() of data.frames, indexed by the location code.
     
     merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
       original.row = poly.df[i, , drop = FALSE]

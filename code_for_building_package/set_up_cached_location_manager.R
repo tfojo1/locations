@@ -413,7 +413,7 @@ register.cbsa.lat.and.long = function(LM, filename) {
 number.polygons = function(df) {
   
   # Initialize the "poly" column
-  df$poly <- rep(1, nrow(df))
+  df$poly <- rep(poly.index, nrow(df))
   
   # Variables to store the first point of the current polygon
   current_lat <-  df$latitude[1]
@@ -441,6 +441,9 @@ number.polygons = function(df) {
       poly.reset = FALSE
     }
   }
+  
+  # Increase poly.index by one for the next polygon
+  poly.index <<- poly.index + 1
   
   return (df)
 }
@@ -470,7 +473,7 @@ register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
       # Strip out CBSAFP
       cbsa.poly.data$CBSAFP = NULL
       # Register the polygon data
-      LM$register.polygons(location.code, cbsa.poly.data)
+      LM$register.polygons(location.code)
       
       cbsa.poly.data$location.code = rep(location.code, nrow(cbsa.poly.data))
       
@@ -505,7 +508,7 @@ register.county.poly.data = function(LM, filename, county.type) {
       # Strip out COUNTYFP
       county.poly.data$COUNTYFP = NULL
       # Register the polygon data
-      LM$register.polygons(poly.codes[i], county.poly.data)
+      LM$register.polygons(poly.codes[i])
       
       county.poly.data$location.code = rep(poly.codes[i], nrow(county.poly.data))
       
@@ -542,7 +545,7 @@ register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
       # Strip out ZIPCODE
       zip.poly.data$ZIPCODE = NULL
       # Register the polygon data
-      LM$register.polygons(location.code, zip.poly.data)
+      LM$register.polygons(location.code)
       
       zip.poly.data$location.code = rep(location.code, nrow(zip.poly.data))
       
@@ -577,7 +580,8 @@ register.state.poly.data = function(LM, filename, state.type) {
       state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.codes[i]), ]
       state.poly.data = state.poly.data [, -which(names(state.poly.data) %in% c("STATEFP", "NAME"))]
       # Register the polygon data
-      LM$register.polygons(location.code, state.poly.data)
+      LM$register.polygons(location.code)
+      
       state.poly.data$location.code = rep(location.code, nrow(state.poly.data))
       full.df <- rbind(full.df, state.poly.data)
     }

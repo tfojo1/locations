@@ -12,14 +12,14 @@ Location <- R6Class("Location",
       private$contained_by <- list()
       private$lat <- NA
       private$long <- NA
-      private$poly <- NA
+      private$poly <- FALSE
     },
     set.lat.and.long = function(lat, long) {
       private$lat <- lat
       private$long <- long
     },
-    set.poly.data = function(poly.data) {
-      private$poly <- poly.data
+    set.poly.data = function() {
+      private$poly <- TRUE
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -74,10 +74,7 @@ Location <- R6Class("Location",
       private$long
     },
     has.poly.data = function() {
-      return (is.data.frame(private$poly))
-    },
-    return.poly.data = function() {
-      private$poly
+      return (private$poly)
     }
   ),
   private = list(  type = NULL, # vector of characters
@@ -86,7 +83,7 @@ Location <- R6Class("Location",
                    contained_by = NULL, # list of vector pairs c("token","BOOL"),
                    lat = NULL, # Valid Latitude data for mapping if known
                    long = NULL, # Valid Longitude data for mapping if known
-                   poly = NULL # Polygon data if known
+                   poly = NULL # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
                    # where BOOL is a textual repr. of boolean
                    # values, where the value is TRUE if the
                    # current location completely encases
@@ -260,8 +257,8 @@ Location.Manager = R6Class("LocationManager",
     },
     get.polys.for.type = function(type) {
       # Will return NA if there is no poly data for this type, or if the type doesn't exist
-      if (!is.null(private$compressed.poly.data$type)) {
-        return (unserialize(memDecompress(private$compressed.poly.data$type, type = "bzip2")))
+      if (!is.null(private$compressed.poly.data[[type]])) {
+        return (unserialize(memDecompress(private$compressed.poly.data[[type]], type = "bzip2")))
       }
       return (NA) 
     },
@@ -983,12 +980,12 @@ Location.Manager = R6Class("LocationManager",
         private$location.list[[valid.code]]$set.lat.and.long(lat,long)
       }
     },
-    register.polygons = function(code, poly.data) {
+    register.polygons = function(code) {
       valid.code <- private$resolve.code(code, F)
       if (is.na(valid.code)) {
         warning(paste0("Code ", code, " not found, polygon data not set"))
       } else {
-        private$location.list[[valid.code]]$set.poly.data(poly.data)
+        private$location.list[[valid.code]]$set.poly.data()
       }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
