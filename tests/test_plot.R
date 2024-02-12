@@ -1,6 +1,6 @@
 # Test plot: State CBSAs
-state2.cbsa = get.overlapping.locations("PA", "CBSA")
-state.counties = c(get.contained.locations("TX","COUNTY"))
+state2.cbsa = get.overlapping.locations("MT", "CBSA")
+state.counties = c(get.contained.locations("CA","COUNTY"))
 # name_data = c(names(state.cbsa),names(state2.cbsa))
 state.data = c("MD","MI","WA")
 # code_data = c(unname(state2.cbsa), state_data, unname(state.counties))

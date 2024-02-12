@@ -14,6 +14,7 @@
 source("R/LOCATIONS_location_manager.R") 
 source("R/LOCATIONS_impl.R")
 
+library(ggplot2)
 library(ggmap) #register_stadiamaps
 
 remove.non.locale = function(string_list) {
@@ -444,7 +445,9 @@ number.polygons = function(df) {
   return (df)
 }
 
-register.cbsa.poly.data = function(LM, filename) {
+register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
+  cbsa.type = toupper(cbsa.type)
+  cbsa.prefix = toupper(cbsa.prefix)
   #For those locations that have polygon data (cbsa), set the polygon data
   # Load the cbsa polygon data
   # US Census Data, low-vertex count
@@ -455,10 +458,12 @@ register.cbsa.poly.data = function(LM, filename) {
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$CBSAFP))
   
+  full.df = data.frame()
+  
   #Iterate over all the polygon data and assign to the proper location
   for (i in seq_along(poly.codes)) {
-    # the location code is the poly.code for counties 
-    location.code = paste0("C.", poly.codes[i])
+    # the location code is the poly.code for counties with the cbsa prefix
+    location.code = paste0(cbsa.prefix, poly.codes[i])
     if (LM$has.location(location.code)) {
       # Get the relevant data
       cbsa.poly.data = poly.df [ poly.df$CBSAFP == as.numeric(poly.codes[i]), ]
@@ -466,13 +471,19 @@ register.cbsa.poly.data = function(LM, filename) {
       cbsa.poly.data$CBSAFP = NULL
       # Register the polygon data
       LM$register.polygons(location.code, cbsa.poly.data)
+      
+      cbsa.poly.data$location.code = rep(location.code, nrow(cbsa.poly.data))
+      
+      full.df <- rbind(full.df, cbsa.poly.data)
     }
   }
   
+  LM$add.poly.data(cbsa.type, full.df)
   LM
 }
 
-register.county.poly.data = function(LM, filename) {
+register.county.poly.data = function(LM, filename, county.type) {
+  county.type = toupper(county.type)
   #For those locations that have polygon data (Counties), set the polygon data
   # Load the county polygon data
   # US Census Data, low-vertex count
@@ -482,6 +493,8 @@ register.county.poly.data = function(LM, filename) {
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$COUNTYFP))
+  
+  full.df = data.frame()
   
   #Iterate over all the polygon data and assign to the proper location
   for (i in seq_along(poly.codes)) {
@@ -493,13 +506,20 @@ register.county.poly.data = function(LM, filename) {
       county.poly.data$COUNTYFP = NULL
       # Register the polygon data
       LM$register.polygons(poly.codes[i], county.poly.data)
+      
+      county.poly.data$location.code = rep(poly.codes[i], nrow(county.poly.data))
+      
+      full.df <- rbind(full.df, county.poly.data)
     }
   }
   
+  LM$add.poly.data(county.type, full.df)
   LM
 }
 
-register.zip.poly.data = function(LM, filename) {
+register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
+  zipcode.type = toupper(zipcode.type)
+  zipcode.prefix = toupper(zipcode.prefix)
   #For those locations that have polygon data (Counties), set the polygon data
   # Load the zipcode polygon data
   # US Census Data, low-vertex count
@@ -510,10 +530,12 @@ register.zip.poly.data = function(LM, filename) {
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$ZIPCODE))
   
+  full.df = data.frame()
+  
   #Iterate over all the polygon data and assign to the proper location
   for (i in seq_along(poly.codes)) {
-    # the location code is the poly.code for counties 
-    location.code = paste0("Z.", poly.codes[i])
+    # the location code is the poly.code with the zipcode prefix 
+    location.code = paste0(zipcode.prefix, poly.codes[i])
     if (LM$has.location(location.code)) {
       # Get the relevant data
       zip.poly.data = poly.df [ poly.df$ZIPCODE == as.numeric(poly.codes[i]), ]
@@ -521,13 +543,19 @@ register.zip.poly.data = function(LM, filename) {
       zip.poly.data$ZIPCODE = NULL
       # Register the polygon data
       LM$register.polygons(location.code, zip.poly.data)
+      
+      zip.poly.data$location.code = rep(location.code, nrow(zip.poly.data))
+      
+      full.df <- rbind(full.df, zip.poly.data)
     }
   }
   
+  LM$add.poly.data(zipcode.type, full.df)
   LM
 }
 
-register.state.poly.data = function(LM, filename) {
+register.state.poly.data = function(LM, filename, state.type) {
+  state.type = toupper(state.type)
   #For those locations that have polygon data (States), set the polygon data
   # Load the state polygon data
   # US Census Data, low-vertex count
@@ -538,20 +566,24 @@ register.state.poly.data = function(LM, filename) {
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%02g",unique(poly.data$STATEFP))
   
+  full.df = data.frame()
+  
   #Iterate over all the polygon data and assign to the proper location
   for (i in seq_along(poly.codes)) {
     # Get the relevant location code for the location
-    location.code = LM$get.by.alias(poly.codes[i], "STATE")
+    location.code = LM$get.by.alias(poly.codes[i], state.type)
     if (LM$has.location(location.code)) {
       # Get the relevant data
       state.poly.data = poly.df [ poly.df$STATEFP == as.numeric(poly.codes[i]), ]
-      # Strip out the STATEFP and the Name column
       state.poly.data = state.poly.data [, -which(names(state.poly.data) %in% c("STATEFP", "NAME"))]
       # Register the polygon data
       LM$register.polygons(location.code, state.poly.data)
+      state.poly.data$location.code = rep(location.code, nrow(state.poly.data))
+      full.df <- rbind(full.df, state.poly.data)
     }
   }
   
+  LM$add.poly.data(state.type, full.df)
   LM
 }
 
@@ -641,10 +673,10 @@ LOCATION.MANAGER = register.cbsa.lat.and.long(LOCATION.MANAGER, file.path(DATA.D
 LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)
 LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
-LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "state_geom_data.csv")) #Give each location the proper polygon data (states)
-LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv")) #Give each location the proper polygon data (counties)
-LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv")) #Give each location the proper polygon data (cbsa)
-# LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv")) #Give each location the proper polygon data (zip)
+LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "state_geom_data.csv"), state.type) #Give each location the proper polygon data (states)
+LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv"), county.type) #Give each location the proper polygon data (counties)
+LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type, cbsa.prefix) #Give each location the proper polygon data (cbsa)
+# LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type, zipcode.prefix) #Give each location the proper polygon data (zip)
 LOCATION.MANAGER = fetch.us.map(LOCATION.MANAGER, Sys.getenv("STADIA_MAPS_API_KEY"))
 
 rm(poly.index)

@@ -112,6 +112,7 @@ Location.Manager = R6Class("LocationManager",
     alias.codes = list(),
     types = list(),
     type.matrix = matrix(nrow = 0, ncol = 0),
+    compressed.poly.data = list(),
     check.is.type = function (type) {
       if (type %in% names(private$types)) {
         return (TRUE)
@@ -253,6 +254,16 @@ Location.Manager = R6Class("LocationManager",
     US.MAP.BZIP2 = NULL,
     initialize = function () {
       #Already initialized
+    },
+    add.poly.data = function(type, dataframe) {
+      private$compressed.poly.data[[type]] = memCompress(serialize(dataframe, NULL), type = "bzip2")
+    },
+    get.polys.for.type = function(type) {
+      # Will return NA if there is no poly data for this type, or if the type doesn't exist
+      if (!is.null(private$compressed.poly.data$type)) {
+        return (unserialize(memDecompress(private$compressed.poly.data$type, type = "bzip2")))
+      }
+      return (NA) 
     },
     sanitize.codes = function(codes) {
       # Function should error if we get an unrecognized code
