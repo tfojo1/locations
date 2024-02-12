@@ -12,7 +12,9 @@ library(ggplot2)
 #'
 #'@export
 location.plot <- function(data,
-                          mapping,
+                          size,
+                          color,
+                          fill,
                           title=NA,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
@@ -96,13 +98,17 @@ location.plot <- function(data,
   plot = ggmap(US.MAP.UNCOMPRESSED)
   
   if (nrow(point.df) > 0) {
-    plot = plot + geom_point(data=point.df, mapping, shape = pch, alpha = alpha)
+    plot = plot + geom_point(data=point.df, 
+                             aes(x=longitude, y=latitude, size=!!sym(size), color=!!sym(color), fill=!!sym(fill)), 
+                             shape = pch, alpha = alpha)
   }
   
   if (nrow(poly.df) > 0) {
-    mapping$size = NULL #Polygons don't have a size mapping
-    mapping = modifyList(mapping, aes(group = poly)) #We have to add the group
-    plot = plot + geom_polygon(data = final.poly.df, mapping, alpha = alpha)
+    # mapping$size = NULL #Polygons don't have a size mapping
+    # mapping = modifyList(mapping, aes(group = poly)) #We have to add the group
+    plot = plot + geom_polygon(data = final.poly.df, 
+                               aes(x=longitude, y=latitude, color=!!sym(color), fill=!!sym(fill), group=poly), 
+                               alpha = alpha)
   }
   
   plot = plot + 

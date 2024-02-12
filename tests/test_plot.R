@@ -8,5 +8,5 @@ code_data = c(unname(state2.cbsa), state.data, unname(state.counties))
 
 state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=rev(seq(1,length(code_data))))
 
-location.plot(state.df,aes(x=longitude, y=latitude, size=size, color=color, fill=color), "Testing", alpha=0.4)
+location.plot(state.df,size="size",color="color",fill="color", "Testing", alpha=0.4)
 
