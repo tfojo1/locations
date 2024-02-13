@@ -16,6 +16,7 @@ location.plot <- function(data,
                           color,
                           fill,
                           title=NA,
+                          bb=NULL,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
                           pch=19,
@@ -96,6 +97,17 @@ location.plot <- function(data,
   US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
   
   plot = ggmap(US.MAP.UNCOMPRESSED)
+  
+  if (!is.null(bb)) {
+    # Change the bounding box
+    if (is.character(bb)) {
+      print(paste0("Charater bb, value = ", bb ))
+    } else if (is.list(bb)) {
+      print(paste0("List bb, value = ", bb ))
+    } else {
+      warning(paste0("Unknown format for bounding box (", bb, "), proceeding with default"))
+    }
+  }
   
   if (nrow(point.df) > 0) {
     plot = plot + geom_point(data=point.df, 
