@@ -17,12 +17,8 @@ source("R/LOCATIONS_impl.R")
 # New way to load all the code is now in location_manager; run it.
 
 remove.non.locale = function(string_list) {
-  # Go through each string
-  cleaned_strings <- sapply(string_list, function(x) {
-    # Replace each run of non 7-bit ASCII characters with a hyphen
-    x <- gsub("[^\x01-\x7F]+", "-", x)
-  })
-  return(cleaned_strings)
+  # Go through each string, removing non locale strings.  Convert to UTF-8
+  return (iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
 }
 
 register.united.states = function(LM) {
