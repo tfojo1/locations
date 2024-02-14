@@ -139,7 +139,8 @@ location.plot <- function(data,
     } 
     
     # Reloading the stadia tiles
-    US.MAP.UNCOMPRESSED = get_stadiamap(bbox=updated.bb, zoom = 5, maptype = "stamen_toner_background")
+    US.MAP.UNCOMPRESSED = get_stadiamap(bbox=updated.bb, zoom = calc_zoom(updated.bb), 
+                                        maptype = "stamen_toner_background")
     
     attr_map <- attr(US.MAP.UNCOMPRESSED, "bb")    # save attributes from original
     # 
