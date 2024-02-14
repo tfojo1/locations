@@ -104,9 +104,22 @@ location.plot <- function(data,
   # Decompress the US.MAP.BZIP2
   US.MAP.UNCOMPRESSED = NULL 
   
-  if (!is.null(bb) && ((is.character(bb) && bb == "AUTO") || is.list(bb))) {
+  # There are three formats acceptable for bb:
+  #
+  #  - NULL, defaults to entire map
+  #  - character(1) value of "AUTO" (bb="AUTO", eg.), calculates the bounding box
+  #    from the polygons/points of the locations
+  #  - numeric(4) named vector with names "bottom","left","right","top"
+  #     (bb=c(left=-125,bottom=24,right=-66, top=50), eg.)
+  #
+  
+  if (!is.null(bb) && 
+      ((any(all(is.character(bb), length(bb) == 1, bb == "AUTO"), 
+           (all(class(bb) == 'numeric', length(bb) == 4, !is.null(names(bb)), 
+                sort(names(bb)) == c("bottom","left","right","top"))))))) {
     # Change the bounding box; this seems to require reloading the tile map from stadia
-    if (is.character(bb) && bb == "AUTO") {
+    updated.bb = NULL
+    if (all(is.character(bb), length(bb) == 1, bb == "AUTO")) {
       # Determine what the bounding box should be, given the locations we are plotting
       
       updated.bb = c(left=min(c(final.poly.df$longitude,point.df$longitude)), 
@@ -120,8 +133,9 @@ location.plot <- function(data,
       updated.bb[['right']] = updated.bb[['right']] + width.outeredge
       updated.bb[['left']] = updated.bb[['left']] - width.outeredge
       
-    } else if (is.list(bb)) {
-      print(paste0("List bb, value = ", bb ))
+    } else if (all(class(bb) == 'numeric', length(bb) == 4, !is.null(names(bb)), 
+                   sort(names(bb)) == c("bottom","left","right","top"))) {
+      updated.bb = bb
     } 
     
     # Reloading the stadia tiles
@@ -137,10 +151,13 @@ location.plot <- function(data,
     # ## correct class, attributes
     class(US.MAP.UNCOMPRESSED) <- c("ggmap", "raster")
     attr(US.MAP.UNCOMPRESSED, "bb") <- attr_map
-    
+  
   } else {
     if (!is.null(bb)) {
-      warning(paste0("Unknown value for bounding box (", bb, "), proceeding with default"))
+      # If the bb format is unknown
+      bb.names.values <- paste(names(bb), bb, sep=": ", collapse=", ")
+      wrn.msg = paste("Unknown value for bounding box (", bb.names.values, "), proceeding with default")
+      warning(wrn.msg)
     }
     US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
   }
