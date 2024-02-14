@@ -12,16 +12,14 @@ Location <- R6Class("Location",
       private$contained_by <- list()
       private$lat <- NA
       private$long <- NA
-      private$bb <- NA
       private$poly <- FALSE
     },
     set.lat.and.long = function(lat, long) {
       private$lat <- lat
       private$long <- long
     },
-    set.poly.data = function(bb) {
+    set.poly.data = function() {
       private$poly <- TRUE
-      private$bb <- bb
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -77,6 +75,9 @@ Location <- R6Class("Location",
     },
     has.poly.data = function() {
       return (private$poly)
+    },
+    has.lat.lon.data = function() {
+      return(!is.null(private$long))
     }
   ),
   private = list(  type = NULL, # vector of characters
@@ -90,9 +91,7 @@ Location <- R6Class("Location",
                    # is the token of the contained region
                    lat = NULL, # Valid Latitude data for mapping if known
                    long = NULL, # Valid Longitude data for mapping if known
-                   poly = NULL, # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
-                   bb = NULL # The bounding box for the polygon for this location code
-                   # format for bb: c(top=,right=,left=,bottom=)
+                   poly = NULL # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
                  )
 )
 
@@ -305,6 +304,13 @@ Location.Manager = R6Class("LocationManager",
         return (NA)
       }
       return (private$location.list[[clean.code]]$has.poly.data)
+    },
+    has.lat.lon = function(location) {
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      return (private$location.list[[clean.code]]$has.lat.lon.data)
     },
     has.location = function(location) {
       clean.code = private$resolve.code(location,F)
@@ -984,12 +990,12 @@ Location.Manager = R6Class("LocationManager",
         private$location.list[[valid.code]]$set.lat.and.long(lat,long)
       }
     },
-    register.polygons = function(code, bb) {
+    register.polygons = function(code) {
       valid.code <- private$resolve.code(code, F)
       if (is.na(valid.code)) {
         warning(paste0("Code ", code, " not found, polygon data not set"))
       } else {
-        private$location.list[[valid.code]]$set.poly.data(bb)
+        private$location.list[[valid.code]]$set.poly.data()
       }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {

@@ -12,11 +12,12 @@ library(ggplot2)
 #'
 #'@export
 location.plot <- function(data,
-                          size,
-                          color,
-                          fill,
+                          size=NA,
+                          color='blue',
+                          fill='blue',
                           title=NA,
                           bb=NULL,
+                          bb.edge=0.1,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
                           pch=19,
@@ -33,12 +34,17 @@ location.plot <- function(data,
     stop("No 'locations' column in the data.frame")
   }
   
-  # Determine if the locations have polygon data
-  location.has.poly = sapply(data[['locations']], LOCATION.MANAGER$has.polygon)
+  point.df = data.frame()
+  poly.df = data.frame()
   
-  point.df = data[ !location.has.poly, ]
-  poly.df = data [ location.has.poly, ]
-  
+  # if 'size' is specified (Not NA), then we don't want polygon data we want
+  # point data.  Else we want the polygon data where possible
+  if (is.na(size)) {
+    # Determine if the locations have polygon data
+    poly.df = data [ sapply(data[['locations']], LOCATION.MANAGER$has.polygon), ]
+  } else {
+    point.df = data [ sapply(data[['locations']], LOCATION.MANAGER$has.lat.lon), ]
+  }
   # First, point.locations
   
   # Get the coordinates for all the locations included in the point data.frame; they
@@ -65,6 +71,8 @@ location.plot <- function(data,
     }
   }
   # Now, polygon locations
+  final.poly.df = data.frame()
+  
   if (nrow(poly.df) > 0) {
     # Get all the polygon data for the location codes
     location.types = unname(get.location.type(poly.df$locations))
@@ -94,20 +102,50 @@ location.plot <- function(data,
   #Plot
   
   # Decompress the US.MAP.BZIP2
-  US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
+  US.MAP.UNCOMPRESSED = NULL 
   
-  plot = ggmap(US.MAP.UNCOMPRESSED)
-  
-  if (!is.null(bb)) {
-    # Change the bounding box
-    if (is.character(bb)) {
-      print(paste0("Charater bb, value = ", bb ))
+  if (!is.null(bb) && ((is.character(bb) && bb == "AUTO") || is.list(bb))) {
+    # Change the bounding box; this seems to require reloading the tile map from stadia
+    if (is.character(bb) && bb == "AUTO") {
+      # Determine what the bounding box should be, given the locations we are plotting
+      
+      updated.bb = c(left=min(c(final.poly.df$longitude,point.df$longitude)), 
+                     bottom=min(c(final.poly.df$latitude,point.df$latitude)), 
+                     right=max(c(final.poly.df$longitude,point.df$longitude)), 
+                     top=max(c(final.poly.df$latitude,point.df$latitude)))
+      height.outeredge = (updated.bb[['top']] - updated.bb[['bottom']]) * bb.edge
+      width.outeredge = (updated.bb[['right']] - updated.bb[['left']]) * bb.edge
+      updated.bb[['top']] = updated.bb[['top']] + height.outeredge
+      updated.bb[['bottom']] = updated.bb[['bottom']] - height.outeredge
+      updated.bb[['right']] = updated.bb[['right']] + width.outeredge
+      updated.bb[['left']] = updated.bb[['left']] - width.outeredge
+      
     } else if (is.list(bb)) {
       print(paste0("List bb, value = ", bb ))
-    } else {
-      warning(paste0("Unknown format for bounding box (", bb, "), proceeding with default"))
+    } 
+    
+    # Reloading the stadia tiles
+    US.MAP.UNCOMPRESSED = get_stadiamap(bbox=updated.bb, zoom = 5, maptype = "stamen_toner_background")
+    
+    attr_map <- attr(US.MAP.UNCOMPRESSED, "bb")    # save attributes from original
+    # 
+    # ## change color in raster; change the black background to a nicer gray
+    US.MAP.UNCOMPRESSED[US.MAP.UNCOMPRESSED == "#000000"] <- "#C0C0C0"
+    # Some background is colored with almost-black, change it as well
+    US.MAP.UNCOMPRESSED[US.MAP.UNCOMPRESSED == "#010101"] <- "#C0C0C0"
+    # 
+    # ## correct class, attributes
+    class(US.MAP.UNCOMPRESSED) <- c("ggmap", "raster")
+    attr(US.MAP.UNCOMPRESSED, "bb") <- attr_map
+    
+  } else {
+    if (!is.null(bb)) {
+      warning(paste0("Unknown value for bounding box (", bb, "), proceeding with default"))
     }
+    US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
   }
+    
+  plot = ggmap(US.MAP.UNCOMPRESSED)
   
   if (nrow(point.df) > 0) {
     plot = plot + geom_point(data=point.df, 
@@ -116,8 +154,6 @@ location.plot <- function(data,
   }
   
   if (nrow(poly.df) > 0) {
-    # mapping$size = NULL #Polygons don't have a size mapping
-    # mapping = modifyList(mapping, aes(group = poly)) #We have to add the group
     plot = plot + geom_polygon(data = final.poly.df, 
                                aes(x=longitude, y=latitude, color=!!sym(color), fill=!!sym(fill), group=poly), 
                                alpha = alpha)
