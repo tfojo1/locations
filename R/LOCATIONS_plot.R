@@ -135,7 +135,6 @@ location.plot <- function(data,
   
   #Plot
   
-  # Decompress the US.MAP.BZIP2
   US.MAP.UNCOMPRESSED = NULL 
   
   # There are three formats acceptable for bb:
@@ -194,6 +193,7 @@ location.plot <- function(data,
       wrn.msg = paste("Unknown value for bounding box (", bb.names.values, "), proceeding with default")
       warning(wrn.msg)
     }
+    # Decompress the US.MAP.BZIP2
     US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
   }
     
