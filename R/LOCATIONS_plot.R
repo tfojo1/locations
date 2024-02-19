@@ -63,21 +63,46 @@ location.plot <- function(data,
   if (!is.data.frame(data)) {
     stop("Parameter 'data' is not a data.frame")
   }
-  # Sanity checks: make sure that 'data' has a column named 'locations'
+  
+  # Sanity checks
+  
+  # make sure that 'data' has a column named 'locations'
   if (!("locations" %in% names(data))) {
     stop("No 'locations' column in the data.frame")
+  }
+  # make sure that 'data' has a column name corresponding to the
+  # values in 'color' and 'fill'
+  if (!(color %in% names(data))) {
+    stop(paste0("No column named ", color, "found in the data.frame (color)"))
+  }
+  if (!(fill %in% names(data))) {
+    stop(paste0("No column named ", fill, "found in the data.frame (fill)"))
   }
   
   point.df = data.frame()
   poly.df = data.frame()
   
+  no.data = c() # reserved for those locations without plotting data.
+  
   # if 'size' is specified (Not NA), then we don't want polygon data we want
   # point data.  Else we want the polygon data where possible
   if (is.na(size)) {
     # Determine if the locations have polygon data
-    poly.df = data [ sapply(data[['locations']], LOCATION.MANAGER$has.polygon), ]
+    indexes.with.polygon.data = sapply(data[['locations']], LOCATION.MANAGER$has.polygon)
+    poly.df = data [ indexes.with.polygon.data, ]
+    no.data = data [ !indexes.with.polygon.data, ][['locations']]
   } else {
-    point.df = data [ sapply(data[['locations']], LOCATION.MANAGER$has.lat.lon), ]
+    indexes.with.point.data = sapply(data[['locations']], LOCATION.MANAGER$has.lat.lon)
+    point.df = data [ indexes.with.point.data, ]
+    no.data = data [ !indexes.with.point.data, ][['locations']]
+  }
+  # If there are any locations without the relevant data, display a list
+  
+  if (length(no.data) > 0) {
+    cat(paste0("Unable to plot ", length(no.data)," locations, no location data :\n"))
+    for (i in seq_along(no.data)) {
+      cat(paste0(i, ". ", no.data[i],"\n"))
+    }
   }
   # First, point.locations
   
@@ -90,19 +115,6 @@ location.plot <- function(data,
     lat.lon = strsplit(coordinates, ",")
     point.df$latitude = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
     point.df$longitude = as.numeric(sapply(lat.lon, function(x) {return(x[2])}))
-    
-    # Are any of the locations NA?  This is a result of missing location data.
-    na.indexes = which(is.na(point.df$latitude))
-    
-    # If there are any NA locations, display a list
-    if (length(na.indexes) > 0) {
-      cat(paste0("Unable to plot ", length(na.indexes)," locations, no location data :\n"))
-      for (i in seq_along(na.indexes)) {
-        # We could print the name in those dataframes that contain it, but all we know for 
-        # sure is that this dataframe contains a locations column
-        cat(paste0(i, ". ", point.df$locations[na.indexes[i]],"\n"))
-      }
-    }
   }
   # Now, polygon locations
   final.poly.df = data.frame()
@@ -137,7 +149,7 @@ location.plot <- function(data,
   
   US.MAP.UNCOMPRESSED = NULL 
   
-  # There are three formats acceptable for bb:
+  # There are three formats acceptable for bb (the bounding box):
   #
   #  - NULL, defaults to entire map
   #  - character(1) value of "AUTO" (bb="AUTO", eg.), calculates the bounding box
