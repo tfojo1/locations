@@ -10,14 +10,16 @@ location.plot(
   fill,
   size = NA,
   title = NA,
-  bb = NULL,
+  bb = c(left = -125, bottom = 24, right = -66, top = 50),
   bb.edge = 0.1,
   size.range = c(1, 5),
   color.range = c("blue", "red"),
   pch = 19,
   size.label = "",
   color.label = "",
-  alpha = 1
+  alpha = 1,
+  map_water_color = "#C0C0C0",
+  stadia_api_key = Sys.getenv("STADIA_MAPS_API_KEY")
 )
 }
 \arguments{
@@ -35,7 +37,7 @@ and only those locations with latitude and longitude values will be plotted.}
 
 \item{title}{Defaults to blank; a character string representing the title on the graph.}
 
-\item{bb}{The bounding box value; if NULL, the bounding box will be the entire United States.  Otherwise, can take 
+\item{bb}{The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
 one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
 automatically bound the graph (using the bb.edge parameter, see below, as an edge buffer), or a named 
 character vector of the format c(left=-125,bottom=24,right=-66, top=50), outlining the dimensions of 
@@ -59,6 +61,11 @@ for a detailed list. Defaults to 19, a circle.}
 \item{color.label}{A label to give to the color/fill in the legend.  Defaults to blank.}
 
 \item{alpha}{An alpha blending/transparency value for the 'color'/'fill' parameter. Defaults to 1, or no transparency.}
+
+\item{map_water_color}{A hex color value for the color of any water on the map. Defaults to a light gray.}
+
+\item{stadia_api_key}{The api key to access the stamen/stadia toner map tiles.  Defaults to looking for the
+key in the STADIA_MAPS_API_KEY environment variable}
 }
 \value{
 Returns the ggplot2 object/plot
