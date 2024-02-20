@@ -640,7 +640,6 @@ DATA.DIR = 'data-raw'
 
 #Used by number.polygons; make this global so no polygons have the same index
 poly.index = 1
-#Used by the bounding box calculation; what percent of extra edge to include
 
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename

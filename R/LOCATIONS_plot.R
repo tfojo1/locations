@@ -55,7 +55,7 @@ location.plot <- function(data,
                           fill,
                           size=NA,
                           title=NA,
-                          bb=c(left=-125,bottom=24,right=-66, top=50),
+                          bb=c(left=-125,bottom=24,right=-66,top=50),
                           bb.edge=0.1,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
@@ -145,6 +145,7 @@ location.plot <- function(data,
 
       location.poly.data = poly.data.list[[row.location.code]]
       original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
+      location.poly.data$location.code = NULL
       merged.poly.data = cbind(original.replicated, location.poly.data)
       return (merged.poly.data)
     })
@@ -181,7 +182,6 @@ location.plot <- function(data,
       updated.bb[['right']] = updated.bb[['right']] + width.outeredge
       updated.bb[['left']] = updated.bb[['left']] - width.outeredge
       bb = updated.bb
-      
     } 
   } else {
     # If the bb format is unknown
@@ -204,7 +204,7 @@ location.plot <- function(data,
   # ## correct class, attributes
   class(MAP) <- c("ggmap", "raster")
   attr(MAP, "bb") <- attr_map
-    
+  
   plot = ggmap(MAP)
   
   if (nrow(point.df) > 0) {
