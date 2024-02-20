@@ -602,29 +602,6 @@ register.type.relationships = function(LM) {
   LM
 }
 
-fetch.us.map = function(LM, api_key) {
-  
-  register_stadiamaps(api_key)
-  US.MAP = get_stadiamap(bbox=c(left=-125,bottom=24,right=-66, top=50), zoom = 5, maptype = "stamen_toner_background")
-  
-  attr_map <- attr(US.MAP, "bb")    # save attributes from original
-  # 
-  # ## change color in raster; change the black background to a nicer gray
-  US.MAP[US.MAP == "#000000"] <- "#C0C0C0"
-  # Some background is colored with almost-black, change it as well
-  US.MAP[US.MAP == "#010101"] <- "#C0C0C0"
-  # 
-  # ## correct class, attributes
-  class(US.MAP) <- c("ggmap", "raster")
-  attr(US.MAP, "bb") <- attr_map
-  
-  # Create a compressed version of the US.MAP, put it in the location manager
-  # Reduces the in-memory usage from 8.1MB to 70k (99% reduction)
-  LM$US.MAP.BZIP2 = memCompress(serialize(US.MAP, NULL), type = "bzip2")
-  
-  LM
-}
-
 #Prefix and type are auto capitalized
 
 state.type = "state"
@@ -664,7 +641,6 @@ DATA.DIR = 'data-raw'
 #Used by number.polygons; make this global so no polygons have the same index
 poly.index = 1
 #Used by the bounding box calculation; what percent of extra edge to include
-bb.edge = 0.1 #10%
 
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
@@ -679,8 +655,6 @@ LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR
 LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv"), county.type) #Give each location the proper polygon data (counties)
 LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type, cbsa.prefix) #Give each location the proper polygon data (cbsa)
 # LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type, zipcode.prefix) #Give each location the proper polygon data (zip)
-LOCATION.MANAGER = fetch.us.map(LOCATION.MANAGER, Sys.getenv("STADIA_MAPS_API_KEY"))
 
 rm(poly.index)
 rm(DATA.DIR)
-rm(bb.edge)

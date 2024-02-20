@@ -2,6 +2,7 @@
 #state2.cbsa = get.overlapping.locations("MT", "CBSA")
 state2.cbsa = c()
 state.counties = c(get.contained.locations("CA","COUNTY"), get.contained.locations("NV", "COUNTY"))
+# state.counties = c(get.contained.locations("AK","COUNTY"))
 # name_data = c(names(state.cbsa),names(state2.cbsa))
 state.data = c()
 #state.data = c("MD","MI","WA")
@@ -12,4 +13,3 @@ state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=
 
 #location.plot(state.df,color="color",fill="color", title="Testing", bb="AUTO", alpha=0.4)
 location.plot(state.df,color="color",fill="color", title="Testing", alpha=0.4)
-

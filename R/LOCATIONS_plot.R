@@ -17,7 +17,7 @@ library(ggplot2)
 #'
 #'@param title Defaults to blank; a character string representing the title on the graph.
 #'
-#'@param bb The bounding box value; if NULL, the bounding box will be the entire United States.  Otherwise, can take 
+#'@param bb The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
 #'          one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
 #'          automatically bound the graph (using the bb.edge parameter, see below, as an edge buffer), or a named 
 #'          character vector of the format c(left=-125,bottom=24,right=-66, top=50), outlining the dimensions of 
@@ -41,6 +41,11 @@ library(ggplot2)
 #'@param color.label A label to give to the color/fill in the legend.  Defaults to blank.
 #'
 #'@param alpha An alpha blending/transparency value for the 'color'/'fill' parameter. Defaults to 1, or no transparency.
+#'
+#'@param map_water_color A hex color value for the color of any water on the map. Defaults to a light gray.
+#'
+#'@param stadia_api_key The api key to access the stamen/stadia toner map tiles.  Defaults to looking for the
+#'                      key in the STADIA_MAPS_API_KEY environment variable
 #'            
 #'@return Returns the ggplot2 object/plot
 #'
@@ -50,14 +55,16 @@ location.plot <- function(data,
                           fill,
                           size=NA,
                           title=NA,
-                          bb=NULL,
+                          bb=c(left=-125,bottom=24,right=-66, top=50),
                           bb.edge=0.1,
                           size.range=c(1,5),
                           color.range=c('blue', 'red'),
                           pch=19,
                           size.label='',
                           color.label='',
-                          alpha=1)
+                          alpha=1,
+                          map_water_color = "#C0C0C0",
+                          stadia_api_key=Sys.getenv("STADIA_MAPS_API_KEY"))
 {
   # Check to make sure that 'data' is a data.frame
   if (!is.data.frame(data)) {
@@ -135,7 +142,7 @@ location.plot <- function(data,
     merged.poly.df = lapply (seq_len(nrow(poly.df)), function(i) {
       original.row = poly.df[i, , drop = FALSE]
       row.location.code = poly.df$locations[i]
-      
+
       location.poly.data = poly.data.list[[row.location.code]]
       original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
       merged.poly.data = cbind(original.replicated, location.poly.data)
@@ -147,23 +154,19 @@ location.plot <- function(data,
   
   #Plot
   
-  US.MAP.UNCOMPRESSED = NULL 
-  
   # There are three formats acceptable for bb (the bounding box):
   #
-  #  - NULL, defaults to entire map
+  #  - The default, the contiguous US
   #  - character(1) value of "AUTO" (bb="AUTO", eg.), calculates the bounding box
   #    from the polygons/points of the locations
   #  - numeric(4) named vector with names "bottom","left","right","top"
   #     (bb=c(left=-125,bottom=24,right=-66, top=50), eg.)
   #
   
-  if (!is.null(bb) && 
-      ((any(all(is.character(bb), length(bb) == 1, bb == "AUTO"), 
+  if (all(is.character(bb), length(bb) == 1, bb == "AUTO") || 
            (all(class(bb) == 'numeric', length(bb) == 4, !is.null(names(bb)), 
-                sort(names(bb)) == c("bottom","left","right","top"))))))) {
-    # Change the bounding box; this seems to require reloading the tile map from stadia
-    updated.bb = NULL
+                sort(names(bb)) == c("bottom","left","right","top")))) {
+    # Change the bounding box
     if (all(is.character(bb), length(bb) == 1, bb == "AUTO")) {
       # Determine what the bounding box should be, given the locations we are plotting
       
@@ -177,39 +180,32 @@ location.plot <- function(data,
       updated.bb[['bottom']] = updated.bb[['bottom']] - height.outeredge
       updated.bb[['right']] = updated.bb[['right']] + width.outeredge
       updated.bb[['left']] = updated.bb[['left']] - width.outeredge
+      bb = updated.bb
       
-    } else if (all(class(bb) == 'numeric', length(bb) == 4, !is.null(names(bb)), 
-                   sort(names(bb)) == c("bottom","left","right","top"))) {
-      updated.bb = bb
     } 
-    
-    # Reloading the stadia tiles
-    US.MAP.UNCOMPRESSED = get_stadiamap(bbox=updated.bb, zoom = calc_zoom(updated.bb), 
-                                        maptype = "stamen_toner_background")
-    
-    attr_map <- attr(US.MAP.UNCOMPRESSED, "bb")    # save attributes from original
-    # 
-    # ## change color in raster; change the black background to a nicer gray
-    US.MAP.UNCOMPRESSED[US.MAP.UNCOMPRESSED == "#000000"] <- "#C0C0C0"
-    # Some background is colored with almost-black, change it as well
-    US.MAP.UNCOMPRESSED[US.MAP.UNCOMPRESSED == "#010101"] <- "#C0C0C0"
-    # 
-    # ## correct class, attributes
-    class(US.MAP.UNCOMPRESSED) <- c("ggmap", "raster")
-    attr(US.MAP.UNCOMPRESSED, "bb") <- attr_map
-  
   } else {
-    if (!is.null(bb)) {
-      # If the bb format is unknown
-      bb.names.values <- paste(names(bb), bb, sep=": ", collapse=", ")
-      wrn.msg = paste("Unknown value for bounding box (", bb.names.values, "), proceeding with default")
-      warning(wrn.msg)
-    }
-    # Decompress the US.MAP.BZIP2
-    US.MAP.UNCOMPRESSED = unserialize(memDecompress(LOCATION.MANAGER$US.MAP.BZIP2, type = "bzip2"))
+    # If the bb format is unknown
+    bb.names.values <- paste(names(bb), bb, sep=": ", collapse=", ")
+    wrn.msg = paste("Unknown value for bounding box (", bb.names.values, "), proceeding with default")
+    warning(wrn.msg)
+    bb = c(left=-125,bottom=24,right=-66, top=50)
   }
+  # Loading the stamen/stadia tiles
+  register_stadiamaps(stadia_api_key)
+  MAP = get_stadiamap(bbox=bb, zoom = calc_zoom(bb), maptype = "stamen_toner_background")
+  
+  attr_map <- attr(MAP, "bb")    # save attributes from original
+  # 
+  # ## change color in raster; change the black background to a nicer gray
+  MAP[MAP == "#000000"] <- map_water_color
+  # Some background is colored with almost-black, change it as well
+  MAP[MAP == "#010101"] <- map_water_color
+  # 
+  # ## correct class, attributes
+  class(MAP) <- c("ggmap", "raster")
+  attr(MAP, "bb") <- attr_map
     
-  plot = ggmap(US.MAP.UNCOMPRESSED)
+  plot = ggmap(MAP)
   
   if (nrow(point.df) > 0) {
     plot = plot + geom_point(data=point.df, 
