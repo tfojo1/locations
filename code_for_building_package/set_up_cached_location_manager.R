@@ -16,7 +16,7 @@ source("R/LOCATIONS_impl.R")
 
 remove.non.locale = function(string_list) {
   # Go through each string, removing non locale strings.  Convert to UTF-8
-  return(iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
+  return (iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
 }
 
 register.united.states = function(LM) {
