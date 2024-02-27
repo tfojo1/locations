@@ -8,7 +8,6 @@ state.data = c()
 #state.data = c("MD","MI","WA")
 # code_data = c(unname(state2.cbsa), state_data, unname(state.counties))
 code_data = c(unname(state2.cbsa), state.data, unname(state.counties))
-print(code_data)
 
 
 state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=rev(seq(1,length(code_data))))

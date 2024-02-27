@@ -644,7 +644,7 @@ Location.Manager = R6Class("LocationManager",
       if (throw.error.if.unregistered.type) {
         #Check the type against the type list;
         if (!type %in% names(private$types)) {
-          stop(paste0("LOCATION.MANAGER$get.overlapping: Type ", super.type," not registered, aborting"))
+          stop(paste0("LOCATION.MANAGER$get.overlapping: Type ", type," not registered, aborting"))
         }
       }
     

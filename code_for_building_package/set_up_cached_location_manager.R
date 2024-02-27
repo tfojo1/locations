@@ -14,9 +14,6 @@
 source("R/LOCATIONS_location_manager.R") 
 source("R/LOCATIONS_impl.R")
 
-library(ggplot2)
-library(ggmap) #register_stadiamaps
-
 remove.non.locale = function(string_list) {
   # Go through each string, remove non-locale strings, and convert to UTF-8
   return(iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
