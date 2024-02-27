@@ -69,7 +69,6 @@ get.location.coords <- function(locations)
   LOCATION.MANAGER$get.coords(locations)
 }
 
-
 #'@title get.location.code
 #'
 #'@description Get the location code for a name and a type
@@ -145,6 +144,21 @@ get.location.name.alias <- function(locations, alias.name,
     stop("get.location.name.alias: alias.name must be a single name")
   }
   LOCATION.MANAGER$get.name.aliases(locations, alias.name, throw.error.if.unregistered.alias)
+}
+
+#'@title get.polygons.for.type
+#'
+#'@description Return the polygon data for a given location type
+#'
+#'@param type A single location type
+#'
+#'@return A data.frame containing all the polygon data for a given type, NA if it doesn't exist
+#'
+#'@export
+get.polygons.for.type <- function(type)
+{
+  #Type will be checked a level down
+  LOCATION.MANAGER$get.polys.for.type(type)
 }
 
 #'@title get.location.type

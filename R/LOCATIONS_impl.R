@@ -12,10 +12,14 @@ Location <- R6Class("Location",
       private$contained_by <- list()
       private$lat <- NA
       private$long <- NA
+      private$poly <- FALSE
     },
     set.lat.and.long = function(lat, long) {
       private$lat <- lat
       private$long <- long
+    },
+    set.poly.data = function() {
+      private$poly <- TRUE
     },
     register.sub.location = function (sub.code, enclose.completely) {
       # Register one sub location at a time
@@ -68,19 +72,26 @@ Location <- R6Class("Location",
     },
     return.long = function() {
       private$long
+    },
+    has.poly.data = function() {
+      return (private$poly)
+    },
+    has.lat.lon.data = function() {
+      return(!is.null(private$long))
     }
   ),
   private = list(  type = NULL, # vector of characters
                    name = NULL, # string
                    contains = NULL, # list of vector pairs c("token","BOOL"),
                    contained_by = NULL, # list of vector pairs c("token","BOOL"),
-                   lat = NULL, # Valid Latitude data for mapping if known
-                   long = NULL # Valid Longitude data for mapping if known
                    # where BOOL is a textual repr. of boolean
                    # values, where the value is TRUE if the
                    # current location completely encases
                    # the contained region.  The token field
                    # is the token of the contained region
+                   lat = NULL, # Valid Latitude data for mapping if known
+                   long = NULL, # Valid Longitude data for mapping if known
+                   poly = NULL # Boolean; TRUE if poly data is contained in LOCATION.MANAGER
                  )
 )
 
@@ -101,6 +112,7 @@ Location.Manager = R6Class("LocationManager",
     alias.codes = list(),
     types = list(),
     type.matrix = matrix(nrow = 0, ncol = 0),
+    compressed.poly.data = list(),
     check.is.type = function (type) {
       if (type %in% names(private$types)) {
         return (TRUE)
@@ -126,7 +138,6 @@ Location.Manager = R6Class("LocationManager",
         
         #For each type:
         for (type in types) {
-          # browser()
           if (location %in% names(private$alias.codes[[type]])) {
             #Found as alias to type 'type'
             #Display results
@@ -240,8 +251,19 @@ Location.Manager = R6Class("LocationManager",
     }
   ),
   public = list (
+    US.MAP.BZIP2 = NULL,
     initialize = function () {
       #Already initialized
+    },
+    add.poly.data = function(type, dataframe) {
+      private$compressed.poly.data[[type]] = memCompress(serialize(dataframe, NULL), type = "bzip2")
+    },
+    get.polys.for.type = function(type) {
+      # Will return NA if there is no poly data for this type, or if the type doesn't exist
+      if (!is.null(private$compressed.poly.data[[type]])) {
+        return (unserialize(memDecompress(private$compressed.poly.data[[type]], type = "bzip2")))
+      }
+      return (NA) 
     },
     sanitize.codes = function(codes) {
       # Function should error if we get an unrecognized code
@@ -275,6 +297,37 @@ Location.Manager = R6Class("LocationManager",
       }))
       names(returned.coords) = locations
       returned.coords
+    },
+    has.polygon = function(location) {
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      return (private$location.list[[clean.code]]$has.poly.data)
+    },
+    has.lat.lon = function(location) {
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      return (private$location.list[[clean.code]]$has.lat.lon.data)
+    },
+    has.location = function(location) {
+      clean.code = private$resolve.code(location,F)
+      return (!is.na(clean.code))
+    },
+    get.polygon = function(location) {
+      #Return the polygon data for a valid location
+      clean.code = private$resolve.code(location,F)
+      if (is.na(clean.code)) {
+        return (NA)
+      }
+      #Get the poly data 
+      poly.data = private$location.list[[clean.code]]$return.poly.data
+      if (length(poly.data) == 1 && is.na(poly.data)) {
+        return (NA)
+      }
+      return (poly.data)
     },
     get.names = function(locations) {
       # return A character vector of location names, with length(locations) and names=locations. If location codes are not registered (or if they were NA), 
@@ -480,6 +533,7 @@ Location.Manager = R6Class("LocationManager",
       }
     
       all.sub.locations = lapply(codes,function(x) {location.contained.collector(x, TRUE)})
+      
     
       #For each code in each vector, get their list of fully contained regions
       fully.contained.children = function(locations) {
@@ -512,16 +566,15 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      #print("Before adding")
-      #print(all.sub.locations)
+      # For get.contained, make sure that the location itself is added
+      all.sub.locations = mapply(function(x, code) c(code, x), all.sub.locations, codes, SIMPLIFY = FALSE)
+      
       if (!limit.to.completely.enclosing) {
         #We want fully and partially enclosed lists
         #We ask each location for a list of those places it partially includes, add them on to the list
         partially.contained.children = function(locations) {
           unlist(lapply(locations, function(x) {location.contained.collector(x,FALSE)}))
         }
-        # Add the location itself to the locations to check for partially.contained.children
-        all.sub.locations = mapply(function(x, code) c(code, x), all.sub.locations, codes, SIMPLIFY = FALSE)
         
         partially.contained = lapply(all.sub.locations, partially.contained.children)
         
@@ -537,10 +590,13 @@ Location.Manager = R6Class("LocationManager",
       #print(all.sub.locations)
     
       mask.collector = function (locations) {
-        if (anyNA(locations)) {
-          return (NA)
-        }
-        unlist(lapply(locations, function(location) { private$location.list[[location]]$return.type == sub.type} ))
+        unlist(lapply(locations, function(location) { 
+          if (is.na(location)) {
+            return (NA)
+          } else {
+            return (private$location.list[[location]]$return.type == sub.type)
+          }
+        }))
       }
     
       #for each list of contained locations, check to make sure they correspond to the correct type
@@ -591,7 +647,7 @@ Location.Manager = R6Class("LocationManager",
       if (throw.error.if.unregistered.type) {
         #Check the type against the type list;
         if (!type %in% names(private$types)) {
-          stop(paste0("LOCATION.MANAGER$get.overlapping: Type ", super.type," not registered, aborting"))
+          stop(paste0("LOCATION.MANAGER$get.overlapping: Type ", type," not registered, aborting"))
         }
       }
     
@@ -599,8 +655,11 @@ Location.Manager = R6Class("LocationManager",
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
       # Now we can call both the contained and containing functions 
+      # For contained, we are looking for all entries that overlap at all with the source location, as they will
+      # overlap for sure.  For containing, we are looking for exactly containing, as overlapping can be over
+      # another section.
       contained.results = self$get.contained(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
-      containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
+      containing.results = self$get.containing(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
     
       # Will work for both lists and vectors  
       return (c(contained.results, containing.results))
@@ -695,10 +754,13 @@ Location.Manager = R6Class("LocationManager",
       }
       
       mask.collector = function (locations) {
-        if (anyNA(locations)) {
-          return (NA)
-        }
-        unlist(lapply(locations, function(location) { private$location.list[[location]]$return.type == super.type} ))
+        unlist(lapply(locations, function(location) { 
+          if (is.na(location)) {
+            return (NA)
+          } else {
+            return (private$location.list[[location]]$return.type == super.type)
+          }
+        }))
       }
     
       #for each list of contained locations, check to make sure they correspond to the correct type
@@ -935,6 +997,14 @@ Location.Manager = R6Class("LocationManager",
         warning(paste0("Code ", code, " not found, lat and long not set"))
       } else {
         private$location.list[[valid.code]]$set.lat.and.long(lat,long)
+      }
+    },
+    register.polygons = function(code) {
+      valid.code <- private$resolve.code(code, F)
+      if (is.na(valid.code)) {
+        warning(paste0("Code ", code, " not found, polygon data not set"))
+      } else {
+        private$location.list[[valid.code]]$set.poly.data()
       }
     },
     register.hierarchy = function(sub, super, fully.contains, fail.on.unknown = T) {
