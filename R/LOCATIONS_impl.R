@@ -533,6 +533,7 @@ Location.Manager = R6Class("LocationManager",
       }
     
       all.sub.locations = lapply(codes,function(x) {location.contained.collector(x, TRUE)})
+      
     
       #For each code in each vector, get their list of fully contained regions
       fully.contained.children = function(locations) {
@@ -565,16 +566,15 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     
-      #print("Before adding")
-      #print(all.sub.locations)
+      # For get.contained, make sure that the location itself is added
+      all.sub.locations = mapply(function(x, code) c(code, x), all.sub.locations, codes, SIMPLIFY = FALSE)
+      
       if (!limit.to.completely.enclosing) {
         #We want fully and partially enclosed lists
         #We ask each location for a list of those places it partially includes, add them on to the list
         partially.contained.children = function(locations) {
           unlist(lapply(locations, function(x) {location.contained.collector(x,FALSE)}))
         }
-        # Add the location itself to the locations to check for partially.contained.children
-        all.sub.locations = mapply(function(x, code) c(code, x), all.sub.locations, codes, SIMPLIFY = FALSE)
         
         partially.contained = lapply(all.sub.locations, partially.contained.children)
         
@@ -590,10 +590,13 @@ Location.Manager = R6Class("LocationManager",
       #print(all.sub.locations)
     
       mask.collector = function (locations) {
-        if (anyNA(locations)) {
-          return (NA)
-        }
-        unlist(lapply(locations, function(location) { private$location.list[[location]]$return.type == sub.type} ))
+        unlist(lapply(locations, function(location) { 
+          if (is.na(location)) {
+            return (NA)
+          } else {
+            return (private$location.list[[location]]$return.type == sub.type)
+          }
+        }))
       }
     
       #for each list of contained locations, check to make sure they correspond to the correct type
@@ -652,8 +655,11 @@ Location.Manager = R6Class("LocationManager",
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
       # Now we can call both the contained and containing functions 
+      # For contained, we are looking for all entries that overlap at all with the source location, as they will
+      # overlap for sure.  For containing, we are looking for exactly containing, as overlapping can be over
+      # another section.
       contained.results = self$get.contained(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
-      containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
+      containing.results = self$get.containing(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
     
       # Will work for both lists and vectors  
       return (c(contained.results, containing.results))
@@ -748,10 +754,13 @@ Location.Manager = R6Class("LocationManager",
       }
       
       mask.collector = function (locations) {
-        if (anyNA(locations)) {
-          return (NA)
-        }
-        unlist(lapply(locations, function(location) { private$location.list[[location]]$return.type == super.type} ))
+        unlist(lapply(locations, function(location) { 
+          if (is.na(location)) {
+            return (NA)
+          } else {
+            return (private$location.list[[location]]$return.type == super.type)
+          }
+        }))
       }
     
       #for each list of contained locations, check to make sure they correspond to the correct type
