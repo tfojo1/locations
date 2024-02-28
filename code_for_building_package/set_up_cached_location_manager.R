@@ -236,7 +236,7 @@ register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = 
         
         # Add this location to the location manager
         # Create a name for this location
-        region.name = sprintf("%s %s", get.location.name(state), name)
+        region.name = sprintf("%s %s", LM$get.names(state), name)
         # Create a code for this location
         region.code = sprintf("%s.%g", state, numeric.code)
         LM$register("nsduh", region.name, region.code)
@@ -285,7 +285,7 @@ register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = 
         
         # Add this location to the location manager
         # Create a name for this location
-        region.name = sprintf("%s %s", get.location.name(state), name)
+        region.name = sprintf("%s %s", LM$get.names(state), name)
         # Create a code for this location
         region.code = sprintf("%s.%g", state, numeric.code)
         LM$register("nsduh", region.name, region.code)

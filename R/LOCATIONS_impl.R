@@ -617,7 +617,7 @@ Location.Manager = R6Class("LocationManager",
       }
     
       for (i in 1:length(all.sub.locations)) {
-        names(all.sub.locations[[i]]) =  sapply(all.sub.locations[[i]], function(loc_id) get.location.name(loc_id))
+        names(all.sub.locations[[i]]) =  sapply(all.sub.locations[[i]], function(loc_id) self$get.names(loc_id))
       }
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
@@ -634,7 +634,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
+      setNames(rv, sapply(rv, function(loc_id) self$get.names(loc_id)))
     },
     get.overlapping = function(locations, type, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
@@ -781,7 +781,7 @@ Location.Manager = R6Class("LocationManager",
       }
     
       for (i in 1:length(all.super.locations)) {
-        names(all.super.locations[[i]]) =  sapply(all.super.locations[[i]], function(loc_id) get.location.name(loc_id))
+        names(all.super.locations[[i]]) =  sapply(all.super.locations[[i]], function(loc_id) self$get.names(loc_id))
       }
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
@@ -798,7 +798,7 @@ Location.Manager = R6Class("LocationManager",
         return (character())
       }
     
-      setNames(rv, sapply(rv, function(loc_id) get.location.name(loc_id)))
+      setNames(rv, sapply(rv, function(loc_id) self$get.names(loc_id)))
     },
     get.name.aliases = function(locations, alias.name, throw.error.if.unregistered.alias) {
       # return A character vector of aliases, with length(locations) and names=locations. If location codes are not registered
