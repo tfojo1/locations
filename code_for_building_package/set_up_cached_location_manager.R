@@ -624,9 +624,9 @@ nsduh.prefix.longform = "National Surveys on Drug Use and Health"
 # Create the initial LOCATION.MANAGER object
 LOCATION.MANAGER = Location.Manager$new()
 
-register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type), #Typename
-               c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix), #Prefix
-               c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform)) #Longform Name
+LOCATION.MANAGER$register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type), #Typename
+                                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix), #Prefix
+                                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform)) #Longform Name
 
 LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 
