@@ -118,7 +118,7 @@ location.plot <- function(data,
   # are returned as a character value with two values separated by a comma.
   # The first value is latitude, the second value is longitude
   if (nrow(point.df) > 0) {
-    coordinates = get.location.coords(point.df$locations)
+    coordinates = LOCATION.MANAGER$get.coords(point.df$locations)
     
     lat.lon = strsplit(coordinates, ",")
     point.df$latitude = as.numeric(sapply(lat.lon, function(x) {return(x[1])}))
@@ -129,9 +129,9 @@ location.plot <- function(data,
   
   if (nrow(poly.df) > 0) {
     # Get all the polygon data for the location codes
-    location.types = unname(get.location.type(poly.df$locations))
+    location.types = unname(LOCATION.MANAGER$get.types(poly.df$locations))
     unique.location.types = unique(location.types)
-    polygon.data = setNames(lapply (unique.location.types, get.polygons.for.type), unique.location.types)
+    polygon.data = setNames(lapply (unique.location.types, LOCATION.MANAGER$get.polys.for.type), unique.location.types)
     
     poly.data.list = lapply (seq_along(poly.df$locations), function (idx) {
       df = polygon.data[[location.types[idx]]]
@@ -197,7 +197,7 @@ location.plot <- function(data,
   
   attr_map <- attr(MAP, "bb")    # save attributes from original
   # 
-  # ## change color in raster; change the black background to a nicer gray
+  # ## change color in raster; change the black water color to map_water_color
   MAP[MAP == "#000000"] <- map_water_color
   # Some background is colored with almost-black, change it as well
   MAP[MAP == "#010101"] <- map_water_color
