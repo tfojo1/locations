@@ -622,7 +622,7 @@ Location.Manager = R6Class("LocationManager",
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
       if (return.list) {
-        return (all.sub.locations)
+        return (setNames(all.sub.locations, codes))
       }
     
       #Return a collapsed vector of valid entries for all locations
@@ -661,14 +661,35 @@ Location.Manager = R6Class("LocationManager",
       contained.results = self$get.contained(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
       containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
     
-      combined = c(contained.results, containing.results)
-      # Have to differentiate between lists and vectors
-      if (return.list) {
-        unique.names = !duplicated(names(combined))
-        return ( combined[unique.names] )
-      } else {
-        return ( combined [!duplicated(combined)] )
+      combined.cont = c(contained.results, containing.results)
+      
+      # We have some situations where they share underlying locations (counties)
+      
+      # Get all counties that are partially contained by the location
+      list.of.counties.in.locations = self$get.contained(codes, "COUNTY", FALSE, return.list, throw.error.if.unregistered.type)
+      
+      # Get a list() of all locations of type 'type', each list item containing all counties that they contain
+      list.of.all.by.type = self$get.all.type(type)
+      all.counties.for.types = setNames(
+                                 lapply(
+                                   list.of.all.by.type, 
+                                   function(id) self$get.contained(id, "COUNTY", FALSE, return.list, throw.error.if.unregistered.type)
+                                 ), 
+                               list.of.all.by.type)
+      matches = sapply(all.counties.for.types, function(ids) any(ids %in% list.of.counties.in.locations))
+      
+      matching.locations = names(matches[matches==TRUE])
+      
+      if (length(matching.locations) > 0) {
+        names(matching.locations) = self$get.names(matching.locations)
       }
+      
+      combined = c(matching.locations,combined.cont)
+      
+      combined = combined [!duplicated(combined)]
+      
+      return (combined)
+      
     },
     get.containing = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
