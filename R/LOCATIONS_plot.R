@@ -89,6 +89,7 @@ location.plot <- function(data,
   
   point.df = data.frame()
   poly.df = data.frame()
+  groups = list(c("44001","44007"),c("44003","44005","44009"))
   
   no.data = c() # reserved for those locations without plotting data.
   
@@ -126,6 +127,7 @@ location.plot <- function(data,
   }
   # Now, polygon locations
   final.poly.df = data.frame()
+  all_merged_sf <- NULL
   
   if (nrow(poly.df) > 0) {
     # Get all the polygon data for the location codes
@@ -152,6 +154,95 @@ location.plot <- function(data,
     })
     
     final.poly.df = do.call(rbind, merged.poly.df)
+    if (!is.null(groups)) {
+      # final.poly.df$locations = as.numeric(final.poly.df$locations)
+      
+      polys.sf <- st_as_sf(final.poly.df, coords = c("longitude", "latitude"), crs = 4326, agr = "constant")
+      # polys.sf$longitude = as.numeric(polys.sf$longitude)
+      # polys.sf$latitude = as.numeric(polys.sf$latitude)
+      
+      
+      # Get unique locations
+      unique_locations <- unique(polys.sf$locations)
+      location_sf_list = list()
+      
+      # Initialize a list to store sf objects for each location
+      
+      for(location in unique_locations) {
+        # Filter points for the current location
+        points_for_location <- polys.sf[polys.sf$locations == location, ]
+        
+        # Get unique polygons (poly) within this location
+        unique_polys <- unique(points_for_location$poly)
+        
+        # Initialize a list to store polygons for the current location
+        polygons <- list()
+        
+        for (poly_id in unique_polys) {
+          # Filter points for the current polygon ID within the location
+          points_for_poly <- points_for_location[points_for_location$poly == poly_id, ]
+          
+          # Extract coordinates for the polygon
+          # Ensuring extraction of coordinates directly from the sf object
+          coords <- st_coordinates(points_for_poly)
+          
+          # Construct a polygon from the coordinates
+          polygon <- st_polygon(list(coords))
+          polygons[[as.character(poly_id)]] <- polygon
+        }
+        
+        # Combine polygons into a single MULTI-POLYGON if multiple, else keep as single POLYGON
+        if (length(polygons) > 1) {
+          geometry <- st_sfc(polygons, crs = st_crs(points_for_location))
+        } else {
+          geometry <- st_sfc(polygons[[1]], crs = st_crs(points_for_location))
+        }
+        
+        # Extract the color attribute, assuming it's consistent within each location
+        col <- unique(points_for_location$color)[1]
+        
+        # Create an sf object for the location with the combined geometry and color attribute
+        location_sf <- st_sf(location_id = as.factor(location), color = as.factor(col), geometry = geometry)
+        
+        # Store the sf object in the list using location as the key
+        location_sf_list[[as.character(location)]] <- location_sf
+      }
+      
+      print(location_sf_list)
+      # Merge them by groups:
+      
+      # Initialize a list to store merged sf objects
+      merged_sf_objects <- list()
+      
+      sf::sf_use_s2(FALSE)
+      for (i in seq_along(groups)) {
+        group <- groups[[i]]
+        
+        # Retrieve sf objects for the current group
+        sf_objects_for_group <- lapply(group, function(location_code) location_sf_list[[location_code]])
+        
+        # Remove NULL entries in case some locations were not found
+        sf_objects_for_group <- Filter(NROW, sf_objects_for_group)
+        
+        if (length(sf_objects_for_group) > 0) {
+          # Merge geometries of the sf objects
+          merged_geometry <- do.call(st_union, lapply(sf_objects_for_group, st_geometry))
+          
+          # Assume the color of the first sf object in the group (or handle differently as needed)
+          col <- sf_objects_for_group[[1]]$color[1]
+          
+          # Create a new sf object for the merged geometry
+          merged_sf <- st_sf(geometry = st_sfc(merged_geometry), color = col)
+          
+          # Store the merged sf object in the list
+          merged_sf_objects[[i]] <- merged_sf
+        }
+      }
+      
+      all_merged_sf <- do.call(rbind, merged_sf_objects)
+      all_merged_sf$color <- as.factor(all_merged_sf$color)
+      
+    }
   }
   
   #Plot
@@ -214,10 +305,15 @@ location.plot <- function(data,
                              shape = pch, alpha = alpha)
   }
   
-  if (nrow(poly.df) > 0) {
+  if (nrow(poly.df) > 0 && is.null(all_merged_sf)) {
     plot = plot + geom_polygon(data = final.poly.df, 
-                               aes(x=longitude, y=latitude, color=!!sym(color), fill=!!sym(fill), group=poly), 
+                               #aes(x=longitude, y=latitude, color=!!sym(color), fill=!!sym(fill), group=poly), 
+                               aes(x=longitude, y=latitude, color=.data[[color]], fill=.data[[fill]], group=poly), 
                                alpha = alpha)
+  }
+  
+  if (nrow(poly.df) > 0 && !is.null(all_merged_sf)) {
+    plot = plot + geom_sf(data=all_merged_sf, aes(fill = !!sym(color)), inherit.aes = FALSE, color = "black", alpha = alpha)
   }
   
   plot = plot + 
