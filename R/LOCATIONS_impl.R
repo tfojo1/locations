@@ -654,41 +654,61 @@ Location.Manager = R6Class("LocationManager",
       #Resolve the location codes, preserving NAs and missing codes as NAs
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
-      # Now we can call both the contained and containing functions 
-      # For containing, we are looking for all entries that overlap at all with the source location, as they will
-      # overlap for sure.  For contained, we are looking for exactly contained, as overlapping can be over
-      # another section.
-      contained.results = self$get.contained(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
-      containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
-    
-      combined.cont = c(contained.results, containing.results)
+      result = lapply (codes, function(code) { 
+        # Now we can call both the contained and containing functions 
+        # For containing, we are looking for all entries that overlap at all with the source location, as they will
+        # overlap for sure.  For contained, we are looking for exactly contained, as overlapping can be over
+        # another section.
+        contained.results = self$get.contained(code, type, TRUE, FALSE, throw.error.if.unregistered.type)
+        containing.results = self$get.containing(code, type, FALSE, FALSE, throw.error.if.unregistered.type)
       
-      # We have some situations where they share underlying locations (counties)
+        combined.cont = c(contained.results, containing.results)
+        
+        # We have some situations where they share underlying locations (counties)
+        
+        # Get all counties that are partially contained by the location
+        list.of.counties.in.locations = self$get.contained(code, "COUNTY", FALSE, FALSE, throw.error.if.unregistered.type)
+        
+        # Get a list() of all locations of type 'type', each list item containing all counties that they contain
+        list.of.all.by.type = self$get.all.type(type)
+        all.counties.for.types = setNames(
+                                   lapply(
+                                     list.of.all.by.type, 
+                                     function(id) self$get.contained(id, "COUNTY", FALSE, FALSE, throw.error.if.unregistered.type)
+                                   ), 
+                                 list.of.all.by.type)
+        
+        matches = sapply(all.counties.for.types, function(ids) any(ids %in% list.of.counties.in.locations))
+        
+        matching.locations = names(matches[matches==TRUE])
+        
+        if (length(matching.locations) > 0) {
+          names(matching.locations) = self$get.names(matching.locations)
+        }
+        
+        combined = c(matching.locations,combined.cont)
+        
+        combined = combined [!duplicated(combined)]
+        
+        return (combined)
+      })
       
-      # Get all counties that are partially contained by the location
-      list.of.counties.in.locations = self$get.contained(codes, "COUNTY", FALSE, return.list, throw.error.if.unregistered.type)
-      
-      # Get a list() of all locations of type 'type', each list item containing all counties that they contain
-      list.of.all.by.type = self$get.all.type(type)
-      all.counties.for.types = setNames(
-                                 lapply(
-                                   list.of.all.by.type, 
-                                   function(id) self$get.contained(id, "COUNTY", FALSE, return.list, throw.error.if.unregistered.type)
-                                 ), 
-                               list.of.all.by.type)
-      matches = sapply(all.counties.for.types, function(ids) any(ids %in% list.of.counties.in.locations))
-      
-      matching.locations = names(matches[matches==TRUE])
-      
-      if (length(matching.locations) > 0) {
-        names(matching.locations) = self$get.names(matching.locations)
+      if (return.list) {
+        return (setNames(result, codes))
       }
       
-      combined = c(matching.locations,combined.cont)
+      #Return a collapsed vector of valid entries for all locations
+      rv = unname(unlist(lapply(result, function (l) {
+        l[!is.na(l)]
+      })))
+    
+      if (length(rv) == 0) {
+        return (character())
+      }
       
-      combined = combined [!duplicated(combined)]
-      
-      return (combined)
+      rv = rv [!duplicated(rv)]
+    
+      setNames(rv, sapply(rv, function(id) self$get.names(id)))
       
     },
     get.containing = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
@@ -813,7 +833,7 @@ Location.Manager = R6Class("LocationManager",
     
       #Now sub.locations is a proper list; if we want a list returned, return it now
       if (return.list) {
-        return (all.super.locations)
+        return (setNames(all.super.locations, codes))
       }
     
       #Return a collapsed vector of valid entries for all locations
