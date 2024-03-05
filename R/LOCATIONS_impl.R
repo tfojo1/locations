@@ -655,14 +655,20 @@ Location.Manager = R6Class("LocationManager",
       codes = unlist(lapply(locations,function(x){private$resolve.code(x,F)})) #Now contains the fully resolved location codes or NAs
     
       # Now we can call both the contained and containing functions 
-      # For contained, we are looking for all entries that overlap at all with the source location, as they will
-      # overlap for sure.  For containing, we are looking for exactly containing, as overlapping can be over
+      # For containing, we are looking for all entries that overlap at all with the source location, as they will
+      # overlap for sure.  For contained, we are looking for exactly contained, as overlapping can be over
       # another section.
-      contained.results = self$get.contained(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
-      containing.results = self$get.containing(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
+      contained.results = self$get.contained(codes, type, TRUE, return.list, throw.error.if.unregistered.type)
+      containing.results = self$get.containing(codes, type, FALSE, return.list, throw.error.if.unregistered.type)
     
-      # Will work for both lists and vectors  
-      return (c(contained.results, containing.results))
+      combined = c(contained.results, containing.results)
+      # Have to differentiate between lists and vectors
+      if (return.list) {
+        unique.names = !duplicated(names(combined))
+        return ( combined[unique.names] )
+      } else {
+        return ( combined [!duplicated(combined)] )
+      }
     },
     get.containing = function(locations, super.type, limit.to.completely.enclosing, return.list = F, throw.error.if.unregistered.type = T) {
       #return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector
