@@ -10,6 +10,7 @@ location.plot(
   fill,
   size = NA,
   title = NA,
+  groups = NULL,
   bb = c(left = -125, bottom = 24, right = -66, top = 50),
   bb.edge = 0.1,
   size.range = c(1, 5),
@@ -36,6 +37,9 @@ If filled in, it represents the name of a column in the data frame to be used to
 and only those locations with latitude and longitude values will be plotted.}
 
 \item{title}{Defaults to blank; a character string representing the title on the graph.}
+
+\item{groups}{A list of groupings of locations to merge into larger groups. Ex: list(c("44001","44007"),c("44003","44005","44009")).
+Only applicable when dealing with polygons.}
 
 \item{bb}{The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
 one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
