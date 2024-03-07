@@ -1,5 +1,4 @@
 library(R6)
-library(purrr)
 
 Location <- R6Class("Location",
   class = FALSE,
