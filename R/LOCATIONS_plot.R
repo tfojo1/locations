@@ -1,5 +1,6 @@
 library(ggplot2)
 library(ggmap) #register_stadiamaps
+library(sf)
 
 #'@title location.plot
 #'@description Create a plot of various points in the US from a data frame
@@ -17,6 +18,9 @@ library(ggmap) #register_stadiamaps
 #'            and only those locations with latitude and longitude values will be plotted.
 #'
 #'@param title Defaults to blank; a character string representing the title on the graph.
+#'
+#'@param groups A list of groupings of locations to merge into larger groups. Ex: list(c("44001","44007"),c("44003","44005","44009")).
+#'              Only applicable when dealing with polygons.
 #'
 #'@param bb The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
 #'          one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
@@ -56,6 +60,7 @@ location.plot <- function(data,
                           fill,
                           size=NA,
                           title=NA,
+                          groups=NULL,
                           bb=c(left=-125,bottom=24,right=-66,top=50),
                           bb.edge=0.1,
                           size.range=c(1,5),
@@ -89,7 +94,6 @@ location.plot <- function(data,
   
   point.df = data.frame()
   poly.df = data.frame()
-  groups = list(c("44001","44007"),c("44003","44005","44009"))
   
   no.data = c() # reserved for those locations without plotting data.
   
@@ -208,31 +212,49 @@ location.plot <- function(data,
         location_sf_list[[as.character(location)]] <- location_sf
       }
       
-      print(location_sf_list)
       # Merge them by groups:
       
       # Initialize a list to store merged sf objects
       merged_sf_objects <- list()
       
-      sf::sf_use_s2(FALSE)
       for (i in seq_along(groups)) {
         group <- groups[[i]]
         
         # Retrieve sf objects for the current group
         sf_objects_for_group <- lapply(group, function(location_code) location_sf_list[[location_code]])
         
+        #Here we assume all group members have the same color
+        color_for_group = data[[color]][data$locations == group[[1]]] 
+        
         # Remove NULL entries in case some locations were not found
         sf_objects_for_group <- Filter(NROW, sf_objects_for_group)
         
         if (length(sf_objects_for_group) > 0) {
           # Merge geometries of the sf objects
-          merged_geometry <- do.call(st_union, lapply(sf_objects_for_group, st_geometry))
+          # we are getting a message here saying that st_union assumes planar coordinates.
+          # In this case we are dealing with a small enough scale that I believe this can be ignored
+          # suppress the message
           
-          # Assume the color of the first sf object in the group (or handle differently as needed)
-          col <- sf_objects_for_group[[1]]$color[1]
+          # merged_geometry <- suppressMessages(do.call(st_union, lapply(sf_objects_for_group, st_geometry)))NULL
+          merged_geometry <- suppressMessages(st_union( st_geometry(sf_objects_for_group[[1]]), st_geometry(sf_objects_for_group[[2]])))
+          
+          if (length(sf_objects_for_group) > 2) {
+            for (j in 3:length(sf_objects_for_group)) {
+              merged_geometry <- suppressMessages(st_union(merged_geometry, st_geometry(sf_objects_for_group[[j]])))
+            }
+          }  
+          
+          if (length(merged_geometry) > 1) {
+            for (j in 1:(length(merged_geometry) - 1)) {
+              merged_geometry = suppressMessages(st_union(merged_geometry[[j]], merged_geometry[[j+1]]))
+            }
+          }
+          
+          # browser()
+          col <- as.numeric(color_for_group)
           
           # Create a new sf object for the merged geometry
-          merged_sf <- st_sf(geometry = st_sfc(merged_geometry), color = col)
+          merged_sf <- st_sf(geometry = st_sfc(merged_geometry), color = col, crs="4326")
           
           # Store the merged sf object in the list
           merged_sf_objects[[i]] <- merged_sf
@@ -240,8 +262,6 @@ location.plot <- function(data,
       }
       
       all_merged_sf <- do.call(rbind, merged_sf_objects)
-      all_merged_sf$color <- as.factor(all_merged_sf$color)
-      
     }
   }
   
@@ -307,13 +327,12 @@ location.plot <- function(data,
   
   if (nrow(poly.df) > 0 && is.null(all_merged_sf)) {
     plot = plot + geom_polygon(data = final.poly.df, 
-                               #aes(x=longitude, y=latitude, color=!!sym(color), fill=!!sym(fill), group=poly), 
                                aes(x=longitude, y=latitude, color=.data[[color]], fill=.data[[fill]], group=poly), 
                                alpha = alpha)
   }
   
   if (nrow(poly.df) > 0 && !is.null(all_merged_sf)) {
-    plot = plot + geom_sf(data=all_merged_sf, aes(fill = !!sym(color)), inherit.aes = FALSE, color = "black", alpha = alpha)
+    plot = plot + geom_sf(data=all_merged_sf, aes(fill = .data[["color"]]), inherit.aes = FALSE, color = "black", alpha = alpha)
   }
   
   plot = plot + 

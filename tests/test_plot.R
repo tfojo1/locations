@@ -13,6 +13,9 @@ print(state.counties)
 
 state.df = data.frame(locations=code_data, size=rep(1,length(code_data)), color=c(1,5,5,1,5))
 
-location.plot(state.df,color="color",fill="color", title="Testing", bb="AUTO", alpha=0.4)
+groups = list(c("44001","44007"),c("44003","44005","44009"))
+
+location.plot(state.df,color="color",fill="color", title="Testing", groups=groups, bb="AUTO", alpha=0.4)
+# location.plot(state.df,color="color",fill="color", title="Testing", bb="AUTO", alpha=0.4)
 # location.plot(state.df,color="color",fill="color", title="Testing", alpha=0.4)
 
