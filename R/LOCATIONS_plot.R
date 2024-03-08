@@ -1,6 +1,6 @@
 library(ggplot2)
 library(ggmap) #register_stadiamaps
-library(sf)
+library(sf) #used for merging the polygons in the case of groups value
 
 #'@title location.plot
 #'@description Create a plot of various points in the US from a data frame
@@ -22,11 +22,10 @@ library(sf)
 #'@param groups A list of groupings of locations to merge into larger groups. Ex: list(c("44001","44007"),c("44003","44005","44009")).
 #'              Only applicable when dealing with polygons.
 #'
-#'@param bb The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
-#'          one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
-#'          automatically bound the graph (using the bb.edge parameter, see below, as an edge buffer), or a named 
-#'          character vector of the format c(left=-125,bottom=24,right=-66, top=50), outlining the dimensions of 
-#'          the bounding box in latitude and longitude.  Defaults to NULL.
+#'@param bb The bounding box value; Can take one of two values: either the character string "AUTO" which will use
+#'          the dimensions of the locations to automatically bound the graph (using the bb.edge parameter, see below,
+#'          as an edge buffer), or a named character vector of the format c(left=-125,bottom=24,right=-66, top=50),
+#'          outlining the dimensions of the bounding box in latitude and longitude.  Defaults to the continental US.
 #'         
 #'@param bb.edge If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the 
 #'               automatically generated bounding box, as a proportion of the size of the plotted locations.  Defaults
@@ -36,7 +35,8 @@ library(sf)
 #'                  specified.  Defaults to 1-5
 #'                  
 #'@param color.range The color ranges to span for the 'color' and 'fill' parameters. Defaults to c('blue','red'),
-#'                   so lower values will be more blue, and higher values will be more red.
+#'                   so lower values will be more blue, and higher values will be more red.  The parameter can also include
+#'                   three values (for use with scale_fill/color_gradient2) or more (for use with scale_fill/color_gradientn)
 #'                   
 #'@param pch The shape of the point when plotting by points; see https://sape.inf.usi.ch/quick-reference/ggplot2/shape
 #'           for a detailed list. Defaults to 19, a circle.
@@ -45,7 +45,7 @@ library(sf)
 #'
 #'@param color.label A label to give to the color/fill in the legend.  Defaults to blank.
 #'
-#'@param alpha An alpha blending/transparency value for the 'color'/'fill' parameter. Defaults to 1, or no transparency.
+#'@param alpha An alpha blending/transparency value for the 'color'/'fill' parameter. Between 0 and 1. Defaults to 1, or no transparency.
 #'
 #'@param map_water_color A hex color value for the color of any water on the map. Defaults to a light gray.
 #'
@@ -108,6 +108,9 @@ location.plot <- function(data,
     indexes.with.point.data = sapply(data[['locations']], LOCATION.MANAGER$has.lat.lon)
     point.df = data [ indexes.with.point.data, ]
     no.data = data [ !indexes.with.point.data, ][['locations']]
+    if (!is.null(groups)) {
+      warning("The groups parameter is non-null; it will be ignored as we are looking at point data")
+    }
   }
   # If there are any locations without the relevant data, display a list
   
@@ -159,12 +162,9 @@ location.plot <- function(data,
     
     final.poly.df = do.call(rbind, merged.poly.df)
     if (!is.null(groups)) {
-      # final.poly.df$locations = as.numeric(final.poly.df$locations)
+      # We have a groups object, attempt to collect polygons into these groups
       
       polys.sf <- st_as_sf(final.poly.df, coords = c("longitude", "latitude"), crs = 4326, agr = "constant")
-      # polys.sf$longitude = as.numeric(polys.sf$longitude)
-      # polys.sf$latitude = as.numeric(polys.sf$latitude)
-      
       
       # Get unique locations
       unique_locations <- unique(polys.sf$locations)
@@ -202,11 +202,8 @@ location.plot <- function(data,
           geometry <- st_sfc(polygons[[1]], crs = st_crs(points_for_location))
         }
         
-        # Extract the color attribute, assuming it's consistent within each location
-        col <- unique(points_for_location$color)[1]
-        
         # Create an sf object for the location with the combined geometry and color attribute
-        location_sf <- st_sf(location_id = as.factor(location), color = as.factor(col), geometry = geometry)
+        location_sf <- st_sf(location_id = as.factor(location), geometry = geometry)
         
         # Store the sf object in the list using location as the key
         location_sf_list[[as.character(location)]] <- location_sf
@@ -223,9 +220,6 @@ location.plot <- function(data,
         # Retrieve sf objects for the current group
         sf_objects_for_group <- lapply(group, function(location_code) location_sf_list[[location_code]])
         
-        #Here we assume all group members have the same color
-        color_for_group = data[[color]][data$locations == group[[1]]] 
-        
         # Remove NULL entries in case some locations were not found
         sf_objects_for_group <- Filter(NROW, sf_objects_for_group)
         
@@ -235,7 +229,6 @@ location.plot <- function(data,
           # In this case we are dealing with a small enough scale that I believe this can be ignored
           # suppress the message
           
-          # merged_geometry <- suppressMessages(do.call(st_union, lapply(sf_objects_for_group, st_geometry)))NULL
           merged_geometry <- suppressMessages(st_union( st_geometry(sf_objects_for_group[[1]]), st_geometry(sf_objects_for_group[[2]])))
           
           if (length(sf_objects_for_group) > 2) {
@@ -250,11 +243,12 @@ location.plot <- function(data,
             }
           }
           
-          # browser()
-          col <- as.numeric(color_for_group)
+          # Here we assume all group members have the same color/fill
+          fil <- as.numeric(data[[fill]][data$locations == group[[1]]])
+          col <- as.numeric(data[[color]][data$locations == group[[1]]])
           
           # Create a new sf object for the merged geometry
-          merged_sf <- st_sf(geometry = st_sfc(merged_geometry), color = col, crs="4326")
+          merged_sf <- st_sf(geometry = st_sfc(merged_geometry), fill = fil, color = col, crs="4326")
           
           # Store the merged sf object in the list
           merged_sf_objects[[i]] <- merged_sf
@@ -320,19 +314,22 @@ location.plot <- function(data,
   plot = ggmap(MAP)
   
   if (nrow(point.df) > 0) {
+    # Plotting points
     plot = plot + geom_point(data=point.df, 
                              aes(x=longitude, y=latitude, size=!!sym(size), color=!!sym(color), fill=!!sym(fill)), 
                              shape = pch, alpha = alpha)
   }
   
   if (nrow(poly.df) > 0 && is.null(all_merged_sf)) {
+    # Plotting simple polygons
     plot = plot + geom_polygon(data = final.poly.df, 
                                aes(x=longitude, y=latitude, color=.data[[color]], fill=.data[[fill]], group=poly), 
                                alpha = alpha)
   }
   
   if (nrow(poly.df) > 0 && !is.null(all_merged_sf)) {
-    plot = plot + geom_sf(data=all_merged_sf, aes(fill = .data[["color"]]), inherit.aes = FALSE, color = "black", alpha = alpha)
+    # Plotting merged polygons
+    plot = plot + geom_sf(data=all_merged_sf, aes(color = .data[["color"]], fill = .data[["fill"]]), inherit.aes = FALSE, alpha = alpha)
   }
   
   plot = plot + 
@@ -353,8 +350,19 @@ location.plot <- function(data,
   }
   
   if (!is.null(color.range)) {
-    plot = plot + scale_fill_gradient(name=color.label, low=color.range[1], high=color.range[2])
-    plot = plot + scale_color_gradient(name=color.label, low=color.range[1], high=color.range[2])
+    if (length(color.range) == 2) {
+      plot = plot + scale_fill_gradient(name=color.label, low=color.range[1], high=color.range[2])
+      plot = plot + scale_color_gradient(name=color.label, low=color.range[1], high=color.range[2])
+    } else if (length(color.range) == 3) {
+      plot = plot + scale_fill_gradient2(name=color.label, low=color.range[1], mid=color.range[2], high=color.range[3])
+      plot = plot + scale_color_gradient2(name=color.label, low=color.range[1], mid=color.range[2], high=color.range[3])
+    } else if (length(color.range) > 3) {
+      plot = plot + scale_fill_gradientn(name=color.label, colours = color.range)
+      plot = plot + scale_color_gradientn(name=color.label, colours = color.range)
+    } else {
+      color.range.single = paste(color.range, sep=" ", collapse=TRUE)
+      warning(paste0("Color range ", color.range.single, " cannot be properly rendered."))
+    }
   } 
   
   plot
