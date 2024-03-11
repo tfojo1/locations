@@ -41,11 +41,10 @@ and only those locations with latitude and longitude values will be plotted.}
 \item{groups}{A list of groupings of locations to merge into larger groups. Ex: list(c("44001","44007"),c("44003","44005","44009")).
 Only applicable when dealing with polygons.}
 
-\item{bb}{The bounding box value; The default is the bounding box of the contiguous US.  Otherwise, can take 
-one of two values: either the character string "AUTO" which will use the dimensions of the locations to 
-automatically bound the graph (using the bb.edge parameter, see below, as an edge buffer), or a named 
-character vector of the format c(left=-125,bottom=24,right=-66, top=50), outlining the dimensions of 
-the bounding box in latitude and longitude.  Defaults to NULL.}
+\item{bb}{The bounding box value; Can take one of two values: either the character string "AUTO" which will use
+the dimensions of the locations to automatically bound the graph (using the bb.edge parameter, see below,
+as an edge buffer), or a named character vector of the format c(left=-125,bottom=24,right=-66, top=50),
+outlining the dimensions of the bounding box in latitude and longitude.  Defaults to the continental US.}
 
 \item{bb.edge}{If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the 
 automatically generated bounding box, as a proportion of the size of the plotted locations.  Defaults
@@ -55,7 +54,8 @@ to 0.1, or 10% of the bounding box.}
 specified.  Defaults to 1-5}
 
 \item{color.range}{The color ranges to span for the 'color' and 'fill' parameters. Defaults to c('blue','red'),
-so lower values will be more blue, and higher values will be more red.}
+so lower values will be more blue, and higher values will be more red.  The parameter can also include
+three values (for use with scale_fill/color_gradient2) or more (for use with scale_fill/color_gradientn)}
 
 \item{pch}{The shape of the point when plotting by points; see https://sape.inf.usi.ch/quick-reference/ggplot2/shape
 for a detailed list. Defaults to 19, a circle.}
@@ -64,7 +64,7 @@ for a detailed list. Defaults to 19, a circle.}
 
 \item{color.label}{A label to give to the color/fill in the legend.  Defaults to blank.}
 
-\item{alpha}{An alpha blending/transparency value for the 'color'/'fill' parameter. Defaults to 1, or no transparency.}
+\item{alpha}{An alpha blending/transparency value for the 'color'/'fill' parameter. Between 0 and 1. Defaults to 1, or no transparency.}
 
 \item{map_water_color}{A hex color value for the color of any water on the map. Defaults to a light gray.}
 
