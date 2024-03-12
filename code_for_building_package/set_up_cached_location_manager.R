@@ -588,6 +588,61 @@ register.state.poly.data = function(LM, filename, state.type) {
   LM
 }
 
+merge.state.phd <- function(LM, state_groups, all.county.polygons, phd.type, phd.prefix) {
+  
+  state.groups.poly.data = data.frame()
+  
+  # For this to work, the first group can't be empty.
+  # Realistically speaking, no groups should be empty
+  if (any(sapply(state_groups,length) == 0)) {
+    stop("No merging groups can be empty")
+  }
+  state.fips.code = substr(state_groups[[1]][1],1,2)
+  state.abbr = unname(LM$get.by.alias(state.fips.code,"STATE"))
+  state.name = unname(LM$get.names(state.abbr))
+  
+  districts = names(state_groups)
+  
+  for (d in districts) {
+    location.code = toupper(paste0(state.abbr,".",gsub(" ","",d)))
+    location.name = paste0(state.name, " ", d," Public Health District")
+    
+    location.code.with.prefix = paste0(phd.prefix, location.code)
+    
+    # Register this district as a location
+    LM$register(phd.type, location.name, location.code)
+    # Register this district as being contained within its state
+    LM$register.hierarchy(location.code.with.prefix, state.abbr, TRUE, TRUE)
+    # Register that this location has polygons
+    LM$register.polygons(location.code.with.prefix)
+    
+    ph.polygons = data.frame()
+    
+    if (length(state_groups[[d]]) == 1) {
+      # Region made up of only one county, just assign the region the value of that polygon
+      ph.polygons = all.county.polygons[all.county.polygons$location.code == state_groups[[d]], ]
+      
+      # Set the new location code for this district
+      ph.polygons$location.code = rep(location.code.with.prefix, nrow(ph.polygons))
+      
+      # Register this county as being fully contained by the district
+      LM$register.hierarchy(state_groups[[d]], location.code.with.prefix, TRUE, TRUE)
+      
+    } else {
+      # Merge the polygons into one group
+      ph.polygons = merge.polygons(state_groups[[d]], location.code.with.prefix)
+      # Give each polygon a unique number
+      ph.polygons = number.polygons(LM, ph.polygons)
+      # Register these counties as being fully contained by the public health district
+      for (i in seq_along(state_groups[[d]])) {
+        LM$register.hierarchy(state_groups[[d]][i], location.code.with.prefix, TRUE, TRUE)
+      }
+    }
+    state.groups.poly.data = rbind(state.groups.poly.data, ph.polygons)
+  }
+  return (state.groups.poly.data)
+}
+
 register.public.health.districts <- function(LM, phd.type, phd.prefix, county.type) {
   # Public health districts are made up of counties
   
@@ -598,62 +653,33 @@ register.public.health.districts <- function(LM, phd.type, phd.prefix, county.ty
   # Retrieve all county polygons
   all.county.polygons = LM$get.polys.for.type(county.type)
   
-  #Alabama
-  
-  alabama = list(
-              "Northern"=c("01077","01083","01089","01071","01033","01059","01079","01103","01095","01093","01133","01043"),
-              "Jefferson"=c("01073"),
-              "West Central"=c("01075","01057","01127","01107","01125","01119","01063","01065","01105","01007","01021"),
-              "Northeastern"=c("01049","01009","01055","01019","01115","01015","01029","01117","01121","01027","01111"),
-              "Southwestern"=c("01023","01091","01047","01129","01025","01131","01099","01035","01003","01053"),
-              "Mobile"=c("01097"),
-              "East Central"=c("01037","01123","01017","01001","01051","01081","01085","01101","01087","01011","01113"),
-              "Southeastern"=c("01013","01041","01109","01005","01039","01031","01045","01067","01069","01061"))
-  
   all.ph.poly.data = data.frame()
   
-  alabama.poly.data = data.frame()
+  ph.data.list = list (
+    AL = list(
+           "Northern"=c("01077","01083","01089","01071","01033","01059","01079","01103","01095","01093","01133","01043"),
+           "Jefferson"=c("01073"),
+           "West Central"=c("01075","01057","01127","01107","01125","01119","01063","01065","01105","01007","01021"),
+           "Northeastern"=c("01049","01009","01055","01019","01115","01015","01029","01117","01121","01027","01111"),
+           "Southwestern"=c("01023","01091","01047","01129","01025","01131","01099","01035","01003","01053"),
+           "Mobile"=c("01097"),
+           "East Central"=c("01037","01123","01017","01001","01051","01081","01085","01101","01087","01011","01113"),
+           "Southeastern"=c("01013","01041","01109","01005","01039","01031","01045","01067","01069","01061")),
+    LA = list(
+           "I"=c("22109","22057","22093","22095","22089","22051","22071","22087","22075"),
+           "II"=c("22077","22125","22037","22091","22121","22033","22063","22047","22005","22007"),
+           "IV"=c("22023","22053","22039","22097","22001","22055","22099","22113","22045","22101"),
+           "V"=c("22115","22011","22003","22019"),
+           "VI"=c("22043","22059","22025","22029","22079","22009"),
+           "VII"=c("22017","22015","22119","22027","22013","22031","22081","22085","22069"),
+           "VIII"=c("22111","22067","22123","22035","22061","22073","22083","22065","22049","22127","22021","22041","22107"),
+           "IX"=c("22105","22117","22103"))
+  )
   
-  districts = names(alabama)
-  for (d in districts) {
-    location.code = toupper(paste0("AL.",gsub(" ","",d)))
-    location.name = paste0("Alabama ", d," Public Health District")
-    
-    location.code.with.prefix = paste0(phd.prefix, location.code)
-    
-    # Register this district as a location
-    LM$register(phd.type, location.name, location.code)
-    # Register this district as being contained within its state
-    LM$register.hierarchy(location.code.with.prefix, "AL", TRUE, TRUE)
-    # Register that this location has polygons
-    LM$register.polygons(location.code.with.prefix)
-    
-    ph.polygons = data.frame()
-    
-    if (length(alabama[[d]]) == 1) {
-      # Region made up of only one county, just assign the region the value of that polygon
-      ph.polygons = all.county.polygons[all.county.polygons$location.code == alabama[[d]], ]
-      
-      # Set the new location code for this district
-      ph.polygons$location.code = rep(location.code.with.prefix, nrow(ph.polygons))
-      
-      # Register this county as being fully contained by the district
-      LM$register.hierarchy(alabama[[d]], location.code.with.prefix, TRUE, TRUE)
-      
-    } else {
-      # Merge the polygons into one group
-      ph.polygons = merge.polygons(alabama[[d]], location.code.with.prefix)
-      # Give each polygon a unique number
-      ph.polygons = number.polygons(LM, ph.polygons)
-      # Register these counties as being fully contained by the public health district
-      for (i in seq_along(alabama[[d]])) {
-        LM$register.hierarchy(alabama[[d]][i], location.code.with.prefix, TRUE, TRUE)
-      }
-    }
-    alabama.poly.data = rbind(alabama.poly.data, ph.polygons)
+  for (i in seq_along(ph.data.list)) {
+    ph.poly.data = merge.state.phd(LM, ph.data.list[[i]], all.county.polygons, phd.type, phd.prefix)
+    all.ph.poly.data = rbind(all.ph.poly.data, ph.poly.data)
   }
-              
-  all.ph.poly.data = rbind(all.ph.poly.data, alabama.poly.data)
   
   LM$add.poly.data(phd.type, all.ph.poly.data)
   
