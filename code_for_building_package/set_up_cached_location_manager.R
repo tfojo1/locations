@@ -13,6 +13,7 @@
 
 source("R/LOCATIONS_location_manager.R") 
 source("R/LOCATIONS_impl.R")
+source("R/LOCATIONS_plot.R")
 
 remove.non.locale = function(string_list) {
   # Go through each string, removing non locale strings.  Convert to UTF-8
@@ -179,7 +180,6 @@ register.zipcodes = function(LM, filename, fips.typename = "county", zip.typenam
   fips.codes = sprintf("%05d",zip.data[['fips']])
   state.codes = sprintf("%02g",floor(zip.data[['fips']] / 1000))
   zip.names = sprintf(zipcode.name.format.string,zip.codes)
-  # browser()
   
   #Register all the zip codes
   #No prefix
@@ -584,6 +584,78 @@ register.state.poly.data = function(LM, filename, state.type) {
   LM
 }
 
+register.public.health.districts <- function(LM, phd.type, phd.prefix, county.type) {
+  # Public health districts are made up of counties
+  
+  phd.type = toupper(phd.type)
+  county.type = toupper(county.type)
+  phd.prefix = toupper(phd.prefix)
+  
+  # Retrieve all county polygons
+  all.county.polygons = LM$get.polys.for.type(county.type)
+  
+  #Alabama
+  
+  alabama = list(
+              "Northern"=c("01077","01083","01089","01071","01033","01059","01079","01103","01095","01093","01133","01043"),
+              "Jefferson"=c("01073"),
+              "West Central"=c("01075","01057","01127","01107","01125","01119","01063","01065","01105","01007","01021"),
+              "Northeastern"=c("01049","01009","01055","01019","01115","01015","01029","01117","01121","01027","01111"),
+              "Southwestern"=c("01023","01091","01047","01129","01025","01131","01099","01035","01003","01053"),
+              "Mobile"=c("01097"),
+              "East Central"=c("01037","01123","01017","01001","01051","01081","01085","01101","01087","01011","01113"),
+              "Southeastern"=c("01013","01041","01109","01005","01039","01031","01045","01067","01069","01061"))
+  
+  all.ph.poly.data = data.frame()
+  
+  alabama.poly.data = data.frame()
+  
+  districts = names(alabama)
+  for (d in districts) {
+    location.code = toupper(paste0("AL.",gsub(" ","",d)))
+    location.name = paste0("Alabama ", d," Public Health District")
+    
+    location.code.with.prefix = paste0(phd.prefix, location.code)
+    
+    # Register this district as a location
+    LM$register(phd.type, location.name, location.code)
+    # Register this district as being contained within its state
+    LM$register.hierarchy(location.code.with.prefix, "AL", TRUE, TRUE)
+    # Register that this location has polygons
+    LM$register.polygons(location.code.with.prefix)
+    
+    ph.polygons = data.frame()
+    
+    if (length(alabama[[d]]) == 1) {
+      # Region made up of only one county, just assign the region the value of that polygon
+      ph.polygons = all.county.polygons[all.county.polygons$location.code == alabama[[d]], ]
+      
+      # Set the new location code for this district
+      ph.polygons$location.code = rep(location.code.with.prefix, nrow(ph.polygons))
+      
+      # Register this county as being fully contained by the district
+      LM$register.hierarchy(alabama[[d]], location.code.with.prefix, TRUE, TRUE)
+      
+    } else {
+      # Merge the polygons into one group
+      ph.polygons = merge.polygons(alabama[[d]], location.code.with.prefix)
+      # Give each polygon a unique number
+      ph.polygons = number.polygons(ph.polygons)
+      # Register these counties as being fully contained by the public health district
+      for (i in seq_along(alabama[[d]])) {
+        LM$register.hierarchy(alabama[[d]][i], location.code.with.prefix, TRUE, TRUE)
+      }
+    }
+    alabama.poly.data = rbind(alabama.poly.data, ph.polygons)
+  }
+              
+  all.ph.poly.data = rbind(all.ph.poly.data, alabama.poly.data)
+  
+  LM$add.poly.data(phd.type, all.ph.poly.data)
+  
+  LM
+}
+
 register.type.relationships = function(LM) {
   
   #Set the defaults
@@ -621,12 +693,16 @@ nsduh.type = "nsduh"
 nsduh.prefix = ""
 nsduh.prefix.longform = "National Surveys on Drug Use and Health"
 
+phd.type = "phd"
+phd.prefix = "ph."
+phd.prefix.longform = "State level public health districts"
+
 # Create the initial LOCATION.MANAGER object
 LOCATION.MANAGER = Location.Manager$new()
 
-LOCATION.MANAGER$register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type), #Typename
-                                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix), #Prefix
-                                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform)) #Longform Name
+LOCATION.MANAGER$register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type,            phd.type), #Typename
+                                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix,          phd.prefix), #Prefix
+                                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform, phd.prefix.longform)) #Longform Name
 
 LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 
@@ -651,6 +727,7 @@ LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR
 LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv"), county.type) #Give each location the proper polygon data (counties)
 LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type, cbsa.prefix) #Give each location the proper polygon data (cbsa)
 # LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type, zipcode.prefix) #Give each location the proper polygon data (zip)
+LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, phd.prefix, county.type)
 
 rm(poly.index)
 rm(DATA.DIR)

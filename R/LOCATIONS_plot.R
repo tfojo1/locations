@@ -19,9 +19,6 @@ library(sf) #used for merging the polygons in the case of groups value
 #'
 #'@param title Defaults to blank; a character string representing the title on the graph.
 #'
-#'@param groups A list of groupings of locations to merge into larger groups. Ex: list(c("44001","44007"),c("44003","44005","44009")).
-#'              Only applicable when dealing with polygons.
-#'
 #'@param bb The bounding box value; Can take one of two values: either the character string "AUTO" which will use
 #'          the dimensions of the locations to automatically bound the graph (using the bb.edge parameter, see below,
 #'          as an edge buffer), or a named character vector of the format c(left=-125,bottom=24,right=-66, top=50),
@@ -60,7 +57,6 @@ location.plot <- function(data,
                           fill,
                           size=NA,
                           title=NA,
-                          groups=NULL,
                           bb=c(left=-125,bottom=24,right=-66,top=50),
                           bb.edge=0.1,
                           size.range=c(1,5),
@@ -134,7 +130,6 @@ location.plot <- function(data,
   }
   # Now, polygon locations
   final.poly.df = data.frame()
-  all_merged_sf = NULL
   
   if (nrow(poly.df) > 0) {
     # Get all the polygon data for the location codes
@@ -161,102 +156,6 @@ location.plot <- function(data,
     })
     
     final.poly.df = do.call(rbind, merged.poly.df)
-    if (!is.null(groups)) {
-      # We have a groups object, attempt to collect polygons into these groups
-      
-      polys.sf = st_as_sf(final.poly.df, coords = c("longitude", "latitude"), crs = 4326, agr = "constant")
-      
-      # Get unique locations
-      unique_locations = unique(polys.sf$locations)
-      location_sf_list = list()
-      
-      # Initialize a list to store sf objects for each location
-      
-      for(location in unique_locations) {
-        # Filter points for the current location
-        points_for_location = polys.sf[polys.sf$locations == location, ]
-        
-        # Get unique polygons (poly) within this location
-        unique_polys = unique(points_for_location$poly)
-        
-        # Initialize a list to store polygons for the current location
-        polygons = list()
-        
-        for (poly_id in unique_polys) {
-          # Filter points for the current polygon ID within the location
-          points_for_poly = points_for_location[points_for_location$poly == poly_id, ]
-          
-          # Extract coordinates for the polygon
-          # Ensuring extraction of coordinates directly from the sf object
-          coords = st_coordinates(points_for_poly)
-          
-          # Construct a polygon from the coordinates
-          polygon = st_polygon(list(coords))
-          polygons[[as.character(poly_id)]] = polygon
-        }
-        
-        # Combine polygons into a single MULTI-POLYGON if multiple, else keep as single POLYGON
-        if (length(polygons) > 1) {
-          geometry = st_sfc(polygons, crs = st_crs(points_for_location))
-        } else {
-          geometry = st_sfc(polygons[[1]], crs = st_crs(points_for_location))
-        }
-        
-        # Create an sf object for the location with the combined geometry and color attribute
-        location_sf = st_sf(location_id = as.factor(location), geometry = geometry)
-        
-        # Store the sf object in the list using location as the key
-        location_sf_list[[as.character(location)]] = location_sf
-      }
-      
-      # Merge them by groups:
-      
-      # Initialize a list to store merged sf objects
-      merged_sf_objects = list()
-      
-      for (i in seq_along(groups)) {
-        group = groups[[i]]
-        
-        # Retrieve sf objects for the current group
-        sf_objects_for_group = lapply(group, function(location_code) location_sf_list[[location_code]])
-        
-        # Remove NULL entries in case some locations were not found
-        sf_objects_for_group = Filter(NROW, sf_objects_for_group)
-        
-        if (length(sf_objects_for_group) > 0) {
-          # Merge geometries of the sf objects
-          # we are getting a message here saying that st_union assumes planar coordinates.
-          # In this case we are dealing with a small enough scale that I believe this can be ignored
-          # suppress the message
-          
-          merged_geometry = suppressMessages(st_union( st_geometry(sf_objects_for_group[[1]]), st_geometry(sf_objects_for_group[[2]])))
-          
-          if (length(sf_objects_for_group) > 2) {
-            for (j in 3:length(sf_objects_for_group)) {
-              merged_geometry = suppressMessages(st_union(merged_geometry, st_geometry(sf_objects_for_group[[j]])))
-            }
-          }  
-          
-          if (length(merged_geometry) > 1) {
-            for (j in 1:(length(merged_geometry) - 1)) {
-              merged_geometry = suppressMessages(st_union(merged_geometry[[j]], merged_geometry[[j+1]]))
-            }
-          }
-          
-          # Here we assume all group members have the same color/fill
-          fil = as.numeric(data[[fill]][data$locations == group[[1]]])
-          col = as.numeric(data[[color]][data$locations == group[[1]]])
-          
-          # Create a new sf object for the merged geometry
-          merged_sf = st_sf(geometry = st_sfc(merged_geometry), fill = fil, color = col, crs="4326")
-          
-          # Store the merged sf object in the list
-          merged_sf_objects[[i]] = merged_sf
-        }
-      }
-      
-      all_merged_sf = do.call(rbind, merged_sf_objects)
-    }
   }
   
   #Plot
@@ -320,16 +219,11 @@ location.plot <- function(data,
                              shape = pch, alpha = alpha)
   }
   
-  if (nrow(poly.df) > 0 && is.null(all_merged_sf)) {
+  if (nrow(poly.df) > 0) {
     # Plotting simple polygons
     plot = plot + geom_polygon(data = final.poly.df, 
                                aes(x=longitude, y=latitude, color=.data[[color]], fill=.data[[fill]], group=poly), 
                                alpha = alpha)
-  }
-  
-  if (nrow(poly.df) > 0 && !is.null(all_merged_sf)) {
-    # Plotting merged polygons
-    plot = plot + geom_sf(data=all_merged_sf, aes(color = .data[["color"]], fill = .data[["fill"]]), inherit.aes = FALSE, alpha = alpha)
   }
   
   plot = plot + 
@@ -366,4 +260,155 @@ location.plot <- function(data,
   } 
   
   plot
+}
+
+#'@title merge.polygons
+#'@description For every location provided to the function, return a union of all their polygon data.  This may return more than one polygon
+#'             in the case of locations with more than one polygon.  If any passed-in locations don't have polygon data, abort
+#'
+#'@param locations A character vector of location codes to merge into a unioned polygon.  Each of these locations needs their own polygon data.
+#'
+#'@return Returns a merged sf object representing the union of the polygons
+#'
+#'@export
+merge.polygons <- function(locations, new.location.code) {
+  
+  # determine if there are any locations without polygon data
+  indexes.with.polygon.data = sapply(locations, LOCATION.MANAGER$has.polygon)
+  if (any(!indexes.with.polygon.data)) {
+    bad.locations = paste(locations[!indexes.with.polygon.data], collapse=",")
+    stop(paste0("Locations ", bad.locations, " do not have polygon data"))
+  }
+  
+  # All locations have polygon data, collect it
+
+  location.types = unname(LOCATION.MANAGER$get.types(locations))
+  unique.location.types = unique(location.types)
+  polygon.data = setNames(lapply (unique.location.types, LOCATION.MANAGER$get.polys.for.type), unique.location.types)
+  
+  poly.data.list = lapply (seq_along(locations), function (idx) {
+    df = polygon.data[[location.types[idx]]]
+    return(df[ df$location.code == locations[idx], ])
+  })
+  
+  names(poly.data.list) = locations
+  # poly.data.list is a list() of data.frames, indexed by the location code.
+  
+  # merged.poly.df = lapply (seq_len(length(locations)), function(i) {
+  #   original.row = poly.df[i, , drop = FALSE]
+  #   row.location.code = poly.df$locations[i]
+  # 
+  #   location.poly.data = poly.data.list[[row.location.code]]
+  #   original.replicated = original.row[rep(1, nrow(location.poly.data)), ]
+  #   location.poly.data$location.code = NULL
+  #   merged.poly.data = cbind(original.replicated, location.poly.data)
+  #   return (merged.poly.data)
+  # })
+  final.poly.df = do.call(rbind, poly.data.list)
+  
+  polys.sf = st_as_sf(final.poly.df, coords = c("longitude", "latitude"), crs = 4326, agr = "constant")
+  
+  # Get unique locations
+  unique_locations = unique(polys.sf$location.code)
+  location_sf_list = list()
+
+  # Initialize a list to store sf objects for each location
+
+  for(code in unique_locations) {
+    # Filter points for the current location
+    points_for_location = polys.sf[polys.sf$location.code == code, ]
+    
+    
+    # Get unique polygons (poly) within this location
+    unique_polys = unique(points_for_location$poly)
+    
+    # Initialize a list to store polygons for the current location
+    polygons = list()
+
+    for (poly_id in unique_polys) {
+      # Filter points for the current polygon ID within the location
+      points_for_poly = points_for_location[points_for_location$poly == poly_id, ]
+
+      # Extract coordinates for the polygon
+      # Ensuring extraction of coordinates directly from the sf object
+      coords = st_coordinates(points_for_poly)
+
+      # Construct a polygon from the coordinates
+      polygon = st_polygon(list(coords))
+      polygons[[as.character(poly_id)]] = polygon
+    }
+
+    # Combine polygons into a single MULTI-POLYGON if multiple, else keep as single POLYGON
+    if (length(polygons) > 1) {
+      geometry = st_sfc(polygons, crs = st_crs(points_for_location))
+    } else {
+      geometry = st_sfc(polygons[[1]], crs = st_crs(points_for_location))
+    }
+
+    # Create an sf object for the location with the combined geometry and color attribute
+    location_sf = st_sf(location_id = as.factor(code), geometry = geometry)
+
+    # Store the sf object in the list using location as the key
+    location_sf_list[[as.character(code)]] = location_sf
+  }
+
+  # Merge them by groups:
+
+  suppressMessages(sf_use_s2(FALSE))
+  
+  # Initialize an object to store merged sf objects
+  merged_sf = NULL
+  
+  #  Retrieve sf objects
+  sf_objects_for_group = lapply(locations, function(location_code) location_sf_list[[location_code]])
+  
+  if (length(sf_objects_for_group) > 0) {
+    # Merge geometries of the sf objects
+    # we are getting a message here saying that st_union assumes planar coordinates.
+    # In this case we are dealing with a small enough scale that I believe this can be ignored
+    # suppress the message
+  
+    merged_geometry = suppressMessages(st_union( st_geometry(sf_objects_for_group[[1]]), st_geometry(sf_objects_for_group[[2]])))
+  
+    if (length(sf_objects_for_group) > 2) {
+      for (j in 3:length(sf_objects_for_group)) {
+        merged_geometry = suppressMessages(st_union(merged_geometry, st_geometry(sf_objects_for_group[[j]])))
+      }
+    }
+  
+    if (length(merged_geometry) > 1) {
+      for (j in 1:(length(merged_geometry) - 1)) {
+        merged_geometry = suppressMessages(st_union(merged_geometry[[j]], merged_geometry[[j+1]]))
+      }
+    }
+  
+    # Create a new sf object for the merged geometry
+    merged_sf = st_sf(geometry = st_sfc(merged_geometry), crs="4326")
+  }
+  
+  # Type can either be POLYGON or MULTIPOLYGON
+  poly.type = st_geometry_type(merged_sf)
+  
+  if (poly.type == "POLYGON") {
+    
+    coordinates = st_coordinates(merged_sf)
+    return(data.frame(longitude=coordinates[,1], latitude=coordinates[,2], location.code=rep(new.location.code, nrow(coordinates))))
+    
+  } else if (poly.type == "MULTIPOLYGON") {
+    
+    geometry = st_geometry(merged_sf)
+    
+    final.poly = data.frame(longitude = numeric(), latitude = numeric(), location.code=character())
+    # Loop through each MULTIPOLYGON
+    for (poly.index in seq_len(length(geometry))) {
+      coordinates = st_coordinates(geometry[poly.index])
+      temp.df = data.frame(longitude = coordinates[,1], latitude = coordinates[,2], location.code=rep(new.location.code, nrow(coordinates)))
+      final.poly = rbind(final.poly, temp.df)
+    }
+    return (final.poly)
+    
+  } else {
+    stop(paste0("ST Geometry type ", poly.type, " not recognized, stopping"))
+  }
+  # return(merged_sf)
 }
