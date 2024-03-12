@@ -126,6 +126,24 @@ get.location.code.if.unique <- function(location.names, types, search.aliases = 
   })
 }
 
+#'@title get.code.by.alias
+#'
+#'@description Get a location code by its code alias and type
+#'
+#'@param locations A character vector of location code aliases
+#'@param types A single type or a vector of types the same length as locations
+#'
+#'@return A character vector of true location codes, or NA
+#'
+#'@export
+get.code.by.alias <- function(locations, types)
+{
+  if (length(types) != 1 || length(types) != length(locations)) {
+    stop("get.code.by.alias: types must have a length either 1 or same as locations")
+  }
+  LOCATION.MANAGER$get.by.alias(locations, types)
+}
+
 #'@title get.location.name.alias
 #'
 #'@description Get an Name alias Associated with a Location
@@ -533,4 +551,26 @@ register.sub.and.super.locations <- function(sub.locations,
     super.completely.encloses.sub = rep(super.completely.encloses.sub,length(sub.locations))
   }
   LOCATION.MANAGER$register.hierarchy(sub.locations, super.locations, super.completely.encloses.sub) 
+}
+
+#'@title combine.locations
+#'
+#'@description Will create a new location composed of sub locations; if these sub locations have polygons, it will merge these polygons 
+#'             into a unioned polygon.  We will need to register the type of this new location before this function is called.
+#'
+#'@param sub.locations A character vector of location codes we wish to combine into a new location.  Will fail on unknown codes.
+#'@param new.location.code The location code for the new location we are creating, without the type prefix
+#'@param new.location.name The location name for the new location we are creating.
+#'@param type The type of the new location which has been previously registered
+#'
+#'@export
+combine.locations <- function(sub.locations, new.location.code, new.location.name, type)
+{
+  if (length(new.location.code) != 1) {
+    stop("combine.locations: new location code must be a single value")
+  }
+  if (length(new.location.name) != 1) {
+    stop("combine.locations: new location name must be a single value")
+  }
+  LOCATION.MANAGER$combine.locations.into.new.location(sub.locations, new.location.code, new.location.name, type)
 }

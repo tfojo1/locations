@@ -1,4 +1,5 @@
 library(R6)
+library(sf) #used for merging the polygons in the case of groups value
 
 Location <- R6Class("Location",
   class = FALSE,
@@ -254,14 +255,61 @@ Location.Manager = R6Class("LocationManager",
     initialize = function () {
       #Already initialized
     },
-    inc.poly.index = function() {
+    number.polygons = function(df) {
+      # Initialize the "poly" column
+      df$poly <- rep(private$poly.index, nrow(df))
+      
+      # Variables to store the first point of the current polygon
+      current_lat <-  df$latitude[1]
+      current_long <- df$longitude[1]
+      
+      poly.reset = FALSE
+      
+      # Iterate through rows to increment "poly" when a new polygon starts
+      # Here we are counting polygons in the set; some states have multiple polygons
+      # and geom_polygon has a group= feature that allows you to group by polygon.
+      # So we are numbering the polygons here
+      for (i in 2:nrow(df)) {
+        df$poly[i] = private$poly.index
+        
+        if (poly.reset) {
+          current_lat = df$latitude[i]
+          current_long = df$longitude[i]
+        }
+        
+        if (df$latitude[i] == current_lat && df$longitude[i] == current_long && !poly.reset) {
+          #This is the end of a polygon
+          if (i != nrow(df)) {
+            # This isn't the last polygon in the data.frame, increment the poly counter
+            # If it is the last one, the polygon count will be increased at the end of the function
+            private$poly.index = private$poly.index + 1
+          }
+          poly.reset = TRUE
+        } else {
+          poly.reset = FALSE
+        }
+      }
+      
+      # Increase poly.index by one for the next polygon
       private$poly.index = private$poly.index + 1
-    },
-    get.poly.index = function() {
-      return(private$poly.index)
+      
+      return (df)
     },
     add.poly.data = function(type, dataframe) {
       private$compressed.poly.data[[type]] = memCompress(serialize(dataframe, NULL), type = "bzip2")
+    },
+    add.to.poly.data = function(type, dataframe) {
+      if (is.null(private$compressed.poly.data[[type]])) {
+        # There is no data here yet:
+        self$add.poly.data(type, dataframe)
+      } else {
+        # Uncompress what is there
+        current_poly_data_type = unserialize(memDecompress(private$compressed.poly.data[[type]], type = "bzip2"))
+        # Add the new data to what is already there
+        current_poly_data_type = rbind(current_poly_data_type, dataframe)
+        # Compress the full data and assign it back to the variable
+        private$compressed.poly.data[[type]] = memCompress(serialize(current_poly_data_type, NULL), type = "bzip2")
+      }
     },
     get.polys.for.type = function(type) {
       # Will return NA if there is no poly data for this type, or if the type doesn't exist
@@ -321,19 +369,6 @@ Location.Manager = R6Class("LocationManager",
       clean.code = private$resolve.code(location,F)
       return (!is.na(clean.code))
     },
-    get.polygon = function(location) {
-      #Return the polygon data for a valid location
-      clean.code = private$resolve.code(location,F)
-      if (is.na(clean.code)) {
-        return (NA)
-      }
-      #Get the poly data 
-      poly.data = private$location.list[[clean.code]]$return.poly.data
-      if (length(poly.data) == 1 && is.na(poly.data)) {
-        return (NA)
-      }
-      return (poly.data)
-    },
     get.names = function(locations) {
       # return A character vector of location names, with length(locations) and names=locations. If location codes are not registered (or if they were NA), 
       # the corresponding returned name is NA
@@ -383,6 +418,7 @@ Location.Manager = R6Class("LocationManager",
       }, location.names, toupper(types), SIMPLIFY = FALSE)
     },
     get.by.alias = function(aliases, types) {
+      types = toupper(types)
       #Sizes are checked a level up; either they match or types has a length of 1.
       types = if (length(types) == 1) rep(types,length(aliases)) else types
       
@@ -392,7 +428,7 @@ Location.Manager = R6Class("LocationManager",
         } else {
           return (NA)
         }
-      }, toupper(aliases), toupper(types), SIMPLIFY=T), aliases)
+      }, toupper(aliases), types, SIMPLIFY=T), aliases)
     },
     get.types = function(locations) {
       #return A character vector of location types, with length(locations) and names=locations. If location codes are not registered 
@@ -1063,7 +1099,7 @@ Location.Manager = R6Class("LocationManager",
     
       #Sizes have already been checked up one level
       #We now have three vectors of equal length
-    
+      
       if (fail.on.unknown) {
       #Check the location codes/aliases for both sub and super
         sub = unlist(lapply(sub,private$resolve.code))
@@ -1091,6 +1127,170 @@ Location.Manager = R6Class("LocationManager",
             private$location.list[[sub[i]]]$register.super.location(super[i],fully.contains[i])
           }
         }
+      }
+    },
+    merge.polygons = function(locations, new.location.code) {
+      
+      # determine if there are any locations without polygon data
+      indexes.with.polygon.data = sapply(locations, self$has.polygon)
+      if (any(!indexes.with.polygon.data)) {
+        bad.locations = paste(locations[!indexes.with.polygon.data], collapse=",")
+        stop(paste0("Locations ", bad.locations, " do not have polygon data"))
+      }
+      
+      # All locations have polygon data, collect it
+    
+      location.types = unname(self$get.types(locations))
+      unique.location.types = unique(location.types)
+      polygon.data = setNames(lapply (unique.location.types, self$get.polys.for.type), unique.location.types)
+      
+      poly.data.list = lapply (seq_along(locations), function (idx) {
+        df = polygon.data[[location.types[idx]]]
+        return(df[ df$location.code == locations[idx], ])
+      })
+      
+      names(poly.data.list) = locations
+      # poly.data.list is a list() of data.frames, indexed by the location code.
+      
+      final.poly.df = do.call(rbind, poly.data.list)
+      
+      polys.sf = st_as_sf(final.poly.df, coords = c("longitude", "latitude"), crs = 4326, agr = "constant")
+      
+      # Get unique locations
+      unique_locations = unique(polys.sf$location.code)
+      location_sf_list = list()
+    
+      # Initialize a list to store sf objects for each location
+    
+      for(code in unique_locations) {
+        # Filter points for the current location
+        points_for_location = polys.sf[polys.sf$location.code == code, ]
+        
+        
+        # Get unique polygons (poly) within this location
+        unique_polys = unique(points_for_location$poly)
+        
+        # Initialize a list to store polygons for the current location
+        polygons = list()
+    
+        for (poly_id in unique_polys) {
+          # Filter points for the current polygon ID within the location
+          points_for_poly = points_for_location[points_for_location$poly == poly_id, ]
+    
+          # Extract coordinates for the polygon
+          # Ensuring extraction of coordinates directly from the sf object
+          coords = st_coordinates(points_for_poly)
+    
+          # Construct a polygon from the coordinates
+          polygon = st_polygon(list(coords))
+          polygons[[as.character(poly_id)]] = polygon
+        }
+    
+        # Combine polygons into a single MULTI-POLYGON if multiple, else keep as single POLYGON
+        if (length(polygons) > 1) {
+          geometry = st_sfc(polygons, crs = st_crs(points_for_location))
+        } else {
+          geometry = st_sfc(polygons[[1]], crs = st_crs(points_for_location))
+        }
+    
+        # Create an sf object for the location with the combined geometry and color attribute
+        location_sf = st_sf(location_id = as.factor(code), geometry = geometry)
+    
+        # Store the sf object in the list using location as the key
+        location_sf_list[[as.character(code)]] = location_sf
+      }
+    
+      # Merge them:
+    
+      # S2 for the merging process is creating errors that are irrelevant to the merge
+      # Disable it
+      suppressMessages(sf_use_s2(FALSE))
+      
+      # Initialize an object to store merged sf objects
+      merged_sf = NULL
+      
+      #  Retrieve sf objects
+      sf_objects_for_group = lapply(locations, function(location_code) location_sf_list[[location_code]])
+      
+      if (length(sf_objects_for_group) > 0) {
+        # Merge geometries of the sf objects
+        # we are getting a message here saying that st_union assumes planar coordinates.
+        # In this case we are dealing with a small enough scale that I believe this can be ignored
+        # suppress the message
+      
+        merged_geometry = suppressMessages(st_union( st_geometry(sf_objects_for_group[[1]]), st_geometry(sf_objects_for_group[[2]])))
+      
+        if (length(sf_objects_for_group) > 2) {
+          for (j in 3:length(sf_objects_for_group)) {
+            merged_geometry = suppressMessages(st_union(merged_geometry, st_geometry(sf_objects_for_group[[j]])))
+          }
+        }
+      
+        if (length(merged_geometry) > 1) {
+          for (j in 1:(length(merged_geometry) - 1)) {
+            merged_geometry = suppressMessages(st_union(merged_geometry[[j]], merged_geometry[[j+1]]))
+          }
+        }
+      
+        # Create a new sf object for the merged geometry
+        merged_sf = st_sf(geometry = st_sfc(merged_geometry), crs="4326")
+      }
+      
+      # Type can either be POLYGON or MULTIPOLYGON
+      poly.type = st_geometry_type(merged_sf)
+      
+      if (poly.type == "POLYGON") {
+        
+        coordinates = st_coordinates(merged_sf)
+        final.poly = data.frame(longitude=coordinates[,1], latitude=coordinates[,2], location.code=rep(new.location.code, nrow(coordinates)))
+        # Uniquely number the polygons
+        return (self$number.polygons(final.poly))
+        
+      } else if (poly.type == "MULTIPOLYGON") {
+        
+        geometry = st_geometry(merged_sf)
+        
+        final.poly = data.frame(longitude = numeric(), latitude = numeric(), location.code=character())
+        # Loop through each MULTIPOLYGON
+        for (poly.index in seq_len(length(geometry))) {
+          coordinates = st_coordinates(geometry[poly.index])
+          temp.df = data.frame(longitude = coordinates[,1], latitude = coordinates[,2], location.code=rep(new.location.code, nrow(coordinates)))
+          final.poly = rbind(final.poly, temp.df)
+        }
+        # Uniquely number the polygons
+        return (self$number.polygons(final.poly))
+        
+      } else {
+        stop(paste0("ST Geometry type ", poly.type, " not recognized, stopping"))
+      }
+    },
+    combine.locations.into.new.location = function(sub.locations, new.location.code, new.location.name, type) {
+      type = toupper(type)
+      
+      if (!private$check.is.type(type)) {
+        stop(paste0("combine.locations.into.new.location: Type ", type, " is not currently registered"))
+      }
+      
+      codes = unlist(lapply(sub.locations,function(x){private$resolve.code(x)})) #Now contains the fully resolved location codes or it will fail
+      
+      # Register the new location
+      self$register(type, new.location.name, new.location.code)
+      
+      # Get the type prefix
+      type.prefix = unname(self$get.prefix(type))
+      
+      # Create the full location code
+      location.code.with.prefix = paste0(type.prefix, new.location.code)
+      
+      # Register the sub.locations as sub locations
+      self$register.hierarchy(codes, rep(location.code.with.prefix, length(codes)), TRUE)
+      
+      if (all(sapply(codes,self$has.polygon) == TRUE)) {
+        # All sub locations have polygon data, merge the polygons as well
+        
+        poly.data = self$merge.polygons(codes, location.code.with.prefix)
+        
+        self$add.to.poly.data(type, poly.data)
       }
     }
   )

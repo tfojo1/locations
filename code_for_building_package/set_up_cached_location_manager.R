@@ -403,48 +403,6 @@ register.cbsa.lat.and.long = function(LM, filename) {
   LM
 }
 
-number.polygons = function(LM, df) {
-  
-  # Initialize the "poly" column
-  df$poly <- rep(LM$get.poly.index(), nrow(df))
-  
-  # Variables to store the first point of the current polygon
-  current_lat <-  df$latitude[1]
-  current_long <- df$longitude[1]
-  
-  poly.reset = FALSE
-  
-  # Iterate through rows to increment "poly" when a new polygon starts
-  # Here we are counting polygons in the set; some states have multiple polygons
-  # and geom_polygon has a group= feature that allows you to group by polygon.
-  # So we are numbering the polygons here
-  for (i in 2:nrow(df)) {
-    df$poly[i] = LM$get.poly.index()
-    
-    if (poly.reset) {
-      current_lat = df$latitude[i]
-      current_long = df$longitude[i]
-    }
-    
-    if (df$latitude[i] == current_lat && df$longitude[i] == current_long && !poly.reset) {
-      #This is the end of a polygon
-      if (i != nrow(df)) {
-        # This isn't the last polygon in the data.frame, increment the poly counter
-        # If it is the last one, the polygon count will be increased at the end of the function
-        LM$inc.poly.index()
-      }
-      poly.reset = TRUE
-    } else {
-      poly.reset = FALSE
-    }
-  }
-  
-  # Increase poly.index by one for the next polygon
-  LM$inc.poly.index()
-  
-  return (df)
-}
-
 register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
   cbsa.type = toupper(cbsa.type)
   cbsa.prefix = toupper(cbsa.prefix)
@@ -453,7 +411,7 @@ register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(LM, poly.data))
+  poly.df = as.data.frame(LM$number.polygons(poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$CBSAFP))
@@ -489,7 +447,7 @@ register.county.poly.data = function(LM, filename, county.type) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(LM, poly.data))
+  poly.df = as.data.frame(LM$number.polygons(poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$COUNTYFP))
@@ -525,7 +483,7 @@ register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(LM, poly.data))
+  poly.df = as.data.frame(LM$number.polygons(poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$ZIPCODE))
@@ -561,7 +519,7 @@ register.state.poly.data = function(LM, filename, state.type) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(LM, poly.data))
+  poly.df = as.data.frame(LM$number.polygons(poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%02g",unique(poly.data$STATEFP))
@@ -588,23 +546,20 @@ register.state.poly.data = function(LM, filename, state.type) {
   LM
 }
 
-merge.state.phd <- function(LM, state_groups, all.county.polygons, phd.type, phd.prefix) {
+merge.state.phd <- function(LM, state_groups, state_code, all.county.polygons, phd.type, phd.prefix) {
   
   state.groups.poly.data = data.frame()
   
-  # For this to work, the first group can't be empty.
-  # Realistically speaking, no groups should be empty
+  # No groups should be empty
   if (any(sapply(state_groups,length) == 0)) {
     stop("No merging groups can be empty")
   }
-  state.fips.code = substr(state_groups[[1]][1],1,2)
-  state.abbr = unname(LM$get.by.alias(state.fips.code,"STATE"))
-  state.name = unname(LM$get.names(state.abbr))
+  state.name = unname(LM$get.names(state_code))
   
   districts = names(state_groups)
   
   for (d in districts) {
-    location.code = toupper(paste0(state.abbr,".",gsub(" ","",d)))
+    location.code = toupper(paste0(state_code,".",gsub(" ","",d)))
     location.name = paste0(state.name, " ", d," Public Health District")
     
     location.code.with.prefix = paste0(phd.prefix, location.code)
@@ -612,7 +567,7 @@ merge.state.phd <- function(LM, state_groups, all.county.polygons, phd.type, phd
     # Register this district as a location
     LM$register(phd.type, location.name, location.code)
     # Register this district as being contained within its state
-    LM$register.hierarchy(location.code.with.prefix, state.abbr, TRUE, TRUE)
+    LM$register.hierarchy(location.code.with.prefix, state_code, TRUE, TRUE)
     # Register that this location has polygons
     LM$register.polygons(location.code.with.prefix)
     
@@ -630,9 +585,8 @@ merge.state.phd <- function(LM, state_groups, all.county.polygons, phd.type, phd
       
     } else {
       # Merge the polygons into one group
-      ph.polygons = merge.polygons(state_groups[[d]], location.code.with.prefix)
-      # Give each polygon a unique number
-      ph.polygons = number.polygons(LM, ph.polygons)
+      ph.polygons = LM$merge.polygons(state_groups[[d]], location.code.with.prefix)
+      
       # Register these counties as being fully contained by the public health district
       for (i in seq_along(state_groups[[d]])) {
         LM$register.hierarchy(state_groups[[d]][i], location.code.with.prefix, TRUE, TRUE)
@@ -664,7 +618,8 @@ register.public.health.districts <- function(LM, phd.type, phd.prefix, county.ty
            "Southwestern"=c("01023","01091","01047","01129","01025","01131","01099","01035","01003","01053"),
            "Mobile"=c("01097"),
            "East Central"=c("01037","01123","01017","01001","01051","01081","01085","01101","01087","01011","01113"),
-           "Southeastern"=c("01013","01041","01109","01005","01039","01031","01045","01067","01069","01061")),
+           "Southeastern"=c("01013","01041","01109","01005","01039","01031","01045","01067","01069","01061")
+         ),
     LA = list(
            "I"=c("22109","22057","22093","22095","22089","22051","22071","22087","22075"),
            "II"=c("22077","22125","22037","22091","22121","22033","22063","22047","22005","22007"),
@@ -673,11 +628,12 @@ register.public.health.districts <- function(LM, phd.type, phd.prefix, county.ty
            "VI"=c("22043","22059","22025","22029","22079","22009"),
            "VII"=c("22017","22015","22119","22027","22013","22031","22081","22085","22069"),
            "VIII"=c("22111","22067","22123","22035","22061","22073","22083","22065","22049","22127","22021","22041","22107"),
-           "IX"=c("22105","22117","22103"))
+           "IX"=c("22105","22117","22103")
+         )
   )
   
-  for (i in seq_along(ph.data.list)) {
-    ph.poly.data = merge.state.phd(LM, ph.data.list[[i]], all.county.polygons, phd.type, phd.prefix)
+  for (state_code in names(ph.data.list)) {
+    ph.poly.data = merge.state.phd(LM, ph.data.list[[state_code]], state_code, all.county.polygons, phd.type, phd.prefix)
     all.ph.poly.data = rbind(all.ph.poly.data, ph.poly.data)
   }
   

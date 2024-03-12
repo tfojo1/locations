@@ -1,7 +1,7 @@
 # Test plot: State CBSAs
 #state2.cbsa = LOCATION.MANAGER$get.overlapping("MT", "CBSA", FALSE)
 state2.cbsa = c()
-state.counties = c(LOCATION.MANAGER$get.contained("LA", "PHD", TRUE))
+state.counties = c(LOCATION.MANAGER$get.contained("AL", "PHD", TRUE))
 # state.counties = c(LOCATION.MANAGER$get.contained("AK","COUNTY", TRUE))
 # name_data = c(names(state.cbsa),names(state2.cbsa))
 state.data = c()
