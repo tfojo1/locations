@@ -98,7 +98,7 @@ Location.Manager = R6Class("LocationManager",
   class = FALSE,
   clone = FALSE,
   active = list (
-    get.type.matrix = function() { #FIXME
+    get.type.matrix = function() {
       return(private$type.matrix)
     },
     read.location.list = function() {
@@ -112,6 +112,7 @@ Location.Manager = R6Class("LocationManager",
     types = list(),
     type.matrix = matrix(nrow = 0, ncol = 0),
     compressed.poly.data = list(),
+    poly.index = 0,
     check.is.type = function (type) {
       if (type %in% names(private$types)) {
         return (TRUE)
@@ -250,9 +251,14 @@ Location.Manager = R6Class("LocationManager",
     }
   ),
   public = list (
-    US.MAP.BZIP2 = NULL,
     initialize = function () {
       #Already initialized
+    },
+    inc.poly.index = function() {
+      private$poly.index = private$poly.index + 1
+    },
+    get.poly.index = function() {
+      return(private$poly.index)
     },
     add.poly.data = function(type, dataframe) {
       private$compressed.poly.data[[type]] = memCompress(serialize(dataframe, NULL), type = "bzip2")

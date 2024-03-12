@@ -403,10 +403,10 @@ register.cbsa.lat.and.long = function(LM, filename) {
   LM
 }
 
-number.polygons = function(df) {
+number.polygons = function(LM, df) {
   
   # Initialize the "poly" column
-  df$poly <- rep(poly.index, nrow(df))
+  df$poly <- rep(LM$get.poly.index(), nrow(df))
   
   # Variables to store the first point of the current polygon
   current_lat <-  df$latitude[1]
@@ -419,7 +419,7 @@ number.polygons = function(df) {
   # and geom_polygon has a group= feature that allows you to group by polygon.
   # So we are numbering the polygons here
   for (i in 2:nrow(df)) {
-    df$poly[i] = poly.index
+    df$poly[i] = LM$get.poly.index()
     
     if (poly.reset) {
       current_lat = df$latitude[i]
@@ -428,7 +428,11 @@ number.polygons = function(df) {
     
     if (df$latitude[i] == current_lat && df$longitude[i] == current_long && !poly.reset) {
       #This is the end of a polygon
-      poly.index <<- poly.index + 1
+      if (i != nrow(df)) {
+        # This isn't the last polygon in the data.frame, increment the poly counter
+        # If it is the last one, the polygon count will be increased at the end of the function
+        LM$inc.poly.index()
+      }
       poly.reset = TRUE
     } else {
       poly.reset = FALSE
@@ -436,7 +440,7 @@ number.polygons = function(df) {
   }
   
   # Increase poly.index by one for the next polygon
-  poly.index <<- poly.index + 1
+  LM$inc.poly.index()
   
   return (df)
 }
@@ -449,7 +453,7 @@ register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(poly.data))
+  poly.df = as.data.frame(number.polygons(LM, poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$CBSAFP))
@@ -485,7 +489,7 @@ register.county.poly.data = function(LM, filename, county.type) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(poly.data))
+  poly.df = as.data.frame(number.polygons(LM, poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$COUNTYFP))
@@ -521,7 +525,7 @@ register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(poly.data))
+  poly.df = as.data.frame(number.polygons(LM, poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%05g",unique(poly.data$ZIPCODE))
@@ -557,7 +561,7 @@ register.state.poly.data = function(LM, filename, state.type) {
   # US Census Data, low-vertex count
   poly.data = read.csv(filename, stringsAsFactors = FALSE)
   
-  poly.df = as.data.frame(number.polygons(poly.data))
+  poly.df = as.data.frame(number.polygons(LM, poly.data))
   
   #Get all the codes available from the poly data.
   poly.codes = sprintf("%02g",unique(poly.data$STATEFP))
@@ -640,7 +644,7 @@ register.public.health.districts <- function(LM, phd.type, phd.prefix, county.ty
       # Merge the polygons into one group
       ph.polygons = merge.polygons(alabama[[d]], location.code.with.prefix)
       # Give each polygon a unique number
-      ph.polygons = number.polygons(ph.polygons)
+      ph.polygons = number.polygons(LM, ph.polygons)
       # Register these counties as being fully contained by the public health district
       for (i in seq_along(alabama[[d]])) {
         LM$register.hierarchy(alabama[[d]][i], location.code.with.prefix, TRUE, TRUE)
@@ -711,9 +715,6 @@ LOCATION.MANAGER = register.type.relationships(LOCATION.MANAGER)
 
 DATA.DIR = 'data-raw'
 
-#Used by number.polygons; make this global so no polygons have the same index
-poly.index = 1
-
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
@@ -729,5 +730,4 @@ LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR,
 # LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type, zipcode.prefix) #Give each location the proper polygon data (zip)
 LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, phd.prefix, county.type)
 
-rm(poly.index)
 rm(DATA.DIR)
