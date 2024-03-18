@@ -1025,9 +1025,16 @@ Location.Manager = R6Class("LocationManager",
       }
     
       #Add Prefixes depending on type
-      #TODO Check if the prefix is already added to the location code
-      codes = sprintf("%s%s", sapply(private$types[types], function(x) x[1]), codes)
-    
+      #Check if the prefix is already added to the location code
+      #do not add if so
+      codes = unname(mapply(function(pre, name) {
+        if (substr(name, 1, nchar(pre)) == pre) {
+          return (name)
+        } else {
+          return (paste0(pre,name))
+        }
+      }, self$get.prefix(types), codes, SIMPLIFY = TRUE))
+      
       #Check that this code doesn't already exist
       if (any( codes %in% names(private$location.list) )) {
         stop("LOCATION.MANAGER: Attempting to add a code that already exists in the manager")
