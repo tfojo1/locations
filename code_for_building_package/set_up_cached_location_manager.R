@@ -403,9 +403,10 @@ register.cbsa.lat.and.long = function(LM, filename) {
   LM
 }
 
-register.cbsa.poly.data = function(LM, filename, cbsa.type, cbsa.prefix) {
+register.cbsa.poly.data = function(LM, filename, cbsa.type) {
   cbsa.type = toupper(cbsa.type)
-  cbsa.prefix = toupper(cbsa.prefix)
+  
+  cbsa.prefix = LM$get.prefix(cbsa.type)
   #For those locations that have polygon data (cbsa), set the polygon data
   # Load the cbsa polygon data
   # US Census Data, low-vertex count
@@ -475,9 +476,10 @@ register.county.poly.data = function(LM, filename, county.type) {
   LM
 }
 
-register.zip.poly.data = function(LM, filename, zipcode.type, zipcode.prefix) {
+register.zip.poly.data = function(LM, filename, zipcode.type) {
   zipcode.type = toupper(zipcode.type)
-  zipcode.prefix = toupper(zipcode.prefix)
+  
+  zipcode.prefix = LM$get.prefix(zipcode.type)
   #For those locations that have polygon data (Counties), set the polygon data
   # Load the zipcode polygon data
   # US Census Data, low-vertex count
@@ -546,7 +548,9 @@ register.state.poly.data = function(LM, filename, state.type) {
   LM
 }
 
-merge.state.phd <- function(LM, state_groups, state_code, all.county.polygons, phd.type, phd.prefix) {
+merge.state.phd <- function(LM, state_groups, state_code, all.county.polygons, phd.type) {
+  
+  phd.prefix = LM$get.prefix(phd.type)
   
   state.groups.poly.data = data.frame()
   
@@ -597,12 +601,11 @@ merge.state.phd <- function(LM, state_groups, state_code, all.county.polygons, p
   return (state.groups.poly.data)
 }
 
-register.public.health.districts <- function(LM, phd.type, phd.prefix, county.type) {
+register.public.health.districts <- function(LM, phd.type, county.type) {
   # Public health districts are made up of counties
   
   phd.type = toupper(phd.type)
   county.type = toupper(county.type)
-  phd.prefix = toupper(phd.prefix)
   
   # Retrieve all county polygons
   all.county.polygons = LM$get.polys.for.type(county.type)
@@ -633,7 +636,7 @@ register.public.health.districts <- function(LM, phd.type, phd.prefix, county.ty
   )
   
   for (state_code in names(ph.data.list)) {
-    ph.poly.data = merge.state.phd(LM, ph.data.list[[state_code]], state_code, all.county.polygons, phd.type, phd.prefix)
+    ph.poly.data = merge.state.phd(LM, ph.data.list[[state_code]], state_code, all.county.polygons, phd.type)
     all.ph.poly.data = rbind(all.ph.poly.data, ph.poly.data)
   }
   
@@ -708,8 +711,8 @@ LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-c
 LOCATION.MANAGER = register.fips.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_counties_national.txt")) #Set the latitude and longitude for locations, provided we have them
 LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "state_geom_data.csv"), state.type) #Give each location the proper polygon data (states)
 LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv"), county.type) #Give each location the proper polygon data (counties)
-LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type, cbsa.prefix) #Give each location the proper polygon data (cbsa)
-# LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type, zipcode.prefix) #Give each location the proper polygon data (zip)
-LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, phd.prefix, county.type)
+LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type) #Give each location the proper polygon data (cbsa)
+# LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type) #Give each location the proper polygon data (zip)
+LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, county.type)
 
 rm(DATA.DIR)
