@@ -204,10 +204,10 @@ register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = 
   nsduh.typename = toupper(nsduh.typename)
   
   if (!file.exists(county.filename)) {
-    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", county.filename))
+    stop(paste0("LOCATION.MANAGER: Cannot find the nsduh county file with filename ", county.filename))
   }
   if (!file.exists(tract.filename)) {
-    stop(paste0("LOCATION.MANAGER: Cannot find the cbsa file with filename ", tract.filename))
+    stop(paste0("LOCATION.MANAGER: Cannot find the nsduh census tract file with filename ", tract.filename))
   }
   nsduh.county.data = read.csv(file = county.filename)
   
@@ -273,21 +273,46 @@ register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = 
       code.ch = sprintf("%02g",code)
       state = known.states[[code.ch]]
       
+      if (state == "CA") {
+        region.code = "CA.11"
+        region.name = "California Region 11 (Los Angeles)"
+        # Adding in CA.11, Region 11 for the whole of LA county
+        LM$register("nsduh",region.name, region.code)
+        # Register it as being completely contained by the state of California
+        LM$register.hierarchy(region.code,"CA", TRUE, TRUE)
+        # Register it as containing LA County (06037) completely
+        LM$register.hierarchy("06037", region.code, TRUE, TRUE)
+      }
+      
       # Get all the unique nsduh region names for this state
       region.names = unique(state.data$SBST18N)
       # for each unique region name
       counties.per.region = sapply(unique(state.data$SBST18N), function(reg.name) { state.data[state.data$SBST18N == reg.name, "county"] })
       unlist.counties.per.region = unlist(counties.per.region)
       for (name in region.names) {
-        # We can guarantee that the [1] element exists through the previous
-        # code
-        numeric.code = state.data[state.data$SBST18N == name, "SBST18"][1]
+        
+        # California Exceptions
+        # California's codes are based on their NSDUH region names, where all other
+        # state codes are based on the SBST18 column value in the csv file
+        if (state == "CA") {
+          if (substr(name,1,6) == "LA SPA") { #Skip the LA SPA NSDUH locations
+                                              #as they are subsumed into Region 11
+            next
+          }
+          numeric.code = strsplit(name," ")[[1]][2] # Pull the region code from the name for California NSDUH regions
+                                                    # The format is "Region <code>".  There are often values following the
+                                                    # code.  These are ignored.
+        } else {
+          # We can guarantee that the [1] element exists through the previous
+          # code
+          numeric.code = as.character(state.data[state.data$SBST18N == name, "SBST18"][1])
+        }
         
         # Add this location to the location manager
         # Create a name for this location
         region.name = sprintf("%s %s", LM$get.names(state), name)
         # Create a code for this location
-        region.code = sprintf("%s.%g", state, numeric.code)
+        region.code = sprintf("%s.%s", state, numeric.code)
         LM$register("nsduh", region.name, region.code)
         
         #Register this region as contained by their states
@@ -299,7 +324,7 @@ register.nsduh = function(LM, county.filename, tract.filename, nsduh.typename = 
         claimed.counties = counties.per.region[[name]]
         full.county.fips.codes = sprintf("%s%03g",code.ch, claimed.counties)
         
-        for (county.code.index in 1:length(claimed.counties)) {
+        for (county.code.index in seq_along(claimed.counties)) {
           # Check if there is more than one instance of this county.code
           # across all the regions in this state
           if ( sum(unlist.counties.per.region == claimed.counties[county.code.index]) <= 1) {
