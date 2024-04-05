@@ -173,11 +173,9 @@ Location.Manager = R6Class("LocationManager",
       gsub("(^[[:space:]]+|[[:space:]]+$)", "", x)
     },
     normalize.dashes = function(x) {
-      x <- gsub("\u2013", "-", x)  # Replace En Dash
-      x <- gsub("\u2014", "-", x)  # Replace Em Dash
-      x <- gsub("\u2010", "-", x)  # Replace Hyphen
-      x <- gsub("\u2011", "-", x)  # Replace Non-Breaking Hyphen
-      return(x)
+      # Replace En Dash, Replace Em Dash
+      # Replace Hyphen,  Replace Non-Breaking Hyphen
+      return(gsub("[\u2010\u2011\u2013\u2014]", "-", x, perl=TRUE))
     },
     normalize.names = function(val) {
       vals = private$normalize.dashes(val)
