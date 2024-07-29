@@ -15,10 +15,19 @@ source("R/LOCATIONS_location_manager.R")
 source("R/LOCATIONS_impl.R")
 source("R/LOCATIONS_plot.R")
 
+library("stringi")
+
 remove.non.locale = function(string_list) {
   # Go through each string, removing non locale strings.  Convert to UTF-8
-  return (iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
+  # return (iconv(gsub("[^\x01-\x7F]+", "-", string_list), from = "ISO-8859-1", to = "UTF-8"))
+  sapply(string_list, function(s) {
+    s <- stri_trans_nfc(s)
+    s <- stri_replace_all_regex(s, "[^\x01-\x7F]+", "-")
+    s <- stri_enc_toascii(s)
+    return (s)
+  })
 }
+
 
 register.united.states = function(LM) {
   # We register the country type; empty prefix.
