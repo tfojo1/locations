@@ -1,38 +1,36 @@
 fipscode,name,state
-"02063","Chugach Census Area","AK"
-"02066","Copper River Census Area","AK"
-"09110","Capital Planning Region","CT"
-"09120","Greater Bridgeport Planning Region","CT"
-"09130","Lower Connecticut River Valley Planning Region","CT"
-"09140","Naugatuck Valley Planning Region","CT"
-"09150","Northeastern Connecticut Planning Region","CT"
-"09160","Northwest Hills Planning Region","CT"
-"09170","South Central Connecticut Planning Region","CT"
-"09180","Southeastern Connecticut Planning Region","CT"
-"09190","Western Connecticut Planning Region","CT"
-"02270","Wade-Hampton Census Area","AK"
-"46113","Shannon County","SD"
-"51515","Bedford City","VA"
-"02201","Ketchikan Census Area","AK"
-"51560","Clifton Forge City","VA"
-"02280","Wrangell-Petersburg Census Area","AK"
-"02231","Skagway-Yakutat-Angoon Census Area","AK"
-"02232","Skagway-Hoonah-Angoon Census Area","AK"
-"12025","Dade County","FL"
-"30113","Yellowstone County","MT"
-"51780","South Boston","VA"
-"02010","Aleutian Islands","AK"
-"02030","Angoon","AK"
-"02040","Barrow","AK"
-"02080","Cordova-Mc Carthy","AK"
-"02120","Kenai-Cook Inlet","AK"
-"02140","Kobuk","AK"
-"02160","Kuskokwim","AK"
-"02190","Outer Ketchikan","AK"
-"02200","Prince Of Wales","AK"
-"02210","Seward","AK"
-"02250","Upper Yukon","AK"
-"02260","Valdez-Chitina-Whittier","AK"
-"29193","Ste Genevieve","MO"
-"46131","Washabaugh","SD"
-"51123","Nansemond","VA"
+02063,Chugach Census Area,AK
+02066,Copper River Census Area,AK
+09110,Capital Planning Region,CT
+09120,Greater Bridgeport Planning Region,CT
+09130,Lower Connecticut River Valley Planning Region,CT
+09140,Naugatuck Valley Planning Region,CT
+09150,Northeastern Connecticut Planning Region,CT
+09160,Northwest Hills Planning Region,CT
+09170,South Central Connecticut Planning Region,CT
+09180,Southeastern Connecticut Planning Region,CT
+09190,Western Connecticut Planning Region,CT
+02270,Wade-Hampton Census Area,AK
+46113,Shannon County,SD
+51515,Bedford City,VA
+02201,Ketchikan Census Area,AK
+51560,Clifton Forge City,VA
+02280,Wrangell-Petersburg Census Area,AK
+02231,Skagway-Yakutat-Angoon Census Area,AK
+02232,Skagway-Hoonah-Angoon Census Area,AK
+30113,Yellowstone County,MT
+51780,South Boston,VA
+02010,Aleutian Islands,AK
+02030,Angoon,AK
+02040,Barrow,AK
+02080,Cordova-Mc Carthy,AK
+02120,Kenai-Cook Inlet,AK
+02140,Kobuk,AK
+02160,Kuskokwim,AK
+02190,Outer Ketchikan,AK
+02200,Prince Of Wales,AK
+02210,Seward,AK
+02250,Upper Yukon,AK
+02260,Valdez-Chitina-Whittier,AK
+46131,Washabaugh,SD
+51123,Nansemond,VA

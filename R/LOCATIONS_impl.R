@@ -157,15 +157,47 @@ Location.Manager = R6Class("LocationManager",
       #Capitalize
       code <- toupper(code)
       
-      #could this function be vectorized?
-      
       if (!code %in% names(private$location.list)) {
         #The code is not in the list, check the code alias list.
-        if (fail.on.unknown) {
-          stop(paste0("LOCATION.MANAGER: The location code used (",code,") cannot be recognized, stopping"))
-        } else {
-          code <- NA
+        #Collect all the known type names
+        types = names(private$alias.codes)
+        alias.target = character() # A vector list of potential aliases
+        
+        #For each type, check if an alias for this code exists
+        for (type in types) {
+          if (code %in% names(private$alias.codes[[type]])) {
+            #Store results in alias.target, for later comparison
+            alias.target <- c(alias.target,private$alias.codes[[type]][[code]])
+            
+            #Break; assuming one alias per code.  This fails the
+            #unique within types for alias requirement, BUG 
+            #TODO
+          }
         }
+        
+        result.length = length(alias.target)
+        
+        if (result.length != 0) {
+          # We found at least something
+          if (result.length == 1) {
+            # We found exactly one thing
+            code <- alias.target
+          } else {
+            # We found more than one entry for an alias across types
+            # This currently doesn't work, as it would require us to
+            # have the potential type of the code beforehand.  Will
+            # have to consider workarounds.  Code aliases are across all types
+            stop(paste0("LOCATION.MANAGER: BUG - Currently code aliases are unique across all types ",alias.target))
+          }
+        } else {
+          # Our alias search came up empty
+          if (fail.on.unknown) {
+            stop(paste0("LOCATION.MANAGER: The location code used (",code,") cannot be recognized, stopping"))
+          } else {
+            code <- NA
+          }
+        }
+        
       }
       code
     },
@@ -1083,6 +1115,9 @@ Location.Manager = R6Class("LocationManager",
       #Assign the aliases
       private$alias.codes[[location.type]][code.aliases] = code
     },
+    # debug.resolve = function(code) { #Used the check the resolution externally
+    #   print(private$resolve.code(code, F))
+    # },
     register.lat.long = function(code, lat, long) {
       # We have one location value, and valid lat and long
       valid.code <- private$resolve.code(code, F)

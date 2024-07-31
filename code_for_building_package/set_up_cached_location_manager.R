@@ -153,6 +153,15 @@ register.additional.fips = function(LM, filename, fips.typename) {
   # Register them to their states
   LM$register.hierarchy(codes,states,rep(TRUE,length(codes)),T)
   
+  # We have two cases of fips codes that were renumbered.  We wish to add
+  # code aliases for both of these.  They are:
+  
+  # - Dade County, FL (12025) renamed/renumbered to Miami-Dade County (12086)
+  # - Ste. Genevieve, MO (29193) renumbered to 29186
+  
+  LM$register.code.aliases("12086","12025")
+  LM$register.code.aliases("29186","29193")
+  
   LM
 }
 
@@ -194,9 +203,10 @@ register.zipcodes = function(LM, filename, fips.typename = "county", zip.typenam
   #No prefix
   LM$register(rep(zip.typename, length(zip.codes)), zip.names, zip.codes)
   #Now register the raw zipcodes as aliases:
-  for ( i in seq_along(zip.codes) ) {
-    LM$register.code.aliases(unique.zip.codes[i], zip.codes[i])
-  }
+  # Maybe hold off on this
+  # for ( i in seq_along(zip.codes) ) {
+  #   LM$register.code.aliases(unique.zip.codes[i], zip.codes[i])
+  # }
   
   #Register the zip code as completely contained by the fips code. If any result is NA, skip
   #With Prefix
