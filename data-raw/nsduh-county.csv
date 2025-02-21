@@ -1,829 +1,829 @@
-"SBST18N","state","AGGFLG18","SBSTA18N","SBST18","SBSTAG18","county","SBSTFG18"
-"Region 3",1,0,,3,,1,1
-"Region 4",1,0,,4,,3,1
-"Region 4",1,0,,4,,5,1
-"Region 2",1,0,,2,,7,1
-"Region 2",1,0,,2,,9,1
-"Region 3",1,0,,3,,11,1
-"Region 4",1,0,,4,,13,1
-"Region 2",1,0,,2,,15,1
-"Region 3",1,0,,3,,17,1
-"Region 1",1,0,,1,,19,1
-"Region 2",1,0,,2,,21,1
-"Region 3",1,0,,3,,23,1
-"Region 4",1,0,,4,,25,1
-"Region 2",1,0,,2,,27,1
-"Region 2",1,0,,2,,29,1
-"Region 4",1,0,,4,,31,1
-"Region 1",1,0,,1,,33,1
-"Region 4",1,0,,4,,35,1
-"Region 2",1,0,,2,,37,1
-"Region 4",1,0,,4,,39,1
-"Region 4",1,0,,4,,41,1
-"Region 1",1,0,,1,,43,1
-"Region 4",1,0,,4,,45,1
-"Region 3",1,0,,3,,47,1
-"Region 1",1,0,,1,,49,1
-"Region 3",1,0,,3,,51,1
-"Region 4",1,0,,4,,53,1
-"Region 1",1,0,,1,,55,1
-"Region 1",1,0,,1,,57,1
-"Region 1",1,0,,1,,59,1
-"Region 4",1,0,,4,,61,1
-"Region 3",1,0,,3,,63,1
-"Region 3",1,0,,3,,65,1
-"Region 4",1,0,,4,,67,1
-"Region 4",1,0,,4,,69,1
-"Region 1",1,0,,1,,71,1
-"Region 2",1,0,,2,,73,1
-"Region 1",1,0,,1,,75,1
-"Region 1",1,0,,1,,77,1
-"Region 1",1,0,,1,,79,1
-"Region 3",1,0,,3,,81,1
-"Region 1",1,0,,1,,83,1
-"Region 3",1,0,,3,,85,1
-"Region 3",1,0,,3,,87,1
-"Region 1",1,0,,1,,89,1
-"Region 3",1,0,,3,,91,1
-"Region 1",1,0,,1,,93,1
-"Region 1",1,0,,1,,95,1
-"Region 4",1,0,,4,,97,1
-"Region 4",1,0,,4,,99,1
-"Region 3",1,0,,3,,101,1
-"Region 1",1,0,,1,,103,1
-"Region 3",1,0,,3,,105,1
-"Region 2",1,0,,2,,107,1
-"Region 3",1,0,,3,,109,1
-"Region 2",1,0,,2,,111,1
-"Region 3",1,0,,3,,113,1
-"Region 2",1,0,,2,,115,1
-"Region 2",1,0,,2,,117,1
-"Region 3",1,0,,3,,119,1
-"Region 2",1,0,,2,,121,1
-"Region 3",1,0,,3,,123,1
-"Region 2",1,0,,2,,125,1
-"Region 1",1,0,,1,,127,1
-"Region 4",1,0,,4,,129,1
-"Region 3",1,0,,3,,131,1
-"Region 1",1,0,,1,,133,1
-"South Central",2,0,,3,,13,1
-"South Central",2,0,,3,,16,1
-"Anchorage",2,0,,1,,20,1
-"Northern",2,0,,2,,50,1
-"South Central",2,0,,3,,60,1
-"Northern",2,0,,2,,68,1
-"South Central",2,0,,3,,70,1
-"Northern",2,0,,2,,90,1
-"Southeast",2,0,,4,,100,1
-"Southeast",2,0,,4,,105,1
-"Southeast",2,0,,4,,110,1
-"South Central",2,0,,3,,122,1
-"Southeast",2,0,,4,,130,1
-"South Central",2,0,,3,,150,1
-"South Central",2,0,,3,,164,1
-"South Central",2,0,,3,,170,1
-"Northern",2,0,,2,,180,1
-"Northern",2,0,,2,,185,1
-"Northern",2,0,,2,,188,1
-"Southeast",2,0,,4,,195,1
-"Southeast",2,0,,4,,198,1
-"Southeast",2,0,,4,,220,1
-"Southeast",2,0,,4,,230,1
-"Northern",2,0,,2,,240,1
-"South Central",2,0,,3,,261,1
-"Northern",2,0,,2,,270,1
-"Southeast",2,0,,4,,275,1
-"Southeast",2,0,,4,,282,1
-"Northern",2,0,,2,,290,1
-"North",4,0,"North",2,2,1,1
-"South B",4,1,"South",4,3,3,1
-"North",4,0,"North",2,2,5,1
-"North",4,0,"North",2,2,7,1
-"South B",4,1,"South",4,3,9,1
-"South B",4,1,"South",4,3,11,1
-"South B",4,1,"South",4,3,12,1
-"Central",4,0,"Central",1,1,13,1
-"North",4,0,"North",2,2,15,1
-"North",4,0,"North",2,2,17,1
-"South A",4,1,"South",3,3,19,1
-"South B",4,1,"South",4,3,21,1
-"South B",4,1,"South",4,3,23,1
-"North",4,0,"North",2,2,25,1
-"South B",4,1,"South",4,3,27,1
-"Catchment Area 6",5,0,,6,,1,1
-"Catchment Area 6",5,0,,6,,3,1
-"Catchment Area 2",5,0,,2,,5,1
-"Catchment Area 1",5,0,,1,,7,1
-"Catchment Area 2",5,0,,2,,9,1
-"Catchment Area 6",5,0,,6,,11,1
-"Catchment Area 7",5,0,,7,,13,1
-"Catchment Area 1",5,0,,1,,15,1
-"Catchment Area 6",5,0,,6,,17,1
-"Catchment Area 5",5,0,,5,,19,1
-"Catchment Area 3",5,0,,3,,21,1
-"Catchment Area 2",5,0,,2,,23,1
-"Catchment Area 6",5,0,,6,,25,1
-"Catchment Area 7",5,0,,7,,27,1
-"Catchment Area 5",5,0,,5,,29,1
-"Catchment Area 3",5,0,,3,,31,1
-"Catchment Area 4",5,0,,4,,33,1
-"Catchment Area 3",5,0,,3,,35,1
-"Catchment Area 3",5,0,,3,,37,1
-"Catchment Area 7",5,0,,7,,39,1
-"Catchment Area 6",5,0,,6,,41,1
-"Catchment Area 6",5,0,,6,,43,1
-"Catchment Area 5",5,0,,5,,45,1
-"Catchment Area 4",5,0,,4,,47,1
-"Catchment Area 2",5,0,,2,,49,1
-"Catchment Area 5",5,0,,5,,51,1
-"Catchment Area 6",5,0,,6,,53,1
-"Catchment Area 3",5,0,,3,,55,1
-"Catchment Area 7",5,0,,7,,57,1
-"Catchment Area 5",5,0,,5,,59,1
-"Catchment Area 7",5,0,,7,,61,1
-"Catchment Area 2",5,0,,2,,63,1
-"Catchment Area 2",5,0,,2,,65,1
-"Catchment Area 2",5,0,,2,,67,1
-"Catchment Area 6",5,0,,6,,69,1
-"Catchment Area 5",5,0,,5,,71,1
-"Catchment Area 7",5,0,,7,,73,1
-"Catchment Area 3",5,0,,3,,75,1
-"Catchment Area 3",5,0,,3,,77,1
-"Catchment Area 6",5,0,,6,,79,1
-"Catchment Area 7",5,0,,7,,81,1
-"Catchment Area 4",5,0,,4,,83,1
-"Catchment Area 8",5,0,,8,,85,1
-"Catchment Area 1",5,0,,1,,87,1
-"Catchment Area 2",5,0,,2,,89,1
-"Catchment Area 7",5,0,,7,,91,1
-"Catchment Area 3",5,0,,3,,93,1
-"Catchment Area 3",5,0,,3,,95,1
-"Catchment Area 5",5,0,,5,,97,1
-"Catchment Area 7",5,0,,7,,99,1
-"Catchment Area 2",5,0,,2,,101,1
-"Catchment Area 7",5,0,,7,,103,1
-"Catchment Area 5",5,0,,5,,105,1
-"Catchment Area 3",5,0,,3,,107,1
-"Catchment Area 5",5,0,,5,,109,1
-"Catchment Area 3",5,0,,3,,111,1
-"Catchment Area 4",5,0,,4,,113,1
-"Catchment Area 5",5,0,,5,,115,1
-"Catchment Area 8",5,0,,8,,117,1
-"Catchment Area 8",5,0,,8,,119,1
-"Catchment Area 3",5,0,,3,,121,1
-"Catchment Area 3",5,0,,3,,123,1
-"Catchment Area 8",5,0,,8,,125,1
-"Catchment Area 4",5,0,,4,,127,1
-"Catchment Area 2",5,0,,2,,129,1
-"Catchment Area 4",5,0,,4,,131,1
-"Catchment Area 7",5,0,,7,,133,1
-"Catchment Area 2",5,0,,2,,135,1
-"Catchment Area 2",5,0,,2,,137,1
-"Catchment Area 7",5,0,,7,,139,1
-"Catchment Area 2",5,0,,2,,141,1
-"Catchment Area 1",5,0,,1,,143,1
-"Catchment Area 2",5,0,,2,,145,1
-"Catchment Area 2",5,0,,2,,147,1
-"Catchment Area 5",5,0,,5,,149,1
-"Region 3",8,0,,3,,1,1
-"Region 4",8,0,,4,,3,1
-"Region 3",8,0,,3,,5,1
-"Region 1",8,0,,1,,7,1
-"Region 4",8,0,,4,,9,1
-"Region 4",8,0,,4,,11,1
-"Region 6",8,0,,6,,13,1
-"Region 2",8,0,,2,,14,1
-"Region 4",8,0,,4,,15,1
-"Region 2",8,0,,2,,17,1
-"Region 6",8,0,,6,,19,1
-"Region 4",8,0,,4,,21,1
-"Region 4",8,0,,4,,23,1
-"Region 4",8,0,,4,,25,1
-"Region 4",8,0,,4,,27,1
-"Region 1",8,0,,1,,29,1
-"Region 5",8,0,,5,,31,1
-"Region 1",8,0,,1,,33,1
-"Region 3",8,0,,3,,35,1
-"Region 1",8,0,,1,,37,1
-"Region 3",8,0,,3,,39,1
-"Region 7",8,0,,7,,41,1
-"Region 4",8,0,,4,,43,1
-"Region 1",8,0,,1,,45,1
-"Region 6",8,0,,6,,47,1
-"Region 1",8,0,,1,,49,1
-"Region 1",8,0,,1,,51,1
-"Region 1",8,0,,1,,53,1
-"Region 4",8,0,,4,,55,1
-"Region 1",8,0,,1,,57,1
-"Region 6",8,0,,6,,59,1
-"Region 4",8,0,,4,,61,1
-"Region 2",8,0,,2,,63,1
-"Region 4",8,0,,4,,65,1
-"Region 1",8,0,,1,,67,1
-"Region 1",8,0,,1,,69,1
-"Region 4",8,0,,4,,71,1
-"Region 2",8,0,,2,,73,1
-"Region 2",8,0,,2,,75,1
-"Region 1",8,0,,1,,77,1
-"Region 4",8,0,,4,,79,1
-"Region 1",8,0,,1,,81,1
-"Region 1",8,0,,1,,83,1
-"Region 1",8,0,,1,,85,1
-"Region 2",8,0,,2,,87,1
-"Region 4",8,0,,4,,89,1
-"Region 1",8,0,,1,,91,1
-"Region 7",8,0,,7,,93,1
-"Region 2",8,0,,2,,95,1
-"Region 1",8,0,,1,,97,1
-"Region 4",8,0,,4,,99,1
-"Region 4",8,0,,4,,101,1
-"Region 1",8,0,,1,,103,1
-"Region 4",8,0,,4,,105,1
-"Region 1",8,0,,1,,107,1
-"Region 4",8,0,,4,,109,1
-"Region 1",8,0,,1,,111,1
-"Region 1",8,0,,1,,113,1
-"Region 2",8,0,,2,,115,1
-"Region 1",8,0,,1,,117,1
-"Region 7",8,0,,7,,119,1
-"Region 2",8,0,,2,,121,1
-"Region 2",8,0,,2,,123,1
-"Region 2",8,0,,2,,125,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,1,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,3,1
-"Circuit 14",12,1,"Northwest",6,5,5,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,7,1
-"Circuit 18",12,1,"Central I",8,2,9,1
-"Broward (Circuit 17)",12,0,"Broward (Circuit 17)",1,1,11,1
-"Circuit 14",12,1,"Northwest",6,5,13,1
-"Circuit 20",12,1,"Central II",11,3,15,1
-"Circuit 5",12,1,"Northeast",13,4,17,1
-"Circuit 4",12,1,"Northeast",12,4,19,1
-"Circuit 20",12,1,"Central II",11,3,21,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,23,1
-"Circuit 12",12,1,"Central II",4,3,27,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,29,1
-"Circuit 4",12,1,"Northeast",12,4,31,1
-"Circuit 1",12,1,"Northwest",2,5,33,1
-"Circuit 7",12,1,"Northeast",15,4,35,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,37,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,39,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,41,1
-"Circuit 20",12,1,"Central II",11,3,43,1
-"Circuit 14",12,1,"Northwest",6,5,45,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,47,1
-"Circuit 10",12,1,"Central II",3,3,49,1
-"Circuit 20",12,1,"Central II",11,3,51,1
-"Circuit 5",12,1,"Northeast",13,4,53,1
-"Circuit 10",12,1,"Central II",3,3,55,1
-"Circuit 13 (Hillsborough)",12,1,"Central II",5,3,57,1
-"Circuit 14",12,1,"Northwest",6,5,59,1
-"Circuit 19",12,1,"Southeast",9,7,61,1
-"Circuit 14",12,1,"Northwest",6,5,63,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,65,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,67,1
-"Circuit 5",12,1,"Northeast",13,4,69,1
-"Circuit 20",12,1,"Central II",11,3,71,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,73,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,75,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,77,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,79,1
-"Circuit 12",12,1,"Central II",4,3,81,1
-"Circuit 5",12,1,"Northeast",13,4,83,1
-"Circuit 19",12,1,"Southeast",9,7,85,1
-"South (Circuits 11 and 16)",12,0,"South (Circuits 11 and 16)",18,6,86,1
-"South (Circuits 11 and 16)",12,0,"South (Circuits 11 and 16)",18,6,87,1
-"Circuit 4",12,1,"Northeast",12,4,89,1
-"Circuit 1",12,1,"Northwest",2,5,91,1
-"Circuit 19",12,1,"Southeast",9,7,93,1
-"Circuit 9",12,1,"Central I",17,2,95,1
-"Circuit 9",12,1,"Central I",17,2,97,1
-"Circuit 15 (Palm Beach)",12,1,"Southeast",7,7,99,1
-"Circuit 6",12,1,"Central II",14,3,101,1
-"Circuit 6",12,1,"Central II",14,3,103,1
-"Circuit 10",12,1,"Central II",3,3,105,1
-"Circuit 7",12,1,"Northeast",15,4,107,1
-"Circuit 7",12,1,"Northeast",15,4,109,1
-"Circuit 19",12,1,"Southeast",9,7,111,1
-"Circuit 1",12,1,"Northwest",2,5,113,1
-"Circuit 12",12,1,"Central II",4,3,115,1
-"Circuit 18",12,1,"Central I",8,2,117,1
-"Circuit 5",12,1,"Northeast",13,4,119,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,121,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,123,1
-"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,"Northeast",16,4,125,1
-"Circuit 7",12,1,"Northeast",15,4,127,1
-"Circuit 2 plus Madison and Taylor",12,1,"Northwest",10,5,129,1
-"Circuit 1",12,1,"Northwest",2,5,131,1
-"Circuit 14",12,1,"Northwest",6,5,133,1
-"Region 5",13,0,,5,,1,1
-"Region 5",13,0,,5,,3,1
-"Region 5",13,0,,5,,5,1
-"Region 4",13,0,,4,,7,1
-"Region 2",13,0,,2,,9,1
-"Region 1",13,0,,1,,11,1
-"Region 2",13,0,,2,,13,1
-"Region 1",13,0,,1,,15,1
-"Region 4",13,0,,4,,17,1
-"Region 4",13,0,,4,,19,1
-"Region 2",13,0,,2,,21,1
-"Region 5",13,0,,5,,23,1
-"Region 5",13,0,,5,,25,1
-"Region 4",13,0,,4,,27,1
-"Region 5",13,0,,5,,29,1
-"Region 5",13,0,,5,,31,1
-"Region 2",13,0,,2,,33,1
-"Region 6",13,0,,6,,35,1
-"Region 4",13,0,,4,,37,1
-"Region 5",13,0,,5,,39,1
-"Region 5",13,0,,5,,43,1
-"Region 6",13,0,,6,,45,1
-"Region 1",13,0,,1,,47,1
-"Region 5",13,0,,5,,49,1
-"Region 5",13,0,,5,,51,1
-"Region 6",13,0,,6,,53,1
-"Region 1",13,0,,1,,55,1
-"Region 1",13,0,,1,,57,1
-"Region 2",13,0,,2,,59,1
-"Region 6",13,0,,6,,61,1
-"Region 3",13,0,,3,,63,1
-"Region 5",13,0,,5,,65,1
-"Region 1",13,0,,1,,67,1
-"Region 5",13,0,,5,,69,1
-"Region 4",13,0,,4,,71,1
-"Region 2",13,0,,2,,73,1
-"Region 4",13,0,,4,,75,1
-"Region 6",13,0,,6,,77,1
-"Region 6",13,0,,6,,79,1
-"Region 6",13,0,,6,,81,1
-"Region 1",13,0,,1,,83,1
-"Region 1",13,0,,1,,85,1
-"Region 4",13,0,,4,,87,1
-"Region 3",13,0,,3,,89,1
-"Region 5",13,0,,5,,91,1
-"Region 6",13,0,,6,,93,1
-"Region 4",13,0,,4,,95,1
-"Region 1",13,0,,1,,97,1
-"Region 4",13,0,,4,,99,1
-"Region 4",13,0,,4,,101,1
-"Region 5",13,0,,5,,103,1
-"Region 2",13,0,,2,,105,1
-"Region 2",13,0,,2,,107,1
-"Region 5",13,0,,5,,109,1
-"Region 1",13,0,,1,,111,1
-"Region 6",13,0,,6,,113,1
-"Region 1",13,0,,1,,115,1
-"Region 1",13,0,,1,,117,1
-"Region 1",13,0,,1,,119,1
-"Region 3",13,0,,3,,121,1
-"Region 1",13,0,,1,,123,1
-"Region 2",13,0,,2,,125,1
-"Region 5",13,0,,5,,127,1
-"Region 1",13,0,,1,,129,1
-"Region 4",13,0,,4,,131,1
-"Region 2",13,0,,2,,133,1
-"Region 3",13,0,,3,,135,1
-"Region 1",13,0,,1,,137,1
-"Region 1",13,0,,1,,139,1
-"Region 2",13,0,,2,,141,1
-"Region 1",13,0,,1,,143,1
-"Region 6",13,0,,6,,145,1
-"Region 1",13,0,,1,,147,1
-"Region 6",13,0,,6,,149,1
-"Region 6",13,0,,6,,151,1
-"Region 6",13,0,,6,,153,1
-"Region 4",13,0,,4,,155,1
-"Region 2",13,0,,2,,157,1
-"Region 2",13,0,,2,,159,1
-"Region 5",13,0,,5,,161,1
-"Region 2",13,0,,2,,163,1
-"Region 2",13,0,,2,,165,1
-"Region 5",13,0,,5,,167,1
-"Region 2",13,0,,2,,169,1
-"Region 6",13,0,,6,,171,1
-"Region 4",13,0,,4,,173,1
-"Region 5",13,0,,5,,175,1
-"Region 4",13,0,,4,,177,1
-"Region 5",13,0,,5,,179,1
-"Region 2",13,0,,2,,181,1
-"Region 5",13,0,,5,,183,1
-"Region 4",13,0,,4,,185,1
-"Region 1",13,0,,1,,187,1
-"Region 2",13,0,,2,,189,1
-"Region 5",13,0,,5,,191,1
-"Region 6",13,0,,6,,193,1
-"Region 2",13,0,,2,,195,1
-"Region 6",13,0,,6,,197,1
-"Region 6",13,0,,6,,199,1
-"Region 4",13,0,,4,,201,1
-"Region 4",13,0,,4,,205,1
-"Region 2",13,0,,2,,207,1
-"Region 5",13,0,,5,,209,1
-"Region 2",13,0,,2,,211,1
-"Region 1",13,0,,1,,213,1
-"Region 6",13,0,,6,,215,1
-"Region 3",13,0,,3,,217,1
-"Region 2",13,0,,2,,219,1
-"Region 2",13,0,,2,,221,1
-"Region 1",13,0,,1,,223,1
-"Region 6",13,0,,6,,225,1
-"Region 1",13,0,,1,,227,1
-"Region 5",13,0,,5,,229,1
-"Region 6",13,0,,6,,231,1
-"Region 1",13,0,,1,,233,1
-"Region 5",13,0,,5,,235,1
-"Region 2",13,0,,2,,237,1
-"Region 6",13,0,,6,,239,1
-"Region 1",13,0,,1,,241,1
-"Region 6",13,0,,6,,243,1
-"Region 2",13,0,,2,,245,1
-"Region 3",13,0,,3,,247,1
-"Region 6",13,0,,6,,249,1
-"Region 2",13,0,,2,,251,1
-"Region 4",13,0,,4,,253,1
-"Region 6",13,0,,6,,255,1
-"Region 1",13,0,,1,,257,1
-"Region 6",13,0,,6,,259,1
-"Region 6",13,0,,6,,261,1
-"Region 6",13,0,,6,,263,1
-"Region 2",13,0,,2,,265,1
-"Region 5",13,0,,5,,267,1
-"Region 6",13,0,,6,,269,1
-"Region 5",13,0,,5,,271,1
-"Region 4",13,0,,4,,273,1
-"Region 4",13,0,,4,,275,1
-"Region 4",13,0,,4,,277,1
-"Region 5",13,0,,5,,279,1
-"Region 1",13,0,,1,,281,1
-"Region 5",13,0,,5,,283,1
-"Region 6",13,0,,6,,285,1
-"Region 4",13,0,,4,,287,1
-"Region 2",13,0,,2,,289,1
-"Region 1",13,0,,1,,291,1
-"Region 6",13,0,,6,,293,1
-"Region 1",13,0,,1,,295,1
-"Region 2",13,0,,2,,297,1
-"Region 5",13,0,,5,,299,1
-"Region 2",13,0,,2,,301,1
-"Region 2",13,0,,2,,303,1
-"Region 5",13,0,,5,,305,1
-"Region 6",13,0,,6,,307,1
-"Region 5",13,0,,5,,309,1
-"Region 1",13,0,,1,,311,1
-"Region 1",13,0,,1,,313,1
-"Region 5",13,0,,5,,315,1
-"Region 2",13,0,,2,,317,1
-"Region 2",13,0,,2,,319,1
-"Region 4",13,0,,4,,321,1
-"Hawaii Island",15,0,,1,,1,1
-"Honolulu",15,0,,2,,3,1
-"Kauai",15,0,,3,,5,1
-"Kauai",15,0,,3,,7,1
-"Maui",15,0,,4,,9,1
-"Region 4",16,0,,4,,1,1
-"Region 3",16,0,,3,,3,1
-"Region 6",16,0,,6,,5,1
-"Region 6",16,0,,6,,7,1
-"Region 1",16,0,,1,,9,1
-"Region 7",16,0,,7,,11,1
-"Region 5",16,0,,5,,13,1
-"Region 4",16,0,,4,,15,1
-"Region 1",16,0,,1,,17,1
-"Region 7",16,0,,7,,19,1
-"Region 1",16,0,,1,,21,1
-"Region 7",16,0,,7,,23,1
-"Region 5",16,0,,5,,25,1
-"Region 3",16,0,,3,,27,1
-"Region 6",16,0,,6,,29,1
-"Region 5",16,0,,5,,31,1
-"Region 7",16,0,,7,,33,1
-"Region 2",16,0,,2,,35,1
-"Region 7",16,0,,7,,37,1
-"Region 4",16,0,,4,,39,1
-"Region 6",16,0,,6,,41,1
-"Region 7",16,0,,7,,43,1
-"Region 3",16,0,,3,,45,1
-"Region 5",16,0,,5,,47,1
-"Region 2",16,0,,2,,49,1
-"Region 7",16,0,,7,,51,1
-"Region 5",16,0,,5,,53,1
-"Region 1",16,0,,1,,55,1
-"Region 2",16,0,,2,,57,1
-"Region 7",16,0,,7,,59,1
-"Region 2",16,0,,2,,61,1
-"Region 5",16,0,,5,,63,1
-"Region 7",16,0,,7,,65,1
-"Region 5",16,0,,5,,67,1
-"Region 2",16,0,,2,,69,1
-"Region 6",16,0,,6,,71,1
-"Region 3",16,0,,3,,73,1
-"Region 3",16,0,,3,,75,1
-"Region 6",16,0,,6,,77,1
-"Region 1",16,0,,1,,79,1
-"Region 7",16,0,,7,,81,1
-"Region 5",16,0,,5,,83,1
-"Region 4",16,0,,4,,85,1
-"Region 3",16,0,,3,,87,1
-"Northeast",18,0,,4,,1,1
-"Northeast",18,0,,4,,3,1
-"Southeast",18,0,,6,,5,1
-"West",18,0,,8,,7,1
-"East",18,0,,2,,9,1
-"Central",18,0,,1,,11,1
-"Southeast",18,0,,6,,13,1
-"West",18,0,,8,,15,1
-"North Central",18,0,,3,,17,1
-"Southeast",18,0,,6,,19,1
-"West",18,0,,8,,21,1
-"West",18,0,,8,,23,1
-"Southeast",18,0,,6,,25,1
-"Southwest",18,0,,7,,27,1
-"Southeast",18,0,,6,,29,1
-"Southeast",18,0,,6,,31,1
-"Northeast",18,0,,4,,33,1
-"East",18,0,,2,,35,1
-"Southwest",18,0,,7,,37,1
-"North Central",18,0,,3,,39,1
-"East",18,0,,2,,41,1
-"Southeast",18,0,,6,,43,1
-"West",18,0,,8,,45,1
-"Southeast",18,0,,6,,47,1
-"North Central",18,0,,3,,49,1
-"Southwest",18,0,,7,,51,1
-"East",18,0,,2,,53,1
-"Southwest",18,0,,7,,55,1
-"Central",18,0,,1,,57,1
-"Central",18,0,,1,,59,1
-"Southeast",18,0,,6,,61,1
-"Central",18,0,,1,,63,1
-"East",18,0,,2,,65,1
-"North Central",18,0,,3,,67,1
-"Northeast",18,0,,4,,69,1
-"Southeast",18,0,,6,,71,1
-"Northwest",18,0,,5,,73,1
-"East",18,0,,2,,75,1
-"Southeast",18,0,,6,,77,1
-"Southeast",18,0,,6,,79,1
-"Central",18,0,,1,,81,1
-"Southwest",18,0,,7,,83,1
-"North Central",18,0,,3,,85,1
-"Northeast",18,0,,4,,87,1
-"Northwest",18,0,,5,,89,1
-"North Central",18,0,,3,,91,1
-"Southeast",18,0,,6,,93,1
-"East",18,0,,2,,95,1
-"Central",18,0,,1,,97,1
-"North Central",18,0,,3,,99,1
-"Southwest",18,0,,7,,101,1
-"North Central",18,0,,3,,103,1
-"West",18,0,,8,,105,1
-"West",18,0,,8,,107,1
-"Central",18,0,,1,,109,1
-"Northwest",18,0,,5,,111,1
-"Northeast",18,0,,4,,113,1
-"Southeast",18,0,,6,,115,1
-"Southeast",18,0,,6,,117,1
-"West",18,0,,8,,119,1
-"West",18,0,,8,,121,1
-"Southwest",18,0,,7,,123,1
-"Southwest",18,0,,7,,125,1
-"Northwest",18,0,,5,,127,1
-"Southwest",18,0,,7,,129,1
-"Northwest",18,0,,5,,131,1
-"West",18,0,,8,,133,1
-"East",18,0,,2,,135,1
-"Southeast",18,0,,6,,137,1
-"East",18,0,,2,,139,1
-"North Central",18,0,,3,,141,1
-"Southeast",18,0,,6,,143,1
-"Central",18,0,,1,,145,1
-"Southwest",18,0,,7,,147,1
-"Northwest",18,0,,5,,149,1
-"Northeast",18,0,,4,,151,1
-"West",18,0,,8,,153,1
-"Southeast",18,0,,6,,155,1
-"West",18,0,,8,,157,1
-"North Central",18,0,,3,,159,1
-"East",18,0,,2,,161,1
-"Southwest",18,0,,7,,163,1
-"West",18,0,,8,,165,1
-"West",18,0,,8,,167,1
-"North Central",18,0,,3,,169,1
-"West",18,0,,8,,171,1
-"Southwest",18,0,,7,,173,1
-"Southeast",18,0,,6,,175,1
-"East",18,0,,2,,177,1
-"Northeast",18,0,,4,,179,1
-"West",18,0,,8,,181,1
-"Northeast",18,0,,4,,183,1
-"Southwest",19,0,,6,,1,1
-"Southwest",19,0,,6,,3,1
-"Northeast",19,0,,3,,5,1
-"Southeast",19,0,,5,,7,1
-"Northwest",19,0,,4,,9,1
-"Northeast",19,0,,3,,11,1
-"Northeast",19,0,,3,,13,1
-"North Central",19,0,,2,,15,1
-"Northeast",19,0,,3,,17,1
-"Northeast",19,0,,3,,19,1
-"Northwest",19,0,,4,,21,1
-"Northeast",19,0,,3,,23,1
-"Northwest",19,0,,4,,25,1
-"Northwest",19,0,,4,,27,1
-"Southwest",19,0,,6,,29,1
-"Southeast",19,0,,5,,31,1
-"North Central",19,0,,2,,33,1
-"Northwest",19,0,,4,,35,1
-"Northeast",19,0,,3,,37,1
-"Southwest",19,0,,6,,39,1
-"Northwest",19,0,,4,,41,1
-"Northeast",19,0,,3,,43,1
-"Northeast",19,0,,3,,45,1
-"Northwest",19,0,,4,,47,1
-"Southwest",19,0,,6,,49,1
-"Southeast",19,0,,5,,51,1
-"Southwest",19,0,,6,,53,1
-"Northeast",19,0,,3,,55,1
-"Southeast",19,0,,5,,57,1
-"Northwest",19,0,,4,,59,1
-"Northeast",19,0,,3,,61,1
-"Northwest",19,0,,4,,63,1
-"Northeast",19,0,,3,,65,1
-"North Central",19,0,,2,,67,1
-"North Central",19,0,,2,,69,1
-"Southwest",19,0,,6,,71,1
-"Northwest",19,0,,4,,73,1
-"Northeast",19,0,,3,,75,1
-"Northwest",19,0,,4,,77,1
-"Northwest",19,0,,4,,79,1
-"North Central",19,0,,2,,81,1
-"North Central",19,0,,2,,83,1
-"Southwest",19,0,,6,,85,1
-"Southeast",19,0,,5,,87,1
-"Northeast",19,0,,3,,89,1
-"Northwest",19,0,,4,,91,1
-"Northwest",19,0,,4,,93,1
-"Southeast",19,0,,5,,95,1
-"Northeast",19,0,,3,,97,1
-"Central",19,0,,1,,99,1
-"Southeast",19,0,,5,,101,1
-"Southeast",19,0,,5,,103,1
-"Northeast",19,0,,3,,105,1
-"Southeast",19,0,,5,,107,1
-"North Central",19,0,,2,,109,1
-"Southeast",19,0,,5,,111,1
-"Northeast",19,0,,3,,113,1
-"Southeast",19,0,,5,,115,1
-"Southeast",19,0,,5,,117,1
-"Northwest",19,0,,4,,119,1
-"Southwest",19,0,,6,,121,1
-"Southeast",19,0,,5,,123,1
-"Central",19,0,,1,,125,1
-"North Central",19,0,,2,,127,1
-"Southwest",19,0,,6,,129,1
-"North Central",19,0,,2,,131,1
-"Northwest",19,0,,4,,133,1
-"Southeast",19,0,,5,,135,1
-"Southwest",19,0,,6,,137,1
-"Southeast",19,0,,5,,139,1
-"Northwest",19,0,,4,,141,1
-"Northwest",19,0,,4,,143,1
-"Southwest",19,0,,6,,145,1
-"Northwest",19,0,,4,,147,1
-"Northwest",19,0,,4,,149,1
-"Northwest",19,0,,4,,151,1
-"Central",19,0,,1,,153,1
-"Southwest",19,0,,6,,155,1
-"North Central",19,0,,2,,157,1
-"Southwest",19,0,,6,,159,1
-"Northwest",19,0,,4,,161,1
-"Southeast",19,0,,5,,163,1
-"Northwest",19,0,,4,,165,1
-"Northwest",19,0,,4,,167,1
-"North Central",19,0,,2,,169,1
-"North Central",19,0,,2,,171,1
-"Southwest",19,0,,6,,173,1
-"Southwest",19,0,,6,,175,1
-"Southeast",19,0,,5,,177,1
-"Southeast",19,0,,5,,179,1
-"Central",19,0,,1,,181,1
-"Southeast",19,0,,5,,183,1
-"Southeast",19,0,,5,,185,1
-"Northwest",19,0,,4,,187,1
-"North Central",19,0,,2,,189,1
-"Northeast",19,0,,3,,191,1
-"Northwest",19,0,,4,,193,1
-"North Central",19,0,,2,,195,1
-"Northwest",19,0,,4,,197,1
-"Southeast",20,0,,4,,1,1
-"Southeast",20,0,,4,,3,1
-"Northeast",20,0,,1,,5,1
-"South Central",20,0,,3,,7,1
-"South Central",20,0,,3,,9,1
-"Southeast",20,0,,4,,11,1
-"Northeast",20,0,,1,,13,1
-"South Central",20,0,,3,,15,1
-"Southeast",20,0,,4,,17,1
-"Southeast",20,0,,4,,19,1
-"Southeast",20,0,,4,,21,1
-"Northwest and North Central",20,0,,2,,23,1
-"Southwest",20,0,,5,,25,1
-"Northwest and North Central",20,0,,2,,27,1
-"Northwest and North Central",20,0,,2,,29,1
-"Southeast",20,0,,4,,31,1
-"Southwest",20,0,,5,,33,1
-"South Central",20,0,,3,,35,1
-"Southeast",20,0,,4,,37,1
-"Northwest and North Central",20,0,,2,,39,1
-"Northwest and North Central",20,0,,2,,41,1
-"Northeast",20,0,,1,,43,1
-"Northeast",20,0,,1,,45,1
-"Southwest",20,0,,5,,47,1
-"Southeast",20,0,,4,,49,1
-"Northwest and North Central",20,0,,2,,51,1
-"Northwest and North Central",20,0,,2,,53,1
-"Southwest",20,0,,5,,55,1
-"Southwest",20,0,,5,,57,1
-"Northeast",20,0,,1,,59,1
-"Northeast",20,0,,1,,61,1
-"Northwest and North Central",20,0,,2,,63,1
-"Northwest and North Central",20,0,,2,,65,1
-"Southwest",20,0,,5,,67,1
-"Southwest",20,0,,5,,69,1
-"Southwest",20,0,,5,,71,1
-"Southeast",20,0,,4,,73,1
-"Southwest",20,0,,5,,75,1
-"South Central",20,0,,3,,77,1
-"South Central",20,0,,3,,79,1
-"Southwest",20,0,,5,,81,1
-"Southwest",20,0,,5,,83,1
-"Northeast",20,0,,1,,85,1
-"Northeast",20,0,,1,,87,1
-"Northwest and North Central",20,0,,2,,89,1
-"Northeast",20,0,,1,,91,1
-"Southwest",20,0,,5,,93,1
-"South Central",20,0,,3,,95,1
-"Southwest",20,0,,5,,97,1
-"Southeast",20,0,,4,,99,1
-"Southwest",20,0,,5,,101,1
-"Northeast",20,0,,1,,103,1
-"Northwest and North Central",20,0,,2,,105,1
-"Southeast",20,0,,4,,107,1
-"Northwest and North Central",20,0,,2,,109,1
-"Northeast",20,0,,1,,111,1
-"South Central",20,0,,3,,113,1
-"South Central",20,0,,3,,115,1
-"Northeast",20,0,,1,,117,1
-"Southwest",20,0,,5,,119,1
-"Northeast",20,0,,1,,121,1
-"Northwest and North Central",20,0,,2,,123,1
-"Southeast",20,0,,4,,125,1
-"Northeast",20,0,,1,,127,1
-"Southwest",20,0,,5,,129,1
-"Northeast",20,0,,1,,131,1
-"Southeast",20,0,,4,,133,1
-"Southwest",20,0,,5,,135,1
-"Northwest and North Central",20,0,,2,,137,1
-"Northeast",20,0,,1,,139,1
-"Northwest and North Central",20,0,,2,,141,1
-"Northwest and North Central",20,0,,2,,143,1
-"Southwest",20,0,,5,,145,1
-"Northwest and North Central",20,0,,2,,147,1
-"Northeast",20,0,,1,,149,1
-"South Central",20,0,,3,,151,1
-"Northwest and North Central",20,0,,2,,153,1
-"South Central",20,0,,3,,155,1
-"Northwest and North Central",20,0,,2,,157,1
-"South Central",20,0,,3,,159,1
-"Northeast",20,0,,1,,161,1
-"Northwest and North Central",20,0,,2,,163,1
-"Southwest",20,0,,5,,165,1
-"Northwest and North Central",20,0,,2,,167,1
-"Northwest and North Central",20,0,,2,,169,1
-"Southwest",20,0,,5,,171,1
-"South Central",20,0,,3,,173,1
-"Southwest",20,0,,5,,175,1
-"Northeast",20,0,,1,,177,1
-"Northwest and North Central",20,0,,2,,179,1
-"Northwest and North Central",20,0,,2,,181,1
-"Northwest and North Central",20,0,,2,,183,1
-"South Central",20,0,,3,,185,1
-"Southwest",20,0,,5,,187,1
-"Southwest",20,0,,5,,189,1
-"South Central",20,0,,3,,191,1
-"Northwest and North Central",20,0,,2,,193,1
-"Northwest and North Central",20,0,,2,,195,1
-"Northeast",20,0,,1,,197,1
-"Northwest and North Central",20,0,,2,,199,1
-"Northwest and North Central",20,0,,2,,201,1
-"Southwest",20,0,,5,,203,1
-"Southeast",20,0,,4,,205,1
-"Southeast",20,0,,4,,207,1
-"Northeast",20,0,,1,,209,1
+SBST18N,state,AGGFLG18,SBSTA18N,SBST18,SBSTAG18,county,SBSTFG18
+Region 3,1,0,,3,,1,1
+Region 4,1,0,,4,,3,1
+Region 4,1,0,,4,,5,1
+Region 2,1,0,,2,,7,1
+Region 2,1,0,,2,,9,1
+Region 3,1,0,,3,,11,1
+Region 4,1,0,,4,,13,1
+Region 2,1,0,,2,,15,1
+Region 3,1,0,,3,,17,1
+Region 1,1,0,,1,,19,1
+Region 2,1,0,,2,,21,1
+Region 3,1,0,,3,,23,1
+Region 4,1,0,,4,,25,1
+Region 2,1,0,,2,,27,1
+Region 2,1,0,,2,,29,1
+Region 4,1,0,,4,,31,1
+Region 1,1,0,,1,,33,1
+Region 4,1,0,,4,,35,1
+Region 2,1,0,,2,,37,1
+Region 4,1,0,,4,,39,1
+Region 4,1,0,,4,,41,1
+Region 1,1,0,,1,,43,1
+Region 4,1,0,,4,,45,1
+Region 3,1,0,,3,,47,1
+Region 1,1,0,,1,,49,1
+Region 3,1,0,,3,,51,1
+Region 4,1,0,,4,,53,1
+Region 1,1,0,,1,,55,1
+Region 1,1,0,,1,,57,1
+Region 1,1,0,,1,,59,1
+Region 4,1,0,,4,,61,1
+Region 3,1,0,,3,,63,1
+Region 3,1,0,,3,,65,1
+Region 4,1,0,,4,,67,1
+Region 4,1,0,,4,,69,1
+Region 1,1,0,,1,,71,1
+Region 2,1,0,,2,,73,1
+Region 1,1,0,,1,,75,1
+Region 1,1,0,,1,,77,1
+Region 1,1,0,,1,,79,1
+Region 3,1,0,,3,,81,1
+Region 1,1,0,,1,,83,1
+Region 3,1,0,,3,,85,1
+Region 3,1,0,,3,,87,1
+Region 1,1,0,,1,,89,1
+Region 3,1,0,,3,,91,1
+Region 1,1,0,,1,,93,1
+Region 1,1,0,,1,,95,1
+Region 4,1,0,,4,,97,1
+Region 4,1,0,,4,,99,1
+Region 3,1,0,,3,,101,1
+Region 1,1,0,,1,,103,1
+Region 3,1,0,,3,,105,1
+Region 2,1,0,,2,,107,1
+Region 3,1,0,,3,,109,1
+Region 2,1,0,,2,,111,1
+Region 3,1,0,,3,,113,1
+Region 2,1,0,,2,,115,1
+Region 2,1,0,,2,,117,1
+Region 3,1,0,,3,,119,1
+Region 2,1,0,,2,,121,1
+Region 3,1,0,,3,,123,1
+Region 2,1,0,,2,,125,1
+Region 1,1,0,,1,,127,1
+Region 4,1,0,,4,,129,1
+Region 3,1,0,,3,,131,1
+Region 1,1,0,,1,,133,1
+South Central,2,0,,3,,13,1
+South Central,2,0,,3,,16,1
+Anchorage,2,0,,1,,20,1
+Northern,2,0,,2,,50,1
+South Central,2,0,,3,,60,1
+Northern,2,0,,2,,68,1
+South Central,2,0,,3,,70,1
+Northern,2,0,,2,,90,1
+Southeast,2,0,,4,,100,1
+Southeast,2,0,,4,,105,1
+Southeast,2,0,,4,,110,1
+South Central,2,0,,3,,122,1
+Southeast,2,0,,4,,130,1
+South Central,2,0,,3,,150,1
+South Central,2,0,,3,,164,1
+South Central,2,0,,3,,170,1
+Northern,2,0,,2,,180,1
+Northern,2,0,,2,,185,1
+Northern,2,0,,2,,188,1
+Southeast,2,0,,4,,195,1
+Southeast,2,0,,4,,198,1
+Southeast,2,0,,4,,220,1
+Southeast,2,0,,4,,230,1
+Northern,2,0,,2,,240,1
+South Central,2,0,,3,,261,1
+Northern,2,0,,2,,270,1
+Southeast,2,0,,4,,275,1
+Southeast,2,0,,4,,282,1
+Northern,2,0,,2,,290,1
+North,4,0,North,2,2,1,1
+South B,4,1,South,4,3,3,1
+North,4,0,North,2,2,5,1
+North,4,0,North,2,2,7,1
+South B,4,1,South,4,3,9,1
+South B,4,1,South,4,3,11,1
+South B,4,1,South,4,3,12,1
+Central,4,0,Central,1,1,13,1
+North,4,0,North,2,2,15,1
+North,4,0,North,2,2,17,1
+South A,4,1,South,3,3,19,1
+South B,4,1,South,4,3,21,1
+South B,4,1,South,4,3,23,1
+North,4,0,North,2,2,25,1
+South B,4,1,South,4,3,27,1
+Catchment Area 6,5,0,,6,,1,1
+Catchment Area 6,5,0,,6,,3,1
+Catchment Area 2,5,0,,2,,5,1
+Catchment Area 1,5,0,,1,,7,1
+Catchment Area 2,5,0,,2,,9,1
+Catchment Area 6,5,0,,6,,11,1
+Catchment Area 7,5,0,,7,,13,1
+Catchment Area 1,5,0,,1,,15,1
+Catchment Area 6,5,0,,6,,17,1
+Catchment Area 5,5,0,,5,,19,1
+Catchment Area 3,5,0,,3,,21,1
+Catchment Area 2,5,0,,2,,23,1
+Catchment Area 6,5,0,,6,,25,1
+Catchment Area 7,5,0,,7,,27,1
+Catchment Area 5,5,0,,5,,29,1
+Catchment Area 3,5,0,,3,,31,1
+Catchment Area 4,5,0,,4,,33,1
+Catchment Area 3,5,0,,3,,35,1
+Catchment Area 3,5,0,,3,,37,1
+Catchment Area 7,5,0,,7,,39,1
+Catchment Area 6,5,0,,6,,41,1
+Catchment Area 6,5,0,,6,,43,1
+Catchment Area 5,5,0,,5,,45,1
+Catchment Area 4,5,0,,4,,47,1
+Catchment Area 2,5,0,,2,,49,1
+Catchment Area 5,5,0,,5,,51,1
+Catchment Area 6,5,0,,6,,53,1
+Catchment Area 3,5,0,,3,,55,1
+Catchment Area 7,5,0,,7,,57,1
+Catchment Area 5,5,0,,5,,59,1
+Catchment Area 7,5,0,,7,,61,1
+Catchment Area 2,5,0,,2,,63,1
+Catchment Area 2,5,0,,2,,65,1
+Catchment Area 2,5,0,,2,,67,1
+Catchment Area 6,5,0,,6,,69,1
+Catchment Area 5,5,0,,5,,71,1
+Catchment Area 7,5,0,,7,,73,1
+Catchment Area 3,5,0,,3,,75,1
+Catchment Area 3,5,0,,3,,77,1
+Catchment Area 6,5,0,,6,,79,1
+Catchment Area 7,5,0,,7,,81,1
+Catchment Area 4,5,0,,4,,83,1
+Catchment Area 8,5,0,,8,,85,1
+Catchment Area 1,5,0,,1,,87,1
+Catchment Area 2,5,0,,2,,89,1
+Catchment Area 7,5,0,,7,,91,1
+Catchment Area 3,5,0,,3,,93,1
+Catchment Area 3,5,0,,3,,95,1
+Catchment Area 5,5,0,,5,,97,1
+Catchment Area 7,5,0,,7,,99,1
+Catchment Area 2,5,0,,2,,101,1
+Catchment Area 7,5,0,,7,,103,1
+Catchment Area 5,5,0,,5,,105,1
+Catchment Area 3,5,0,,3,,107,1
+Catchment Area 5,5,0,,5,,109,1
+Catchment Area 3,5,0,,3,,111,1
+Catchment Area 4,5,0,,4,,113,1
+Catchment Area 5,5,0,,5,,115,1
+Catchment Area 8,5,0,,8,,117,1
+Catchment Area 8,5,0,,8,,119,1
+Catchment Area 3,5,0,,3,,121,1
+Catchment Area 3,5,0,,3,,123,1
+Catchment Area 8,5,0,,8,,125,1
+Catchment Area 4,5,0,,4,,127,1
+Catchment Area 2,5,0,,2,,129,1
+Catchment Area 4,5,0,,4,,131,1
+Catchment Area 7,5,0,,7,,133,1
+Catchment Area 2,5,0,,2,,135,1
+Catchment Area 2,5,0,,2,,137,1
+Catchment Area 7,5,0,,7,,139,1
+Catchment Area 2,5,0,,2,,141,1
+Catchment Area 1,5,0,,1,,143,1
+Catchment Area 2,5,0,,2,,145,1
+Catchment Area 2,5,0,,2,,147,1
+Catchment Area 5,5,0,,5,,149,1
+Region 3,8,0,,3,,1,1
+Region 4,8,0,,4,,3,1
+Region 3,8,0,,3,,5,1
+Region 1,8,0,,1,,7,1
+Region 4,8,0,,4,,9,1
+Region 4,8,0,,4,,11,1
+Region 6,8,0,,6,,13,1
+Region 2,8,0,,2,,14,1
+Region 4,8,0,,4,,15,1
+Region 2,8,0,,2,,17,1
+Region 6,8,0,,6,,19,1
+Region 4,8,0,,4,,21,1
+Region 4,8,0,,4,,23,1
+Region 4,8,0,,4,,25,1
+Region 4,8,0,,4,,27,1
+Region 1,8,0,,1,,29,1
+Region 5,8,0,,5,,31,1
+Region 1,8,0,,1,,33,1
+Region 3,8,0,,3,,35,1
+Region 1,8,0,,1,,37,1
+Region 3,8,0,,3,,39,1
+Region 7,8,0,,7,,41,1
+Region 4,8,0,,4,,43,1
+Region 1,8,0,,1,,45,1
+Region 6,8,0,,6,,47,1
+Region 1,8,0,,1,,49,1
+Region 1,8,0,,1,,51,1
+Region 1,8,0,,1,,53,1
+Region 4,8,0,,4,,55,1
+Region 1,8,0,,1,,57,1
+Region 6,8,0,,6,,59,1
+Region 4,8,0,,4,,61,1
+Region 2,8,0,,2,,63,1
+Region 4,8,0,,4,,65,1
+Region 1,8,0,,1,,67,1
+Region 1,8,0,,1,,69,1
+Region 4,8,0,,4,,71,1
+Region 2,8,0,,2,,73,1
+Region 2,8,0,,2,,75,1
+Region 1,8,0,,1,,77,1
+Region 4,8,0,,4,,79,1
+Region 1,8,0,,1,,81,1
+Region 1,8,0,,1,,83,1
+Region 1,8,0,,1,,85,1
+Region 2,8,0,,2,,87,1
+Region 4,8,0,,4,,89,1
+Region 1,8,0,,1,,91,1
+Region 7,8,0,,7,,93,1
+Region 2,8,0,,2,,95,1
+Region 1,8,0,,1,,97,1
+Region 4,8,0,,4,,99,1
+Region 4,8,0,,4,,101,1
+Region 1,8,0,,1,,103,1
+Region 4,8,0,,4,,105,1
+Region 1,8,0,,1,,107,1
+Region 4,8,0,,4,,109,1
+Region 1,8,0,,1,,111,1
+Region 1,8,0,,1,,113,1
+Region 2,8,0,,2,,115,1
+Region 1,8,0,,1,,117,1
+Region 7,8,0,,7,,119,1
+Region 2,8,0,,2,,121,1
+Region 2,8,0,,2,,123,1
+Region 2,8,0,,2,,125,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,1,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,3,1
+Circuit 14,12,1,Northwest,6,5,5,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,7,1
+Circuit 18,12,1,Central I,8,2,9,1
+Broward (Circuit 17),12,0,Broward (Circuit 17),1,1,11,1
+Circuit 14,12,1,Northwest,6,5,13,1
+Circuit 20,12,1,Central II,11,3,15,1
+Circuit 5,12,1,Northeast,13,4,17,1
+Circuit 4,12,1,Northeast,12,4,19,1
+Circuit 20,12,1,Central II,11,3,21,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,23,1
+Circuit 12,12,1,Central II,4,3,27,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,29,1
+Circuit 4,12,1,Northeast,12,4,31,1
+Circuit 1,12,1,Northwest,2,5,33,1
+Circuit 7,12,1,Northeast,15,4,35,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,37,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,39,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,41,1
+Circuit 20,12,1,Central II,11,3,43,1
+Circuit 14,12,1,Northwest,6,5,45,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,47,1
+Circuit 10,12,1,Central II,3,3,49,1
+Circuit 20,12,1,Central II,11,3,51,1
+Circuit 5,12,1,Northeast,13,4,53,1
+Circuit 10,12,1,Central II,3,3,55,1
+Circuit 13 (Hillsborough),12,1,Central II,5,3,57,1
+Circuit 14,12,1,Northwest,6,5,59,1
+Circuit 19,12,1,Southeast,9,7,61,1
+Circuit 14,12,1,Northwest,6,5,63,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,65,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,67,1
+Circuit 5,12,1,Northeast,13,4,69,1
+Circuit 20,12,1,Central II,11,3,71,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,73,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,75,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,77,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,79,1
+Circuit 12,12,1,Central II,4,3,81,1
+Circuit 5,12,1,Northeast,13,4,83,1
+Circuit 19,12,1,Southeast,9,7,85,1
+South (Circuits 11 and 16),12,0,South (Circuits 11 and 16),18,6,86,1
+South (Circuits 11 and 16),12,0,South (Circuits 11 and 16),18,6,87,1
+Circuit 4,12,1,Northeast,12,4,89,1
+Circuit 1,12,1,Northwest,2,5,91,1
+Circuit 19,12,1,Southeast,9,7,93,1
+Circuit 9,12,1,Central I,17,2,95,1
+Circuit 9,12,1,Central I,17,2,97,1
+Circuit 15 (Palm Beach),12,1,Southeast,7,7,99,1
+Circuit 6,12,1,Central II,14,3,101,1
+Circuit 6,12,1,Central II,14,3,103,1
+Circuit 10,12,1,Central II,3,3,105,1
+Circuit 7,12,1,Northeast,15,4,107,1
+Circuit 7,12,1,Northeast,15,4,109,1
+Circuit 19,12,1,Southeast,9,7,111,1
+Circuit 1,12,1,Northwest,2,5,113,1
+Circuit 12,12,1,Central II,4,3,115,1
+Circuit 18,12,1,Central I,8,2,117,1
+Circuit 5,12,1,Northeast,13,4,119,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,121,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,123,1
+"Circuit 8 plus Columbia, Dixie, Hamilton, Lafayette, and Suwannee",12,1,Northeast,16,4,125,1
+Circuit 7,12,1,Northeast,15,4,127,1
+Circuit 2 plus Madison and Taylor,12,1,Northwest,10,5,129,1
+Circuit 1,12,1,Northwest,2,5,131,1
+Circuit 14,12,1,Northwest,6,5,133,1
+Region 5,13,0,,5,,1,1
+Region 5,13,0,,5,,3,1
+Region 5,13,0,,5,,5,1
+Region 4,13,0,,4,,7,1
+Region 2,13,0,,2,,9,1
+Region 1,13,0,,1,,11,1
+Region 2,13,0,,2,,13,1
+Region 1,13,0,,1,,15,1
+Region 4,13,0,,4,,17,1
+Region 4,13,0,,4,,19,1
+Region 2,13,0,,2,,21,1
+Region 5,13,0,,5,,23,1
+Region 5,13,0,,5,,25,1
+Region 4,13,0,,4,,27,1
+Region 5,13,0,,5,,29,1
+Region 5,13,0,,5,,31,1
+Region 2,13,0,,2,,33,1
+Region 6,13,0,,6,,35,1
+Region 4,13,0,,4,,37,1
+Region 5,13,0,,5,,39,1
+Region 5,13,0,,5,,43,1
+Region 6,13,0,,6,,45,1
+Region 1,13,0,,1,,47,1
+Region 5,13,0,,5,,49,1
+Region 5,13,0,,5,,51,1
+Region 6,13,0,,6,,53,1
+Region 1,13,0,,1,,55,1
+Region 1,13,0,,1,,57,1
+Region 2,13,0,,2,,59,1
+Region 6,13,0,,6,,61,1
+Region 3,13,0,,3,,63,1
+Region 5,13,0,,5,,65,1
+Region 1,13,0,,1,,67,1
+Region 5,13,0,,5,,69,1
+Region 4,13,0,,4,,71,1
+Region 2,13,0,,2,,73,1
+Region 4,13,0,,4,,75,1
+Region 6,13,0,,6,,77,1
+Region 6,13,0,,6,,79,1
+Region 6,13,0,,6,,81,1
+Region 1,13,0,,1,,83,1
+Region 1,13,0,,1,,85,1
+Region 4,13,0,,4,,87,1
+Region 3,13,0,,3,,89,1
+Region 5,13,0,,5,,91,1
+Region 6,13,0,,6,,93,1
+Region 4,13,0,,4,,95,1
+Region 1,13,0,,1,,97,1
+Region 4,13,0,,4,,99,1
+Region 4,13,0,,4,,101,1
+Region 5,13,0,,5,,103,1
+Region 2,13,0,,2,,105,1
+Region 2,13,0,,2,,107,1
+Region 5,13,0,,5,,109,1
+Region 1,13,0,,1,,111,1
+Region 6,13,0,,6,,113,1
+Region 1,13,0,,1,,115,1
+Region 1,13,0,,1,,117,1
+Region 1,13,0,,1,,119,1
+Region 3,13,0,,3,,121,1
+Region 1,13,0,,1,,123,1
+Region 2,13,0,,2,,125,1
+Region 5,13,0,,5,,127,1
+Region 1,13,0,,1,,129,1
+Region 4,13,0,,4,,131,1
+Region 2,13,0,,2,,133,1
+Region 3,13,0,,3,,135,1
+Region 1,13,0,,1,,137,1
+Region 1,13,0,,1,,139,1
+Region 2,13,0,,2,,141,1
+Region 1,13,0,,1,,143,1
+Region 6,13,0,,6,,145,1
+Region 1,13,0,,1,,147,1
+Region 6,13,0,,6,,149,1
+Region 6,13,0,,6,,151,1
+Region 6,13,0,,6,,153,1
+Region 4,13,0,,4,,155,1
+Region 2,13,0,,2,,157,1
+Region 2,13,0,,2,,159,1
+Region 5,13,0,,5,,161,1
+Region 2,13,0,,2,,163,1
+Region 2,13,0,,2,,165,1
+Region 5,13,0,,5,,167,1
+Region 2,13,0,,2,,169,1
+Region 6,13,0,,6,,171,1
+Region 4,13,0,,4,,173,1
+Region 5,13,0,,5,,175,1
+Region 4,13,0,,4,,177,1
+Region 5,13,0,,5,,179,1
+Region 2,13,0,,2,,181,1
+Region 5,13,0,,5,,183,1
+Region 4,13,0,,4,,185,1
+Region 1,13,0,,1,,187,1
+Region 2,13,0,,2,,189,1
+Region 5,13,0,,5,,191,1
+Region 6,13,0,,6,,193,1
+Region 2,13,0,,2,,195,1
+Region 6,13,0,,6,,197,1
+Region 6,13,0,,6,,199,1
+Region 4,13,0,,4,,201,1
+Region 4,13,0,,4,,205,1
+Region 2,13,0,,2,,207,1
+Region 5,13,0,,5,,209,1
+Region 2,13,0,,2,,211,1
+Region 1,13,0,,1,,213,1
+Region 6,13,0,,6,,215,1
+Region 3,13,0,,3,,217,1
+Region 2,13,0,,2,,219,1
+Region 2,13,0,,2,,221,1
+Region 1,13,0,,1,,223,1
+Region 6,13,0,,6,,225,1
+Region 1,13,0,,1,,227,1
+Region 5,13,0,,5,,229,1
+Region 6,13,0,,6,,231,1
+Region 1,13,0,,1,,233,1
+Region 5,13,0,,5,,235,1
+Region 2,13,0,,2,,237,1
+Region 6,13,0,,6,,239,1
+Region 1,13,0,,1,,241,1
+Region 6,13,0,,6,,243,1
+Region 2,13,0,,2,,245,1
+Region 3,13,0,,3,,247,1
+Region 6,13,0,,6,,249,1
+Region 2,13,0,,2,,251,1
+Region 4,13,0,,4,,253,1
+Region 6,13,0,,6,,255,1
+Region 1,13,0,,1,,257,1
+Region 6,13,0,,6,,259,1
+Region 6,13,0,,6,,261,1
+Region 6,13,0,,6,,263,1
+Region 2,13,0,,2,,265,1
+Region 5,13,0,,5,,267,1
+Region 6,13,0,,6,,269,1
+Region 5,13,0,,5,,271,1
+Region 4,13,0,,4,,273,1
+Region 4,13,0,,4,,275,1
+Region 4,13,0,,4,,277,1
+Region 5,13,0,,5,,279,1
+Region 1,13,0,,1,,281,1
+Region 5,13,0,,5,,283,1
+Region 6,13,0,,6,,285,1
+Region 4,13,0,,4,,287,1
+Region 2,13,0,,2,,289,1
+Region 1,13,0,,1,,291,1
+Region 6,13,0,,6,,293,1
+Region 1,13,0,,1,,295,1
+Region 2,13,0,,2,,297,1
+Region 5,13,0,,5,,299,1
+Region 2,13,0,,2,,301,1
+Region 2,13,0,,2,,303,1
+Region 5,13,0,,5,,305,1
+Region 6,13,0,,6,,307,1
+Region 5,13,0,,5,,309,1
+Region 1,13,0,,1,,311,1
+Region 1,13,0,,1,,313,1
+Region 5,13,0,,5,,315,1
+Region 2,13,0,,2,,317,1
+Region 2,13,0,,2,,319,1
+Region 4,13,0,,4,,321,1
+Hawaii Island,15,0,,1,,1,1
+Honolulu,15,0,,2,,3,1
+Kauai,15,0,,3,,5,1
+Kauai,15,0,,3,,7,1
+Maui,15,0,,4,,9,1
+Region 4,16,0,,4,,1,1
+Region 3,16,0,,3,,3,1
+Region 6,16,0,,6,,5,1
+Region 6,16,0,,6,,7,1
+Region 1,16,0,,1,,9,1
+Region 7,16,0,,7,,11,1
+Region 5,16,0,,5,,13,1
+Region 4,16,0,,4,,15,1
+Region 1,16,0,,1,,17,1
+Region 7,16,0,,7,,19,1
+Region 1,16,0,,1,,21,1
+Region 7,16,0,,7,,23,1
+Region 5,16,0,,5,,25,1
+Region 3,16,0,,3,,27,1
+Region 6,16,0,,6,,29,1
+Region 5,16,0,,5,,31,1
+Region 7,16,0,,7,,33,1
+Region 2,16,0,,2,,35,1
+Region 7,16,0,,7,,37,1
+Region 4,16,0,,4,,39,1
+Region 6,16,0,,6,,41,1
+Region 7,16,0,,7,,43,1
+Region 3,16,0,,3,,45,1
+Region 5,16,0,,5,,47,1
+Region 2,16,0,,2,,49,1
+Region 7,16,0,,7,,51,1
+Region 5,16,0,,5,,53,1
+Region 1,16,0,,1,,55,1
+Region 2,16,0,,2,,57,1
+Region 7,16,0,,7,,59,1
+Region 2,16,0,,2,,61,1
+Region 5,16,0,,5,,63,1
+Region 7,16,0,,7,,65,1
+Region 5,16,0,,5,,67,1
+Region 2,16,0,,2,,69,1
+Region 6,16,0,,6,,71,1
+Region 3,16,0,,3,,73,1
+Region 3,16,0,,3,,75,1
+Region 6,16,0,,6,,77,1
+Region 1,16,0,,1,,79,1
+Region 7,16,0,,7,,81,1
+Region 5,16,0,,5,,83,1
+Region 4,16,0,,4,,85,1
+Region 3,16,0,,3,,87,1
+Northeast,18,0,,4,,1,1
+Northeast,18,0,,4,,3,1
+Southeast,18,0,,6,,5,1
+West,18,0,,8,,7,1
+East,18,0,,2,,9,1
+Central,18,0,,1,,11,1
+Southeast,18,0,,6,,13,1
+West,18,0,,8,,15,1
+North Central,18,0,,3,,17,1
+Southeast,18,0,,6,,19,1
+West,18,0,,8,,21,1
+West,18,0,,8,,23,1
+Southeast,18,0,,6,,25,1
+Southwest,18,0,,7,,27,1
+Southeast,18,0,,6,,29,1
+Southeast,18,0,,6,,31,1
+Northeast,18,0,,4,,33,1
+East,18,0,,2,,35,1
+Southwest,18,0,,7,,37,1
+North Central,18,0,,3,,39,1
+East,18,0,,2,,41,1
+Southeast,18,0,,6,,43,1
+West,18,0,,8,,45,1
+Southeast,18,0,,6,,47,1
+North Central,18,0,,3,,49,1
+Southwest,18,0,,7,,51,1
+East,18,0,,2,,53,1
+Southwest,18,0,,7,,55,1
+Central,18,0,,1,,57,1
+Central,18,0,,1,,59,1
+Southeast,18,0,,6,,61,1
+Central,18,0,,1,,63,1
+East,18,0,,2,,65,1
+North Central,18,0,,3,,67,1
+Northeast,18,0,,4,,69,1
+Southeast,18,0,,6,,71,1
+Northwest,18,0,,5,,73,1
+East,18,0,,2,,75,1
+Southeast,18,0,,6,,77,1
+Southeast,18,0,,6,,79,1
+Central,18,0,,1,,81,1
+Southwest,18,0,,7,,83,1
+North Central,18,0,,3,,85,1
+Northeast,18,0,,4,,87,1
+Northwest,18,0,,5,,89,1
+North Central,18,0,,3,,91,1
+Southeast,18,0,,6,,93,1
+East,18,0,,2,,95,1
+Central,18,0,,1,,97,1
+North Central,18,0,,3,,99,1
+Southwest,18,0,,7,,101,1
+North Central,18,0,,3,,103,1
+West,18,0,,8,,105,1
+West,18,0,,8,,107,1
+Central,18,0,,1,,109,1
+Northwest,18,0,,5,,111,1
+Northeast,18,0,,4,,113,1
+Southeast,18,0,,6,,115,1
+Southeast,18,0,,6,,117,1
+West,18,0,,8,,119,1
+West,18,0,,8,,121,1
+Southwest,18,0,,7,,123,1
+Southwest,18,0,,7,,125,1
+Northwest,18,0,,5,,127,1
+Southwest,18,0,,7,,129,1
+Northwest,18,0,,5,,131,1
+West,18,0,,8,,133,1
+East,18,0,,2,,135,1
+Southeast,18,0,,6,,137,1
+East,18,0,,2,,139,1
+North Central,18,0,,3,,141,1
+Southeast,18,0,,6,,143,1
+Central,18,0,,1,,145,1
+Southwest,18,0,,7,,147,1
+Northwest,18,0,,5,,149,1
+Northeast,18,0,,4,,151,1
+West,18,0,,8,,153,1
+Southeast,18,0,,6,,155,1
+West,18,0,,8,,157,1
+North Central,18,0,,3,,159,1
+East,18,0,,2,,161,1
+Southwest,18,0,,7,,163,1
+West,18,0,,8,,165,1
+West,18,0,,8,,167,1
+North Central,18,0,,3,,169,1
+West,18,0,,8,,171,1
+Southwest,18,0,,7,,173,1
+Southeast,18,0,,6,,175,1
+East,18,0,,2,,177,1
+Northeast,18,0,,4,,179,1
+West,18,0,,8,,181,1
+Northeast,18,0,,4,,183,1
+Southwest,19,0,,6,,1,1
+Southwest,19,0,,6,,3,1
+Northeast,19,0,,3,,5,1
+Southeast,19,0,,5,,7,1
+Northwest,19,0,,4,,9,1
+Northeast,19,0,,3,,11,1
+Northeast,19,0,,3,,13,1
+North Central,19,0,,2,,15,1
+Northeast,19,0,,3,,17,1
+Northeast,19,0,,3,,19,1
+Northwest,19,0,,4,,21,1
+Northeast,19,0,,3,,23,1
+Northwest,19,0,,4,,25,1
+Northwest,19,0,,4,,27,1
+Southwest,19,0,,6,,29,1
+Southeast,19,0,,5,,31,1
+North Central,19,0,,2,,33,1
+Northwest,19,0,,4,,35,1
+Northeast,19,0,,3,,37,1
+Southwest,19,0,,6,,39,1
+Northwest,19,0,,4,,41,1
+Northeast,19,0,,3,,43,1
+Northeast,19,0,,3,,45,1
+Northwest,19,0,,4,,47,1
+Southwest,19,0,,6,,49,1
+Southeast,19,0,,5,,51,1
+Southwest,19,0,,6,,53,1
+Northeast,19,0,,3,,55,1
+Southeast,19,0,,5,,57,1
+Northwest,19,0,,4,,59,1
+Northeast,19,0,,3,,61,1
+Northwest,19,0,,4,,63,1
+Northeast,19,0,,3,,65,1
+North Central,19,0,,2,,67,1
+North Central,19,0,,2,,69,1
+Southwest,19,0,,6,,71,1
+Northwest,19,0,,4,,73,1
+Northeast,19,0,,3,,75,1
+Northwest,19,0,,4,,77,1
+Northwest,19,0,,4,,79,1
+North Central,19,0,,2,,81,1
+North Central,19,0,,2,,83,1
+Southwest,19,0,,6,,85,1
+Southeast,19,0,,5,,87,1
+Northeast,19,0,,3,,89,1
+Northwest,19,0,,4,,91,1
+Northwest,19,0,,4,,93,1
+Southeast,19,0,,5,,95,1
+Northeast,19,0,,3,,97,1
+Central,19,0,,1,,99,1
+Southeast,19,0,,5,,101,1
+Southeast,19,0,,5,,103,1
+Northeast,19,0,,3,,105,1
+Southeast,19,0,,5,,107,1
+North Central,19,0,,2,,109,1
+Southeast,19,0,,5,,111,1
+Northeast,19,0,,3,,113,1
+Southeast,19,0,,5,,115,1
+Southeast,19,0,,5,,117,1
+Northwest,19,0,,4,,119,1
+Southwest,19,0,,6,,121,1
+Southeast,19,0,,5,,123,1
+Central,19,0,,1,,125,1
+North Central,19,0,,2,,127,1
+Southwest,19,0,,6,,129,1
+North Central,19,0,,2,,131,1
+Northwest,19,0,,4,,133,1
+Southeast,19,0,,5,,135,1
+Southwest,19,0,,6,,137,1
+Southeast,19,0,,5,,139,1
+Northwest,19,0,,4,,141,1
+Northwest,19,0,,4,,143,1
+Southwest,19,0,,6,,145,1
+Northwest,19,0,,4,,147,1
+Northwest,19,0,,4,,149,1
+Northwest,19,0,,4,,151,1
+Central,19,0,,1,,153,1
+Southwest,19,0,,6,,155,1
+North Central,19,0,,2,,157,1
+Southwest,19,0,,6,,159,1
+Northwest,19,0,,4,,161,1
+Southeast,19,0,,5,,163,1
+Northwest,19,0,,4,,165,1
+Northwest,19,0,,4,,167,1
+North Central,19,0,,2,,169,1
+North Central,19,0,,2,,171,1
+Southwest,19,0,,6,,173,1
+Southwest,19,0,,6,,175,1
+Southeast,19,0,,5,,177,1
+Southeast,19,0,,5,,179,1
+Central,19,0,,1,,181,1
+Southeast,19,0,,5,,183,1
+Southeast,19,0,,5,,185,1
+Northwest,19,0,,4,,187,1
+North Central,19,0,,2,,189,1
+Northeast,19,0,,3,,191,1
+Northwest,19,0,,4,,193,1
+North Central,19,0,,2,,195,1
+Northwest,19,0,,4,,197,1
+Southeast,20,0,,4,,1,1
+Southeast,20,0,,4,,3,1
+Northeast,20,0,,1,,5,1
+South Central,20,0,,3,,7,1
+South Central,20,0,,3,,9,1
+Southeast,20,0,,4,,11,1
+Northeast,20,0,,1,,13,1
+South Central,20,0,,3,,15,1
+Southeast,20,0,,4,,17,1
+Southeast,20,0,,4,,19,1
+Southeast,20,0,,4,,21,1
+Northwest and North Central,20,0,,2,,23,1
+Southwest,20,0,,5,,25,1
+Northwest and North Central,20,0,,2,,27,1
+Northwest and North Central,20,0,,2,,29,1
+Southeast,20,0,,4,,31,1
+Southwest,20,0,,5,,33,1
+South Central,20,0,,3,,35,1
+Southeast,20,0,,4,,37,1
+Northwest and North Central,20,0,,2,,39,1
+Northwest and North Central,20,0,,2,,41,1
+Northeast,20,0,,1,,43,1
+Northeast,20,0,,1,,45,1
+Southwest,20,0,,5,,47,1
+Southeast,20,0,,4,,49,1
+Northwest and North Central,20,0,,2,,51,1
+Northwest and North Central,20,0,,2,,53,1
+Southwest,20,0,,5,,55,1
+Southwest,20,0,,5,,57,1
+Northeast,20,0,,1,,59,1
+Northeast,20,0,,1,,61,1
+Northwest and North Central,20,0,,2,,63,1
+Northwest and North Central,20,0,,2,,65,1
+Southwest,20,0,,5,,67,1
+Southwest,20,0,,5,,69,1
+Southwest,20,0,,5,,71,1
+Southeast,20,0,,4,,73,1
+Southwest,20,0,,5,,75,1
+South Central,20,0,,3,,77,1
+South Central,20,0,,3,,79,1
+Southwest,20,0,,5,,81,1
+Southwest,20,0,,5,,83,1
+Northeast,20,0,,1,,85,1
+Northeast,20,0,,1,,87,1
+Northwest and North Central,20,0,,2,,89,1
+Northeast,20,0,,1,,91,1
+Southwest,20,0,,5,,93,1
+South Central,20,0,,3,,95,1
+Southwest,20,0,,5,,97,1
+Southeast,20,0,,4,,99,1
+Southwest,20,0,,5,,101,1
+Northeast,20,0,,1,,103,1
+Northwest and North Central,20,0,,2,,105,1
+Southeast,20,0,,4,,107,1
+Northwest and North Central,20,0,,2,,109,1
+Northeast,20,0,,1,,111,1
+South Central,20,0,,3,,113,1
+South Central,20,0,,3,,115,1
+Northeast,20,0,,1,,117,1
+Southwest,20,0,,5,,119,1
+Northeast,20,0,,1,,121,1
+Northwest and North Central,20,0,,2,,123,1
+Southeast,20,0,,4,,125,1
+Northeast,20,0,,1,,127,1
+Southwest,20,0,,5,,129,1
+Northeast,20,0,,1,,131,1
+Southeast,20,0,,4,,133,1
+Southwest,20,0,,5,,135,1
+Northwest and North Central,20,0,,2,,137,1
+Northeast,20,0,,1,,139,1
+Northwest and North Central,20,0,,2,,141,1
+Northwest and North Central,20,0,,2,,143,1
+Southwest,20,0,,5,,145,1
+Northwest and North Central,20,0,,2,,147,1
+Northeast,20,0,,1,,149,1
+South Central,20,0,,3,,151,1
+Northwest and North Central,20,0,,2,,153,1
+South Central,20,0,,3,,155,1
+Northwest and North Central,20,0,,2,,157,1
+South Central,20,0,,3,,159,1
+Northeast,20,0,,1,,161,1
+Northwest and North Central,20,0,,2,,163,1
+Southwest,20,0,,5,,165,1
+Northwest and North Central,20,0,,2,,167,1
+Northwest and North Central,20,0,,2,,169,1
+Southwest,20,0,,5,,171,1
+South Central,20,0,,3,,173,1
+Southwest,20,0,,5,,175,1
+Northeast,20,0,,1,,177,1
+Northwest and North Central,20,0,,2,,179,1
+Northwest and North Central,20,0,,2,,181,1
+Northwest and North Central,20,0,,2,,183,1
+South Central,20,0,,3,,185,1
+Southwest,20,0,,5,,187,1
+Southwest,20,0,,5,,189,1
+South Central,20,0,,3,,191,1
+Northwest and North Central,20,0,,2,,193,1
+Northwest and North Central,20,0,,2,,195,1
+Northeast,20,0,,1,,197,1
+Northwest and North Central,20,0,,2,,199,1
+Northwest and North Central,20,0,,2,,201,1
+Southwest,20,0,,5,,203,1
+Southeast,20,0,,4,,205,1
+Southeast,20,0,,4,,207,1
+Northeast,20,0,,1,,209,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,1,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,3,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,5,1
-"Four Rivers and Pennyroyal",21,0,,5,,7,1
+Four Rivers and Pennyroyal,21,0,,5,,7,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,9,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,11,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,13,1
@@ -833,23 +833,23 @@
 "Bluegrass, Comprehend, and North Key",21,0,,2,,21,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,23,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,25,1
-"Communicare and River Valley",21,0,,4,,27,1
-"Centerstone",21,0,,3,,29,1
+Communicare and River Valley,21,0,,4,,27,1
+Centerstone,21,0,,3,,29,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,31,1
-"Four Rivers and Pennyroyal",21,0,,5,,33,1
-"Four Rivers and Pennyroyal",21,0,,5,,35,1
+Four Rivers and Pennyroyal,21,0,,5,,33,1
+Four Rivers and Pennyroyal,21,0,,5,,35,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,37,1
-"Four Rivers and Pennyroyal",21,0,,5,,39,1
+Four Rivers and Pennyroyal,21,0,,5,,39,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,41,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,43,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,45,1
-"Four Rivers and Pennyroyal",21,0,,5,,47,1
+Four Rivers and Pennyroyal,21,0,,5,,47,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,49,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,51,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,53,1
-"Four Rivers and Pennyroyal",21,0,,5,,55,1
+Four Rivers and Pennyroyal,21,0,,5,,55,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,57,1
-"Communicare and River Valley",21,0,,4,,59,1
+Communicare and River Valley,21,0,,4,,59,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,61,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,63,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,65,1
@@ -857,31 +857,31 @@
 "Bluegrass, Comprehend, and North Key",21,0,,2,,69,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,71,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,73,1
-"Four Rivers and Pennyroyal",21,0,,5,,75,1
+Four Rivers and Pennyroyal,21,0,,5,,75,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,77,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,79,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,81,1
-"Four Rivers and Pennyroyal",21,0,,5,,83,1
-"Communicare and River Valley",21,0,,4,,85,1
+Four Rivers and Pennyroyal,21,0,,5,,83,1
+Communicare and River Valley,21,0,,4,,85,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,87,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,89,1
-"Communicare and River Valley",21,0,,4,,91,1
-"Communicare and River Valley",21,0,,4,,93,1
+Communicare and River Valley,21,0,,4,,91,1
+Communicare and River Valley,21,0,,4,,93,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,95,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,97,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,99,1
-"Communicare and River Valley",21,0,,4,,101,1
-"Centerstone",21,0,,3,,103,1
-"Four Rivers and Pennyroyal",21,0,,5,,105,1
-"Four Rivers and Pennyroyal",21,0,,5,,107,1
+Communicare and River Valley,21,0,,4,,101,1
+Centerstone,21,0,,3,,103,1
+Four Rivers and Pennyroyal,21,0,,5,,105,1
+Four Rivers and Pennyroyal,21,0,,5,,107,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,109,1
-"Centerstone",21,0,,3,,111,1
+Centerstone,21,0,,3,,111,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,113,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,115,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,117,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,119,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,121,1
-"Communicare and River Valley",21,0,,4,,123,1
+Communicare and River Valley,21,0,,4,,123,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,125,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,127,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,129,1
@@ -889,30 +889,30 @@
 "Kentucky River, Mountain, and Pathways",21,0,,6,,133,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,135,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,137,1
-"Four Rivers and Pennyroyal",21,0,,5,,139,1
+Four Rivers and Pennyroyal,21,0,,5,,139,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,141,1
-"Four Rivers and Pennyroyal",21,0,,5,,143,1
-"Four Rivers and Pennyroyal",21,0,,5,,145,1
+Four Rivers and Pennyroyal,21,0,,5,,143,1
+Four Rivers and Pennyroyal,21,0,,5,,145,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,147,1
-"Communicare and River Valley",21,0,,4,,149,1
+Communicare and River Valley,21,0,,4,,149,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,151,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,153,1
-"Communicare and River Valley",21,0,,4,,155,1
-"Four Rivers and Pennyroyal",21,0,,5,,157,1
+Communicare and River Valley,21,0,,4,,155,1
+Four Rivers and Pennyroyal,21,0,,5,,157,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,159,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,161,1
-"Communicare and River Valley",21,0,,4,,163,1
+Communicare and River Valley,21,0,,4,,163,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,165,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,167,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,169,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,171,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,173,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,175,1
-"Four Rivers and Pennyroyal",21,0,,5,,177,1
-"Communicare and River Valley",21,0,,4,,179,1
+Four Rivers and Pennyroyal,21,0,,5,,177,1
+Communicare and River Valley,21,0,,4,,179,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,181,1
-"Communicare and River Valley",21,0,,4,,183,1
-"Centerstone",21,0,,3,,185,1
+Communicare and River Valley,21,0,,4,,183,1
+Centerstone,21,0,,3,,185,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,187,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,189,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,191,1
@@ -925,1001 +925,1001 @@
 "Kentucky River, Mountain, and Pathways",21,0,,6,,205,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,207,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,209,1
-"Centerstone",21,0,,3,,211,1
+Centerstone,21,0,,3,,211,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,213,1
-"Centerstone",21,0,,3,,215,1
+Centerstone,21,0,,3,,215,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,217,1
-"Four Rivers and Pennyroyal",21,0,,5,,219,1
-"Four Rivers and Pennyroyal",21,0,,5,,221,1
-"Centerstone",21,0,,3,,223,1
-"Communicare and River Valley",21,0,,4,,225,1
+Four Rivers and Pennyroyal,21,0,,5,,219,1
+Four Rivers and Pennyroyal,21,0,,5,,221,1
+Centerstone,21,0,,3,,223,1
+Communicare and River Valley,21,0,,4,,225,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,227,1
-"Communicare and River Valley",21,0,,4,,229,1
+Communicare and River Valley,21,0,,4,,229,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,231,1
-"Communicare and River Valley",21,0,,4,,233,1
+Communicare and River Valley,21,0,,4,,233,1
 "Adanta, Cumberland River, and Lifeskills",21,0,,1,,235,1
 "Kentucky River, Mountain, and Pathways",21,0,,6,,237,1
 "Bluegrass, Comprehend, and North Key",21,0,,2,,239,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,1,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,3,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,5,1
-"Region 3",22,0,"Region 3",3,1,7,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,5,1
+Region 3,22,0,Region 3,3,1,7,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,9,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,11,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,13,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,15,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,17,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,13,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,15,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,17,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,19,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,21,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,21,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,23,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,25,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,27,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,27,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,29,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,31,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,33,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,35,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,37,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,31,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,33,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,35,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,37,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,39,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,41,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,41,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,43,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,45,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,47,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,49,1
-"Region 10 (Jefferson)",22,1,"Regions 1 and 10",2,2,51,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,47,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,49,1
+Region 10 (Jefferson),22,1,Regions 1 and 10,2,2,51,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,53,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,55,1
-"Region 3",22,0,"Region 3",3,1,57,1
+Region 3,22,0,Region 3,3,1,57,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,59,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,61,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,63,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,65,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,67,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,69,1
-"Region 1",22,1,"Regions 1 and 10",1,2,71,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,73,1
-"Region 1",22,1,"Regions 1 and 10",1,2,75,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,77,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,61,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,63,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,65,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,67,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,69,1
+Region 1,22,1,Regions 1 and 10,1,2,71,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,73,1
+Region 1,22,1,Regions 1 and 10,1,2,75,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,77,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,79,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,81,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,83,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,85,1
-"Region 1",22,1,"Regions 1 and 10",1,2,87,1
-"Region 3",22,0,"Region 3",3,1,89,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,91,1
-"Region 3",22,0,"Region 3",3,1,93,1
-"Region 3",22,0,"Region 3",3,1,95,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,81,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,83,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,85,1
+Region 1,22,1,Regions 1 and 10,1,2,87,1
+Region 3,22,0,Region 3,3,1,89,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,91,1
+Region 3,22,0,Region 3,3,1,93,1
+Region 3,22,0,Region 3,3,1,95,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,97,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,99,1
-"Region 3",22,0,"Region 3",3,1,101,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,103,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,105,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,107,1
-"Region 3",22,0,"Region 3",3,1,109,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,111,1
+Region 3,22,0,Region 3,3,1,101,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,103,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,105,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,107,1
+Region 3,22,0,Region 3,3,1,109,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,111,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,113,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,115,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,117,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,119,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,121,1
-"Regions 7 and 8",22,0,"Regions 7 and 8",6,5,123,1
-"Regions 2 and 9",22,0,"Regions 2 and 9",4,3,125,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,117,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,119,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,121,1
+Regions 7 and 8,22,0,Regions 7 and 8,6,5,123,1
+Regions 2 and 9,22,0,Regions 2 and 9,4,3,125,1
 "Regions 4, 5, and 6",22,0,"Regions 4, 5, and 6",5,4,127,1
-"Western",23,0,"Western",7,6,1,1
-"Aroostook",23,1,"Aroostook/Downeast",1,1,3,1
-"Cumberland",23,0,"Cumberland",3,3,5,1
-"Western",23,0,"Western",7,6,7,1
-"Downeast",23,1,"Aroostook/Downeast",4,1,9,1
-"Central",23,0,"Central",2,2,11,1
-"Midcoast",23,0,"Midcoast",5,4,13,1
-"Midcoast",23,0,"Midcoast",5,4,15,1
-"Western",23,0,"Western",7,6,17,1
-"Penquis",23,0,"Penquis",6,5,19,1
-"Penquis",23,0,"Penquis",6,5,21,1
-"Midcoast",23,0,"Midcoast",5,4,23,1
-"Central",23,0,"Central",2,2,25,1
-"Midcoast",23,0,"Midcoast",5,4,27,1
-"Downeast",23,1,"Aroostook/Downeast",4,1,29,1
-"York",23,0,"York",8,7,31,1
-"West",24,0,,9,,1,1
-"Anne Arundel",24,0,,1,,3,1
-"Baltimore County",24,0,,3,,5,1
-"South",24,0,,8,,9,1
-"Northeast",24,0,,6,,11,1
-"North Central",24,0,,5,,13,1
-"Northeast",24,0,,6,,15,1
-"South",24,0,,8,,17,1
-"South",24,0,,8,,19,1
-"West",24,0,,9,,21,1
-"West",24,0,,9,,23,1
-"Northeast",24,0,,6,,25,1
-"North Central",24,0,,5,,27,1
-"Northeast",24,0,,6,,29,1
-"Montgomery",24,0,,4,,31,1
-"Prince George's",24,0,,7,,33,1
-"Northeast",24,0,,6,,35,1
-"South",24,0,,8,,37,1
-"South",24,0,,8,,39,1
-"Northeast",24,0,,6,,41,1
-"West",24,0,,9,,43,1
-"South",24,0,,8,,45,1
-"South",24,0,,8,,47,1
-"Baltimore City",24,0,,2,,510,1
-"Region 2",26,0,,3,,1,1
-"Region 1",26,0,,1,,3,1
-"Region 3",26,0,,4,,5,1
-"Region 2",26,0,,3,,7,1
-"Region 2",26,0,,3,,9,1
-"Region 5",26,0,,6,,11,1
-"Region 1",26,0,,1,,13,1
-"Region 4",26,0,,5,,15,1
-"Region 5",26,0,,6,,17,1
-"Region 2",26,0,,3,,19,1
-"Region 4",26,0,,5,,21,1
-"Region 4",26,0,,5,,23,1
-"Region 4",26,0,,5,,25,1
-"Region 4",26,0,,5,,27,1
-"Region 2",26,0,,3,,29,1
-"Region 2",26,0,,3,,31,1
-"Region 1",26,0,,1,,33,1
-"Region 5",26,0,,6,,35,1
-"Region 5",26,0,,6,,37,1
-"Region 2",26,0,,3,,39,1
-"Region 1",26,0,,1,,41,1
-"Region 1",26,0,,1,,43,1
-"Region 5",26,0,,6,,45,1
-"Region 2",26,0,,3,,47,1
-"Region 10",26,0,,2,,49,1
-"Region 5",26,0,,6,,51,1
-"Region 1",26,0,,1,,53,1
-"Region 2",26,0,,3,,55,1
-"Region 5",26,0,,6,,57,1
-"Region 5",26,0,,6,,59,1
-"Region 1",26,0,,1,,61,1
-"Region 5",26,0,,6,,63,1
-"Region 5",26,0,,6,,65,1
-"Region 5",26,0,,6,,67,1
-"Region 2",26,0,,3,,69,1
-"Region 1",26,0,,1,,71,1
-"Region 5",26,0,,6,,73,1
-"Region 5",26,0,,6,,75,1
-"Region 4",26,0,,5,,77,1
-"Region 2",26,0,,3,,79,1
-"Region 3",26,0,,4,,81,1
-"Region 1",26,0,,1,,83,1
-"Region 3",26,0,,4,,85,1
-"Region 10",26,0,,2,,87,1
-"Region 2",26,0,,3,,89,1
-"Region 6",26,0,,7,,91,1
-"Region 6",26,0,,7,,93,1
-"Region 1",26,0,,1,,95,1
-"Region 1",26,0,,1,,97,1
-"Region 9",26,0,,10,,99,1
-"Region 2",26,0,,3,,101,1
-"Region 1",26,0,,1,,103,1
-"Region 3",26,0,,4,,105,1
-"Region 5",26,0,,6,,107,1
-"Region 1",26,0,,1,,109,1
-"Region 5",26,0,,6,,111,1
-"Region 2",26,0,,3,,113,1
-"Region 6",26,0,,7,,115,1
-"Region 5",26,0,,6,,117,1
-"Region 2",26,0,,3,,119,1
-"Region 3",26,0,,4,,121,1
-"Region 5",26,0,,6,,123,1
-"Region 8",26,0,,9,,125,1
-"Region 3",26,0,,4,,127,1
-"Region 2",26,0,,3,,129,1
-"Region 1",26,0,,1,,131,1
-"Region 5",26,0,,6,,133,1
-"Region 2",26,0,,3,,135,1
-"Region 2",26,0,,3,,137,1
-"Region 3",26,0,,4,,139,1
-"Region 2",26,0,,3,,141,1
-"Region 2",26,0,,3,,143,1
-"Region 5",26,0,,6,,145,1
-"Region 10",26,0,,2,,147,1
-"Region 4",26,0,,5,,149,1
-"Region 10",26,0,,2,,151,1
-"Region 1",26,0,,1,,153,1
-"Region 5",26,0,,6,,155,1
-"Region 5",26,0,,6,,157,1
-"Region 4",26,0,,5,,159,1
-"Region 6",26,0,,7,,161,1
-"Region 7",26,0,,8,,163,1
-"Region 2",26,0,,3,,165,1
-"Region 2",27,1,"Regions 1 and 2",2,2,1,1
-"Region 7C",27,1,"Region 7",9,1,3,1
-"Region 1",27,1,"Regions 1 and 2",1,2,5,1
-"Region 1",27,1,"Regions 1 and 2",1,2,7,1
-"Region 4",27,1,"Regions 3 and 4",4,3,9,1
-"Region 5",27,1,"Regions 5 and 6",5,4,11,1
-"Region 5",27,1,"Regions 5 and 6",5,4,13,1
-"Region 5",27,1,"Regions 5 and 6",5,4,15,1
-"Region 2",27,1,"Regions 1 and 2",2,2,17,1
-"Region 7C",27,1,"Region 7",9,1,19,1
-"Region 3",27,1,"Regions 3 and 4",3,3,21,1
-"Region 5",27,1,"Regions 5 and 6",5,4,23,1
-"Region 4",27,1,"Regions 3 and 4",4,3,25,1
-"Region 3",27,1,"Regions 3 and 4",3,3,27,1
-"Region 1",27,1,"Regions 1 and 2",1,2,29,1
-"Region 2",27,1,"Regions 1 and 2",2,2,31,1
-"Region 5",27,1,"Regions 5 and 6",5,4,33,1
-"Region 3",27,1,"Regions 3 and 4",3,3,35,1
-"Region 7C",27,1,"Region 7",9,1,37,1
-"Region 6",27,1,"Regions 5 and 6",6,4,39,1
-"Region 3",27,1,"Regions 3 and 4",3,3,41,1
-"Region 5",27,1,"Regions 5 and 6",5,4,43,1
-"Region 6",27,1,"Regions 5 and 6",6,4,45,1
-"Region 6",27,1,"Regions 5 and 6",6,4,47,1
-"Region 6",27,1,"Regions 5 and 6",6,4,49,1
-"Region 3",27,1,"Regions 3 and 4",3,3,51,1
-"Region 7A (Hennepin)",27,1,"Region 7",7,1,53,1
-"Region 6",27,1,"Regions 5 and 6",6,4,55,1
-"Region 1",27,1,"Regions 1 and 2",1,2,57,1
-"Region 4",27,1,"Regions 3 and 4",4,3,59,1
-"Region 2",27,1,"Regions 1 and 2",2,2,61,1
-"Region 5",27,1,"Regions 5 and 6",5,4,63,1
-"Region 4",27,1,"Regions 3 and 4",4,3,65,1
-"Region 5",27,1,"Regions 5 and 6",5,4,67,1
-"Region 1",27,1,"Regions 1 and 2",1,2,69,1
-"Region 2",27,1,"Regions 1 and 2",2,2,71,1
-"Region 5",27,1,"Regions 5 and 6",5,4,73,1
-"Region 2",27,1,"Regions 1 and 2",2,2,75,1
-"Region 1",27,1,"Regions 1 and 2",1,2,77,1
-"Region 5",27,1,"Regions 5 and 6",5,4,79,1
-"Region 5",27,1,"Regions 5 and 6",5,4,81,1
-"Region 5",27,1,"Regions 5 and 6",5,4,83,1
-"Region 5",27,1,"Regions 5 and 6",5,4,85,1
-"Region 1",27,1,"Regions 1 and 2",1,2,87,1
-"Region 1",27,1,"Regions 1 and 2",1,2,89,1
-"Region 5",27,1,"Regions 5 and 6",5,4,91,1
-"Region 5",27,1,"Regions 5 and 6",5,4,93,1
-"Region 4",27,1,"Regions 3 and 4",4,3,95,1
-"Region 4",27,1,"Regions 3 and 4",4,3,97,1
-"Region 6",27,1,"Regions 5 and 6",6,4,99,1
-"Region 5",27,1,"Regions 5 and 6",5,4,101,1
-"Region 5",27,1,"Regions 5 and 6",5,4,103,1
-"Region 5",27,1,"Regions 5 and 6",5,4,105,1
-"Region 1",27,1,"Regions 1 and 2",1,2,107,1
-"Region 6",27,1,"Regions 5 and 6",6,4,109,1
-"Region 3",27,1,"Regions 3 and 4",3,3,111,1
-"Region 1",27,1,"Regions 1 and 2",1,2,113,1
-"Region 4",27,1,"Regions 3 and 4",4,3,115,1
-"Region 5",27,1,"Regions 5 and 6",5,4,117,1
-"Region 1",27,1,"Regions 1 and 2",1,2,119,1
-"Region 3",27,1,"Regions 3 and 4",3,3,121,1
-"Region 7B (Ramsey)",27,1,"Region 7",8,1,123,1
-"Region 1",27,1,"Regions 1 and 2",1,2,125,1
-"Region 5",27,1,"Regions 5 and 6",5,4,127,1
-"Region 5",27,1,"Regions 5 and 6",5,4,129,1
-"Region 6",27,1,"Regions 5 and 6",6,4,131,1
-"Region 5",27,1,"Regions 5 and 6",5,4,133,1
-"Region 1",27,1,"Regions 1 and 2",1,2,135,1
-"Region 2",27,1,"Regions 1 and 2",2,2,137,1
-"Region 7C",27,1,"Region 7",9,1,139,1
-"Region 4",27,1,"Regions 3 and 4",4,3,141,1
-"Region 5",27,1,"Regions 5 and 6",5,4,143,1
-"Region 4",27,1,"Regions 3 and 4",4,3,145,1
-"Region 6",27,1,"Regions 5 and 6",6,4,147,1
-"Region 3",27,1,"Regions 3 and 4",3,3,149,1
-"Region 5",27,1,"Regions 5 and 6",5,4,151,1
-"Region 3",27,1,"Regions 3 and 4",3,3,153,1
-"Region 3",27,1,"Regions 3 and 4",3,3,155,1
-"Region 6",27,1,"Regions 5 and 6",6,4,157,1
-"Region 3",27,1,"Regions 3 and 4",3,3,159,1
-"Region 5",27,1,"Regions 5 and 6",5,4,161,1
-"Region 7C",27,1,"Region 7",9,1,163,1
-"Region 5",27,1,"Regions 5 and 6",5,4,165,1
-"Region 3",27,1,"Regions 3 and 4",3,3,167,1
-"Region 6",27,1,"Regions 5 and 6",6,4,169,1
-"Region 4",27,1,"Regions 3 and 4",4,3,171,1
-"Region 5",27,1,"Regions 5 and 6",5,4,173,1
-"Region 5",28,0,,5,,1,1
-"Region 1",28,0,,1,,3,1
-"Region 5",28,0,,5,,5,1
-"Region 2",28,0,,2,,7,1
-"Region 1",28,0,,1,,9,1
-"Region 2",28,0,,2,,11,1
-"Region 1",28,0,,1,,13,1
-"Region 2",28,0,,2,,15,1
-"Region 1",28,0,,1,,17,1
-"Region 3",28,0,,3,,19,1
-"Region 5",28,0,,5,,21,1
-"Region 3",28,0,,3,,23,1
-"Region 3",28,0,,3,,25,1
-"Region 2",28,0,,2,,27,1
-"Region 4",28,0,,4,,29,1
-"Region 6",28,0,,6,,31,1
-"Region 1",28,0,,1,,33,1
-"Region 6",28,0,,6,,35,1
-"Region 5",28,0,,5,,37,1
-"Region 7",28,0,,7,,39,1
-"Region 6",28,0,,6,,41,1
-"Region 2",28,0,,2,,43,1
-"Region 7",28,0,,7,,45,1
-"Region 7",28,0,,7,,47,1
-"Region 4",28,0,,4,,49,1
-"Region 2",28,0,,2,,51,1
-"Region 2",28,0,,2,,53,1
-"Region 2",28,0,,2,,55,1
-"Region 1",28,0,,1,,57,1
-"Region 7",28,0,,7,,59,1
-"Region 3",28,0,,3,,61,1
-"Region 5",28,0,,5,,63,1
-"Region 6",28,0,,6,,65,1
-"Region 6",28,0,,6,,67,1
-"Region 3",28,0,,3,,69,1
-"Region 1",28,0,,1,,71,1
-"Region 6",28,0,,6,,73,1
-"Region 3",28,0,,3,,75,1
-"Region 5",28,0,,5,,77,1
-"Region 3",28,0,,3,,79,1
-"Region 1",28,0,,1,,81,1
-"Region 2",28,0,,2,,83,1
-"Region 5",28,0,,5,,85,1
-"Region 3",28,0,,3,,87,1
-"Region 4",28,0,,4,,89,1
-"Region 6",28,0,,6,,91,1
-"Region 1",28,0,,1,,93,1
-"Region 1",28,0,,1,,95,1
-"Region 2",28,0,,2,,97,1
-"Region 3",28,0,,3,,99,1
-"Region 3",28,0,,3,,101,1
-"Region 3",28,0,,3,,103,1
-"Region 3",28,0,,3,,105,1
-"Region 1",28,0,,1,,107,1
-"Region 7",28,0,,7,,109,1
-"Region 6",28,0,,6,,111,1
-"Region 5",28,0,,5,,113,1
-"Region 1",28,0,,1,,115,1
-"Region 1",28,0,,1,,117,1
-"Region 2",28,0,,2,,119,1
-"Region 4",28,0,,4,,121,1
-"Region 3",28,0,,3,,123,1
-"Region 2",28,0,,2,,125,1
-"Region 4",28,0,,4,,127,1
-"Region 3",28,0,,3,,129,1
-"Region 7",28,0,,7,,131,1
-"Region 2",28,0,,2,,133,1
-"Region 2",28,0,,2,,135,1
-"Region 1",28,0,,1,,137,1
-"Region 1",28,0,,1,,139,1
-"Region 1",28,0,,1,,141,1
-"Region 2",28,0,,2,,143,1
-"Region 1",28,0,,1,,145,1
-"Region 5",28,0,,5,,147,1
-"Region 2",28,0,,2,,149,1
-"Region 2",28,0,,2,,151,1
-"Region 6",28,0,,6,,153,1
-"Region 3",28,0,,3,,155,1
-"Region 5",28,0,,5,,157,1
-"Region 3",28,0,,3,,159,1
-"Region 1",28,0,,1,,161,1
-"Region 2",28,0,,2,,163,1
-"Central",29,0,"Central",1,1,1,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,3,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,5,1
-"Central",29,0,"Central",1,1,7,1
-"Southwest",29,0,"Southwest",7,5,9,1
-"Southwest",29,0,"Southwest",7,5,11,1
-"Southwest",29,0,"Southwest",7,5,13,1
-"Southwest",29,0,"Southwest",7,5,15,1
-"Southeast",29,0,"Southeast",6,4,17,1
-"Central",29,0,"Central",1,1,19,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,21,1
-"Southeast",29,0,"Southeast",6,4,23,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,25,1
-"Central",29,0,"Central",1,1,27,1
-"Central",29,0,"Central",1,1,29,1
-"Southeast",29,0,"Southeast",6,4,31,1
-"Central",29,0,"Central",1,1,33,1
-"Southeast",29,0,"Southeast",6,4,35,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,37,1
-"Southwest",29,0,"Southwest",7,5,39,1
-"Central",29,0,"Central",1,1,41,1
-"Southwest",29,0,"Southwest",7,5,43,1
-"Central",29,0,"Central",1,1,45,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,47,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,49,1
-"Central",29,0,"Central",1,1,51,1
-"Central",29,0,"Central",1,1,53,1
-"Southeast",29,0,"Southeast",6,4,55,1
-"Southwest",29,0,"Southwest",7,5,57,1
-"Southwest",29,0,"Southwest",7,5,59,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,61,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,63,1
-"Southeast",29,0,"Southeast",6,4,65,1
-"Southeast",29,0,"Southeast",6,4,67,1
-"Southeast",29,0,"Southeast",6,4,69,1
-"Eastern (excluding St. Louis)",29,1,"Eastern",3,2,71,1
-"Southeast",29,0,"Southeast",6,4,73,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,75,1
-"Southwest",29,0,"Southwest",7,5,77,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,79,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,81,1
-"Southwest",29,0,"Southwest",7,5,83,1
-"Southwest",29,0,"Southwest",7,5,85,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,87,1
-"Central",29,0,"Central",1,1,89,1
-"Southeast",29,0,"Southeast",6,4,91,1
-"Southeast",29,0,"Southeast",6,4,93,1
-"Northwest (Jackson)",29,1,"Northwest",4,3,95,1
-"Southwest",29,0,"Southwest",7,5,97,1
-"Eastern (excluding St. Louis)",29,1,"Eastern",3,2,99,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,101,1
-"Central",29,0,"Central",1,1,103,1
-"Central",29,0,"Central",1,1,105,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,107,1
-"Southwest",29,0,"Southwest",7,5,109,1
-"Central",29,0,"Central",1,1,111,1
-"Eastern (excluding St. Louis)",29,1,"Eastern",3,2,113,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,115,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,117,1
-"Southwest",29,0,"Southwest",7,5,119,1
-"Central",29,0,"Central",1,1,121,1
-"Southeast",29,0,"Southeast",6,4,123,1
-"Southeast",29,0,"Southeast",6,4,125,1
-"Central",29,0,"Central",1,1,127,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,129,1
-"Central",29,0,"Central",1,1,131,1
-"Southeast",29,0,"Southeast",6,4,133,1
-"Central",29,0,"Central",1,1,135,1
-"Central",29,0,"Central",1,1,137,1
-"Central",29,0,"Central",1,1,139,1
-"Central",29,0,"Central",1,1,141,1
-"Southeast",29,0,"Southeast",6,4,143,1
-"Southwest",29,0,"Southwest",7,5,145,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,147,1
-"Southeast",29,0,"Southeast",6,4,149,1
-"Central",29,0,"Central",1,1,151,1
-"Southeast",29,0,"Southeast",6,4,153,1
-"Southeast",29,0,"Southeast",6,4,155,1
-"Southeast",29,0,"Southeast",6,4,157,1
-"Central",29,0,"Central",1,1,159,1
-"Southeast",29,0,"Southeast",6,4,161,1
-"Central",29,0,"Central",1,1,163,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,165,1
-"Southwest",29,0,"Southwest",7,5,167,1
-"Central",29,0,"Central",1,1,169,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,171,1
-"Central",29,0,"Central",1,1,173,1
-"Central",29,0,"Central",1,1,175,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,177,1
-"Southeast",29,0,"Southeast",6,4,179,1
-"Southeast",29,0,"Southeast",6,4,181,1
-"Eastern (excluding St. Louis)",29,1,"Eastern",3,2,183,1
-"Southwest",29,0,"Southwest",7,5,185,1
-"Southeast",29,0,"Southeast",6,4,186,1
-"Southeast",29,0,"Southeast",6,4,187,1
-"Eastern (St. Louis City and County)",29,1,"Eastern",2,2,189,1
-"Central",29,0,"Central",1,1,195,1
-"Central",29,0,"Central",1,1,197,1
-"Central",29,0,"Central",1,1,199,1
-"Southeast",29,0,"Southeast",6,4,201,1
-"Southeast",29,0,"Southeast",6,4,203,1
-"Central",29,0,"Central",1,1,205,1
-"Southeast",29,0,"Southeast",6,4,207,1
-"Southwest",29,0,"Southwest",7,5,209,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,211,1
-"Southwest",29,0,"Southwest",7,5,213,1
-"Southeast",29,0,"Southeast",6,4,215,1
-"Southwest",29,0,"Southwest",7,5,217,1
-"Eastern (excluding St. Louis)",29,1,"Eastern",3,2,219,1
-"Southeast",29,0,"Southeast",6,4,221,1
-"Southeast",29,0,"Southeast",6,4,223,1
-"Southwest",29,0,"Southwest",7,5,225,1
-"Northwest (excluding Jackson)",29,1,"Northwest",5,3,227,1
-"Southeast",29,0,"Southeast",6,4,229,1
-"Eastern (St. Louis City and County)",29,1,"Eastern",2,2,510,1
-"Region 4",30,0,,4,,1,1
-"Region 3",30,0,,3,,3,1
-"Region 2",30,0,,2,,5,1
-"Region 4",30,0,,4,,7,1
-"Region 3",30,0,,3,,9,1
-"Region 1",30,0,,1,,11,1
-"Region 2",30,0,,2,,13,1
-"Region 2",30,0,,2,,15,1
-"Region 1",30,0,,1,,17,1
-"Region 1",30,0,,1,,19,1
-"Region 1",30,0,,1,,21,1
-"Region 4",30,0,,4,,23,1
-"Region 1",30,0,,1,,25,1
-"Region 3",30,0,,3,,27,1
-"Region 5",30,0,,5,,29,1
-"Region 4",30,0,,4,,31,1
-"Region 1",30,0,,1,,33,1
-"Region 2",30,0,,2,,35,1
-"Region 3",30,0,,3,,37,1
-"Region 4",30,0,,4,,39,1
-"Region 2",30,0,,2,,41,1
-"Region 4",30,0,,4,,43,1
-"Region 3",30,0,,3,,45,1
-"Region 5",30,0,,5,,47,1
-"Region 4",30,0,,4,,49,1
-"Region 2",30,0,,2,,51,1
-"Region 5",30,0,,5,,53,1
-"Region 1",30,0,,1,,55,1
-"Region 4",30,0,,4,,57,1
-"Region 4",30,0,,4,,59,1
-"Region 5",30,0,,5,,61,1
-"Region 5",30,0,,5,,63,1
-"Region 3",30,0,,3,,65,1
-"Region 4",30,0,,4,,67,1
-"Region 3",30,0,,3,,69,1
-"Region 1",30,0,,1,,71,1
-"Region 2",30,0,,2,,73,1
-"Region 1",30,0,,1,,75,1
-"Region 4",30,0,,4,,77,1
-"Region 1",30,0,,1,,79,1
-"Region 5",30,0,,5,,81,1
-"Region 1",30,0,,1,,83,1
-"Region 1",30,0,,1,,85,1
-"Region 1",30,0,,1,,87,1
-"Region 5",30,0,,5,,89,1
-"Region 1",30,0,,1,,91,1
-"Region 4",30,0,,4,,93,1
-"Region 3",30,0,,3,,95,1
-"Region 3",30,0,,3,,97,1
-"Region 2",30,0,,2,,99,1
-"Region 2",30,0,,2,,101,1
-"Region 1",30,0,,1,,103,1
-"Region 1",30,0,,1,,105,1
-"Region 3",30,0,,3,,107,1
-"Region 1",30,0,,1,,109,1
-"Region 3",30,0,,3,,111,1
-"Region 3",31,0,"Region 3",3,1,1,1
-"Region 4",31,0,"Region 4",4,2,3,1
-"Region 2",31,1,"Regions 1 and 2",2,5,5,1
-"Region 1",31,1,"Regions 1 and 2",1,5,7,1
-"Region 3",31,0,"Region 3",3,1,9,1
-"Region 4",31,0,"Region 4",4,2,11,1
-"Region 1",31,1,"Regions 1 and 2",1,5,13,1
-"Region 4",31,0,"Region 4",4,2,15,1
-"Region 4",31,0,"Region 4",4,2,17,1
-"Region 3",31,0,"Region 3",3,1,19,1
-"Region 4",31,0,"Region 4",4,2,21,1
-"Region 5",31,0,"Region 5",5,3,23,1
-"Region 6",31,0,"Region 6",6,4,25,1
-"Region 4",31,0,"Region 4",4,2,27,1
-"Region 2",31,1,"Regions 1 and 2",2,5,29,1
-"Region 4",31,0,"Region 4",4,2,31,1
-"Region 1",31,1,"Regions 1 and 2",1,5,33,1
-"Region 3",31,0,"Region 3",3,1,35,1
-"Region 4",31,0,"Region 4",4,2,37,1
-"Region 4",31,0,"Region 4",4,2,39,1
-"Region 3",31,0,"Region 3",3,1,41,1
-"Region 4",31,0,"Region 4",4,2,43,1
-"Region 1",31,1,"Regions 1 and 2",1,5,45,1
-"Region 2",31,1,"Regions 1 and 2",2,5,47,1
-"Region 1",31,1,"Regions 1 and 2",1,5,49,1
-"Region 4",31,0,"Region 4",4,2,51,1
-"Region 6",31,0,"Region 6",6,4,53,1
-"Region 6",31,0,"Region 6",6,4,55,1
-"Region 2",31,1,"Regions 1 and 2",2,5,57,1
-"Region 5",31,0,"Region 5",5,3,59,1
-"Region 3",31,0,"Region 3",3,1,61,1
-"Region 2",31,1,"Regions 1 and 2",2,5,63,1
-"Region 3",31,0,"Region 3",3,1,65,1
-"Region 5",31,0,"Region 5",5,3,67,1
-"Region 1",31,1,"Regions 1 and 2",1,5,69,1
-"Region 3",31,0,"Region 3",3,1,71,1
-"Region 2",31,1,"Regions 1 and 2",2,5,73,1
-"Region 2",31,1,"Regions 1 and 2",2,5,75,1
-"Region 3",31,0,"Region 3",3,1,77,1
-"Region 3",31,0,"Region 3",3,1,79,1
-"Region 3",31,0,"Region 3",3,1,81,1
-"Region 3",31,0,"Region 3",3,1,83,1
-"Region 2",31,1,"Regions 1 and 2",2,5,85,1
-"Region 2",31,1,"Regions 1 and 2",2,5,87,1
-"Region 4",31,0,"Region 4",4,2,89,1
-"Region 2",31,1,"Regions 1 and 2",2,5,91,1
-"Region 3",31,0,"Region 3",3,1,93,1
-"Region 5",31,0,"Region 5",5,3,95,1
-"Region 5",31,0,"Region 5",5,3,97,1
-"Region 3",31,0,"Region 3",3,1,99,1
-"Region 2",31,1,"Regions 1 and 2",2,5,101,1
-"Region 4",31,0,"Region 4",4,2,103,1
-"Region 1",31,1,"Regions 1 and 2",1,5,105,1
-"Region 4",31,0,"Region 4",4,2,107,1
-"Region 5",31,0,"Region 5",5,3,109,1
-"Region 2",31,1,"Regions 1 and 2",2,5,111,1
-"Region 2",31,1,"Regions 1 and 2",2,5,113,1
-"Region 3",31,0,"Region 3",3,1,115,1
-"Region 2",31,1,"Regions 1 and 2",2,5,117,1
-"Region 4",31,0,"Region 4",4,2,119,1
-"Region 3",31,0,"Region 3",3,1,121,1
-"Region 1",31,1,"Regions 1 and 2",1,5,123,1
-"Region 4",31,0,"Region 4",4,2,125,1
-"Region 5",31,0,"Region 5",5,3,127,1
-"Region 3",31,0,"Region 3",3,1,129,1
-"Region 5",31,0,"Region 5",5,3,131,1
-"Region 5",31,0,"Region 5",5,3,133,1
-"Region 2",31,1,"Regions 1 and 2",2,5,135,1
-"Region 3",31,0,"Region 3",3,1,137,1
-"Region 4",31,0,"Region 4",4,2,139,1
-"Region 4",31,0,"Region 4",4,2,141,1
-"Region 5",31,0,"Region 5",5,3,143,1
-"Region 2",31,1,"Regions 1 and 2",2,5,145,1
-"Region 5",31,0,"Region 5",5,3,147,1
-"Region 4",31,0,"Region 4",4,2,149,1
-"Region 5",31,0,"Region 5",5,3,151,1
-"Region 6",31,0,"Region 6",6,4,153,1
-"Region 5",31,0,"Region 5",5,3,155,1
-"Region 1",31,1,"Regions 1 and 2",1,5,157,1
-"Region 5",31,0,"Region 5",5,3,159,1
-"Region 1",31,1,"Regions 1 and 2",1,5,161,1
-"Region 3",31,0,"Region 3",3,1,163,1
-"Region 1",31,1,"Regions 1 and 2",1,5,165,1
-"Region 4",31,0,"Region 4",4,2,167,1
-"Region 5",31,0,"Region 5",5,3,169,1
-"Region 2",31,1,"Regions 1 and 2",2,5,171,1
-"Region 4",31,0,"Region 4",4,2,173,1
-"Region 3",31,0,"Region 3",3,1,175,1
-"Region 6",31,0,"Region 6",6,4,177,1
-"Region 4",31,0,"Region 4",4,2,179,1
-"Region 3",31,0,"Region 3",3,1,181,1
-"Region 3",31,0,"Region 3",3,1,183,1
-"Region 5",31,0,"Region 5",5,3,185,1
-"Rural/Frontier",32,1,"Region 3",3,2,1,1
-"Clark - Region 1",32,0,"Clark - Region 1",2,1,3,1
-"Capital District",32,1,"Region 3",1,2,5,1
-"Rural/Frontier",32,1,"Region 3",3,2,7,1
-"Rural/Frontier",32,1,"Region 3",3,2,9,1
-"Rural/Frontier",32,1,"Region 3",3,2,11,1
-"Rural/Frontier",32,1,"Region 3",3,2,13,1
-"Rural/Frontier",32,1,"Region 3",3,2,15,1
-"Rural/Frontier",32,1,"Region 3",3,2,17,1
-"Capital District",32,1,"Region 3",1,2,19,1
-"Rural/Frontier",32,1,"Region 3",3,2,21,1
-"Rural/Frontier",32,1,"Region 3",3,2,23,1
-"Rural/Frontier",32,1,"Region 3",3,2,27,1
-"Rural/Frontier",32,1,"Region 3",3,2,29,1
-"Washoe - Region 2",32,0,"Washoe - Region 2",4,3,31,1
-"Rural/Frontier",32,1,"Region 3",3,2,33,1
-"Capital District",32,1,"Region 3",1,2,510,1
-"Central 1",33,1,"Central",1,1,1,1
-"Northern",33,0,"Northern",3,2,3,1
-"Southern 2",33,1,"Southern",5,3,5,1
-"Northern",33,0,"Northern",3,2,7,1
-"Northern",33,0,"Northern",3,2,9,1
-"Southern 2",33,1,"Southern",5,3,11,1
-"Central 2",33,1,"Central",2,1,13,1
-"Southern 1 (Rockingham)",33,1,"Southern",4,3,15,1
-"Central 1",33,1,"Central",1,1,17,1
-"Central 2",33,1,"Central",2,1,19,1
-"Southern",34,0,,4,,1,1
-"Northern",34,0,,3,,3,1
-"Southern",34,0,,4,,5,1
-"Southern",34,0,,4,,7,1
-"Southern",34,0,,4,,9,1
-"Southern",34,0,,4,,11,1
-"Metropolitan",34,0,,2,,13,1
-"Southern",34,0,,4,,15,1
-"Northern",34,0,,3,,17,1
-"Central",34,0,,1,,19,1
-"Central",34,0,,1,,21,1
-"Metropolitan",34,0,,2,,23,1
-"Central",34,0,,1,,25,1
-"Northern",34,0,,3,,27,1
-"Central",34,0,,1,,29,1
-"Northern",34,0,,3,,31,1
-"Southern",34,0,,4,,33,1
-"Central",34,0,,1,,35,1
-"Northern",34,0,,3,,37,1
-"Metropolitan",34,0,,2,,39,1
-"Northern",34,0,,3,,41,1
-"Region 3 (Bernalillo)",35,0,"Region 3 (Bernalillo)",3,3,1,1
-"Region 5a",35,1,"Region 5",5,5,3,1
-"Region 4",35,0,"Region 4",4,4,5,1
-"Region 1",35,0,"Region 1",1,1,6,1
-"Region 2",35,0,"Region 2",2,2,7,1
-"Region 4",35,0,"Region 4",4,4,9,1
-"Region 4",35,0,"Region 4",4,4,11,1
-"Region 5b (Dona Ana)",35,1,"Region 5",6,5,13,1
-"Region 4",35,0,"Region 4",4,4,15,1
-"Region 5a",35,1,"Region 5",5,5,17,1
-"Region 2",35,0,"Region 2",2,2,19,1
-"Region 4",35,0,"Region 4",4,4,21,1
-"Region 5a",35,1,"Region 5",5,5,23,1
-"Region 4",35,0,"Region 4",4,4,25,1
-"Region 5a",35,1,"Region 5",5,5,27,1
-"Region 2",35,0,"Region 2",2,2,28,1
-"Region 5a",35,1,"Region 5",5,5,29,1
-"Region 1",35,0,"Region 1",1,1,31,1
-"Region 2",35,0,"Region 2",2,2,33,1
-"Region 5a",35,1,"Region 5",5,5,35,1
-"Region 4",35,0,"Region 4",4,4,37,1
-"Region 2",35,0,"Region 2",2,2,39,1
-"Region 4",35,0,"Region 4",4,4,41,1
-"Region 1",35,0,"Region 1",1,1,43,1
-"Region 1",35,0,"Region 1",1,1,45,1
-"Region 2",35,0,"Region 2",2,2,47,1
-"Region 2",35,0,"Region 2",2,2,49,1
-"Region 5a",35,1,"Region 5",5,5,51,1
-"Region 5a",35,1,"Region 5",5,5,53,1
-"Region 2",35,0,"Region 2",2,2,55,1
-"Region 5a",35,1,"Region 5",5,5,57,1
-"Region 2",35,0,"Region 2",2,2,59,1
-"Region 1",35,0,"Region 1",1,1,61,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,1,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,3,1
-"Region 2A: Bronx",36,1,"Region 2: New York City",4,4,5,1
-"Region 9: Southern Tier",36,0,"Region 9: Southern Tier",15,11,7,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,9,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,11,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,13,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,15,1
-"Region 9: Southern Tier",36,0,"Region 9: Southern Tier",15,11,17,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,19,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,21,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,23,1
-"Region 9: Southern Tier",36,0,"Region 9: Southern Tier",15,11,25,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,27,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,29,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,31,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,33,1
-"Region 5: Mohawk Valley",36,0,"Region 5: Mohawk Valley",11,7,35,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,37,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,39,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,41,1
-"Region 5: Mohawk Valley",36,0,"Region 5: Mohawk Valley",11,7,43,1
-"Region 7: Tug Hill Seaway",36,0,"Region 7: Tug Hill Seaway",13,9,45,1
-"Region 2B: Kings",36,1,"Region 2: New York City",5,4,47,1
-"Region 7: Tug Hill Seaway",36,0,"Region 7: Tug Hill Seaway",13,9,49,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,51,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,53,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,55,1
-"Region 5: Mohawk Valley",36,0,"Region 5: Mohawk Valley",11,7,57,1
-"Region 1: Long Island",36,0,"Region 1: Long Island",3,3,59,1
-"Region 2C: New York",36,1,"Region 2: New York City",6,4,61,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,63,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,65,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,67,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,69,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,71,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,73,1
-"Region 8: Central",36,0,"Region 8: Central",14,10,75,1
-"Region 5: Mohawk Valley",36,0,"Region 5: Mohawk Valley",11,7,77,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,79,1
-"Region 2D: Queens",36,1,"Region 2: New York City",7,4,81,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,83,1
-"Region 2E: Richmond",36,1,"Region 2: New York City",8,4,85,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,87,1
-"Region 7: Tug Hill Seaway",36,0,"Region 7: Tug Hill Seaway",13,9,89,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,91,1
-"Region 4: Capital Region",36,0,"Region 4: Capital Region",10,6,93,1
-"Region 5: Mohawk Valley",36,0,"Region 5: Mohawk Valley",11,7,95,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,97,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,99,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,101,1
-"Region 1: Long Island",36,0,"Region 1: Long Island",3,3,103,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,105,1
-"Region 9: Southern Tier",36,0,"Region 9: Southern Tier",15,11,107,1
-"Region 9: Southern Tier",36,0,"Region 9: Southern Tier",15,11,109,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,111,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,113,1
-"Region 6: North Country",36,0,"Region 6: North Country",12,8,115,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,117,1
-"Region 3: Mid-Hudson",36,0,"Region 3: Mid-Hudson",9,5,119,1
-"Region 11: Western",36,0,"Region 11: Western",2,2,121,1
-"Region 10: Finger Lakes",36,0,"Region 10: Finger Lakes",1,1,123,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,1,1
-"Smoky Mountain Center 1",37,0,,11,,3,1
-"Smoky Mountain Center 1",37,0,,11,,5,1
-"Sandhills Center 1",37,0,,9,,7,1
-"Smoky Mountain Center 1",37,0,,11,,9,1
-"Smoky Mountain Center 1",37,0,,11,,11,1
-"Trillium Health Resources 1",37,0,,13,,13,1
-"Trillium Health Resources 1",37,0,,13,,15,1
-"Eastpointe",37,0,,7,,17,1
-"Trillium Health Resources 2",37,0,,14,,19,1
-"Smoky Mountain Center 2",37,0,,12,,21,1
-"Partners Behavioral Health Management",37,0,,8,,23,1
-"Cardinal Innovations Healthcare Solutions 1",37,0,,3,,25,1
-"Smoky Mountain Center 1",37,0,,11,,27,1
-"Trillium Health Resources 1",37,0,,13,,29,1
-"Trillium Health Resources 2",37,0,,14,,31,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,33,1
-"Partners Behavioral Health Management",37,0,,8,,35,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,37,1
-"Smoky Mountain Center 1",37,0,,11,,39,1
-"Trillium Health Resources 1",37,0,,13,,41,1
-"Smoky Mountain Center 1",37,0,,11,,43,1
-"Partners Behavioral Health Management",37,0,,8,,45,1
-"Eastpointe",37,0,,7,,47,1
-"Trillium Health Resources 1",37,0,,13,,49,1
-"Alliance Behavioral Healthcare 1",37,0,,1,,51,1
-"Trillium Health Resources 1",37,0,,13,,53,1
-"Trillium Health Resources 1",37,0,,13,,55,1
-"Cardinal Innovations Healthcare Solutions 1",37,0,,3,,57,1
-"CenterPoint Human Services",37,0,,6,,59,1
-"Eastpointe",37,0,,7,,61,1
-"Alliance Behavioral Healthcare 1",37,0,,1,,63,1
-"Eastpointe",37,0,,7,,65,1
-"CenterPoint Human Services",37,0,,6,,67,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,69,1
-"Partners Behavioral Health Management",37,0,,8,,71,1
-"Trillium Health Resources 1",37,0,,13,,73,1
-"Smoky Mountain Center 1",37,0,,11,,75,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,77,1
-"Eastpointe",37,0,,7,,79,1
-"Sandhills Center 2",37,0,,10,,81,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,83,1
-"Sandhills Center 1",37,0,,9,,85,1
-"Smoky Mountain Center 1",37,0,,11,,87,1
-"Smoky Mountain Center 2",37,0,,12,,89,1
-"Trillium Health Resources 1",37,0,,13,,91,1
-"Sandhills Center 1",37,0,,9,,93,1
-"Trillium Health Resources 1",37,0,,13,,95,1
-"Partners Behavioral Health Management",37,0,,8,,97,1
-"Smoky Mountain Center 1",37,0,,11,,99,1
-"Alliance Behavioral Healthcare 1",37,0,,1,,101,1
-"Trillium Health Resources 1",37,0,,13,,103,1
-"Sandhills Center 1",37,0,,9,,105,1
-"Eastpointe",37,0,,7,,107,1
-"Partners Behavioral Health Management",37,0,,8,,109,1
-"Smoky Mountain Center 1",37,0,,11,,111,1
-"Smoky Mountain Center 1",37,0,,11,,113,1
-"Smoky Mountain Center 2",37,0,,12,,115,1
-"Trillium Health Resources 1",37,0,,13,,117,1
-"Cardinal Innovations Healthcare Solutions 3",37,0,,5,,119,1
-"Smoky Mountain Center 2",37,0,,12,,121,1
-"Sandhills Center 1",37,0,,9,,123,1
-"Sandhills Center 1",37,0,,9,,125,1
-"Eastpointe",37,0,,7,,127,1
-"Trillium Health Resources 2",37,0,,14,,129,1
-"Trillium Health Resources 1",37,0,,13,,131,1
-"Trillium Health Resources 2",37,0,,14,,133,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,135,1
-"Trillium Health Resources 1",37,0,,13,,137,1
-"Trillium Health Resources 1",37,0,,13,,139,1
-"Trillium Health Resources 2",37,0,,14,,141,1
-"Trillium Health Resources 1",37,0,,13,,143,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,145,1
-"Trillium Health Resources 1",37,0,,13,,147,1
-"Smoky Mountain Center 2",37,0,,12,,149,1
-"Sandhills Center 1",37,0,,9,,151,1
-"Sandhills Center 1",37,0,,9,,153,1
-"Eastpointe",37,0,,7,,155,1
-"CenterPoint Human Services",37,0,,6,,157,1
-"Cardinal Innovations Healthcare Solutions 1",37,0,,3,,159,1
-"Smoky Mountain Center 2",37,0,,12,,161,1
-"Eastpointe",37,0,,7,,163,1
-"Eastpointe",37,0,,7,,165,1
-"Cardinal Innovations Healthcare Solutions 1",37,0,,3,,167,1
-"CenterPoint Human Services",37,0,,6,,169,1
-"Partners Behavioral Health Management",37,0,,8,,171,1
-"Smoky Mountain Center 1",37,0,,11,,173,1
-"Smoky Mountain Center 2",37,0,,12,,175,1
-"Trillium Health Resources 1",37,0,,13,,177,1
-"Cardinal Innovations Healthcare Solutions 1",37,0,,3,,179,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,181,1
-"Alliance Behavioral Healthcare 2",37,0,,2,,183,1
-"Cardinal Innovations Healthcare Solutions 2",37,0,,4,,185,1
-"Trillium Health Resources 1",37,0,,13,,187,1
-"Smoky Mountain Center 1",37,0,,11,,189,1
-"Eastpointe",37,0,,7,,191,1
-"Smoky Mountain Center 1",37,0,,11,,193,1
-"Eastpointe",37,0,,7,,195,1
-"Partners Behavioral Health Management",37,0,,8,,197,1
-"Smoky Mountain Center 2",37,0,,12,,199,1
-"Badlands",38,1,"Badlands and West Central",1,1,1,1
-"South Central",38,0,"South Central",6,6,3,1
-"Lake Region",38,0,"Lake Region",2,2,5,1
-"Badlands",38,1,"Badlands and West Central",1,1,7,1
-"North Central",38,0,"North Central",3,3,9,1
-"Badlands",38,1,"Badlands and West Central",1,1,11,1
-"North Central",38,0,"North Central",3,3,13,1
-"West Central",38,1,"Badlands and West Central",8,1,15,1
-"Southeast",38,0,"Southeast",7,7,17,1
-"Lake Region",38,0,"Lake Region",2,2,19,1
-"South Central",38,0,"South Central",6,6,21,1
-"Northwest",38,0,"Northwest",5,5,23,1
-"Badlands",38,1,"Badlands and West Central",1,1,25,1
-"Lake Region",38,0,"Lake Region",2,2,27,1
-"West Central",38,1,"Badlands and West Central",8,1,29,1
-"South Central",38,0,"South Central",6,6,31,1
-"Badlands",38,1,"Badlands and West Central",1,1,33,1
-"Northeast",38,0,"Northeast",4,4,35,1
-"West Central",38,1,"Badlands and West Central",8,1,37,1
-"South Central",38,0,"South Central",6,6,39,1
-"Badlands",38,1,"Badlands and West Central",1,1,41,1
-"West Central",38,1,"Badlands and West Central",8,1,43,1
-"South Central",38,0,"South Central",6,6,45,1
-"South Central",38,0,"South Central",6,6,47,1
-"North Central",38,0,"North Central",3,3,49,1
-"South Central",38,0,"South Central",6,6,51,1
-"Northwest",38,0,"Northwest",5,5,53,1
-"West Central",38,1,"Badlands and West Central",8,1,55,1
-"West Central",38,1,"Badlands and West Central",8,1,57,1
-"West Central",38,1,"Badlands and West Central",8,1,59,1
-"North Central",38,0,"North Central",3,3,61,1
-"Northeast",38,0,"Northeast",4,4,63,1
-"West Central",38,1,"Badlands and West Central",8,1,65,1
-"Northeast",38,0,"Northeast",4,4,67,1
-"North Central",38,0,"North Central",3,3,69,1
-"Lake Region",38,0,"Lake Region",2,2,71,1
-"Southeast",38,0,"Southeast",7,7,73,1
-"North Central",38,0,"North Central",3,3,75,1
-"Southeast",38,0,"Southeast",7,7,77,1
-"Lake Region",38,0,"Lake Region",2,2,79,1
-"Southeast",38,0,"Southeast",7,7,81,1
-"West Central",38,1,"Badlands and West Central",8,1,83,1
-"West Central",38,1,"Badlands and West Central",8,1,85,1
-"Badlands",38,1,"Badlands and West Central",1,1,87,1
-"Badlands",38,1,"Badlands and West Central",1,1,89,1
-"Southeast",38,0,"Southeast",7,7,91,1
-"South Central",38,0,"South Central",6,6,93,1
-"Lake Region",38,0,"Lake Region",2,2,95,1
-"Southeast",38,0,"Southeast",7,7,97,1
-"Northeast",38,0,"Northeast",4,4,99,1
-"North Central",38,0,"North Central",3,3,101,1
-"South Central",38,0,"South Central",6,6,103,1
-"Northwest",38,0,"Northwest",5,5,105,1
+Western,23,0,Western,7,6,1,1
+Aroostook,23,1,Aroostook/Downeast,1,1,3,1
+Cumberland,23,0,Cumberland,3,3,5,1
+Western,23,0,Western,7,6,7,1
+Downeast,23,1,Aroostook/Downeast,4,1,9,1
+Central,23,0,Central,2,2,11,1
+Midcoast,23,0,Midcoast,5,4,13,1
+Midcoast,23,0,Midcoast,5,4,15,1
+Western,23,0,Western,7,6,17,1
+Penquis,23,0,Penquis,6,5,19,1
+Penquis,23,0,Penquis,6,5,21,1
+Midcoast,23,0,Midcoast,5,4,23,1
+Central,23,0,Central,2,2,25,1
+Midcoast,23,0,Midcoast,5,4,27,1
+Downeast,23,1,Aroostook/Downeast,4,1,29,1
+York,23,0,York,8,7,31,1
+West,24,0,,9,,1,1
+Anne Arundel,24,0,,1,,3,1
+Baltimore County,24,0,,3,,5,1
+South,24,0,,8,,9,1
+Northeast,24,0,,6,,11,1
+North Central,24,0,,5,,13,1
+Northeast,24,0,,6,,15,1
+South,24,0,,8,,17,1
+South,24,0,,8,,19,1
+West,24,0,,9,,21,1
+West,24,0,,9,,23,1
+Northeast,24,0,,6,,25,1
+North Central,24,0,,5,,27,1
+Northeast,24,0,,6,,29,1
+Montgomery,24,0,,4,,31,1
+Prince George's,24,0,,7,,33,1
+Northeast,24,0,,6,,35,1
+South,24,0,,8,,37,1
+South,24,0,,8,,39,1
+Northeast,24,0,,6,,41,1
+West,24,0,,9,,43,1
+South,24,0,,8,,45,1
+South,24,0,,8,,47,1
+Baltimore City,24,0,,2,,510,1
+Region 2,26,0,,3,,1,1
+Region 1,26,0,,1,,3,1
+Region 3,26,0,,4,,5,1
+Region 2,26,0,,3,,7,1
+Region 2,26,0,,3,,9,1
+Region 5,26,0,,6,,11,1
+Region 1,26,0,,1,,13,1
+Region 4,26,0,,5,,15,1
+Region 5,26,0,,6,,17,1
+Region 2,26,0,,3,,19,1
+Region 4,26,0,,5,,21,1
+Region 4,26,0,,5,,23,1
+Region 4,26,0,,5,,25,1
+Region 4,26,0,,5,,27,1
+Region 2,26,0,,3,,29,1
+Region 2,26,0,,3,,31,1
+Region 1,26,0,,1,,33,1
+Region 5,26,0,,6,,35,1
+Region 5,26,0,,6,,37,1
+Region 2,26,0,,3,,39,1
+Region 1,26,0,,1,,41,1
+Region 1,26,0,,1,,43,1
+Region 5,26,0,,6,,45,1
+Region 2,26,0,,3,,47,1
+Region 10,26,0,,2,,49,1
+Region 5,26,0,,6,,51,1
+Region 1,26,0,,1,,53,1
+Region 2,26,0,,3,,55,1
+Region 5,26,0,,6,,57,1
+Region 5,26,0,,6,,59,1
+Region 1,26,0,,1,,61,1
+Region 5,26,0,,6,,63,1
+Region 5,26,0,,6,,65,1
+Region 5,26,0,,6,,67,1
+Region 2,26,0,,3,,69,1
+Region 1,26,0,,1,,71,1
+Region 5,26,0,,6,,73,1
+Region 5,26,0,,6,,75,1
+Region 4,26,0,,5,,77,1
+Region 2,26,0,,3,,79,1
+Region 3,26,0,,4,,81,1
+Region 1,26,0,,1,,83,1
+Region 3,26,0,,4,,85,1
+Region 10,26,0,,2,,87,1
+Region 2,26,0,,3,,89,1
+Region 6,26,0,,7,,91,1
+Region 6,26,0,,7,,93,1
+Region 1,26,0,,1,,95,1
+Region 1,26,0,,1,,97,1
+Region 9,26,0,,10,,99,1
+Region 2,26,0,,3,,101,1
+Region 1,26,0,,1,,103,1
+Region 3,26,0,,4,,105,1
+Region 5,26,0,,6,,107,1
+Region 1,26,0,,1,,109,1
+Region 5,26,0,,6,,111,1
+Region 2,26,0,,3,,113,1
+Region 6,26,0,,7,,115,1
+Region 5,26,0,,6,,117,1
+Region 2,26,0,,3,,119,1
+Region 3,26,0,,4,,121,1
+Region 5,26,0,,6,,123,1
+Region 8,26,0,,9,,125,1
+Region 3,26,0,,4,,127,1
+Region 2,26,0,,3,,129,1
+Region 1,26,0,,1,,131,1
+Region 5,26,0,,6,,133,1
+Region 2,26,0,,3,,135,1
+Region 2,26,0,,3,,137,1
+Region 3,26,0,,4,,139,1
+Region 2,26,0,,3,,141,1
+Region 2,26,0,,3,,143,1
+Region 5,26,0,,6,,145,1
+Region 10,26,0,,2,,147,1
+Region 4,26,0,,5,,149,1
+Region 10,26,0,,2,,151,1
+Region 1,26,0,,1,,153,1
+Region 5,26,0,,6,,155,1
+Region 5,26,0,,6,,157,1
+Region 4,26,0,,5,,159,1
+Region 6,26,0,,7,,161,1
+Region 7,26,0,,8,,163,1
+Region 2,26,0,,3,,165,1
+Region 2,27,1,Regions 1 and 2,2,2,1,1
+Region 7C,27,1,Region 7,9,1,3,1
+Region 1,27,1,Regions 1 and 2,1,2,5,1
+Region 1,27,1,Regions 1 and 2,1,2,7,1
+Region 4,27,1,Regions 3 and 4,4,3,9,1
+Region 5,27,1,Regions 5 and 6,5,4,11,1
+Region 5,27,1,Regions 5 and 6,5,4,13,1
+Region 5,27,1,Regions 5 and 6,5,4,15,1
+Region 2,27,1,Regions 1 and 2,2,2,17,1
+Region 7C,27,1,Region 7,9,1,19,1
+Region 3,27,1,Regions 3 and 4,3,3,21,1
+Region 5,27,1,Regions 5 and 6,5,4,23,1
+Region 4,27,1,Regions 3 and 4,4,3,25,1
+Region 3,27,1,Regions 3 and 4,3,3,27,1
+Region 1,27,1,Regions 1 and 2,1,2,29,1
+Region 2,27,1,Regions 1 and 2,2,2,31,1
+Region 5,27,1,Regions 5 and 6,5,4,33,1
+Region 3,27,1,Regions 3 and 4,3,3,35,1
+Region 7C,27,1,Region 7,9,1,37,1
+Region 6,27,1,Regions 5 and 6,6,4,39,1
+Region 3,27,1,Regions 3 and 4,3,3,41,1
+Region 5,27,1,Regions 5 and 6,5,4,43,1
+Region 6,27,1,Regions 5 and 6,6,4,45,1
+Region 6,27,1,Regions 5 and 6,6,4,47,1
+Region 6,27,1,Regions 5 and 6,6,4,49,1
+Region 3,27,1,Regions 3 and 4,3,3,51,1
+Region 7A (Hennepin),27,1,Region 7,7,1,53,1
+Region 6,27,1,Regions 5 and 6,6,4,55,1
+Region 1,27,1,Regions 1 and 2,1,2,57,1
+Region 4,27,1,Regions 3 and 4,4,3,59,1
+Region 2,27,1,Regions 1 and 2,2,2,61,1
+Region 5,27,1,Regions 5 and 6,5,4,63,1
+Region 4,27,1,Regions 3 and 4,4,3,65,1
+Region 5,27,1,Regions 5 and 6,5,4,67,1
+Region 1,27,1,Regions 1 and 2,1,2,69,1
+Region 2,27,1,Regions 1 and 2,2,2,71,1
+Region 5,27,1,Regions 5 and 6,5,4,73,1
+Region 2,27,1,Regions 1 and 2,2,2,75,1
+Region 1,27,1,Regions 1 and 2,1,2,77,1
+Region 5,27,1,Regions 5 and 6,5,4,79,1
+Region 5,27,1,Regions 5 and 6,5,4,81,1
+Region 5,27,1,Regions 5 and 6,5,4,83,1
+Region 5,27,1,Regions 5 and 6,5,4,85,1
+Region 1,27,1,Regions 1 and 2,1,2,87,1
+Region 1,27,1,Regions 1 and 2,1,2,89,1
+Region 5,27,1,Regions 5 and 6,5,4,91,1
+Region 5,27,1,Regions 5 and 6,5,4,93,1
+Region 4,27,1,Regions 3 and 4,4,3,95,1
+Region 4,27,1,Regions 3 and 4,4,3,97,1
+Region 6,27,1,Regions 5 and 6,6,4,99,1
+Region 5,27,1,Regions 5 and 6,5,4,101,1
+Region 5,27,1,Regions 5 and 6,5,4,103,1
+Region 5,27,1,Regions 5 and 6,5,4,105,1
+Region 1,27,1,Regions 1 and 2,1,2,107,1
+Region 6,27,1,Regions 5 and 6,6,4,109,1
+Region 3,27,1,Regions 3 and 4,3,3,111,1
+Region 1,27,1,Regions 1 and 2,1,2,113,1
+Region 4,27,1,Regions 3 and 4,4,3,115,1
+Region 5,27,1,Regions 5 and 6,5,4,117,1
+Region 1,27,1,Regions 1 and 2,1,2,119,1
+Region 3,27,1,Regions 3 and 4,3,3,121,1
+Region 7B (Ramsey),27,1,Region 7,8,1,123,1
+Region 1,27,1,Regions 1 and 2,1,2,125,1
+Region 5,27,1,Regions 5 and 6,5,4,127,1
+Region 5,27,1,Regions 5 and 6,5,4,129,1
+Region 6,27,1,Regions 5 and 6,6,4,131,1
+Region 5,27,1,Regions 5 and 6,5,4,133,1
+Region 1,27,1,Regions 1 and 2,1,2,135,1
+Region 2,27,1,Regions 1 and 2,2,2,137,1
+Region 7C,27,1,Region 7,9,1,139,1
+Region 4,27,1,Regions 3 and 4,4,3,141,1
+Region 5,27,1,Regions 5 and 6,5,4,143,1
+Region 4,27,1,Regions 3 and 4,4,3,145,1
+Region 6,27,1,Regions 5 and 6,6,4,147,1
+Region 3,27,1,Regions 3 and 4,3,3,149,1
+Region 5,27,1,Regions 5 and 6,5,4,151,1
+Region 3,27,1,Regions 3 and 4,3,3,153,1
+Region 3,27,1,Regions 3 and 4,3,3,155,1
+Region 6,27,1,Regions 5 and 6,6,4,157,1
+Region 3,27,1,Regions 3 and 4,3,3,159,1
+Region 5,27,1,Regions 5 and 6,5,4,161,1
+Region 7C,27,1,Region 7,9,1,163,1
+Region 5,27,1,Regions 5 and 6,5,4,165,1
+Region 3,27,1,Regions 3 and 4,3,3,167,1
+Region 6,27,1,Regions 5 and 6,6,4,169,1
+Region 4,27,1,Regions 3 and 4,4,3,171,1
+Region 5,27,1,Regions 5 and 6,5,4,173,1
+Region 5,28,0,,5,,1,1
+Region 1,28,0,,1,,3,1
+Region 5,28,0,,5,,5,1
+Region 2,28,0,,2,,7,1
+Region 1,28,0,,1,,9,1
+Region 2,28,0,,2,,11,1
+Region 1,28,0,,1,,13,1
+Region 2,28,0,,2,,15,1
+Region 1,28,0,,1,,17,1
+Region 3,28,0,,3,,19,1
+Region 5,28,0,,5,,21,1
+Region 3,28,0,,3,,23,1
+Region 3,28,0,,3,,25,1
+Region 2,28,0,,2,,27,1
+Region 4,28,0,,4,,29,1
+Region 6,28,0,,6,,31,1
+Region 1,28,0,,1,,33,1
+Region 6,28,0,,6,,35,1
+Region 5,28,0,,5,,37,1
+Region 7,28,0,,7,,39,1
+Region 6,28,0,,6,,41,1
+Region 2,28,0,,2,,43,1
+Region 7,28,0,,7,,45,1
+Region 7,28,0,,7,,47,1
+Region 4,28,0,,4,,49,1
+Region 2,28,0,,2,,51,1
+Region 2,28,0,,2,,53,1
+Region 2,28,0,,2,,55,1
+Region 1,28,0,,1,,57,1
+Region 7,28,0,,7,,59,1
+Region 3,28,0,,3,,61,1
+Region 5,28,0,,5,,63,1
+Region 6,28,0,,6,,65,1
+Region 6,28,0,,6,,67,1
+Region 3,28,0,,3,,69,1
+Region 1,28,0,,1,,71,1
+Region 6,28,0,,6,,73,1
+Region 3,28,0,,3,,75,1
+Region 5,28,0,,5,,77,1
+Region 3,28,0,,3,,79,1
+Region 1,28,0,,1,,81,1
+Region 2,28,0,,2,,83,1
+Region 5,28,0,,5,,85,1
+Region 3,28,0,,3,,87,1
+Region 4,28,0,,4,,89,1
+Region 6,28,0,,6,,91,1
+Region 1,28,0,,1,,93,1
+Region 1,28,0,,1,,95,1
+Region 2,28,0,,2,,97,1
+Region 3,28,0,,3,,99,1
+Region 3,28,0,,3,,101,1
+Region 3,28,0,,3,,103,1
+Region 3,28,0,,3,,105,1
+Region 1,28,0,,1,,107,1
+Region 7,28,0,,7,,109,1
+Region 6,28,0,,6,,111,1
+Region 5,28,0,,5,,113,1
+Region 1,28,0,,1,,115,1
+Region 1,28,0,,1,,117,1
+Region 2,28,0,,2,,119,1
+Region 4,28,0,,4,,121,1
+Region 3,28,0,,3,,123,1
+Region 2,28,0,,2,,125,1
+Region 4,28,0,,4,,127,1
+Region 3,28,0,,3,,129,1
+Region 7,28,0,,7,,131,1
+Region 2,28,0,,2,,133,1
+Region 2,28,0,,2,,135,1
+Region 1,28,0,,1,,137,1
+Region 1,28,0,,1,,139,1
+Region 1,28,0,,1,,141,1
+Region 2,28,0,,2,,143,1
+Region 1,28,0,,1,,145,1
+Region 5,28,0,,5,,147,1
+Region 2,28,0,,2,,149,1
+Region 2,28,0,,2,,151,1
+Region 6,28,0,,6,,153,1
+Region 3,28,0,,3,,155,1
+Region 5,28,0,,5,,157,1
+Region 3,28,0,,3,,159,1
+Region 1,28,0,,1,,161,1
+Region 2,28,0,,2,,163,1
+Central,29,0,Central,1,1,1,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,3,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,5,1
+Central,29,0,Central,1,1,7,1
+Southwest,29,0,Southwest,7,5,9,1
+Southwest,29,0,Southwest,7,5,11,1
+Southwest,29,0,Southwest,7,5,13,1
+Southwest,29,0,Southwest,7,5,15,1
+Southeast,29,0,Southeast,6,4,17,1
+Central,29,0,Central,1,1,19,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,21,1
+Southeast,29,0,Southeast,6,4,23,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,25,1
+Central,29,0,Central,1,1,27,1
+Central,29,0,Central,1,1,29,1
+Southeast,29,0,Southeast,6,4,31,1
+Central,29,0,Central,1,1,33,1
+Southeast,29,0,Southeast,6,4,35,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,37,1
+Southwest,29,0,Southwest,7,5,39,1
+Central,29,0,Central,1,1,41,1
+Southwest,29,0,Southwest,7,5,43,1
+Central,29,0,Central,1,1,45,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,47,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,49,1
+Central,29,0,Central,1,1,51,1
+Central,29,0,Central,1,1,53,1
+Southeast,29,0,Southeast,6,4,55,1
+Southwest,29,0,Southwest,7,5,57,1
+Southwest,29,0,Southwest,7,5,59,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,61,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,63,1
+Southeast,29,0,Southeast,6,4,65,1
+Southeast,29,0,Southeast,6,4,67,1
+Southeast,29,0,Southeast,6,4,69,1
+Eastern (excluding St. Louis),29,1,Eastern,3,2,71,1
+Southeast,29,0,Southeast,6,4,73,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,75,1
+Southwest,29,0,Southwest,7,5,77,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,79,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,81,1
+Southwest,29,0,Southwest,7,5,83,1
+Southwest,29,0,Southwest,7,5,85,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,87,1
+Central,29,0,Central,1,1,89,1
+Southeast,29,0,Southeast,6,4,91,1
+Southeast,29,0,Southeast,6,4,93,1
+Northwest (Jackson),29,1,Northwest,4,3,95,1
+Southwest,29,0,Southwest,7,5,97,1
+Eastern (excluding St. Louis),29,1,Eastern,3,2,99,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,101,1
+Central,29,0,Central,1,1,103,1
+Central,29,0,Central,1,1,105,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,107,1
+Southwest,29,0,Southwest,7,5,109,1
+Central,29,0,Central,1,1,111,1
+Eastern (excluding St. Louis),29,1,Eastern,3,2,113,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,115,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,117,1
+Southwest,29,0,Southwest,7,5,119,1
+Central,29,0,Central,1,1,121,1
+Southeast,29,0,Southeast,6,4,123,1
+Southeast,29,0,Southeast,6,4,125,1
+Central,29,0,Central,1,1,127,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,129,1
+Central,29,0,Central,1,1,131,1
+Southeast,29,0,Southeast,6,4,133,1
+Central,29,0,Central,1,1,135,1
+Central,29,0,Central,1,1,137,1
+Central,29,0,Central,1,1,139,1
+Central,29,0,Central,1,1,141,1
+Southeast,29,0,Southeast,6,4,143,1
+Southwest,29,0,Southwest,7,5,145,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,147,1
+Southeast,29,0,Southeast,6,4,149,1
+Central,29,0,Central,1,1,151,1
+Southeast,29,0,Southeast,6,4,153,1
+Southeast,29,0,Southeast,6,4,155,1
+Southeast,29,0,Southeast,6,4,157,1
+Central,29,0,Central,1,1,159,1
+Southeast,29,0,Southeast,6,4,161,1
+Central,29,0,Central,1,1,163,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,165,1
+Southwest,29,0,Southwest,7,5,167,1
+Central,29,0,Central,1,1,169,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,171,1
+Central,29,0,Central,1,1,173,1
+Central,29,0,Central,1,1,175,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,177,1
+Southeast,29,0,Southeast,6,4,179,1
+Southeast,29,0,Southeast,6,4,181,1
+Eastern (excluding St. Louis),29,1,Eastern,3,2,183,1
+Southwest,29,0,Southwest,7,5,185,1
+Southeast,29,0,Southeast,6,4,186,1
+Southeast,29,0,Southeast,6,4,187,1
+Eastern (St. Louis City and County),29,1,Eastern,2,2,189,1
+Central,29,0,Central,1,1,195,1
+Central,29,0,Central,1,1,197,1
+Central,29,0,Central,1,1,199,1
+Southeast,29,0,Southeast,6,4,201,1
+Southeast,29,0,Southeast,6,4,203,1
+Central,29,0,Central,1,1,205,1
+Southeast,29,0,Southeast,6,4,207,1
+Southwest,29,0,Southwest,7,5,209,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,211,1
+Southwest,29,0,Southwest,7,5,213,1
+Southeast,29,0,Southeast,6,4,215,1
+Southwest,29,0,Southwest,7,5,217,1
+Eastern (excluding St. Louis),29,1,Eastern,3,2,219,1
+Southeast,29,0,Southeast,6,4,221,1
+Southeast,29,0,Southeast,6,4,223,1
+Southwest,29,0,Southwest,7,5,225,1
+Northwest (excluding Jackson),29,1,Northwest,5,3,227,1
+Southeast,29,0,Southeast,6,4,229,1
+Eastern (St. Louis City and County),29,1,Eastern,2,2,510,1
+Region 4,30,0,,4,,1,1
+Region 3,30,0,,3,,3,1
+Region 2,30,0,,2,,5,1
+Region 4,30,0,,4,,7,1
+Region 3,30,0,,3,,9,1
+Region 1,30,0,,1,,11,1
+Region 2,30,0,,2,,13,1
+Region 2,30,0,,2,,15,1
+Region 1,30,0,,1,,17,1
+Region 1,30,0,,1,,19,1
+Region 1,30,0,,1,,21,1
+Region 4,30,0,,4,,23,1
+Region 1,30,0,,1,,25,1
+Region 3,30,0,,3,,27,1
+Region 5,30,0,,5,,29,1
+Region 4,30,0,,4,,31,1
+Region 1,30,0,,1,,33,1
+Region 2,30,0,,2,,35,1
+Region 3,30,0,,3,,37,1
+Region 4,30,0,,4,,39,1
+Region 2,30,0,,2,,41,1
+Region 4,30,0,,4,,43,1
+Region 3,30,0,,3,,45,1
+Region 5,30,0,,5,,47,1
+Region 4,30,0,,4,,49,1
+Region 2,30,0,,2,,51,1
+Region 5,30,0,,5,,53,1
+Region 1,30,0,,1,,55,1
+Region 4,30,0,,4,,57,1
+Region 4,30,0,,4,,59,1
+Region 5,30,0,,5,,61,1
+Region 5,30,0,,5,,63,1
+Region 3,30,0,,3,,65,1
+Region 4,30,0,,4,,67,1
+Region 3,30,0,,3,,69,1
+Region 1,30,0,,1,,71,1
+Region 2,30,0,,2,,73,1
+Region 1,30,0,,1,,75,1
+Region 4,30,0,,4,,77,1
+Region 1,30,0,,1,,79,1
+Region 5,30,0,,5,,81,1
+Region 1,30,0,,1,,83,1
+Region 1,30,0,,1,,85,1
+Region 1,30,0,,1,,87,1
+Region 5,30,0,,5,,89,1
+Region 1,30,0,,1,,91,1
+Region 4,30,0,,4,,93,1
+Region 3,30,0,,3,,95,1
+Region 3,30,0,,3,,97,1
+Region 2,30,0,,2,,99,1
+Region 2,30,0,,2,,101,1
+Region 1,30,0,,1,,103,1
+Region 1,30,0,,1,,105,1
+Region 3,30,0,,3,,107,1
+Region 1,30,0,,1,,109,1
+Region 3,30,0,,3,,111,1
+Region 3,31,0,Region 3,3,1,1,1
+Region 4,31,0,Region 4,4,2,3,1
+Region 2,31,1,Regions 1 and 2,2,5,5,1
+Region 1,31,1,Regions 1 and 2,1,5,7,1
+Region 3,31,0,Region 3,3,1,9,1
+Region 4,31,0,Region 4,4,2,11,1
+Region 1,31,1,Regions 1 and 2,1,5,13,1
+Region 4,31,0,Region 4,4,2,15,1
+Region 4,31,0,Region 4,4,2,17,1
+Region 3,31,0,Region 3,3,1,19,1
+Region 4,31,0,Region 4,4,2,21,1
+Region 5,31,0,Region 5,5,3,23,1
+Region 6,31,0,Region 6,6,4,25,1
+Region 4,31,0,Region 4,4,2,27,1
+Region 2,31,1,Regions 1 and 2,2,5,29,1
+Region 4,31,0,Region 4,4,2,31,1
+Region 1,31,1,Regions 1 and 2,1,5,33,1
+Region 3,31,0,Region 3,3,1,35,1
+Region 4,31,0,Region 4,4,2,37,1
+Region 4,31,0,Region 4,4,2,39,1
+Region 3,31,0,Region 3,3,1,41,1
+Region 4,31,0,Region 4,4,2,43,1
+Region 1,31,1,Regions 1 and 2,1,5,45,1
+Region 2,31,1,Regions 1 and 2,2,5,47,1
+Region 1,31,1,Regions 1 and 2,1,5,49,1
+Region 4,31,0,Region 4,4,2,51,1
+Region 6,31,0,Region 6,6,4,53,1
+Region 6,31,0,Region 6,6,4,55,1
+Region 2,31,1,Regions 1 and 2,2,5,57,1
+Region 5,31,0,Region 5,5,3,59,1
+Region 3,31,0,Region 3,3,1,61,1
+Region 2,31,1,Regions 1 and 2,2,5,63,1
+Region 3,31,0,Region 3,3,1,65,1
+Region 5,31,0,Region 5,5,3,67,1
+Region 1,31,1,Regions 1 and 2,1,5,69,1
+Region 3,31,0,Region 3,3,1,71,1
+Region 2,31,1,Regions 1 and 2,2,5,73,1
+Region 2,31,1,Regions 1 and 2,2,5,75,1
+Region 3,31,0,Region 3,3,1,77,1
+Region 3,31,0,Region 3,3,1,79,1
+Region 3,31,0,Region 3,3,1,81,1
+Region 3,31,0,Region 3,3,1,83,1
+Region 2,31,1,Regions 1 and 2,2,5,85,1
+Region 2,31,1,Regions 1 and 2,2,5,87,1
+Region 4,31,0,Region 4,4,2,89,1
+Region 2,31,1,Regions 1 and 2,2,5,91,1
+Region 3,31,0,Region 3,3,1,93,1
+Region 5,31,0,Region 5,5,3,95,1
+Region 5,31,0,Region 5,5,3,97,1
+Region 3,31,0,Region 3,3,1,99,1
+Region 2,31,1,Regions 1 and 2,2,5,101,1
+Region 4,31,0,Region 4,4,2,103,1
+Region 1,31,1,Regions 1 and 2,1,5,105,1
+Region 4,31,0,Region 4,4,2,107,1
+Region 5,31,0,Region 5,5,3,109,1
+Region 2,31,1,Regions 1 and 2,2,5,111,1
+Region 2,31,1,Regions 1 and 2,2,5,113,1
+Region 3,31,0,Region 3,3,1,115,1
+Region 2,31,1,Regions 1 and 2,2,5,117,1
+Region 4,31,0,Region 4,4,2,119,1
+Region 3,31,0,Region 3,3,1,121,1
+Region 1,31,1,Regions 1 and 2,1,5,123,1
+Region 4,31,0,Region 4,4,2,125,1
+Region 5,31,0,Region 5,5,3,127,1
+Region 3,31,0,Region 3,3,1,129,1
+Region 5,31,0,Region 5,5,3,131,1
+Region 5,31,0,Region 5,5,3,133,1
+Region 2,31,1,Regions 1 and 2,2,5,135,1
+Region 3,31,0,Region 3,3,1,137,1
+Region 4,31,0,Region 4,4,2,139,1
+Region 4,31,0,Region 4,4,2,141,1
+Region 5,31,0,Region 5,5,3,143,1
+Region 2,31,1,Regions 1 and 2,2,5,145,1
+Region 5,31,0,Region 5,5,3,147,1
+Region 4,31,0,Region 4,4,2,149,1
+Region 5,31,0,Region 5,5,3,151,1
+Region 6,31,0,Region 6,6,4,153,1
+Region 5,31,0,Region 5,5,3,155,1
+Region 1,31,1,Regions 1 and 2,1,5,157,1
+Region 5,31,0,Region 5,5,3,159,1
+Region 1,31,1,Regions 1 and 2,1,5,161,1
+Region 3,31,0,Region 3,3,1,163,1
+Region 1,31,1,Regions 1 and 2,1,5,165,1
+Region 4,31,0,Region 4,4,2,167,1
+Region 5,31,0,Region 5,5,3,169,1
+Region 2,31,1,Regions 1 and 2,2,5,171,1
+Region 4,31,0,Region 4,4,2,173,1
+Region 3,31,0,Region 3,3,1,175,1
+Region 6,31,0,Region 6,6,4,177,1
+Region 4,31,0,Region 4,4,2,179,1
+Region 3,31,0,Region 3,3,1,181,1
+Region 3,31,0,Region 3,3,1,183,1
+Region 5,31,0,Region 5,5,3,185,1
+Rural/Frontier,32,1,Region 3,3,2,1,1
+Clark - Region 1,32,0,Clark - Region 1,2,1,3,1
+Capital District,32,1,Region 3,1,2,5,1
+Rural/Frontier,32,1,Region 3,3,2,7,1
+Rural/Frontier,32,1,Region 3,3,2,9,1
+Rural/Frontier,32,1,Region 3,3,2,11,1
+Rural/Frontier,32,1,Region 3,3,2,13,1
+Rural/Frontier,32,1,Region 3,3,2,15,1
+Rural/Frontier,32,1,Region 3,3,2,17,1
+Capital District,32,1,Region 3,1,2,19,1
+Rural/Frontier,32,1,Region 3,3,2,21,1
+Rural/Frontier,32,1,Region 3,3,2,23,1
+Rural/Frontier,32,1,Region 3,3,2,27,1
+Rural/Frontier,32,1,Region 3,3,2,29,1
+Washoe - Region 2,32,0,Washoe - Region 2,4,3,31,1
+Rural/Frontier,32,1,Region 3,3,2,33,1
+Capital District,32,1,Region 3,1,2,510,1
+Central 1,33,1,Central,1,1,1,1
+Northern,33,0,Northern,3,2,3,1
+Southern 2,33,1,Southern,5,3,5,1
+Northern,33,0,Northern,3,2,7,1
+Northern,33,0,Northern,3,2,9,1
+Southern 2,33,1,Southern,5,3,11,1
+Central 2,33,1,Central,2,1,13,1
+Southern 1 (Rockingham),33,1,Southern,4,3,15,1
+Central 1,33,1,Central,1,1,17,1
+Central 2,33,1,Central,2,1,19,1
+Southern,34,0,,4,,1,1
+Northern,34,0,,3,,3,1
+Southern,34,0,,4,,5,1
+Southern,34,0,,4,,7,1
+Southern,34,0,,4,,9,1
+Southern,34,0,,4,,11,1
+Metropolitan,34,0,,2,,13,1
+Southern,34,0,,4,,15,1
+Northern,34,0,,3,,17,1
+Central,34,0,,1,,19,1
+Central,34,0,,1,,21,1
+Metropolitan,34,0,,2,,23,1
+Central,34,0,,1,,25,1
+Northern,34,0,,3,,27,1
+Central,34,0,,1,,29,1
+Northern,34,0,,3,,31,1
+Southern,34,0,,4,,33,1
+Central,34,0,,1,,35,1
+Northern,34,0,,3,,37,1
+Metropolitan,34,0,,2,,39,1
+Northern,34,0,,3,,41,1
+Region 3 (Bernalillo),35,0,Region 3 (Bernalillo),3,3,1,1
+Region 5a,35,1,Region 5,5,5,3,1
+Region 4,35,0,Region 4,4,4,5,1
+Region 1,35,0,Region 1,1,1,6,1
+Region 2,35,0,Region 2,2,2,7,1
+Region 4,35,0,Region 4,4,4,9,1
+Region 4,35,0,Region 4,4,4,11,1
+Region 5b (Dona Ana),35,1,Region 5,6,5,13,1
+Region 4,35,0,Region 4,4,4,15,1
+Region 5a,35,1,Region 5,5,5,17,1
+Region 2,35,0,Region 2,2,2,19,1
+Region 4,35,0,Region 4,4,4,21,1
+Region 5a,35,1,Region 5,5,5,23,1
+Region 4,35,0,Region 4,4,4,25,1
+Region 5a,35,1,Region 5,5,5,27,1
+Region 2,35,0,Region 2,2,2,28,1
+Region 5a,35,1,Region 5,5,5,29,1
+Region 1,35,0,Region 1,1,1,31,1
+Region 2,35,0,Region 2,2,2,33,1
+Region 5a,35,1,Region 5,5,5,35,1
+Region 4,35,0,Region 4,4,4,37,1
+Region 2,35,0,Region 2,2,2,39,1
+Region 4,35,0,Region 4,4,4,41,1
+Region 1,35,0,Region 1,1,1,43,1
+Region 1,35,0,Region 1,1,1,45,1
+Region 2,35,0,Region 2,2,2,47,1
+Region 2,35,0,Region 2,2,2,49,1
+Region 5a,35,1,Region 5,5,5,51,1
+Region 5a,35,1,Region 5,5,5,53,1
+Region 2,35,0,Region 2,2,2,55,1
+Region 5a,35,1,Region 5,5,5,57,1
+Region 2,35,0,Region 2,2,2,59,1
+Region 1,35,0,Region 1,1,1,61,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,1,1
+Region 11: Western,36,0,Region 11: Western,2,2,3,1
+Region 2A: Bronx,36,1,Region 2: New York City,4,4,5,1
+Region 9: Southern Tier,36,0,Region 9: Southern Tier,15,11,7,1
+Region 11: Western,36,0,Region 11: Western,2,2,9,1
+Region 8: Central,36,0,Region 8: Central,14,10,11,1
+Region 11: Western,36,0,Region 11: Western,2,2,13,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,15,1
+Region 9: Southern Tier,36,0,Region 9: Southern Tier,15,11,17,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,19,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,21,1
+Region 8: Central,36,0,Region 8: Central,14,10,23,1
+Region 9: Southern Tier,36,0,Region 9: Southern Tier,15,11,25,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,27,1
+Region 11: Western,36,0,Region 11: Western,2,2,29,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,31,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,33,1
+Region 5: Mohawk Valley,36,0,Region 5: Mohawk Valley,11,7,35,1
+Region 11: Western,36,0,Region 11: Western,2,2,37,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,39,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,41,1
+Region 5: Mohawk Valley,36,0,Region 5: Mohawk Valley,11,7,43,1
+Region 7: Tug Hill Seaway,36,0,Region 7: Tug Hill Seaway,13,9,45,1
+Region 2B: Kings,36,1,Region 2: New York City,5,4,47,1
+Region 7: Tug Hill Seaway,36,0,Region 7: Tug Hill Seaway,13,9,49,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,51,1
+Region 8: Central,36,0,Region 8: Central,14,10,53,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,55,1
+Region 5: Mohawk Valley,36,0,Region 5: Mohawk Valley,11,7,57,1
+Region 1: Long Island,36,0,Region 1: Long Island,3,3,59,1
+Region 2C: New York,36,1,Region 2: New York City,6,4,61,1
+Region 11: Western,36,0,Region 11: Western,2,2,63,1
+Region 8: Central,36,0,Region 8: Central,14,10,65,1
+Region 8: Central,36,0,Region 8: Central,14,10,67,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,69,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,71,1
+Region 11: Western,36,0,Region 11: Western,2,2,73,1
+Region 8: Central,36,0,Region 8: Central,14,10,75,1
+Region 5: Mohawk Valley,36,0,Region 5: Mohawk Valley,11,7,77,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,79,1
+Region 2D: Queens,36,1,Region 2: New York City,7,4,81,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,83,1
+Region 2E: Richmond,36,1,Region 2: New York City,8,4,85,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,87,1
+Region 7: Tug Hill Seaway,36,0,Region 7: Tug Hill Seaway,13,9,89,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,91,1
+Region 4: Capital Region,36,0,Region 4: Capital Region,10,6,93,1
+Region 5: Mohawk Valley,36,0,Region 5: Mohawk Valley,11,7,95,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,97,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,99,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,101,1
+Region 1: Long Island,36,0,Region 1: Long Island,3,3,103,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,105,1
+Region 9: Southern Tier,36,0,Region 9: Southern Tier,15,11,107,1
+Region 9: Southern Tier,36,0,Region 9: Southern Tier,15,11,109,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,111,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,113,1
+Region 6: North Country,36,0,Region 6: North Country,12,8,115,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,117,1
+Region 3: Mid-Hudson,36,0,Region 3: Mid-Hudson,9,5,119,1
+Region 11: Western,36,0,Region 11: Western,2,2,121,1
+Region 10: Finger Lakes,36,0,Region 10: Finger Lakes,1,1,123,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,1,1
+Smoky Mountain Center 1,37,0,,11,,3,1
+Smoky Mountain Center 1,37,0,,11,,5,1
+Sandhills Center 1,37,0,,9,,7,1
+Smoky Mountain Center 1,37,0,,11,,9,1
+Smoky Mountain Center 1,37,0,,11,,11,1
+Trillium Health Resources 1,37,0,,13,,13,1
+Trillium Health Resources 1,37,0,,13,,15,1
+Eastpointe,37,0,,7,,17,1
+Trillium Health Resources 2,37,0,,14,,19,1
+Smoky Mountain Center 2,37,0,,12,,21,1
+Partners Behavioral Health Management,37,0,,8,,23,1
+Cardinal Innovations Healthcare Solutions 1,37,0,,3,,25,1
+Smoky Mountain Center 1,37,0,,11,,27,1
+Trillium Health Resources 1,37,0,,13,,29,1
+Trillium Health Resources 2,37,0,,14,,31,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,33,1
+Partners Behavioral Health Management,37,0,,8,,35,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,37,1
+Smoky Mountain Center 1,37,0,,11,,39,1
+Trillium Health Resources 1,37,0,,13,,41,1
+Smoky Mountain Center 1,37,0,,11,,43,1
+Partners Behavioral Health Management,37,0,,8,,45,1
+Eastpointe,37,0,,7,,47,1
+Trillium Health Resources 1,37,0,,13,,49,1
+Alliance Behavioral Healthcare 1,37,0,,1,,51,1
+Trillium Health Resources 1,37,0,,13,,53,1
+Trillium Health Resources 1,37,0,,13,,55,1
+Cardinal Innovations Healthcare Solutions 1,37,0,,3,,57,1
+CenterPoint Human Services,37,0,,6,,59,1
+Eastpointe,37,0,,7,,61,1
+Alliance Behavioral Healthcare 1,37,0,,1,,63,1
+Eastpointe,37,0,,7,,65,1
+CenterPoint Human Services,37,0,,6,,67,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,69,1
+Partners Behavioral Health Management,37,0,,8,,71,1
+Trillium Health Resources 1,37,0,,13,,73,1
+Smoky Mountain Center 1,37,0,,11,,75,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,77,1
+Eastpointe,37,0,,7,,79,1
+Sandhills Center 2,37,0,,10,,81,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,83,1
+Sandhills Center 1,37,0,,9,,85,1
+Smoky Mountain Center 1,37,0,,11,,87,1
+Smoky Mountain Center 2,37,0,,12,,89,1
+Trillium Health Resources 1,37,0,,13,,91,1
+Sandhills Center 1,37,0,,9,,93,1
+Trillium Health Resources 1,37,0,,13,,95,1
+Partners Behavioral Health Management,37,0,,8,,97,1
+Smoky Mountain Center 1,37,0,,11,,99,1
+Alliance Behavioral Healthcare 1,37,0,,1,,101,1
+Trillium Health Resources 1,37,0,,13,,103,1
+Sandhills Center 1,37,0,,9,,105,1
+Eastpointe,37,0,,7,,107,1
+Partners Behavioral Health Management,37,0,,8,,109,1
+Smoky Mountain Center 1,37,0,,11,,111,1
+Smoky Mountain Center 1,37,0,,11,,113,1
+Smoky Mountain Center 2,37,0,,12,,115,1
+Trillium Health Resources 1,37,0,,13,,117,1
+Cardinal Innovations Healthcare Solutions 3,37,0,,5,,119,1
+Smoky Mountain Center 2,37,0,,12,,121,1
+Sandhills Center 1,37,0,,9,,123,1
+Sandhills Center 1,37,0,,9,,125,1
+Eastpointe,37,0,,7,,127,1
+Trillium Health Resources 2,37,0,,14,,129,1
+Trillium Health Resources 1,37,0,,13,,131,1
+Trillium Health Resources 2,37,0,,14,,133,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,135,1
+Trillium Health Resources 1,37,0,,13,,137,1
+Trillium Health Resources 1,37,0,,13,,139,1
+Trillium Health Resources 2,37,0,,14,,141,1
+Trillium Health Resources 1,37,0,,13,,143,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,145,1
+Trillium Health Resources 1,37,0,,13,,147,1
+Smoky Mountain Center 2,37,0,,12,,149,1
+Sandhills Center 1,37,0,,9,,151,1
+Sandhills Center 1,37,0,,9,,153,1
+Eastpointe,37,0,,7,,155,1
+CenterPoint Human Services,37,0,,6,,157,1
+Cardinal Innovations Healthcare Solutions 1,37,0,,3,,159,1
+Smoky Mountain Center 2,37,0,,12,,161,1
+Eastpointe,37,0,,7,,163,1
+Eastpointe,37,0,,7,,165,1
+Cardinal Innovations Healthcare Solutions 1,37,0,,3,,167,1
+CenterPoint Human Services,37,0,,6,,169,1
+Partners Behavioral Health Management,37,0,,8,,171,1
+Smoky Mountain Center 1,37,0,,11,,173,1
+Smoky Mountain Center 2,37,0,,12,,175,1
+Trillium Health Resources 1,37,0,,13,,177,1
+Cardinal Innovations Healthcare Solutions 1,37,0,,3,,179,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,181,1
+Alliance Behavioral Healthcare 2,37,0,,2,,183,1
+Cardinal Innovations Healthcare Solutions 2,37,0,,4,,185,1
+Trillium Health Resources 1,37,0,,13,,187,1
+Smoky Mountain Center 1,37,0,,11,,189,1
+Eastpointe,37,0,,7,,191,1
+Smoky Mountain Center 1,37,0,,11,,193,1
+Eastpointe,37,0,,7,,195,1
+Partners Behavioral Health Management,37,0,,8,,197,1
+Smoky Mountain Center 2,37,0,,12,,199,1
+Badlands,38,1,Badlands and West Central,1,1,1,1
+South Central,38,0,South Central,6,6,3,1
+Lake Region,38,0,Lake Region,2,2,5,1
+Badlands,38,1,Badlands and West Central,1,1,7,1
+North Central,38,0,North Central,3,3,9,1
+Badlands,38,1,Badlands and West Central,1,1,11,1
+North Central,38,0,North Central,3,3,13,1
+West Central,38,1,Badlands and West Central,8,1,15,1
+Southeast,38,0,Southeast,7,7,17,1
+Lake Region,38,0,Lake Region,2,2,19,1
+South Central,38,0,South Central,6,6,21,1
+Northwest,38,0,Northwest,5,5,23,1
+Badlands,38,1,Badlands and West Central,1,1,25,1
+Lake Region,38,0,Lake Region,2,2,27,1
+West Central,38,1,Badlands and West Central,8,1,29,1
+South Central,38,0,South Central,6,6,31,1
+Badlands,38,1,Badlands and West Central,1,1,33,1
+Northeast,38,0,Northeast,4,4,35,1
+West Central,38,1,Badlands and West Central,8,1,37,1
+South Central,38,0,South Central,6,6,39,1
+Badlands,38,1,Badlands and West Central,1,1,41,1
+West Central,38,1,Badlands and West Central,8,1,43,1
+South Central,38,0,South Central,6,6,45,1
+South Central,38,0,South Central,6,6,47,1
+North Central,38,0,North Central,3,3,49,1
+South Central,38,0,South Central,6,6,51,1
+Northwest,38,0,Northwest,5,5,53,1
+West Central,38,1,Badlands and West Central,8,1,55,1
+West Central,38,1,Badlands and West Central,8,1,57,1
+West Central,38,1,Badlands and West Central,8,1,59,1
+North Central,38,0,North Central,3,3,61,1
+Northeast,38,0,Northeast,4,4,63,1
+West Central,38,1,Badlands and West Central,8,1,65,1
+Northeast,38,0,Northeast,4,4,67,1
+North Central,38,0,North Central,3,3,69,1
+Lake Region,38,0,Lake Region,2,2,71,1
+Southeast,38,0,Southeast,7,7,73,1
+North Central,38,0,North Central,3,3,75,1
+Southeast,38,0,Southeast,7,7,77,1
+Lake Region,38,0,Lake Region,2,2,79,1
+Southeast,38,0,Southeast,7,7,81,1
+West Central,38,1,Badlands and West Central,8,1,83,1
+West Central,38,1,Badlands and West Central,8,1,85,1
+Badlands,38,1,Badlands and West Central,1,1,87,1
+Badlands,38,1,Badlands and West Central,1,1,89,1
+Southeast,38,0,Southeast,7,7,91,1
+South Central,38,0,South Central,6,6,93,1
+Lake Region,38,0,Lake Region,2,2,95,1
+Southeast,38,0,Southeast,7,7,97,1
+Northeast,38,0,Northeast,4,4,99,1
+North Central,38,0,North Central,3,3,101,1
+South Central,38,0,South Central,6,6,103,1
+Northwest,38,0,Northwest,5,5,105,1
 "Boards 27, 71, and 73",39,0,,14,,1,1
 "Boards 2, 46, 55, and 68",39,0,,9,,3,1
 "Boards 3, 52, and 85",39,0,,16,,5,1
-"Boards 4 and 78",39,0,,17,,7,1
-"Boards 5 and 60",39,0,,18,,9,1
+Boards 4 and 78,39,0,,17,,7,1
+Boards 5 and 60,39,0,,18,,9,1
 "Boards 2, 46, 55, and 68",39,0,,9,,11,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,13,1
 "Boards 8, 13, and 83",39,0,,21,,15,1
-"Board 9 (Butler)",39,0,,7,,17,1
+Board 9 (Butler),39,0,,7,,17,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,19,1
 "Boards 2, 46, 55, and 68",39,0,,9,,21,1
-"Board 12",39,0,,1,,23,1
+Board 12,39,0,,1,,23,1
 "Boards 8, 13, and 83",39,0,,21,,25,1
 "Boards 8, 13, and 83",39,0,,21,,27,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,29,1
-"Boards 5 and 60",39,0,,18,,31,1
+Boards 5 and 60,39,0,,18,,31,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,33,1
-"Boards 18 and 47",39,0,,8,,35,1
+Boards 18 and 47,39,0,,8,,35,1
 "Boards 2, 46, 55, and 68",39,0,,9,,37,1
 "Boards 20, 32, 54, and 69",39,0,,10,,39,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,41,1
 "Boards 22, 74, and 87",39,0,,12,,43,1
-"Boards 23 and 45",39,0,,13,,45,1
+Boards 23 and 45,39,0,,13,,45,1
 "Boards 27, 71, and 73",39,0,,14,,47,1
-"Board 25 (Franklin)",39,0,,2,,49,1
+Board 25 (Franklin),39,0,,2,,49,1
 "Boards 20, 32, 54, and 69",39,0,,10,,51,1
 "Boards 27, 71, and 73",39,0,,14,,53,1
 "Boards 28, 43, and 67",39,0,,15,,55,1
-"Board 12",39,0,,1,,57,1
-"Boards 5 and 60",39,0,,18,,59,1
-"Board 31 (Hamilton)",39,0,,3,,61,1
+Board 12,39,0,,1,,57,1
+Boards 5 and 60,39,0,,18,,59,1
+Board 31 (Hamilton),39,0,,3,,61,1
 "Boards 20, 32, 54, and 69",39,0,,10,,63,1
 "Boards 2, 46, 55, and 68",39,0,,9,,65,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,67,1
 "Boards 20, 32, 54, and 69",39,0,,10,,69,1
 "Boards 27, 71, and 73",39,0,,14,,71,1
-"Boards 5 and 60",39,0,,18,,73,1
+Boards 5 and 60,39,0,,18,,73,1
 "Boards 3, 52, and 85",39,0,,16,,75,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,77,1
 "Boards 27, 71, and 73",39,0,,14,,79,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,81,1
-"Boards 23 and 45",39,0,,13,,83,1
+Boards 23 and 45,39,0,,13,,83,1
 "Boards 28, 43, and 67",39,0,,15,,85,1
 "Boards 27, 71, and 73",39,0,,14,,87,1
-"Boards 23 and 45",39,0,,13,,89,1
+Boards 23 and 45,39,0,,13,,89,1
 "Boards 2, 46, 55, and 68",39,0,,9,,91,1
-"Boards 18 and 47",39,0,,8,,93,1
-"Board 48 (Lucas)",39,0,,4,,95,1
-"Board 12",39,0,,1,,97,1
-"Boards 50 and 76",39,0,,19,,99,1
+Boards 18 and 47,39,0,,8,,93,1
+Board 48 (Lucas),39,0,,4,,95,1
+Board 12,39,0,,1,,97,1
+Boards 50 and 76,39,0,,19,,99,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,101,1
 "Boards 3, 52, and 85",39,0,,16,,103,1
 "Boards 27, 71, and 73",39,0,,14,,105,1
 "Boards 20, 32, 54, and 69",39,0,,10,,107,1
 "Boards 2, 46, 55, and 68",39,0,,9,,109,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,111,1
-"Board 57 (Montgomery)",39,0,,5,,113,1
-"Boards 5 and 60",39,0,,18,,115,1
+Board 57 (Montgomery),39,0,,5,,113,1
+Boards 5 and 60,39,0,,18,,115,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,117,1
-"Boards 5 and 60",39,0,,18,,119,1
-"Boards 5 and 60",39,0,,18,,121,1
+Boards 5 and 60,39,0,,18,,119,1
+Boards 5 and 60,39,0,,18,,121,1
 "Boards 22, 74, and 87",39,0,,12,,123,1
 "Boards 20, 32, 54, and 69",39,0,,10,,125,1
-"Boards 5 and 60",39,0,,18,,127,1
+Boards 5 and 60,39,0,,18,,127,1
 "Boards 27, 71, and 73",39,0,,14,,129,1
 "Boards 27, 71, and 73",39,0,,14,,131,1
 "Boards 28, 43, and 67",39,0,,15,,133,1
@@ -1931,134 +1931,134 @@
 "Boards 27, 71, and 73",39,0,,14,,145,1
 "Boards 22, 74, and 87",39,0,,12,,147,1
 "Boards 2, 46, 55, and 68",39,0,,9,,149,1
-"Boards 50 and 76",39,0,,19,,151,1
-"Board 77 (Summit)",39,0,,6,,153,1
-"Boards 4 and 78",39,0,,17,,155,1
+Boards 50 and 76,39,0,,19,,151,1
+Board 77 (Summit),39,0,,6,,153,1
+Boards 4 and 78,39,0,,17,,155,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,157,1
 "Boards 21, 39, 51, 70, and 80",39,0,,11,,159,1
 "Boards 20, 32, 54, and 69",39,0,,10,,161,1
-"Boards 5 and 60",39,0,,18,,163,1
+Boards 5 and 60,39,0,,18,,163,1
 "Boards 8, 13, and 83",39,0,,21,,165,1
 "Boards 7, 15, 41, 79, and 84",39,0,,20,,167,1
 "Boards 3, 52, and 85",39,0,,16,,169,1
 "Boards 20, 32, 54, and 69",39,0,,10,,171,1
 "Boards 22, 74, and 87",39,0,,12,,173,1
 "Boards 22, 74, and 87",39,0,,12,,175,1
-"East Central",40,0,,2,,1,1
-"Northwest and Southwest",40,0,,4,,3,1
-"Southeast",40,0,,6,,5,1
-"Northwest and Southwest",40,0,,4,,7,1
-"Northwest and Southwest",40,0,,4,,9,1
-"Northwest and Southwest",40,0,,4,,11,1
-"Southeast",40,0,,6,,13,1
-"Northwest and Southwest",40,0,,4,,15,1
-"Central",40,0,,1,,17,1
-"Southeast",40,0,,6,,19,1
-"East Central",40,0,,2,,21,1
-"Southeast",40,0,,6,,23,1
-"Northwest and Southwest",40,0,,4,,25,1
-"Central",40,0,,1,,27,1
-"Southeast",40,0,,6,,29,1
-"Northwest and Southwest",40,0,,4,,31,1
-"Northwest and Southwest",40,0,,4,,33,1
-"Northeast",40,0,,3,,35,1
-"East Central",40,0,,2,,37,1
-"Northwest and Southwest",40,0,,4,,39,1
-"Northeast",40,0,,3,,41,1
-"Northwest and Southwest",40,0,,4,,43,1
-"Northwest and Southwest",40,0,,4,,45,1
-"Northwest and Southwest",40,0,,4,,47,1
-"Southeast",40,0,,6,,49,1
-"Central",40,0,,1,,51,1
-"Northwest and Southwest",40,0,,4,,53,1
-"Northwest and Southwest",40,0,,4,,55,1
-"Northwest and Southwest",40,0,,4,,57,1
-"Northwest and Southwest",40,0,,4,,59,1
-"Southeast",40,0,,6,,61,1
-"Southeast",40,0,,6,,63,1
-"Northwest and Southwest",40,0,,4,,65,1
-"Northwest and Southwest",40,0,,4,,67,1
-"Southeast",40,0,,6,,69,1
-"Northeast",40,0,,3,,71,1
-"Northwest and Southwest",40,0,,4,,73,1
-"Northwest and Southwest",40,0,,4,,75,1
-"Southeast",40,0,,6,,77,1
-"Southeast",40,0,,6,,79,1
-"East Central",40,0,,2,,81,1
-"Northwest and Southwest",40,0,,4,,83,1
-"Southeast",40,0,,6,,85,1
-"Central",40,0,,1,,87,1
-"Southeast",40,0,,6,,89,1
-"East Central",40,0,,2,,91,1
-"Northwest and Southwest",40,0,,4,,93,1
-"Southeast",40,0,,6,,95,1
-"Northeast",40,0,,3,,97,1
-"Southeast",40,0,,6,,99,1
-"East Central",40,0,,2,,101,1
-"Northeast",40,0,,3,,103,1
-"Northeast",40,0,,3,,105,1
-"East Central",40,0,,2,,107,1
-"Oklahoma County",40,0,,5,,109,1
-"East Central",40,0,,2,,111,1
-"Northeast",40,0,,3,,113,1
-"Northeast",40,0,,3,,115,1
-"Northeast",40,0,,3,,117,1
-"Northeast",40,0,,3,,119,1
-"Southeast",40,0,,6,,121,1
-"Southeast",40,0,,6,,123,1
-"Southeast",40,0,,6,,125,1
-"Southeast",40,0,,6,,127,1
-"Northwest and Southwest",40,0,,4,,129,1
-"Northeast",40,0,,3,,131,1
-"Southeast",40,0,,6,,133,1
-"East Central",40,0,,2,,135,1
-"Northwest and Southwest",40,0,,4,,137,1
-"Northwest and Southwest",40,0,,4,,139,1
-"Northwest and Southwest",40,0,,4,,141,1
-"Tulsa County",40,0,,7,,143,1
-"East Central",40,0,,2,,145,1
-"Northeast",40,0,,3,,147,1
-"Northwest and Southwest",40,0,,4,,149,1
-"Northwest and Southwest",40,0,,4,,151,1
-"Northwest and Southwest",40,0,,4,,153,1
-"Region 6 (Eastern)",41,0,,6,,1,1
-"Region 3",41,0,,3,,3,1
-"Region 2",41,0,,2,,5,1
-"Region 3",41,0,,3,,7,1
-"Region 3",41,0,,3,,9,1
-"Region 4",41,0,,4,,11,1
-"Region 5 (Central)",41,0,,5,,13,1
-"Region 4",41,0,,4,,15,1
-"Region 5 (Central)",41,0,,5,,17,1
-"Region 4",41,0,,4,,19,1
-"Region 6 (Eastern)",41,0,,6,,21,1
-"Region 6 (Eastern)",41,0,,6,,23,1
-"Region 6 (Eastern)",41,0,,6,,25,1
-"Region 6 (Eastern)",41,0,,6,,27,1
-"Region 4",41,0,,4,,29,1
-"Region 5 (Central)",41,0,,5,,31,1
-"Region 4",41,0,,4,,33,1
-"Region 4",41,0,,4,,35,1
-"Region 6 (Eastern)",41,0,,6,,37,1
-"Region 3",41,0,,3,,39,1
-"Region 3",41,0,,3,,41,1
-"Region 3",41,0,,3,,43,1
-"Region 6 (Eastern)",41,0,,6,,45,1
-"Region 3",41,0,,3,,47,1
-"Region 6 (Eastern)",41,0,,6,,49,1
-"Region 1 (Multnomah)",41,0,,1,,51,1
-"Region 3",41,0,,3,,53,1
-"Region 6 (Eastern)",41,0,,6,,55,1
-"Region 3",41,0,,3,,57,1
-"Region 6 (Eastern)",41,0,,6,,59,1
-"Region 6 (Eastern)",41,0,,6,,61,1
-"Region 6 (Eastern)",41,0,,6,,63,1
-"Region 6 (Eastern)",41,0,,6,,65,1
-"Region 2",41,0,,2,,67,1
-"Region 6 (Eastern)",41,0,,6,,69,1
-"Region 3",41,0,,3,,71,1
+East Central,40,0,,2,,1,1
+Northwest and Southwest,40,0,,4,,3,1
+Southeast,40,0,,6,,5,1
+Northwest and Southwest,40,0,,4,,7,1
+Northwest and Southwest,40,0,,4,,9,1
+Northwest and Southwest,40,0,,4,,11,1
+Southeast,40,0,,6,,13,1
+Northwest and Southwest,40,0,,4,,15,1
+Central,40,0,,1,,17,1
+Southeast,40,0,,6,,19,1
+East Central,40,0,,2,,21,1
+Southeast,40,0,,6,,23,1
+Northwest and Southwest,40,0,,4,,25,1
+Central,40,0,,1,,27,1
+Southeast,40,0,,6,,29,1
+Northwest and Southwest,40,0,,4,,31,1
+Northwest and Southwest,40,0,,4,,33,1
+Northeast,40,0,,3,,35,1
+East Central,40,0,,2,,37,1
+Northwest and Southwest,40,0,,4,,39,1
+Northeast,40,0,,3,,41,1
+Northwest and Southwest,40,0,,4,,43,1
+Northwest and Southwest,40,0,,4,,45,1
+Northwest and Southwest,40,0,,4,,47,1
+Southeast,40,0,,6,,49,1
+Central,40,0,,1,,51,1
+Northwest and Southwest,40,0,,4,,53,1
+Northwest and Southwest,40,0,,4,,55,1
+Northwest and Southwest,40,0,,4,,57,1
+Northwest and Southwest,40,0,,4,,59,1
+Southeast,40,0,,6,,61,1
+Southeast,40,0,,6,,63,1
+Northwest and Southwest,40,0,,4,,65,1
+Northwest and Southwest,40,0,,4,,67,1
+Southeast,40,0,,6,,69,1
+Northeast,40,0,,3,,71,1
+Northwest and Southwest,40,0,,4,,73,1
+Northwest and Southwest,40,0,,4,,75,1
+Southeast,40,0,,6,,77,1
+Southeast,40,0,,6,,79,1
+East Central,40,0,,2,,81,1
+Northwest and Southwest,40,0,,4,,83,1
+Southeast,40,0,,6,,85,1
+Central,40,0,,1,,87,1
+Southeast,40,0,,6,,89,1
+East Central,40,0,,2,,91,1
+Northwest and Southwest,40,0,,4,,93,1
+Southeast,40,0,,6,,95,1
+Northeast,40,0,,3,,97,1
+Southeast,40,0,,6,,99,1
+East Central,40,0,,2,,101,1
+Northeast,40,0,,3,,103,1
+Northeast,40,0,,3,,105,1
+East Central,40,0,,2,,107,1
+Oklahoma County,40,0,,5,,109,1
+East Central,40,0,,2,,111,1
+Northeast,40,0,,3,,113,1
+Northeast,40,0,,3,,115,1
+Northeast,40,0,,3,,117,1
+Northeast,40,0,,3,,119,1
+Southeast,40,0,,6,,121,1
+Southeast,40,0,,6,,123,1
+Southeast,40,0,,6,,125,1
+Southeast,40,0,,6,,127,1
+Northwest and Southwest,40,0,,4,,129,1
+Northeast,40,0,,3,,131,1
+Southeast,40,0,,6,,133,1
+East Central,40,0,,2,,135,1
+Northwest and Southwest,40,0,,4,,137,1
+Northwest and Southwest,40,0,,4,,139,1
+Northwest and Southwest,40,0,,4,,141,1
+Tulsa County,40,0,,7,,143,1
+East Central,40,0,,2,,145,1
+Northeast,40,0,,3,,147,1
+Northwest and Southwest,40,0,,4,,149,1
+Northwest and Southwest,40,0,,4,,151,1
+Northwest and Southwest,40,0,,4,,153,1
+Region 6 (Eastern),41,0,,6,,1,1
+Region 3,41,0,,3,,3,1
+Region 2,41,0,,2,,5,1
+Region 3,41,0,,3,,7,1
+Region 3,41,0,,3,,9,1
+Region 4,41,0,,4,,11,1
+Region 5 (Central),41,0,,5,,13,1
+Region 4,41,0,,4,,15,1
+Region 5 (Central),41,0,,5,,17,1
+Region 4,41,0,,4,,19,1
+Region 6 (Eastern),41,0,,6,,21,1
+Region 6 (Eastern),41,0,,6,,23,1
+Region 6 (Eastern),41,0,,6,,25,1
+Region 6 (Eastern),41,0,,6,,27,1
+Region 4,41,0,,4,,29,1
+Region 5 (Central),41,0,,5,,31,1
+Region 4,41,0,,4,,33,1
+Region 4,41,0,,4,,35,1
+Region 6 (Eastern),41,0,,6,,37,1
+Region 3,41,0,,3,,39,1
+Region 3,41,0,,3,,41,1
+Region 3,41,0,,3,,43,1
+Region 6 (Eastern),41,0,,6,,45,1
+Region 3,41,0,,3,,47,1
+Region 6 (Eastern),41,0,,6,,49,1
+Region 1 (Multnomah),41,0,,1,,51,1
+Region 3,41,0,,3,,53,1
+Region 6 (Eastern),41,0,,6,,55,1
+Region 3,41,0,,3,,57,1
+Region 6 (Eastern),41,0,,6,,59,1
+Region 6 (Eastern),41,0,,6,,61,1
+Region 6 (Eastern),41,0,,6,,63,1
+Region 6 (Eastern),41,0,,6,,65,1
+Region 2,41,0,,2,,67,1
+Region 6 (Eastern),41,0,,6,,69,1
+Region 3,41,0,,3,,71,1
 "Regions 19, 26, 28, and 42",42,0,,5,,1,1
-"Region 1 (Allegheny)",42,0,,1,,3,1
+Region 1 (Allegheny),42,0,,1,,3,1
 "Regions 3, 8, 9, and 51",42,0,,8,,5,1
 "Regions 3, 8, 9, and 51",42,0,,8,,7,1
 "Regions 5, 18, 23, 24, and 46",42,0,,11,,9,1
@@ -2076,12 +2076,12 @@
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,33,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,35,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,37,1
-"Regions 17 and 21",42,0,,4,,39,1
+Regions 17 and 21,42,0,,4,,39,1
 "Regions 5, 18, 23, 24, and 46",42,0,,11,,41,1
 "Regions 19, 26, 28, and 42",42,0,,5,,43,1
 "Regions 7, 13, 20, and 33",42,0,,13,,45,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,47,1
-"Regions 17 and 21",42,0,,4,,49,1
+Regions 17 and 21,42,0,,4,,49,1
 "Regions 22, 38, 40, 41, and 48",42,0,,6,,51,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,53,1
 "Regions 5, 18, 23, 24, and 46",42,0,,11,,55,1
@@ -2091,12 +2091,12 @@
 "Regions 3, 8, 9, and 51",42,0,,8,,63,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,65,1
 "Regions 5, 18, 23, 24, and 46",42,0,,11,,67,1
-"Regions 30 and 50",42,0,,9,,69,1
+Regions 30 and 50,42,0,,9,,69,1
 "Regions 19, 26, 28, and 42",42,0,,5,,71,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,73,1
 "Regions 19, 26, 28, and 42",42,0,,5,,75,1
-"Regions 29 and 34",42,0,,7,,77,1
-"Regions 30 and 50",42,0,,9,,79,1
+Regions 29 and 34,42,0,,7,,77,1
+Regions 30 and 50,42,0,,9,,79,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,81,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,83,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,85,1
@@ -2104,17 +2104,17 @@
 "Regions 4, 11, 37, and 49",42,0,,10,,89,1
 "Regions 7, 13, 20, and 33",42,0,,13,,91,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,93,1
-"Regions 29 and 34",42,0,,7,,95,1
+Regions 29 and 34,42,0,,7,,95,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,97,1
 "Regions 5, 18, 23, 24, and 46",42,0,,11,,99,1
-"Region 36 (Philadelphia)",42,0,,2,,101,1
+Region 36 (Philadelphia),42,0,,2,,101,1
 "Regions 4, 11, 37, and 49",42,0,,10,,103,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,105,1
 "Regions 4, 11, 37, and 49",42,0,,10,,107,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,109,1
 "Regions 22, 38, 40, 41, and 48",42,0,,6,,111,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,113,1
-"Regions 30 and 50",42,0,,9,,115,1
+Regions 30 and 50,42,0,,9,,115,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,117,1
 "Regions 6, 12, 16, 31, 35, 45, and 47",42,0,,12,,119,1
 "Regions 10, 15, 27, 32, 43, and 44",42,0,,3,,121,1
@@ -2122,832 +2122,831 @@
 "Regions 22, 38, 40, 41, and 48",42,0,,6,,125,1
 "Regions 4, 11, 37, and 49",42,0,,10,,127,1
 "Regions 22, 38, 40, 41, and 48",42,0,,6,,129,1
-"Regions 30 and 50",42,0,,9,,131,1
+Regions 30 and 50,42,0,,9,,131,1
 "Regions 19, 26, 28, and 42",42,0,,5,,133,1
-"Region 1",45,0,,1,,1,1
-"Region 4",45,0,,4,,3,1
-"Region 4",45,0,,4,,5,1
-"Region 1",45,0,,1,,7,1
-"Region 4",45,0,,4,,9,1
-"Region 4",45,0,,4,,11,1
-"Region 4",45,0,,4,,13,1
-"Region 4",45,0,,4,,15,1
-"Region 4",45,0,,4,,17,1
-"Region 4",45,0,,4,,19,1
-"Region 1",45,0,,1,,21,1
-"Region 2",45,0,,2,,23,1
-"Region 2",45,0,,2,,25,1
-"Region 3",45,0,,3,,27,1
-"Region 4",45,0,,4,,29,1
-"Region 3",45,0,,3,,31,1
-"Region 3",45,0,,3,,33,1
-"Region 4",45,0,,4,,35,1
-"Region 1",45,0,,1,,37,1
-"Region 2",45,0,,2,,39,1
-"Region 3",45,0,,3,,41,1
-"Region 3",45,0,,3,,43,1
-"Region 1",45,0,,1,,45,1
-"Region 1",45,0,,1,,47,1
-"Region 4",45,0,,4,,49,1
-"Region 3",45,0,,3,,51,1
-"Region 4",45,0,,4,,53,1
-"Region 2",45,0,,2,,55,1
-"Region 2",45,0,,2,,57,1
-"Region 1",45,0,,1,,59,1
-"Region 2",45,0,,2,,61,1
-"Region 2",45,0,,2,,63,1
-"Region 1",45,0,,1,,65,1
-"Region 3",45,0,,3,,67,1
-"Region 3",45,0,,3,,69,1
-"Region 1",45,0,,1,,71,1
-"Region 1",45,0,,1,,73,1
-"Region 4",45,0,,4,,75,1
-"Region 1",45,0,,1,,77,1
-"Region 2",45,0,,2,,79,1
-"Region 1",45,0,,1,,81,1
-"Region 1",45,0,,1,,83,1
-"Region 3",45,0,,3,,85,1
-"Region 1",45,0,,1,,87,1
-"Region 3",45,0,,3,,89,1
-"Region 2",45,0,,2,,91,1
-"Region 4",46,0,,4,,3,1
-"Region 3",46,0,,3,,5,1
-"Region 1",46,0,,1,,7,1
-"Region 4",46,0,,4,,9,1
-"Region 3",46,0,,3,,11,1
-"Region 3",46,0,,3,,13,1
-"Region 4",46,0,,4,,15,1
-"Region 2",46,0,,2,,17,1
-"Region 1",46,0,,1,,19,1
-"Region 2",46,0,,2,,21,1
-"Region 4",46,0,,4,,23,1
-"Region 3",46,0,,3,,25,1
-"Region 4",46,0,,4,,27,1
-"Region 3",46,0,,3,,29,1
-"Region 2",46,0,,2,,31,1
-"Region 1",46,0,,1,,33,1
-"Region 4",46,0,,4,,35,1
-"Region 3",46,0,,3,,37,1
-"Region 3",46,0,,3,,39,1
-"Region 2",46,0,,2,,41,1
-"Region 4",46,0,,4,,43,1
-"Region 3",46,0,,3,,45,1
-"Region 1",46,0,,1,,47,1
-"Region 3",46,0,,3,,49,1
-"Region 3",46,0,,3,,51,1
-"Region 2",46,0,,2,,53,1
-"Region 2",46,0,,2,,55,1
-"Region 3",46,0,,3,,57,1
-"Region 2",46,0,,2,,59,1
-"Region 4",46,0,,4,,61,1
-"Region 1",46,0,,1,,63,1
-"Region 2",46,0,,2,,65,1
-"Region 4",46,0,,4,,67,1
-"Region 2",46,0,,2,,69,1
-"Region 1",46,0,,1,,71,1
-"Region 4",46,0,,4,,73,1
-"Region 2",46,0,,2,,75,1
-"Region 3",46,0,,3,,77,1
-"Region 3",46,0,,3,,79,1
-"Region 1",46,0,,1,,81,1
-"Region 5",46,0,,5,,83,1
-"Region 2",46,0,,2,,85,1
-"Region 5",46,0,,5,,87,1
-"Region 3",46,0,,3,,89,1
-"Region 3",46,0,,3,,91,1
-"Region 1",46,0,,1,,93,1
-"Region 2",46,0,,2,,95,1
-"Region 4",46,0,,4,,97,1
-"Region 5",46,0,,5,,99,1
-"Region 3",46,0,,3,,101,1
-"Region 1",46,0,,1,,103,1
-"Region 1",46,0,,1,,105,1
-"Region 2",46,0,,2,,107,1
-"Region 3",46,0,,3,,109,1
-"Region 4",46,0,,4,,111,1
-"Region 1",46,0,,1,,113,1
-"Region 3",46,0,,3,,115,1
-"Region 2",46,0,,2,,117,1
-"Region 2",46,0,,2,,119,1
-"Region 2",46,0,,2,,121,1
-"Region 2",46,0,,2,,123,1
-"Region 5",46,0,,5,,125,1
-"Region 4",46,0,,4,,127,1
-"Region 2",46,0,,2,,129,1
-"Region 4",46,0,,4,,135,1
-"Region 2",46,0,,2,,137,1
-"Region 2",47,0,,2,,1,1
-"Region 5",47,0,,5,,3,1
-"Region 6",47,0,,6,,5,1
-"Region 3",47,0,,3,,7,1
-"Region 2",47,0,,2,,9,1
-"Region 3",47,0,,3,,11,1
-"Region 2",47,0,,2,,13,1
-"Region 5",47,0,,5,,15,1
-"Region 6",47,0,,6,,17,1
-"Region 1",47,0,,1,,19,1
-"Region 5",47,0,,5,,21,1
-"Region 6",47,0,,6,,23,1
-"Region 2",47,0,,2,,25,1
-"Region 3",47,0,,3,,27,1
-"Region 2",47,0,,2,,29,1
-"Region 5",47,0,,5,,31,1
-"Region 6",47,0,,6,,33,1
-"Region 3",47,0,,3,,35,1
-"Region 4 (Davidson)",47,0,,4,,37,1
-"Region 6",47,0,,6,,39,1
-"Region 3",47,0,,3,,41,1
-"Region 5",47,0,,5,,43,1
-"Region 6",47,0,,6,,45,1
-"Region 6",47,0,,6,,47,1
-"Region 3",47,0,,3,,49,1
-"Region 5",47,0,,5,,51,1
-"Region 6",47,0,,6,,53,1
-"Region 5",47,0,,5,,55,1
-"Region 2",47,0,,2,,57,1
-"Region 1",47,0,,1,,59,1
-"Region 3",47,0,,3,,61,1
-"Region 2",47,0,,2,,63,1
-"Region 3",47,0,,3,,65,1
-"Region 1",47,0,,1,,67,1
-"Region 6",47,0,,6,,69,1
-"Region 6",47,0,,6,,71,1
-"Region 1",47,0,,1,,73,1
-"Region 6",47,0,,6,,75,1
-"Region 6",47,0,,6,,77,1
-"Region 6",47,0,,6,,79,1
-"Region 5",47,0,,5,,81,1
-"Region 5",47,0,,5,,83,1
-"Region 5",47,0,,5,,85,1
-"Region 3",47,0,,3,,87,1
-"Region 2",47,0,,2,,89,1
-"Region 1",47,0,,1,,91,1
-"Region 2",47,0,,2,,93,1
-"Region 6",47,0,,6,,95,1
-"Region 6",47,0,,6,,97,1
-"Region 5",47,0,,5,,99,1
-"Region 5",47,0,,5,,101,1
-"Region 5",47,0,,5,,103,1
-"Region 2",47,0,,2,,105,1
-"Region 3",47,0,,3,,107,1
-"Region 6",47,0,,6,,109,1
-"Region 3",47,0,,3,,111,1
-"Region 6",47,0,,6,,113,1
-"Region 3",47,0,,3,,115,1
-"Region 5",47,0,,5,,117,1
-"Region 5",47,0,,5,,119,1
-"Region 3",47,0,,3,,121,1
-"Region 2",47,0,,2,,123,1
-"Region 5",47,0,,5,,125,1
-"Region 5",47,0,,5,,127,1
-"Region 2",47,0,,2,,129,1
-"Region 6",47,0,,6,,131,1
-"Region 3",47,0,,3,,133,1
-"Region 5",47,0,,5,,135,1
-"Region 3",47,0,,3,,137,1
-"Region 3",47,0,,3,,139,1
-"Region 3",47,0,,3,,141,1
-"Region 3",47,0,,3,,143,1
-"Region 2",47,0,,2,,145,1
-"Region 5",47,0,,5,,147,1
-"Region 5",47,0,,5,,149,1
-"Region 2",47,0,,2,,151,1
-"Region 3",47,0,,3,,153,1
-"Region 2",47,0,,2,,155,1
-"Region 7 (Shelby)",47,0,,7,,157,1
-"Region 3",47,0,,3,,159,1
-"Region 5",47,0,,5,,161,1
-"Region 1",47,0,,1,,163,1
-"Region 5",47,0,,5,,165,1
-"Region 6",47,0,,6,,167,1
-"Region 5",47,0,,5,,169,1
-"Region 1",47,0,,1,,171,1
-"Region 2",47,0,,2,,173,1
-"Region 3",47,0,,3,,175,1
-"Region 3",47,0,,3,,177,1
-"Region 1",47,0,,1,,179,1
-"Region 5",47,0,,5,,181,1
-"Region 6",47,0,,6,,183,1
-"Region 3",47,0,,3,,185,1
-"Region 5",47,0,,5,,187,1
-"Region 5",47,0,,5,,189,1
-"Region 4",48,0,"Region 4",8,6,1,1
-"Region 9",48,0,"Region 9",15,11,3,1
-"Region 5",48,0,"Region 5",9,7,5,1
-"Region 11abd",48,1,"Region 11",3,3,7,1
-"Region 2",48,0,"Region 2",5,4,9,1
-"Region 1",48,0,"Region 1",1,1,11,1
-"Region 8",48,0,"Region 8",14,10,13,1
-"Region 6a",48,1,"Region 6",10,8,15,1
-"Region 1",48,0,"Region 1",1,1,17,1
-"Region 8",48,0,"Region 8",14,10,19,1
-"Region 7a",48,1,"Region 7",12,9,21,1
-"Region 2",48,0,"Region 2",5,4,23,1
-"Region 11abd",48,1,"Region 11",3,3,25,1
-"Region 7bcd",48,1,"Region 7",13,9,27,1
-"Region 8",48,0,"Region 8",14,10,29,1
-"Region 7a",48,1,"Region 7",12,9,31,1
-"Region 9",48,0,"Region 9",15,11,33,1
-"Region 7bcd",48,1,"Region 7",13,9,35,1
-"Region 4",48,0,"Region 4",8,6,37,1
-"Region 6bc",48,1,"Region 6",11,8,39,1
-"Region 7bcd",48,1,"Region 7",13,9,41,1
-"Region 10",48,0,"Region 10",2,2,43,1
-"Region 1",48,0,"Region 1",1,1,45,1
-"Region 11abd",48,1,"Region 11",3,3,47,1
-"Region 2",48,0,"Region 2",5,4,49,1
-"Region 7bcd",48,1,"Region 7",13,9,51,1
-"Region 7a",48,1,"Region 7",12,9,53,1
-"Region 7a",48,1,"Region 7",12,9,55,1
-"Region 8",48,0,"Region 8",14,10,57,1
-"Region 2",48,0,"Region 2",5,4,59,1
-"Region 11abd",48,1,"Region 11",3,3,61,1
-"Region 4",48,0,"Region 4",8,6,63,1
-"Region 1",48,0,"Region 1",1,1,65,1
-"Region 4",48,0,"Region 4",8,6,67,1
-"Region 1",48,0,"Region 1",1,1,69,1
-"Region 6a",48,1,"Region 6",10,8,71,1
-"Region 4",48,0,"Region 4",8,6,73,1
-"Region 1",48,0,"Region 1",1,1,75,1
-"Region 2",48,0,"Region 2",5,4,77,1
-"Region 1",48,0,"Region 1",1,1,79,1
-"Region 9",48,0,"Region 9",15,11,81,1
-"Region 2",48,0,"Region 2",5,4,83,1
-"Region 3a",48,1,"Region 3",6,5,85,1
-"Region 1",48,0,"Region 1",1,1,87,1
-"Region 6a",48,1,"Region 6",10,8,89,1
-"Region 8",48,0,"Region 8",14,10,91,1
-"Region 2",48,0,"Region 2",5,4,93,1
-"Region 9",48,0,"Region 9",15,11,95,1
-"Region 3bc",48,1,"Region 3",7,5,97,1
-"Region 7bcd",48,1,"Region 7",13,9,99,1
-"Region 2",48,0,"Region 2",5,4,101,1
-"Region 9",48,0,"Region 9",15,11,103,1
-"Region 9",48,0,"Region 9",15,11,105,1
-"Region 1",48,0,"Region 1",1,1,107,1
-"Region 10",48,0,"Region 10",2,2,109,1
-"Region 1",48,0,"Region 1",1,1,111,1
-"Region 3a",48,1,"Region 3",6,5,113,1
-"Region 9",48,0,"Region 9",15,11,115,1
-"Region 1",48,0,"Region 1",1,1,117,1
-"Region 4",48,0,"Region 4",8,6,119,1
-"Region 3a",48,1,"Region 3",6,5,121,1
-"Region 8",48,0,"Region 8",14,10,123,1
-"Region 1",48,0,"Region 1",1,1,125,1
-"Region 8",48,0,"Region 8",14,10,127,1
-"Region 1",48,0,"Region 1",1,1,129,1
-"Region 11abd",48,1,"Region 11",3,3,131,1
-"Region 2",48,0,"Region 2",5,4,133,1
-"Region 9",48,0,"Region 9",15,11,135,1
-"Region 8",48,0,"Region 8",14,10,137,1
-"Region 3a",48,1,"Region 3",6,5,139,1
-"Region 10",48,0,"Region 10",2,2,141,1
-"Region 3bc",48,1,"Region 3",7,5,143,1
-"Region 7bcd",48,1,"Region 7",13,9,145,1
-"Region 3bc",48,1,"Region 3",7,5,147,1
-"Region 7a",48,1,"Region 7",12,9,149,1
-"Region 2",48,0,"Region 2",5,4,151,1
-"Region 1",48,0,"Region 1",1,1,153,1
-"Region 2",48,0,"Region 2",5,4,155,1
-"Region 6a",48,1,"Region 6",10,8,157,1
-"Region 4",48,0,"Region 4",8,6,159,1
-"Region 7bcd",48,1,"Region 7",13,9,161,1
-"Region 8",48,0,"Region 8",14,10,163,1
-"Region 9",48,0,"Region 9",15,11,165,1
-"Region 6bc",48,1,"Region 6",11,8,167,1
-"Region 1",48,0,"Region 1",1,1,169,1
-"Region 8",48,0,"Region 8",14,10,171,1
-"Region 9",48,0,"Region 9",15,11,173,1
-"Region 8",48,0,"Region 8",14,10,175,1
-"Region 8",48,0,"Region 8",14,10,177,1
-"Region 1",48,0,"Region 1",1,1,179,1
-"Region 3bc",48,1,"Region 3",7,5,181,1
-"Region 4",48,0,"Region 4",8,6,183,1
-"Region 7bcd",48,1,"Region 7",13,9,185,1
-"Region 8",48,0,"Region 8",14,10,187,1
-"Region 1",48,0,"Region 1",1,1,189,1
-"Region 1",48,0,"Region 1",1,1,191,1
-"Region 7bcd",48,1,"Region 7",13,9,193,1
-"Region 1",48,0,"Region 1",1,1,195,1
-"Region 2",48,0,"Region 2",5,4,197,1
-"Region 5",48,0,"Region 5",9,7,199,1
-"Region 6a",48,1,"Region 6",10,8,201,1
-"Region 4",48,0,"Region 4",8,6,203,1
-"Region 1",48,0,"Region 1",1,1,205,1
-"Region 2",48,0,"Region 2",5,4,207,1
-"Region 7a",48,1,"Region 7",12,9,209,1
-"Region 1",48,0,"Region 1",1,1,211,1
-"Region 4",48,0,"Region 4",8,6,213,1
-"Region 11c (Hidalgo)",48,1,"Region 11",4,3,215,1
-"Region 7bcd",48,1,"Region 7",13,9,217,1
-"Region 1",48,0,"Region 1",1,1,219,1
-"Region 3bc",48,1,"Region 3",7,5,221,1
-"Region 4",48,0,"Region 4",8,6,223,1
-"Region 5",48,0,"Region 5",9,7,225,1
-"Region 9",48,0,"Region 9",15,11,227,1
-"Region 10",48,0,"Region 10",2,2,229,1
-"Region 3a",48,1,"Region 3",6,5,231,1
-"Region 1",48,0,"Region 1",1,1,233,1
-"Region 9",48,0,"Region 9",15,11,235,1
-"Region 2",48,0,"Region 2",5,4,237,1
-"Region 8",48,0,"Region 8",14,10,239,1
-"Region 5",48,0,"Region 5",9,7,241,1
-"Region 10",48,0,"Region 10",2,2,243,1
-"Region 5",48,0,"Region 5",9,7,245,1
-"Region 11abd",48,1,"Region 11",3,3,247,1
-"Region 11abd",48,1,"Region 11",3,3,249,1
-"Region 3bc",48,1,"Region 3",7,5,251,1
-"Region 2",48,0,"Region 2",5,4,253,1
-"Region 8",48,0,"Region 8",14,10,255,1
-"Region 3a",48,1,"Region 3",6,5,257,1
-"Region 8",48,0,"Region 8",14,10,259,1
-"Region 11abd",48,1,"Region 11",3,3,261,1
-"Region 2",48,0,"Region 2",5,4,263,1
-"Region 8",48,0,"Region 8",14,10,265,1
-"Region 9",48,0,"Region 9",15,11,267,1
-"Region 1",48,0,"Region 1",1,1,269,1
-"Region 8",48,0,"Region 8",14,10,271,1
-"Region 11abd",48,1,"Region 11",3,3,273,1
-"Region 2",48,0,"Region 2",5,4,275,1
-"Region 4",48,0,"Region 4",8,6,277,1
-"Region 1",48,0,"Region 1",1,1,279,1
-"Region 7bcd",48,1,"Region 7",13,9,281,1
-"Region 8",48,0,"Region 8",14,10,283,1
-"Region 8",48,0,"Region 8",14,10,285,1
-"Region 7a",48,1,"Region 7",12,9,287,1
-"Region 7bcd",48,1,"Region 7",13,9,289,1
-"Region 6a",48,1,"Region 6",10,8,291,1
-"Region 7bcd",48,1,"Region 7",13,9,293,1
-"Region 1",48,0,"Region 1",1,1,295,1
-"Region 11abd",48,1,"Region 11",3,3,297,1
-"Region 7a",48,1,"Region 7",12,9,299,1
-"Region 9",48,0,"Region 9",15,11,301,1
-"Region 1",48,0,"Region 1",1,1,303,1
-"Region 1",48,0,"Region 1",1,1,305,1
-"Region 9",48,0,"Region 9",15,11,307,1
-"Region 7bcd",48,1,"Region 7",13,9,309,1
-"Region 11abd",48,1,"Region 11",3,3,311,1
-"Region 7bcd",48,1,"Region 7",13,9,313,1
-"Region 4",48,0,"Region 4",8,6,315,1
-"Region 9",48,0,"Region 9",15,11,317,1
-"Region 9",48,0,"Region 9",15,11,319,1
-"Region 6bc",48,1,"Region 6",11,8,321,1
-"Region 8",48,0,"Region 8",14,10,323,1
-"Region 8",48,0,"Region 8",14,10,325,1
-"Region 9",48,0,"Region 9",15,11,327,1
-"Region 9",48,0,"Region 9",15,11,329,1
-"Region 7bcd",48,1,"Region 7",13,9,331,1
-"Region 7bcd",48,1,"Region 7",13,9,333,1
-"Region 2",48,0,"Region 2",5,4,335,1
-"Region 2",48,0,"Region 2",5,4,337,1
-"Region 6a",48,1,"Region 6",10,8,339,1
-"Region 1",48,0,"Region 1",1,1,341,1
-"Region 4",48,0,"Region 4",8,6,343,1
-"Region 1",48,0,"Region 1",1,1,345,1
-"Region 5",48,0,"Region 5",9,7,347,1
-"Region 3a",48,1,"Region 3",6,5,349,1
-"Region 5",48,0,"Region 5",9,7,351,1
-"Region 2",48,0,"Region 2",5,4,353,1
-"Region 11abd",48,1,"Region 11",3,3,355,1
-"Region 1",48,0,"Region 1",1,1,357,1
-"Region 1",48,0,"Region 1",1,1,359,1
-"Region 5",48,0,"Region 5",9,7,361,1
-"Region 3bc",48,1,"Region 3",7,5,363,1
-"Region 4",48,0,"Region 4",8,6,365,1
-"Region 3bc",48,1,"Region 3",7,5,367,1
-"Region 1",48,0,"Region 1",1,1,369,1
-"Region 9",48,0,"Region 9",15,11,371,1
-"Region 5",48,0,"Region 5",9,7,373,1
-"Region 1",48,0,"Region 1",1,1,375,1
-"Region 10",48,0,"Region 10",2,2,377,1
-"Region 4",48,0,"Region 4",8,6,379,1
-"Region 1",48,0,"Region 1",1,1,381,1
-"Region 9",48,0,"Region 9",15,11,383,1
-"Region 8",48,0,"Region 8",14,10,385,1
-"Region 4",48,0,"Region 4",8,6,387,1
-"Region 9",48,0,"Region 9",15,11,389,1
-"Region 11abd",48,1,"Region 11",3,3,391,1
-"Region 1",48,0,"Region 1",1,1,393,1
-"Region 7bcd",48,1,"Region 7",13,9,395,1
-"Region 3a",48,1,"Region 3",6,5,397,1
-"Region 2",48,0,"Region 2",5,4,399,1
-"Region 4",48,0,"Region 4",8,6,401,1
-"Region 5",48,0,"Region 5",9,7,403,1
-"Region 5",48,0,"Region 5",9,7,405,1
-"Region 5",48,0,"Region 5",9,7,407,1
-"Region 11abd",48,1,"Region 11",3,3,409,1
-"Region 7bcd",48,1,"Region 7",13,9,411,1
-"Region 9",48,0,"Region 9",15,11,413,1
-"Region 2",48,0,"Region 2",5,4,415,1
-"Region 2",48,0,"Region 2",5,4,417,1
-"Region 5",48,0,"Region 5",9,7,419,1
-"Region 1",48,0,"Region 1",1,1,421,1
-"Region 4",48,0,"Region 4",8,6,423,1
-"Region 3bc",48,1,"Region 3",7,5,425,1
-"Region 11abd",48,1,"Region 11",3,3,427,1
-"Region 2",48,0,"Region 2",5,4,429,1
-"Region 9",48,0,"Region 9",15,11,431,1
-"Region 2",48,0,"Region 2",5,4,433,1
-"Region 9",48,0,"Region 9",15,11,435,1
-"Region 1",48,0,"Region 1",1,1,437,1
-"Region 3bc",48,1,"Region 3",7,5,439,1
-"Region 2",48,0,"Region 2",5,4,441,1
-"Region 9",48,0,"Region 9",15,11,443,1
-"Region 1",48,0,"Region 1",1,1,445,1
-"Region 2",48,0,"Region 2",5,4,447,1
-"Region 4",48,0,"Region 4",8,6,449,1
-"Region 9",48,0,"Region 9",15,11,451,1
-"Region 7a",48,1,"Region 7",12,9,453,1
-"Region 5",48,0,"Region 5",9,7,455,1
-"Region 5",48,0,"Region 5",9,7,457,1
-"Region 4",48,0,"Region 4",8,6,459,1
-"Region 9",48,0,"Region 9",15,11,461,1
-"Region 8",48,0,"Region 8",14,10,463,1
-"Region 8",48,0,"Region 8",14,10,465,1
-"Region 4",48,0,"Region 4",8,6,467,1
-"Region 8",48,0,"Region 8",14,10,469,1
-"Region 6a",48,1,"Region 6",10,8,471,1
-"Region 6a",48,1,"Region 6",10,8,473,1
-"Region 9",48,0,"Region 9",15,11,475,1
-"Region 7bcd",48,1,"Region 7",13,9,477,1
-"Region 11abd",48,1,"Region 11",3,3,479,1
-"Region 6a",48,1,"Region 6",10,8,481,1
-"Region 1",48,0,"Region 1",1,1,483,1
-"Region 2",48,0,"Region 2",5,4,485,1
-"Region 2",48,0,"Region 2",5,4,487,1
-"Region 11abd",48,1,"Region 11",3,3,489,1
-"Region 7a",48,1,"Region 7",12,9,491,1
-"Region 8",48,0,"Region 8",14,10,493,1
-"Region 9",48,0,"Region 9",15,11,495,1
-"Region 3bc",48,1,"Region 3",7,5,497,1
-"Region 4",48,0,"Region 4",8,6,499,1
-"Region 1",48,0,"Region 1",1,1,501,1
-"Region 2",48,0,"Region 2",5,4,503,1
-"Region 11abd",48,1,"Region 11",3,3,505,1
-"Region 8",48,0,"Region 8",14,10,507,1
-"Southwest",49,1,"Central, Four Corners, San Juan, and Southwest",5,2,1,1
+Region 1,45,0,,1,,1,1
+Region 4,45,0,,4,,3,1
+Region 4,45,0,,4,,5,1
+Region 1,45,0,,1,,7,1
+Region 4,45,0,,4,,9,1
+Region 4,45,0,,4,,11,1
+Region 4,45,0,,4,,13,1
+Region 4,45,0,,4,,15,1
+Region 4,45,0,,4,,17,1
+Region 4,45,0,,4,,19,1
+Region 1,45,0,,1,,21,1
+Region 2,45,0,,2,,23,1
+Region 2,45,0,,2,,25,1
+Region 3,45,0,,3,,27,1
+Region 4,45,0,,4,,29,1
+Region 3,45,0,,3,,31,1
+Region 3,45,0,,3,,33,1
+Region 4,45,0,,4,,35,1
+Region 1,45,0,,1,,37,1
+Region 2,45,0,,2,,39,1
+Region 3,45,0,,3,,41,1
+Region 3,45,0,,3,,43,1
+Region 1,45,0,,1,,45,1
+Region 1,45,0,,1,,47,1
+Region 4,45,0,,4,,49,1
+Region 3,45,0,,3,,51,1
+Region 4,45,0,,4,,53,1
+Region 2,45,0,,2,,55,1
+Region 2,45,0,,2,,57,1
+Region 1,45,0,,1,,59,1
+Region 2,45,0,,2,,61,1
+Region 2,45,0,,2,,63,1
+Region 1,45,0,,1,,65,1
+Region 3,45,0,,3,,67,1
+Region 3,45,0,,3,,69,1
+Region 1,45,0,,1,,71,1
+Region 1,45,0,,1,,73,1
+Region 4,45,0,,4,,75,1
+Region 1,45,0,,1,,77,1
+Region 2,45,0,,2,,79,1
+Region 1,45,0,,1,,81,1
+Region 1,45,0,,1,,83,1
+Region 3,45,0,,3,,85,1
+Region 1,45,0,,1,,87,1
+Region 3,45,0,,3,,89,1
+Region 2,45,0,,2,,91,1
+Region 4,46,0,,4,,3,1
+Region 3,46,0,,3,,5,1
+Region 1,46,0,,1,,7,1
+Region 4,46,0,,4,,9,1
+Region 3,46,0,,3,,11,1
+Region 3,46,0,,3,,13,1
+Region 4,46,0,,4,,15,1
+Region 2,46,0,,2,,17,1
+Region 1,46,0,,1,,19,1
+Region 2,46,0,,2,,21,1
+Region 4,46,0,,4,,23,1
+Region 3,46,0,,3,,25,1
+Region 4,46,0,,4,,27,1
+Region 3,46,0,,3,,29,1
+Region 2,46,0,,2,,31,1
+Region 1,46,0,,1,,33,1
+Region 4,46,0,,4,,35,1
+Region 3,46,0,,3,,37,1
+Region 3,46,0,,3,,39,1
+Region 2,46,0,,2,,41,1
+Region 4,46,0,,4,,43,1
+Region 3,46,0,,3,,45,1
+Region 1,46,0,,1,,47,1
+Region 3,46,0,,3,,49,1
+Region 3,46,0,,3,,51,1
+Region 2,46,0,,2,,53,1
+Region 2,46,0,,2,,55,1
+Region 3,46,0,,3,,57,1
+Region 2,46,0,,2,,59,1
+Region 4,46,0,,4,,61,1
+Region 1,46,0,,1,,63,1
+Region 2,46,0,,2,,65,1
+Region 4,46,0,,4,,67,1
+Region 2,46,0,,2,,69,1
+Region 1,46,0,,1,,71,1
+Region 4,46,0,,4,,73,1
+Region 2,46,0,,2,,75,1
+Region 3,46,0,,3,,77,1
+Region 3,46,0,,3,,79,1
+Region 1,46,0,,1,,81,1
+Region 5,46,0,,5,,83,1
+Region 2,46,0,,2,,85,1
+Region 5,46,0,,5,,87,1
+Region 3,46,0,,3,,89,1
+Region 3,46,0,,3,,91,1
+Region 1,46,0,,1,,93,1
+Region 2,46,0,,2,,95,1
+Region 4,46,0,,4,,97,1
+Region 5,46,0,,5,,99,1
+Region 3,46,0,,3,,101,1
+Region 1,46,0,,1,,103,1
+Region 1,46,0,,1,,105,1
+Region 2,46,0,,2,,107,1
+Region 3,46,0,,3,,109,1
+Region 4,46,0,,4,,111,1
+Region 1,46,0,,1,,113,1
+Region 3,46,0,,3,,115,1
+Region 2,46,0,,2,,117,1
+Region 2,46,0,,2,,119,1
+Region 2,46,0,,2,,121,1
+Region 2,46,0,,2,,123,1
+Region 5,46,0,,5,,125,1
+Region 4,46,0,,4,,127,1
+Region 2,46,0,,2,,129,1
+Region 4,46,0,,4,,135,1
+Region 2,46,0,,2,,137,1
+Region 2,47,0,,2,,1,1
+Region 5,47,0,,5,,3,1
+Region 6,47,0,,6,,5,1
+Region 3,47,0,,3,,7,1
+Region 2,47,0,,2,,9,1
+Region 3,47,0,,3,,11,1
+Region 2,47,0,,2,,13,1
+Region 5,47,0,,5,,15,1
+Region 6,47,0,,6,,17,1
+Region 1,47,0,,1,,19,1
+Region 5,47,0,,5,,21,1
+Region 6,47,0,,6,,23,1
+Region 2,47,0,,2,,25,1
+Region 3,47,0,,3,,27,1
+Region 2,47,0,,2,,29,1
+Region 5,47,0,,5,,31,1
+Region 6,47,0,,6,,33,1
+Region 3,47,0,,3,,35,1
+Region 4 (Davidson),47,0,,4,,37,1
+Region 6,47,0,,6,,39,1
+Region 3,47,0,,3,,41,1
+Region 5,47,0,,5,,43,1
+Region 6,47,0,,6,,45,1
+Region 6,47,0,,6,,47,1
+Region 3,47,0,,3,,49,1
+Region 5,47,0,,5,,51,1
+Region 6,47,0,,6,,53,1
+Region 5,47,0,,5,,55,1
+Region 2,47,0,,2,,57,1
+Region 1,47,0,,1,,59,1
+Region 3,47,0,,3,,61,1
+Region 2,47,0,,2,,63,1
+Region 3,47,0,,3,,65,1
+Region 1,47,0,,1,,67,1
+Region 6,47,0,,6,,69,1
+Region 6,47,0,,6,,71,1
+Region 1,47,0,,1,,73,1
+Region 6,47,0,,6,,75,1
+Region 6,47,0,,6,,77,1
+Region 6,47,0,,6,,79,1
+Region 5,47,0,,5,,81,1
+Region 5,47,0,,5,,83,1
+Region 5,47,0,,5,,85,1
+Region 3,47,0,,3,,87,1
+Region 2,47,0,,2,,89,1
+Region 1,47,0,,1,,91,1
+Region 2,47,0,,2,,93,1
+Region 6,47,0,,6,,95,1
+Region 6,47,0,,6,,97,1
+Region 5,47,0,,5,,99,1
+Region 5,47,0,,5,,101,1
+Region 5,47,0,,5,,103,1
+Region 2,47,0,,2,,105,1
+Region 3,47,0,,3,,107,1
+Region 6,47,0,,6,,109,1
+Region 3,47,0,,3,,111,1
+Region 6,47,0,,6,,113,1
+Region 3,47,0,,3,,115,1
+Region 5,47,0,,5,,117,1
+Region 5,47,0,,5,,119,1
+Region 3,47,0,,3,,121,1
+Region 2,47,0,,2,,123,1
+Region 5,47,0,,5,,125,1
+Region 5,47,0,,5,,127,1
+Region 2,47,0,,2,,129,1
+Region 6,47,0,,6,,131,1
+Region 3,47,0,,3,,133,1
+Region 5,47,0,,5,,135,1
+Region 3,47,0,,3,,137,1
+Region 3,47,0,,3,,139,1
+Region 3,47,0,,3,,141,1
+Region 3,47,0,,3,,143,1
+Region 2,47,0,,2,,145,1
+Region 5,47,0,,5,,147,1
+Region 5,47,0,,5,,149,1
+Region 2,47,0,,2,,151,1
+Region 3,47,0,,3,,153,1
+Region 2,47,0,,2,,155,1
+Region 7 (Shelby),47,0,,7,,157,1
+Region 3,47,0,,3,,159,1
+Region 5,47,0,,5,,161,1
+Region 1,47,0,,1,,163,1
+Region 5,47,0,,5,,165,1
+Region 6,47,0,,6,,167,1
+Region 5,47,0,,5,,169,1
+Region 1,47,0,,1,,171,1
+Region 2,47,0,,2,,173,1
+Region 3,47,0,,3,,175,1
+Region 3,47,0,,3,,177,1
+Region 1,47,0,,1,,179,1
+Region 5,47,0,,5,,181,1
+Region 6,47,0,,6,,183,1
+Region 3,47,0,,3,,185,1
+Region 5,47,0,,5,,187,1
+Region 5,47,0,,5,,189,1
+Region 4,48,0,Region 4,8,6,1,1
+Region 9,48,0,Region 9,15,11,3,1
+Region 5,48,0,Region 5,9,7,5,1
+Region 11abd,48,1,Region 11,3,3,7,1
+Region 2,48,0,Region 2,5,4,9,1
+Region 1,48,0,Region 1,1,1,11,1
+Region 8,48,0,Region 8,14,10,13,1
+Region 6a,48,1,Region 6,10,8,15,1
+Region 1,48,0,Region 1,1,1,17,1
+Region 8,48,0,Region 8,14,10,19,1
+Region 7a,48,1,Region 7,12,9,21,1
+Region 2,48,0,Region 2,5,4,23,1
+Region 11abd,48,1,Region 11,3,3,25,1
+Region 7bcd,48,1,Region 7,13,9,27,1
+Region 8,48,0,Region 8,14,10,29,1
+Region 7a,48,1,Region 7,12,9,31,1
+Region 9,48,0,Region 9,15,11,33,1
+Region 7bcd,48,1,Region 7,13,9,35,1
+Region 4,48,0,Region 4,8,6,37,1
+Region 6bc,48,1,Region 6,11,8,39,1
+Region 7bcd,48,1,Region 7,13,9,41,1
+Region 10,48,0,Region 10,2,2,43,1
+Region 1,48,0,Region 1,1,1,45,1
+Region 11abd,48,1,Region 11,3,3,47,1
+Region 2,48,0,Region 2,5,4,49,1
+Region 7bcd,48,1,Region 7,13,9,51,1
+Region 7a,48,1,Region 7,12,9,53,1
+Region 7a,48,1,Region 7,12,9,55,1
+Region 8,48,0,Region 8,14,10,57,1
+Region 2,48,0,Region 2,5,4,59,1
+Region 11abd,48,1,Region 11,3,3,61,1
+Region 4,48,0,Region 4,8,6,63,1
+Region 1,48,0,Region 1,1,1,65,1
+Region 4,48,0,Region 4,8,6,67,1
+Region 1,48,0,Region 1,1,1,69,1
+Region 6a,48,1,Region 6,10,8,71,1
+Region 4,48,0,Region 4,8,6,73,1
+Region 1,48,0,Region 1,1,1,75,1
+Region 2,48,0,Region 2,5,4,77,1
+Region 1,48,0,Region 1,1,1,79,1
+Region 9,48,0,Region 9,15,11,81,1
+Region 2,48,0,Region 2,5,4,83,1
+Region 3a,48,1,Region 3,6,5,85,1
+Region 1,48,0,Region 1,1,1,87,1
+Region 6a,48,1,Region 6,10,8,89,1
+Region 8,48,0,Region 8,14,10,91,1
+Region 2,48,0,Region 2,5,4,93,1
+Region 9,48,0,Region 9,15,11,95,1
+Region 3bc,48,1,Region 3,7,5,97,1
+Region 7bcd,48,1,Region 7,13,9,99,1
+Region 2,48,0,Region 2,5,4,101,1
+Region 9,48,0,Region 9,15,11,103,1
+Region 9,48,0,Region 9,15,11,105,1
+Region 1,48,0,Region 1,1,1,107,1
+Region 10,48,0,Region 10,2,2,109,1
+Region 1,48,0,Region 1,1,1,111,1
+Region 3a,48,1,Region 3,6,5,113,1
+Region 9,48,0,Region 9,15,11,115,1
+Region 1,48,0,Region 1,1,1,117,1
+Region 4,48,0,Region 4,8,6,119,1
+Region 3a,48,1,Region 3,6,5,121,1
+Region 8,48,0,Region 8,14,10,123,1
+Region 1,48,0,Region 1,1,1,125,1
+Region 8,48,0,Region 8,14,10,127,1
+Region 1,48,0,Region 1,1,1,129,1
+Region 11abd,48,1,Region 11,3,3,131,1
+Region 2,48,0,Region 2,5,4,133,1
+Region 9,48,0,Region 9,15,11,135,1
+Region 8,48,0,Region 8,14,10,137,1
+Region 3a,48,1,Region 3,6,5,139,1
+Region 10,48,0,Region 10,2,2,141,1
+Region 3bc,48,1,Region 3,7,5,143,1
+Region 7bcd,48,1,Region 7,13,9,145,1
+Region 3bc,48,1,Region 3,7,5,147,1
+Region 7a,48,1,Region 7,12,9,149,1
+Region 2,48,0,Region 2,5,4,151,1
+Region 1,48,0,Region 1,1,1,153,1
+Region 2,48,0,Region 2,5,4,155,1
+Region 6a,48,1,Region 6,10,8,157,1
+Region 4,48,0,Region 4,8,6,159,1
+Region 7bcd,48,1,Region 7,13,9,161,1
+Region 8,48,0,Region 8,14,10,163,1
+Region 9,48,0,Region 9,15,11,165,1
+Region 6bc,48,1,Region 6,11,8,167,1
+Region 1,48,0,Region 1,1,1,169,1
+Region 8,48,0,Region 8,14,10,171,1
+Region 9,48,0,Region 9,15,11,173,1
+Region 8,48,0,Region 8,14,10,175,1
+Region 8,48,0,Region 8,14,10,177,1
+Region 1,48,0,Region 1,1,1,179,1
+Region 3bc,48,1,Region 3,7,5,181,1
+Region 4,48,0,Region 4,8,6,183,1
+Region 7bcd,48,1,Region 7,13,9,185,1
+Region 8,48,0,Region 8,14,10,187,1
+Region 1,48,0,Region 1,1,1,189,1
+Region 1,48,0,Region 1,1,1,191,1
+Region 7bcd,48,1,Region 7,13,9,193,1
+Region 1,48,0,Region 1,1,1,195,1
+Region 2,48,0,Region 2,5,4,197,1
+Region 5,48,0,Region 5,9,7,199,1
+Region 6a,48,1,Region 6,10,8,201,1
+Region 4,48,0,Region 4,8,6,203,1
+Region 1,48,0,Region 1,1,1,205,1
+Region 2,48,0,Region 2,5,4,207,1
+Region 7a,48,1,Region 7,12,9,209,1
+Region 1,48,0,Region 1,1,1,211,1
+Region 4,48,0,Region 4,8,6,213,1
+Region 11c (Hidalgo),48,1,Region 11,4,3,215,1
+Region 7bcd,48,1,Region 7,13,9,217,1
+Region 1,48,0,Region 1,1,1,219,1
+Region 3bc,48,1,Region 3,7,5,221,1
+Region 4,48,0,Region 4,8,6,223,1
+Region 5,48,0,Region 5,9,7,225,1
+Region 9,48,0,Region 9,15,11,227,1
+Region 10,48,0,Region 10,2,2,229,1
+Region 3a,48,1,Region 3,6,5,231,1
+Region 1,48,0,Region 1,1,1,233,1
+Region 9,48,0,Region 9,15,11,235,1
+Region 2,48,0,Region 2,5,4,237,1
+Region 8,48,0,Region 8,14,10,239,1
+Region 5,48,0,Region 5,9,7,241,1
+Region 10,48,0,Region 10,2,2,243,1
+Region 5,48,0,Region 5,9,7,245,1
+Region 11abd,48,1,Region 11,3,3,247,1
+Region 11abd,48,1,Region 11,3,3,249,1
+Region 3bc,48,1,Region 3,7,5,251,1
+Region 2,48,0,Region 2,5,4,253,1
+Region 8,48,0,Region 8,14,10,255,1
+Region 3a,48,1,Region 3,6,5,257,1
+Region 8,48,0,Region 8,14,10,259,1
+Region 11abd,48,1,Region 11,3,3,261,1
+Region 2,48,0,Region 2,5,4,263,1
+Region 8,48,0,Region 8,14,10,265,1
+Region 9,48,0,Region 9,15,11,267,1
+Region 1,48,0,Region 1,1,1,269,1
+Region 8,48,0,Region 8,14,10,271,1
+Region 11abd,48,1,Region 11,3,3,273,1
+Region 2,48,0,Region 2,5,4,275,1
+Region 4,48,0,Region 4,8,6,277,1
+Region 1,48,0,Region 1,1,1,279,1
+Region 7bcd,48,1,Region 7,13,9,281,1
+Region 8,48,0,Region 8,14,10,283,1
+Region 8,48,0,Region 8,14,10,285,1
+Region 7a,48,1,Region 7,12,9,287,1
+Region 7bcd,48,1,Region 7,13,9,289,1
+Region 6a,48,1,Region 6,10,8,291,1
+Region 7bcd,48,1,Region 7,13,9,293,1
+Region 1,48,0,Region 1,1,1,295,1
+Region 11abd,48,1,Region 11,3,3,297,1
+Region 7a,48,1,Region 7,12,9,299,1
+Region 9,48,0,Region 9,15,11,301,1
+Region 1,48,0,Region 1,1,1,303,1
+Region 1,48,0,Region 1,1,1,305,1
+Region 9,48,0,Region 9,15,11,307,1
+Region 7bcd,48,1,Region 7,13,9,309,1
+Region 11abd,48,1,Region 11,3,3,311,1
+Region 7bcd,48,1,Region 7,13,9,313,1
+Region 4,48,0,Region 4,8,6,315,1
+Region 9,48,0,Region 9,15,11,317,1
+Region 9,48,0,Region 9,15,11,319,1
+Region 6bc,48,1,Region 6,11,8,321,1
+Region 8,48,0,Region 8,14,10,323,1
+Region 8,48,0,Region 8,14,10,325,1
+Region 9,48,0,Region 9,15,11,327,1
+Region 9,48,0,Region 9,15,11,329,1
+Region 7bcd,48,1,Region 7,13,9,331,1
+Region 7bcd,48,1,Region 7,13,9,333,1
+Region 2,48,0,Region 2,5,4,335,1
+Region 2,48,0,Region 2,5,4,337,1
+Region 6a,48,1,Region 6,10,8,339,1
+Region 1,48,0,Region 1,1,1,341,1
+Region 4,48,0,Region 4,8,6,343,1
+Region 1,48,0,Region 1,1,1,345,1
+Region 5,48,0,Region 5,9,7,347,1
+Region 3a,48,1,Region 3,6,5,349,1
+Region 5,48,0,Region 5,9,7,351,1
+Region 2,48,0,Region 2,5,4,353,1
+Region 11abd,48,1,Region 11,3,3,355,1
+Region 1,48,0,Region 1,1,1,357,1
+Region 1,48,0,Region 1,1,1,359,1
+Region 5,48,0,Region 5,9,7,361,1
+Region 3bc,48,1,Region 3,7,5,363,1
+Region 4,48,0,Region 4,8,6,365,1
+Region 3bc,48,1,Region 3,7,5,367,1
+Region 1,48,0,Region 1,1,1,369,1
+Region 9,48,0,Region 9,15,11,371,1
+Region 5,48,0,Region 5,9,7,373,1
+Region 1,48,0,Region 1,1,1,375,1
+Region 10,48,0,Region 10,2,2,377,1
+Region 4,48,0,Region 4,8,6,379,1
+Region 1,48,0,Region 1,1,1,381,1
+Region 9,48,0,Region 9,15,11,383,1
+Region 8,48,0,Region 8,14,10,385,1
+Region 4,48,0,Region 4,8,6,387,1
+Region 9,48,0,Region 9,15,11,389,1
+Region 11abd,48,1,Region 11,3,3,391,1
+Region 1,48,0,Region 1,1,1,393,1
+Region 7bcd,48,1,Region 7,13,9,395,1
+Region 3a,48,1,Region 3,6,5,397,1
+Region 2,48,0,Region 2,5,4,399,1
+Region 4,48,0,Region 4,8,6,401,1
+Region 5,48,0,Region 5,9,7,403,1
+Region 5,48,0,Region 5,9,7,405,1
+Region 5,48,0,Region 5,9,7,407,1
+Region 11abd,48,1,Region 11,3,3,409,1
+Region 7bcd,48,1,Region 7,13,9,411,1
+Region 9,48,0,Region 9,15,11,413,1
+Region 2,48,0,Region 2,5,4,415,1
+Region 2,48,0,Region 2,5,4,417,1
+Region 5,48,0,Region 5,9,7,419,1
+Region 1,48,0,Region 1,1,1,421,1
+Region 4,48,0,Region 4,8,6,423,1
+Region 3bc,48,1,Region 3,7,5,425,1
+Region 11abd,48,1,Region 11,3,3,427,1
+Region 2,48,0,Region 2,5,4,429,1
+Region 9,48,0,Region 9,15,11,431,1
+Region 2,48,0,Region 2,5,4,433,1
+Region 9,48,0,Region 9,15,11,435,1
+Region 1,48,0,Region 1,1,1,437,1
+Region 3bc,48,1,Region 3,7,5,439,1
+Region 2,48,0,Region 2,5,4,441,1
+Region 9,48,0,Region 9,15,11,443,1
+Region 1,48,0,Region 1,1,1,445,1
+Region 2,48,0,Region 2,5,4,447,1
+Region 4,48,0,Region 4,8,6,449,1
+Region 9,48,0,Region 9,15,11,451,1
+Region 7a,48,1,Region 7,12,9,453,1
+Region 5,48,0,Region 5,9,7,455,1
+Region 5,48,0,Region 5,9,7,457,1
+Region 4,48,0,Region 4,8,6,459,1
+Region 9,48,0,Region 9,15,11,461,1
+Region 8,48,0,Region 8,14,10,463,1
+Region 8,48,0,Region 8,14,10,465,1
+Region 4,48,0,Region 4,8,6,467,1
+Region 8,48,0,Region 8,14,10,469,1
+Region 6a,48,1,Region 6,10,8,471,1
+Region 6a,48,1,Region 6,10,8,473,1
+Region 9,48,0,Region 9,15,11,475,1
+Region 7bcd,48,1,Region 7,13,9,477,1
+Region 11abd,48,1,Region 11,3,3,479,1
+Region 6a,48,1,Region 6,10,8,481,1
+Region 1,48,0,Region 1,1,1,483,1
+Region 2,48,0,Region 2,5,4,485,1
+Region 2,48,0,Region 2,5,4,487,1
+Region 11abd,48,1,Region 11,3,3,489,1
+Region 7a,48,1,Region 7,12,9,491,1
+Region 8,48,0,Region 8,14,10,493,1
+Region 9,48,0,Region 9,15,11,495,1
+Region 3bc,48,1,Region 3,7,5,497,1
+Region 4,48,0,Region 4,8,6,499,1
+Region 1,48,0,Region 1,1,1,501,1
+Region 2,48,0,Region 2,5,4,503,1
+Region 11abd,48,1,Region 11,3,3,505,1
+Region 8,48,0,Region 8,14,10,507,1
+Southwest,49,1,"Central, Four Corners, San Juan, and Southwest",5,2,1,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,3,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,5,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,7,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,9,1
-"Davis County",49,0,"Davis County",3,3,11,1
+Davis County,49,0,Davis County,3,3,11,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,13,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,15,1
-"Southwest",49,1,"Central, Four Corners, San Juan, and Southwest",5,2,17,1
+Southwest,49,1,"Central, Four Corners, San Juan, and Southwest",5,2,17,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,19,1
-"Southwest",49,1,"Central, Four Corners, San Juan, and Southwest",5,2,21,1
+Southwest,49,1,"Central, Four Corners, San Juan, and Southwest",5,2,21,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,23,1
-"Southwest",49,1,"Central, Four Corners, San Juan, and Southwest",5,2,25,1
+Southwest,49,1,"Central, Four Corners, San Juan, and Southwest",5,2,25,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,27,1
 "Weber, Morgan",49,0,"Weber, Morgan",7,6,29,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,31,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,33,1
-"Salt Lake County",49,0,"Salt Lake County",4,4,35,1
+Salt Lake County,49,0,Salt Lake County,4,4,35,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,37,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,39,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,41,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,43,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,45,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,47,1
-"Utah County",49,0,"Utah County",6,5,49,1
+Utah County,49,0,Utah County,6,5,49,1
 "Bear River, Northeastern, Summit, Tooele, and Wasatch",49,0,"Bear River, Northeastern, Summit, Tooele, and Wasatch",1,1,51,1
-"Southwest",49,1,"Central, Four Corners, San Juan, and Southwest",5,2,53,1
+Southwest,49,1,"Central, Four Corners, San Juan, and Southwest",5,2,53,1
 "Central, Four Corners, and San Juan",49,1,"Central, Four Corners, San Juan, and Southwest",2,2,55,1
 "Weber, Morgan",49,0,"Weber, Morgan",7,6,57,1
-"Champlain Valley",50,0,,1,,1,1
-"Rural Southwest",50,0,,4,,3,1
-"Rural Northeast",50,0,,2,,5,1
-"Champlain Valley",50,0,,1,,7,1
-"Rural Northeast",50,0,,2,,9,1
-"Champlain Valley",50,0,,1,,11,1
-"Champlain Valley",50,0,,1,,13,1
-"Rural Northeast",50,0,,2,,15,1
-"Rural Southeast",50,0,,3,,17,1
-"Rural Northeast",50,0,,2,,19,1
-"Rural Southwest",50,0,,4,,21,1
-"Rural Northeast",50,0,,2,,23,1
-"Rural Southeast",50,0,,3,,25,1
-"Rural Southeast",50,0,,3,,27,1
-"Region 5",51,0,,5,,1,1
-"Region 1",51,0,,1,,3,1
-"Region 3",51,0,,3,,5,1
-"Region 4",51,0,,4,,7,1
-"Region 3",51,0,,3,,9,1
-"Region 3",51,0,,3,,11,1
-"Region 2",51,0,,2,,13,1
-"Region 1",51,0,,1,,15,1
-"Region 1",51,0,,1,,17,1
-"Region 3",51,0,,3,,19,1
-"Region 3",51,0,,3,,21,1
-"Region 3",51,0,,3,,23,1
-"Region 4",51,0,,4,,25,1
-"Region 3",51,0,,3,,27,1
-"Region 4",51,0,,4,,29,1
-"Region 3",51,0,,3,,31,1
-"Region 1",51,0,,1,,33,1
-"Region 3",51,0,,3,,35,1
-"Region 4",51,0,,4,,36,1
-"Region 4",51,0,,4,,37,1
-"Region 4",51,0,,4,,41,1
-"Region 1",51,0,,1,,43,1
-"Region 3",51,0,,3,,45,1
-"Region 1",51,0,,1,,47,1
-"Region 4",51,0,,4,,49,1
-"Region 3",51,0,,3,,51,1
-"Region 4",51,0,,4,,53,1
-"Region 5",51,0,,5,,57,1
-"Region 2",51,0,,2,,59,1
-"Region 1",51,0,,1,,61,1
-"Region 3",51,0,,3,,63,1
-"Region 1",51,0,,1,,65,1
-"Region 3",51,0,,3,,67,1
-"Region 1",51,0,,1,,69,1
-"Region 3",51,0,,3,,71,1
-"Region 5",51,0,,5,,73,1
-"Region 4",51,0,,4,,75,1
-"Region 3",51,0,,3,,77,1
-"Region 1",51,0,,1,,79,1
-"Region 4",51,0,,4,,81,1
-"Region 4",51,0,,4,,83,1
-"Region 4",51,0,,4,,85,1
-"Region 4",51,0,,4,,87,1
-"Region 3",51,0,,3,,89,1
-"Region 1",51,0,,1,,91,1
-"Region 5",51,0,,5,,93,1
-"Region 5",51,0,,5,,95,1
-"Region 5",51,0,,5,,97,1
-"Region 1",51,0,,1,,99,1
-"Region 5",51,0,,5,,101,1
-"Region 5",51,0,,5,,103,1
-"Region 3",51,0,,3,,105,1
-"Region 2",51,0,,2,,107,1
-"Region 1",51,0,,1,,109,1
-"Region 4",51,0,,4,,111,1
-"Region 1",51,0,,1,,113,1
-"Region 5",51,0,,5,,115,1
-"Region 4",51,0,,4,,117,1
-"Region 5",51,0,,5,,119,1
-"Region 3",51,0,,3,,121,1
-"Region 1",51,0,,1,,125,1
-"Region 4",51,0,,4,,127,1
-"Region 5",51,0,,5,,131,1
-"Region 5",51,0,,5,,133,1
-"Region 4",51,0,,4,,135,1
-"Region 1",51,0,,1,,137,1
-"Region 1",51,0,,1,,139,1
-"Region 3",51,0,,3,,141,1
-"Region 3",51,0,,3,,143,1
-"Region 4",51,0,,4,,145,1
-"Region 4",51,0,,4,,147,1
-"Region 4",51,0,,4,,149,1
-"Region 2",51,0,,2,,153,1
-"Region 3",51,0,,3,,155,1
-"Region 1",51,0,,1,,157,1
-"Region 5",51,0,,5,,159,1
-"Region 3",51,0,,3,,161,1
-"Region 1",51,0,,1,,163,1
-"Region 1",51,0,,1,,165,1
-"Region 3",51,0,,3,,167,1
-"Region 3",51,0,,3,,169,1
-"Region 1",51,0,,1,,171,1
-"Region 3",51,0,,3,,173,1
-"Region 5",51,0,,5,,175,1
-"Region 1",51,0,,1,,177,1
-"Region 1",51,0,,1,,179,1
-"Region 4",51,0,,4,,181,1
-"Region 4",51,0,,4,,183,1
-"Region 3",51,0,,3,,185,1
-"Region 1",51,0,,1,,187,1
-"Region 3",51,0,,3,,191,1
-"Region 5",51,0,,5,,193,1
-"Region 3",51,0,,3,,195,1
-"Region 3",51,0,,3,,197,1
-"Region 5",51,0,,5,,199,1
-"Region 2",51,0,,2,,510,1
-"Region 3",51,0,,3,,515,1
-"Region 3",51,0,,3,,520,1
-"Region 1",51,0,,1,,530,1
-"Region 1",51,0,,1,,540,1
-"Region 5",51,0,,5,,550,1
-"Region 4",51,0,,4,,570,1
-"Region 3",51,0,,3,,580,1
-"Region 3",51,0,,3,,590,1
-"Region 4",51,0,,4,,595,1
-"Region 2",51,0,,2,,600,1
-"Region 2",51,0,,2,,610,1
-"Region 5",51,0,,5,,620,1
-"Region 1",51,0,,1,,630,1
-"Region 3",51,0,,3,,640,1
-"Region 5",51,0,,5,,650,1
-"Region 1",51,0,,1,,660,1
-"Region 4",51,0,,4,,670,1
-"Region 1",51,0,,1,,678,1
-"Region 3",51,0,,3,,680,1
-"Region 2",51,0,,2,,683,1
-"Region 2",51,0,,2,,685,1
-"Region 3",51,0,,3,,690,1
-"Region 5",51,0,,5,,700,1
-"Region 5",51,0,,5,,710,1
-"Region 3",51,0,,3,,720,1
-"Region 4",51,0,,4,,730,1
-"Region 5",51,0,,5,,735,1
-"Region 5",51,0,,5,,740,1
-"Region 3",51,0,,3,,750,1
-"Region 4",51,0,,4,,760,1
-"Region 3",51,0,,3,,770,1
-"Region 3",51,0,,3,,775,1
-"Region 1",51,0,,1,,790,1
-"Region 5",51,0,,5,,800,1
-"Region 5",51,0,,5,,810,1
-"Region 1",51,0,,1,,820,1
-"Region 5",51,0,,5,,830,1
-"Region 1",51,0,,1,,840,1
-"Spokane",53,1,"Region 1",7,1,1,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,3,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,5,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,7,1
-"Salish",53,1,"Region 3",6,3,9,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,11,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,13,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,15,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,17,1
-"Spokane",53,1,"Region 1",7,1,19,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,21,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,23,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,25,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,27,1
-"North Sound",53,1,"Region 2",3,2,29,1
-"Salish",53,1,"Region 3",6,3,31,1
-"King",53,1,"Region 2",2,2,33,1
-"Salish",53,1,"Region 3",6,3,35,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,37,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,39,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,41,1
-"Spokane",53,1,"Region 1",7,1,43,1
-"Thurston-Mason",53,1,"Region 3",8,3,45,1
-"Spokane",53,1,"Region 1",7,1,47,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,49,1
-"Spokane",53,1,"Region 1",7,1,51,1
-"Pierce",53,1,"Region 3",4,3,53,1
-"North Sound",53,1,"Region 2",3,2,55,1
-"North Sound",53,1,"Region 2",3,2,57,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,59,1
-"North Sound",53,1,"Region 2",3,2,61,1
-"Spokane",53,1,"Region 1",7,1,63,1
-"Spokane",53,1,"Region 1",7,1,65,1
-"Thurston-Mason",53,1,"Region 3",8,3,67,1
-"SW WA and Great Rivers",53,1,"Region 3",5,3,69,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,71,1
-"North Sound",53,1,"Region 2",3,2,73,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,75,1
-"Greater Columbia and North Central",53,1,"Region 1",1,1,77,1
-"Region IV",54,0,,4,,1,1
-"Region II",54,0,,2,,3,1
-"Region V",54,0,,5,,5,1
-"Region IV",54,0,,4,,7,1
-"Region I",54,0,,1,,9,1
-"Region V",54,0,,5,,11,1
-"Region III",54,0,,3,,13,1
-"Region V",54,0,,5,,15,1
-"Region IV",54,0,,4,,17,1
-"Region VI",54,0,,6,,19,1
-"Region IV",54,0,,4,,21,1
-"Region II",54,0,,2,,23,1
-"Region VI",54,0,,6,,25,1
-"Region II",54,0,,2,,27,1
-"Region I",54,0,,1,,29,1
-"Region II",54,0,,2,,31,1
-"Region IV",54,0,,4,,33,1
-"Region III",54,0,,3,,35,1
-"Region II",54,0,,2,,37,1
-"Region V",54,0,,5,,39,1
-"Region IV",54,0,,4,,41,1
-"Region V",54,0,,5,,43,1
-"Region V",54,0,,5,,45,1
-"Region VI",54,0,,6,,47,1
-"Region IV",54,0,,4,,49,1
-"Region I",54,0,,1,,51,1
-"Region V",54,0,,5,,53,1
-"Region VI",54,0,,6,,55,1
-"Region II",54,0,,2,,57,1
-"Region V",54,0,,5,,59,1
-"Region IV",54,0,,4,,61,1
-"Region VI",54,0,,6,,63,1
-"Region II",54,0,,2,,65,1
-"Region VI",54,0,,6,,67,1
-"Region I",54,0,,1,,69,1
-"Region II",54,0,,2,,71,1
-"Region III",54,0,,3,,73,1
-"Region VI",54,0,,6,,75,1
-"Region IV",54,0,,4,,77,1
-"Region V",54,0,,5,,79,1
-"Region VI",54,0,,6,,81,1
-"Region IV",54,0,,4,,83,1
-"Region III",54,0,,3,,85,1
-"Region III",54,0,,3,,87,1
-"Region VI",54,0,,6,,89,1
-"Region IV",54,0,,4,,91,1
-"Region IV",54,0,,4,,93,1
-"Region III",54,0,,3,,95,1
-"Region IV",54,0,,4,,97,1
-"Region V",54,0,,5,,99,1
-"Region VI",54,0,,6,,101,1
-"Region I",54,0,,1,,103,1
-"Region III",54,0,,3,,105,1
-"Region III",54,0,,3,,107,1
-"Region VI",54,0,,6,,109,1
-"Southern",55,0,,5,,1,1
-"Northern",55,0,,3,,3,1
-"Western",55,0,,6,,5,1
-"Northern",55,0,,3,,7,1
-"Northeastern",55,0,,2,,9,1
-"Western",55,0,,6,,11,1
-"Western",55,0,,6,,13,1
-"Northeastern",55,0,,2,,15,1
-"Western",55,0,,6,,17,1
-"Western",55,0,,6,,19,1
-"Southern",55,0,,5,,21,1
-"Southern",55,0,,5,,23,1
-"Southern",55,0,,5,,25,1
-"Southern",55,0,,5,,27,1
-"Northeastern",55,0,,2,,29,1
-"Western",55,0,,6,,31,1
-"Western",55,0,,6,,33,1
-"Western",55,0,,6,,35,1
-"Northern",55,0,,3,,37,1
-"Northeastern",55,0,,2,,39,1
-"Northern",55,0,,3,,41,1
-"Southern",55,0,,5,,43,1
-"Southern",55,0,,5,,45,1
-"Northeastern",55,0,,2,,47,1
-"Southern",55,0,,5,,49,1
-"Northern",55,0,,3,,51,1
-"Western",55,0,,6,,53,1
-"Southeastern",55,0,,4,,55,1
-"Southern",55,0,,5,,57,1
-"Southeastern",55,0,,4,,59,1
-"Northeastern",55,0,,2,,61,1
-"Western",55,0,,6,,63,1
-"Southern",55,0,,5,,65,1
-"Northern",55,0,,3,,67,1
-"Northern",55,0,,3,,69,1
-"Northeastern",55,0,,2,,71,1
-"Northern",55,0,,3,,73,1
-"Northeastern",55,0,,2,,75,1
-"Northeastern",55,0,,2,,77,1
-"Northeastern",55,0,,2,,78,1
-"Milwaukee",55,0,,1,,79,1
-"Western",55,0,,6,,81,1
-"Northeastern",55,0,,2,,83,1
-"Northern",55,0,,3,,85,1
-"Northeastern",55,0,,2,,87,1
-"Southeastern",55,0,,4,,89,1
-"Western",55,0,,6,,91,1
-"Western",55,0,,6,,93,1
-"Western",55,0,,6,,95,1
-"Northern",55,0,,3,,97,1
-"Northern",55,0,,3,,99,1
-"Southeastern",55,0,,4,,101,1
-"Southern",55,0,,5,,103,1
-"Southern",55,0,,5,,105,1
-"Western",55,0,,6,,107,1
-"Western",55,0,,6,,109,1
-"Southern",55,0,,5,,111,1
-"Northern",55,0,,3,,113,1
-"Northeastern",55,0,,2,,115,1
-"Northeastern",55,0,,2,,117,1
-"Northern",55,0,,3,,119,1
-"Western",55,0,,6,,121,1
-"Southern",55,0,,5,,123,1
-"Northern",55,0,,3,,125,1
-"Southeastern",55,0,,4,,127,1
-"Western",55,0,,6,,129,1
-"Southeastern",55,0,,4,,131,1
-"Southeastern",55,0,,4,,133,1
-"Northeastern",55,0,,2,,135,1
-"Northeastern",55,0,,2,,137,1
-"Northeastern",55,0,,2,,139,1
-"Northern",55,0,,3,,141,1
-"Judicial District 2",56,0,,2,,1,1
-"Judicial District 5",56,0,,5,,3,1
-"Judicial District 6",56,0,,6,,5,1
-"Judicial District 2",56,0,,2,,7,1
-"Judicial District 8",56,0,,8,,9,1
-"Judicial District 6",56,0,,6,,11,1
-"Judicial District 9",56,0,,9,,13,1
-"Judicial District 8",56,0,,8,,15,1
-"Judicial District 5",56,0,,5,,17,1
-"Judicial District 4",56,0,,4,,19,1
-"Judicial District 1 (Laramie)",56,0,,1,,21,1
-"Judicial District 3",56,0,,3,,23,1
-"Judicial District 7 (Natrona)",56,0,,7,,25,1
-"Judicial District 8",56,0,,8,,27,1
-"Judicial District 5",56,0,,5,,29,1
-"Judicial District 8",56,0,,8,,31,1
-"Judicial District 4",56,0,,4,,33,1
-"Judicial District 9",56,0,,9,,35,1
-"Judicial District 3",56,0,,3,,37,1
-"Judicial District 9",56,0,,9,,39,1
-"Judicial District 3",56,0,,3,,41,1
-"Judicial District 5",56,0,,5,,43,1
-"Judicial District 6",56,0,,6,,45,1
+Champlain Valley,50,0,,1,,1,1
+Rural Southwest,50,0,,4,,3,1
+Rural Northeast,50,0,,2,,5,1
+Champlain Valley,50,0,,1,,7,1
+Rural Northeast,50,0,,2,,9,1
+Champlain Valley,50,0,,1,,11,1
+Champlain Valley,50,0,,1,,13,1
+Rural Northeast,50,0,,2,,15,1
+Rural Southeast,50,0,,3,,17,1
+Rural Northeast,50,0,,2,,19,1
+Rural Southwest,50,0,,4,,21,1
+Rural Northeast,50,0,,2,,23,1
+Rural Southeast,50,0,,3,,25,1
+Rural Southeast,50,0,,3,,27,1
+Region 5,51,0,,5,,1,1
+Region 1,51,0,,1,,3,1
+Region 3,51,0,,3,,5,1
+Region 4,51,0,,4,,7,1
+Region 3,51,0,,3,,9,1
+Region 3,51,0,,3,,11,1
+Region 2,51,0,,2,,13,1
+Region 1,51,0,,1,,15,1
+Region 1,51,0,,1,,17,1
+Region 3,51,0,,3,,19,1
+Region 3,51,0,,3,,21,1
+Region 3,51,0,,3,,23,1
+Region 4,51,0,,4,,25,1
+Region 3,51,0,,3,,27,1
+Region 4,51,0,,4,,29,1
+Region 3,51,0,,3,,31,1
+Region 1,51,0,,1,,33,1
+Region 3,51,0,,3,,35,1
+Region 4,51,0,,4,,36,1
+Region 4,51,0,,4,,37,1
+Region 4,51,0,,4,,41,1
+Region 1,51,0,,1,,43,1
+Region 3,51,0,,3,,45,1
+Region 1,51,0,,1,,47,1
+Region 4,51,0,,4,,49,1
+Region 3,51,0,,3,,51,1
+Region 4,51,0,,4,,53,1
+Region 5,51,0,,5,,57,1
+Region 2,51,0,,2,,59,1
+Region 1,51,0,,1,,61,1
+Region 3,51,0,,3,,63,1
+Region 1,51,0,,1,,65,1
+Region 3,51,0,,3,,67,1
+Region 1,51,0,,1,,69,1
+Region 3,51,0,,3,,71,1
+Region 5,51,0,,5,,73,1
+Region 4,51,0,,4,,75,1
+Region 3,51,0,,3,,77,1
+Region 1,51,0,,1,,79,1
+Region 4,51,0,,4,,81,1
+Region 4,51,0,,4,,83,1
+Region 4,51,0,,4,,85,1
+Region 4,51,0,,4,,87,1
+Region 3,51,0,,3,,89,1
+Region 1,51,0,,1,,91,1
+Region 5,51,0,,5,,93,1
+Region 5,51,0,,5,,95,1
+Region 5,51,0,,5,,97,1
+Region 1,51,0,,1,,99,1
+Region 5,51,0,,5,,101,1
+Region 5,51,0,,5,,103,1
+Region 3,51,0,,3,,105,1
+Region 2,51,0,,2,,107,1
+Region 1,51,0,,1,,109,1
+Region 4,51,0,,4,,111,1
+Region 1,51,0,,1,,113,1
+Region 5,51,0,,5,,115,1
+Region 4,51,0,,4,,117,1
+Region 5,51,0,,5,,119,1
+Region 3,51,0,,3,,121,1
+Region 1,51,0,,1,,125,1
+Region 4,51,0,,4,,127,1
+Region 5,51,0,,5,,131,1
+Region 5,51,0,,5,,133,1
+Region 4,51,0,,4,,135,1
+Region 1,51,0,,1,,137,1
+Region 1,51,0,,1,,139,1
+Region 3,51,0,,3,,141,1
+Region 3,51,0,,3,,143,1
+Region 4,51,0,,4,,145,1
+Region 4,51,0,,4,,147,1
+Region 4,51,0,,4,,149,1
+Region 2,51,0,,2,,153,1
+Region 3,51,0,,3,,155,1
+Region 1,51,0,,1,,157,1
+Region 5,51,0,,5,,159,1
+Region 3,51,0,,3,,161,1
+Region 1,51,0,,1,,163,1
+Region 1,51,0,,1,,165,1
+Region 3,51,0,,3,,167,1
+Region 3,51,0,,3,,169,1
+Region 1,51,0,,1,,171,1
+Region 3,51,0,,3,,173,1
+Region 5,51,0,,5,,175,1
+Region 1,51,0,,1,,177,1
+Region 1,51,0,,1,,179,1
+Region 4,51,0,,4,,181,1
+Region 4,51,0,,4,,183,1
+Region 3,51,0,,3,,185,1
+Region 1,51,0,,1,,187,1
+Region 3,51,0,,3,,191,1
+Region 5,51,0,,5,,193,1
+Region 3,51,0,,3,,195,1
+Region 3,51,0,,3,,197,1
+Region 5,51,0,,5,,199,1
+Region 2,51,0,,2,,510,1
+Region 3,51,0,,3,,520,1
+Region 1,51,0,,1,,530,1
+Region 1,51,0,,1,,540,1
+Region 5,51,0,,5,,550,1
+Region 4,51,0,,4,,570,1
+Region 3,51,0,,3,,580,1
+Region 3,51,0,,3,,590,1
+Region 4,51,0,,4,,595,1
+Region 2,51,0,,2,,600,1
+Region 2,51,0,,2,,610,1
+Region 5,51,0,,5,,620,1
+Region 1,51,0,,1,,630,1
+Region 3,51,0,,3,,640,1
+Region 5,51,0,,5,,650,1
+Region 1,51,0,,1,,660,1
+Region 4,51,0,,4,,670,1
+Region 1,51,0,,1,,678,1
+Region 3,51,0,,3,,680,1
+Region 2,51,0,,2,,683,1
+Region 2,51,0,,2,,685,1
+Region 3,51,0,,3,,690,1
+Region 5,51,0,,5,,700,1
+Region 5,51,0,,5,,710,1
+Region 3,51,0,,3,,720,1
+Region 4,51,0,,4,,730,1
+Region 5,51,0,,5,,735,1
+Region 5,51,0,,5,,740,1
+Region 3,51,0,,3,,750,1
+Region 4,51,0,,4,,760,1
+Region 3,51,0,,3,,770,1
+Region 3,51,0,,3,,775,1
+Region 1,51,0,,1,,790,1
+Region 5,51,0,,5,,800,1
+Region 5,51,0,,5,,810,1
+Region 1,51,0,,1,,820,1
+Region 5,51,0,,5,,830,1
+Region 1,51,0,,1,,840,1
+Spokane,53,1,Region 1,7,1,1,1
+Greater Columbia and North Central,53,1,Region 1,1,1,3,1
+Greater Columbia and North Central,53,1,Region 1,1,1,5,1
+Greater Columbia and North Central,53,1,Region 1,1,1,7,1
+Salish,53,1,Region 3,6,3,9,1
+SW WA and Great Rivers,53,1,Region 3,5,3,11,1
+Greater Columbia and North Central,53,1,Region 1,1,1,13,1
+SW WA and Great Rivers,53,1,Region 3,5,3,15,1
+Greater Columbia and North Central,53,1,Region 1,1,1,17,1
+Spokane,53,1,Region 1,7,1,19,1
+Greater Columbia and North Central,53,1,Region 1,1,1,21,1
+Greater Columbia and North Central,53,1,Region 1,1,1,23,1
+Greater Columbia and North Central,53,1,Region 1,1,1,25,1
+SW WA and Great Rivers,53,1,Region 3,5,3,27,1
+North Sound,53,1,Region 2,3,2,29,1
+Salish,53,1,Region 3,6,3,31,1
+King,53,1,Region 2,2,2,33,1
+Salish,53,1,Region 3,6,3,35,1
+Greater Columbia and North Central,53,1,Region 1,1,1,37,1
+Greater Columbia and North Central,53,1,Region 1,1,1,39,1
+SW WA and Great Rivers,53,1,Region 3,5,3,41,1
+Spokane,53,1,Region 1,7,1,43,1
+Thurston-Mason,53,1,Region 3,8,3,45,1
+Spokane,53,1,Region 1,7,1,47,1
+SW WA and Great Rivers,53,1,Region 3,5,3,49,1
+Spokane,53,1,Region 1,7,1,51,1
+Pierce,53,1,Region 3,4,3,53,1
+North Sound,53,1,Region 2,3,2,55,1
+North Sound,53,1,Region 2,3,2,57,1
+SW WA and Great Rivers,53,1,Region 3,5,3,59,1
+North Sound,53,1,Region 2,3,2,61,1
+Spokane,53,1,Region 1,7,1,63,1
+Spokane,53,1,Region 1,7,1,65,1
+Thurston-Mason,53,1,Region 3,8,3,67,1
+SW WA and Great Rivers,53,1,Region 3,5,3,69,1
+Greater Columbia and North Central,53,1,Region 1,1,1,71,1
+North Sound,53,1,Region 2,3,2,73,1
+Greater Columbia and North Central,53,1,Region 1,1,1,75,1
+Greater Columbia and North Central,53,1,Region 1,1,1,77,1
+Region IV,54,0,,4,,1,1
+Region II,54,0,,2,,3,1
+Region V,54,0,,5,,5,1
+Region IV,54,0,,4,,7,1
+Region I,54,0,,1,,9,1
+Region V,54,0,,5,,11,1
+Region III,54,0,,3,,13,1
+Region V,54,0,,5,,15,1
+Region IV,54,0,,4,,17,1
+Region VI,54,0,,6,,19,1
+Region IV,54,0,,4,,21,1
+Region II,54,0,,2,,23,1
+Region VI,54,0,,6,,25,1
+Region II,54,0,,2,,27,1
+Region I,54,0,,1,,29,1
+Region II,54,0,,2,,31,1
+Region IV,54,0,,4,,33,1
+Region III,54,0,,3,,35,1
+Region II,54,0,,2,,37,1
+Region V,54,0,,5,,39,1
+Region IV,54,0,,4,,41,1
+Region V,54,0,,5,,43,1
+Region V,54,0,,5,,45,1
+Region VI,54,0,,6,,47,1
+Region IV,54,0,,4,,49,1
+Region I,54,0,,1,,51,1
+Region V,54,0,,5,,53,1
+Region VI,54,0,,6,,55,1
+Region II,54,0,,2,,57,1
+Region V,54,0,,5,,59,1
+Region IV,54,0,,4,,61,1
+Region VI,54,0,,6,,63,1
+Region II,54,0,,2,,65,1
+Region VI,54,0,,6,,67,1
+Region I,54,0,,1,,69,1
+Region II,54,0,,2,,71,1
+Region III,54,0,,3,,73,1
+Region VI,54,0,,6,,75,1
+Region IV,54,0,,4,,77,1
+Region V,54,0,,5,,79,1
+Region VI,54,0,,6,,81,1
+Region IV,54,0,,4,,83,1
+Region III,54,0,,3,,85,1
+Region III,54,0,,3,,87,1
+Region VI,54,0,,6,,89,1
+Region IV,54,0,,4,,91,1
+Region IV,54,0,,4,,93,1
+Region III,54,0,,3,,95,1
+Region IV,54,0,,4,,97,1
+Region V,54,0,,5,,99,1
+Region VI,54,0,,6,,101,1
+Region I,54,0,,1,,103,1
+Region III,54,0,,3,,105,1
+Region III,54,0,,3,,107,1
+Region VI,54,0,,6,,109,1
+Southern,55,0,,5,,1,1
+Northern,55,0,,3,,3,1
+Western,55,0,,6,,5,1
+Northern,55,0,,3,,7,1
+Northeastern,55,0,,2,,9,1
+Western,55,0,,6,,11,1
+Western,55,0,,6,,13,1
+Northeastern,55,0,,2,,15,1
+Western,55,0,,6,,17,1
+Western,55,0,,6,,19,1
+Southern,55,0,,5,,21,1
+Southern,55,0,,5,,23,1
+Southern,55,0,,5,,25,1
+Southern,55,0,,5,,27,1
+Northeastern,55,0,,2,,29,1
+Western,55,0,,6,,31,1
+Western,55,0,,6,,33,1
+Western,55,0,,6,,35,1
+Northern,55,0,,3,,37,1
+Northeastern,55,0,,2,,39,1
+Northern,55,0,,3,,41,1
+Southern,55,0,,5,,43,1
+Southern,55,0,,5,,45,1
+Northeastern,55,0,,2,,47,1
+Southern,55,0,,5,,49,1
+Northern,55,0,,3,,51,1
+Western,55,0,,6,,53,1
+Southeastern,55,0,,4,,55,1
+Southern,55,0,,5,,57,1
+Southeastern,55,0,,4,,59,1
+Northeastern,55,0,,2,,61,1
+Western,55,0,,6,,63,1
+Southern,55,0,,5,,65,1
+Northern,55,0,,3,,67,1
+Northern,55,0,,3,,69,1
+Northeastern,55,0,,2,,71,1
+Northern,55,0,,3,,73,1
+Northeastern,55,0,,2,,75,1
+Northeastern,55,0,,2,,77,1
+Northeastern,55,0,,2,,78,1
+Milwaukee,55,0,,1,,79,1
+Western,55,0,,6,,81,1
+Northeastern,55,0,,2,,83,1
+Northern,55,0,,3,,85,1
+Northeastern,55,0,,2,,87,1
+Southeastern,55,0,,4,,89,1
+Western,55,0,,6,,91,1
+Western,55,0,,6,,93,1
+Western,55,0,,6,,95,1
+Northern,55,0,,3,,97,1
+Northern,55,0,,3,,99,1
+Southeastern,55,0,,4,,101,1
+Southern,55,0,,5,,103,1
+Southern,55,0,,5,,105,1
+Western,55,0,,6,,107,1
+Western,55,0,,6,,109,1
+Southern,55,0,,5,,111,1
+Northern,55,0,,3,,113,1
+Northeastern,55,0,,2,,115,1
+Northeastern,55,0,,2,,117,1
+Northern,55,0,,3,,119,1
+Western,55,0,,6,,121,1
+Southern,55,0,,5,,123,1
+Northern,55,0,,3,,125,1
+Southeastern,55,0,,4,,127,1
+Western,55,0,,6,,129,1
+Southeastern,55,0,,4,,131,1
+Southeastern,55,0,,4,,133,1
+Northeastern,55,0,,2,,135,1
+Northeastern,55,0,,2,,137,1
+Northeastern,55,0,,2,,139,1
+Northern,55,0,,3,,141,1
+Judicial District 2,56,0,,2,,1,1
+Judicial District 5,56,0,,5,,3,1
+Judicial District 6,56,0,,6,,5,1
+Judicial District 2,56,0,,2,,7,1
+Judicial District 8,56,0,,8,,9,1
+Judicial District 6,56,0,,6,,11,1
+Judicial District 9,56,0,,9,,13,1
+Judicial District 8,56,0,,8,,15,1
+Judicial District 5,56,0,,5,,17,1
+Judicial District 4,56,0,,4,,19,1
+Judicial District 1 (Laramie),56,0,,1,,21,1
+Judicial District 3,56,0,,3,,23,1
+Judicial District 7 (Natrona),56,0,,7,,25,1
+Judicial District 8,56,0,,8,,27,1
+Judicial District 5,56,0,,5,,29,1
+Judicial District 8,56,0,,8,,31,1
+Judicial District 4,56,0,,4,,33,1
+Judicial District 9,56,0,,9,,35,1
+Judicial District 3,56,0,,3,,37,1
+Judicial District 9,56,0,,9,,39,1
+Judicial District 3,56,0,,3,,41,1
+Judicial District 5,56,0,,5,,43,1
+Judicial District 6,56,0,,6,,45,1
