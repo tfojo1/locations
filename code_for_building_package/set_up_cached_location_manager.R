@@ -826,6 +826,6 @@ LOCATION.MANAGER = register.state.poly.data(LOCATION.MANAGER, file.path(DATA.DIR
 LOCATION.MANAGER = register.county.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "county_geom_data.csv"), county.type) #Give each location the proper polygon data (counties)
 LOCATION.MANAGER = register.cbsa.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "cbsa_geom_data.csv"), cbsa.type) #Give each location the proper polygon data (cbsa)
 # LOCATION.MANAGER = register.zip.poly.data(LOCATION.MANAGER, file.path(DATA.DIR, "zip_geom_data_0_1.csv"), zipcode.type) #Give each location the proper polygon data (zip)
-LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, county.type)
+# LOCATION.MANAGER = register.public.health.districts(LOCATION.MANAGER, phd.type, county.type)
 
 rm(DATA.DIR)
