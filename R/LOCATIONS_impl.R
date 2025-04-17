@@ -132,6 +132,21 @@ Location.Manager = R6Class("LocationManager",
         return (TRUE)
       }
       
+      #If it's an alias
+      location.codes = c()
+      
+      for (type in names(private$alias.codes)) {
+        if (location %in% names(private$alias.codes[[type]])) {
+          location.codes = c(location.codes, private$alias.codes[[type]][[location]])
+        }
+      }
+      
+      if (length(location.codes) == 1) {
+        # This code is an alias for a single location value, return TRUE
+        return (TRUE)
+      }
+      
+      
       if (suggest.options) {
         # Is it an alias?
         # Get the current list of types:
