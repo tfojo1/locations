@@ -15,5 +15,4 @@ Depends:
 Imports:
     ggmap,
     ggplot2,
-    R6,
-    sf
+    R6
