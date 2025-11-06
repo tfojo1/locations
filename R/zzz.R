@@ -1,7 +1,7 @@
-#' Package initialization
+#' Package Lifecycle Hooks
 #'
-#' This file contains the .onLoad hook that runs when the package is loaded.
-#' It builds the LOCATION.MANAGER from the cached location data.
+#' This file (zzz.R) contains package lifecycle functions following R convention.
+#' Functions here run during package load/unload/attach events.
 #'
 #' @keywords internal
 
@@ -9,15 +9,27 @@
 LOCATION.MANAGER <- NULL
 
 .onLoad <- function(libname, pkgname) {
-  # Load the cached location data (stored in sysdata.rda)
-  # The build process saves .location_data (note the dot prefix)
+  # Check that cached location data exists
+  if (!exists(".location_data", envir = parent.env(environment()), inherits = FALSE)) {
+    stop(
+      "Location data is missing from package. ",
+      "The package may be corrupted. Please reinstall: ",
+      "devtools::install_github('your-repo/locations')"
+    )
+  }
 
-  # Build the LOCATION.MANAGER from the data
+  # Build the LOCATION.MANAGER from the cached data
   # Using <<- to assign to package namespace
-  LOCATION.MANAGER <<- build_location_manager(.location_data)
+  tryCatch({
+    LOCATION.MANAGER <<- build_location_manager(.location_data)
+  }, error = function(e) {
+    stop(
+      "Failed to initialize location manager during package load.\n",
+      "Error: ", e$message, "\n",
+      "This may indicate corrupted package data. Please reinstall the package."
+    )
+  })
 
-  # Clean up the raw data from namespace (optional, but keeps namespace clean)
-  # We don't actually need .location_data after initialization
-  # Note: We can't use rm() here as it would try to remove from the function env
-  # The data stays in sysdata.rda but that's fine
+  # Optional: Add a startup message (only if needed for debugging)
+  # packageStartupMessage("locations package loaded successfully")
 }
