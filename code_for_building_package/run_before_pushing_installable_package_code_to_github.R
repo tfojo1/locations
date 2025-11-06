@@ -14,8 +14,34 @@
 ##--------------------------------------------------------------------------------------------##
 
 
+##---------------------------------------------------------##
+##-- STEP 1: Build and Store the Cached Location Manager --##
+##---------------------------------------------------------##
+## NOTE: This must happen BEFORE documentation, because devtools::document()
+##       loads the package, which triggers .onLoad(), which needs the data.
+
+cat("\n------------------------------\nBUILDING LOCATION MANAGER...\n")
+
+# Source the initialization functions (needed for extract_location_data)
+source('R/LOCATIONS_impl.R')
+source('R/LOCATIONS_init.R')
+
+# Build the location manager (creates LOCATION.MANAGER)
+source('code_for_building_package/set_up_cached_location_manager.R')
+
+# Extract the data from LOCATION.MANAGER into simple structures
+cat("Extracting location data from LOCATION.MANAGER...\n")
+.location_data <- extract_location_data(LOCATION.MANAGER)
+
+# Store the data structures (not the R6 object) to internal file
+# Note: using .location_data (with dot prefix) to indicate it's internal
+usethis::use_data(.location_data, internal = T, overwrite = T)
+
+cat("DONE BUILDING LOCATION MANAGER\n------------------------------\n")
+
+
 ##-----------------------------------------------------------##
-##-- STEP 1: Update Documentation (updates NAMESPACE file) --##
+##-- STEP 2: Update Documentation (updates NAMESPACE file) --##
 ##-----------------------------------------------------------##
 
 cat("\n-----------------------------\nSETTING UP DOCUMENTATION...\n")
@@ -24,29 +50,16 @@ cat("DONE SETTING UP DOCUMENTATION\n-----------------------------\n")
 
 
 ##-----------------------------------------------------------------##
-##-- STEP 2: Indicate Which Files the Package should NOT include --##
+##-- STEP 3: Indicate Which Files the Package should NOT include --##
 ##-----------------------------------------------------------------##
 
 cat("\n------------------------------------\nSETTING FILES TO IGNORE IN BUILD...\n")
-usethis::use_build_ignore(files=c("^R\\tests$", 
+usethis::use_build_ignore(files=c("^R\\tests$",
                                   "^data-raw$",
                                   "^\\.github$",
                                   "^.*\\.Rproj$"),
                           escape=F)
 cat("DONE SETTING FILES TO IGNORE IN BUILD\n------------------------------------\n")
-
-##---------------------------------------------------------##
-##-- STEP 3: Build and Store the Cached Location Manager --##
-##---------------------------------------------------------##
-
-cat("\n------------------------------\nBUILDING LOCATION MANAGER...\n")
-
-# Read the location manager
-source('code_for_building_package/set_up_cached_location_manager.R')
-# Store it to an internal file for the package
-usethis::use_data(LOCATION.MANAGER, internal = T, overwrite = T)
-
-cat("DONE BUILDING LOCATION MANAGER\n------------------------------\n")
 
 
 cat("\n\n ALL DONE PREPARING PACKAGE TO BE INSTALLED\n")
