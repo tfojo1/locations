@@ -17,3 +17,11 @@ cbsas and phd level types.  We also have polygon data for zipcodes but it isn't 
 the module.
 
 Please see the Roxygen2 documentation for public API information.
+
+## Recent Changes
+
+**v0.2.0** (2025-01) - Location Registration Fix
+- Fixed bug preventing dynamic registration of new location types
+- Users can now register custom location types and locations at runtime
+- Backward compatible - all existing code works unchanged
+- Internal: Refactored to use lazy initialization pattern
