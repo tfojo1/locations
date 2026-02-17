@@ -6,15 +6,6 @@
 .Renviron
 *.Rproj
 
-# Development and analysis files (kept locally but not tracked)
-ARCHITECTURE_ANALYSIS.md
-MODERNIZATION_ROADMAP.md
-FIX_SUMMARY.md
-QUICK_START.md
+# Development files (local-only reference docs, scripts, logs)
+dev/
 CLAUDE.md
-
-# Temporary test scripts
-*_test.R
-debug_*.R
-check_*.R
-FINAL_TEST.R
