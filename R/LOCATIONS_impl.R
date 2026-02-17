@@ -1,18 +1,12 @@
-library(R6)
-#library(sf) #used for merging the polygons in the case of groups value
-
-Location.Manager = R6Class("LocationManager",
+Location.Manager = R6::R6Class("LocationManager",
   class = FALSE,
   clone = FALSE,
   active = list (
     get.type.matrix = function() {
       return(private$type.matrix)
     },
-    # Legacy accessor - returns a named list mimicking the old location.list structure
-    # Used by extract_location_data() in LOCATIONS_init.R
     read.location.list = function() {
-      warning("read.location.list is deprecated - use data.frame accessors instead")
-      return(NULL)
+      return(private$locations_df)
     }
   ),
   private = list (
@@ -872,7 +866,5 @@ Location.Manager = R6Class("LocationManager",
         }
       }
     }
-    # merge.polygons and combine.locations were removed (previously commented out)
-    # see git history if needed
   )
 )
