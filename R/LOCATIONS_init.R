@@ -22,13 +22,12 @@ build_location_manager <- function(location_data) {
   # Create a fresh Location.Manager instance
   manager <- Location.Manager$new()
 
-  # Get private environment once (performance optimization)
+  # Get private environment once
   mgr_private <- environment(manager$initialize)$private
 
   # Restore types
   if (!is.null(location_data$types) && length(location_data$types) > 0) {
     for (type_name in names(location_data$types)) {
-      # types is a named list where each element is c(prefix, prefix.longform)
       type_info <- location_data$types[[type_name]]
       manager$register.types(type_name, type_info[1], type_info[2])
     }
@@ -36,52 +35,73 @@ build_location_manager <- function(location_data) {
 
   # Restore type relationships matrix
   if (!is.null(location_data$type.matrix) && length(location_data$type.matrix) > 0) {
-    # Directly assign the matrix (it's already been built)
     mgr_private$type.matrix <- location_data$type.matrix
   }
 
-  # Restore locations
-  # location_data$locations is a data.frame with columns: code, name, type
-  if (!is.null(location_data$locations) && nrow(location_data$locations) > 0) {
-    for (i in seq_len(nrow(location_data$locations))) {
-      code <- location_data$locations$code[i]
-      name <- location_data$locations$name[i]
-      type <- location_data$locations$type[i]
+  # Restore locations directly into locations_df and indexes
+  locs <- location_data$locations
+  coords <- location_data$coordinates
+  polys_set <- location_data$locations.with.polygons
 
-      # Create a Location object and add it to the manager
-      loc <- Location$new(c(name, type))
-      mgr_private$location.list[[code]] <- loc
+  if (!is.null(locs) && nrow(locs) > 0) {
+    # Build locations_df with all columns
+    locations_df <- data.frame(
+      code = locs$code,
+      name = locs$name,
+      type = locs$type,
+      lat = NA_real_,
+      long = NA_real_,
+      has_poly = FALSE,
+      stringsAsFactors = FALSE
+    )
+
+    # Merge in coordinates
+    if (!is.null(coords) && nrow(coords) > 0) {
+      coord_match <- match(locations_df$code, coords$code)
+      has_coord <- !is.na(coord_match)
+      locations_df$lat[has_coord] <- coords$lat[coord_match[has_coord]]
+      locations_df$long[has_coord] <- coords$long[coord_match[has_coord]]
+    }
+
+    # Mark polygon data
+    if (!is.null(polys_set) && length(polys_set) > 0) {
+      locations_df$has_poly[locations_df$code %in% polys_set] <- TRUE
+    }
+
+    # Set the data.frame
+    mgr_private$locations_df <- locations_df
+
+    # Build code index
+    for (i in seq_len(nrow(locations_df))) {
+      mgr_private$code_index[[locations_df$code[i]]] <- i
+    }
+
+    # Build type index
+    for (type in unique(locations_df$type)) {
+      mgr_private$type_index[[type]] <- locations_df$code[locations_df$type == type]
     }
   }
 
-  # Restore location coordinates (lat/long)
-  if (!is.null(location_data$coordinates) && nrow(location_data$coordinates) > 0) {
-    for (i in seq_len(nrow(location_data$coordinates))) {
-      code <- location_data$coordinates$code[i]
-      lat <- location_data$coordinates$lat[i]
-      long <- location_data$coordinates$long[i]
+  # Restore hierarchical relationships into hash maps
+  rels <- location_data$relationships
+  if (!is.null(rels) && nrow(rels) > 0) {
+    for (i in seq_len(nrow(rels))) {
+      sub_code <- rels$sub[i]
+      super_code <- rels$super[i]
+      is_complete <- rels$complete[i]
 
-      if (!is.na(lat) && !is.na(long)) {
-        if (!is.null(mgr_private$location.list[[code]])) {
-          mgr_private$location.list[[code]]$set.lat.and.long(lat, long)
-        }
-      }
-    }
-  }
+      if (is_complete) {
+        existing <- mgr_private$contains_complete[[super_code]]
+        mgr_private$contains_complete[[super_code]] <- c(existing, sub_code)
 
-  # Restore hierarchical relationships
-  # relationships is a data.frame with columns: sub, super, complete
-  if (!is.null(location_data$relationships) && nrow(location_data$relationships) > 0) {
-    for (i in seq_len(nrow(location_data$relationships))) {
-      sub_code <- location_data$relationships$sub[i]
-      super_code <- location_data$relationships$super[i]
-      complete <- location_data$relationships$complete[i]
+        existing <- mgr_private$contained_by_complete[[sub_code]]
+        mgr_private$contained_by_complete[[sub_code]] <- c(existing, super_code)
+      } else {
+        existing <- mgr_private$contains_partial[[super_code]]
+        mgr_private$contains_partial[[super_code]] <- c(existing, sub_code)
 
-      # Add relationship to both locations
-      if (!is.null(mgr_private$location.list[[sub_code]]) &&
-          !is.null(mgr_private$location.list[[super_code]])) {
-        mgr_private$location.list[[super_code]]$register.sub.location(sub_code, complete)
-        mgr_private$location.list[[sub_code]]$register.super.location(super_code, complete)
+        existing <- mgr_private$contained_by_partial[[sub_code]]
+        mgr_private$contained_by_partial[[sub_code]] <- c(existing, super_code)
       }
     }
   }
@@ -106,15 +126,6 @@ build_location_manager <- function(location_data) {
     mgr_private$poly.index <- location_data$poly.index
   }
 
-  # Mark which locations have polygon data
-  if (!is.null(location_data$locations.with.polygons) && length(location_data$locations.with.polygons) > 0) {
-    for (code in location_data$locations.with.polygons) {
-      if (!is.null(mgr_private$location.list[[code]])) {
-        mgr_private$location.list[[code]]$set.poly.data()
-      }
-    }
-  }
-
   return(manager)
 }
 
@@ -129,50 +140,46 @@ build_location_manager <- function(location_data) {
 #' @keywords internal
 extract_location_data <- function(manager) {
 
-  # Get private environment once (performance optimization)
+  # Get private environment once
   mgr_private <- environment(manager$initialize)$private
 
-  # Extract location list into a data.frame
-  location_codes <- names(mgr_private$location.list)
+  locations_df <- mgr_private$locations_df
 
-  if (length(location_codes) > 0) {
-    locations_df <- data.frame(
-      code = location_codes,
-      name = sapply(location_codes, function(code) {
-        mgr_private$location.list[[code]]$return.name
-      }),
-      type = sapply(location_codes, function(code) {
-        mgr_private$location.list[[code]]$return.type
-      }),
+  if (!is.null(locations_df) && nrow(locations_df) > 0) {
+    # Extract locations (code, name, type)
+    locs_out <- data.frame(
+      code = locations_df$code,
+      name = locations_df$name,
+      type = locations_df$type,
       stringsAsFactors = FALSE
     )
 
-    # Extract coordinates into a separate data.frame
-    coordinates_df <- data.frame(
-      code = location_codes,
-      lat = sapply(location_codes, function(code) {
-        mgr_private$location.list[[code]]$return.lat
-      }),
-      long = sapply(location_codes, function(code) {
-        mgr_private$location.list[[code]]$return.long
-      }),
+    # Extract coordinates
+    coords_out <- data.frame(
+      code = locations_df$code,
+      lat = locations_df$lat,
+      long = locations_df$long,
       stringsAsFactors = FALSE
     )
 
-    # Extract relationships into a data.frame
+    # Extract relationships from the hash maps
     relationships_list <- list()
-    for (code in location_codes) {
-      loc <- mgr_private$location.list[[code]]
-      contains_list <- loc$contains.list
 
-      if (length(contains_list) > 0) {
-        for (relationship in contains_list) {
-          relationships_list[[length(relationships_list) + 1]] <- list(
-            sub = relationship[1],
-            super = code,
-            complete = as.logical(relationship[2])
-          )
-        }
+    # Walk contains_complete to build relationship rows
+    for (super_code in ls(mgr_private$contains_complete)) {
+      sub_codes <- mgr_private$contains_complete[[super_code]]
+      for (sub_code in sub_codes) {
+        relationships_list[[length(relationships_list) + 1]] <- list(
+          sub = sub_code, super = super_code, complete = TRUE
+        )
+      }
+    }
+    for (super_code in ls(mgr_private$contains_partial)) {
+      sub_codes <- mgr_private$contains_partial[[super_code]]
+      for (sub_code in sub_codes) {
+        relationships_list[[length(relationships_list) + 1]] <- list(
+          sub = sub_code, super = super_code, complete = FALSE
+        )
       }
     }
 
@@ -183,28 +190,24 @@ extract_location_data <- function(manager) {
                  stringsAsFactors = FALSE)
     }
 
-    # Find which locations have polygon data
-    locations_with_polygons <- location_codes[sapply(location_codes, function(code) {
-      mgr_private$location.list[[code]]$has.poly.data
-    })]
+    # Find locations with polygon data
+    locations_with_polygons <- locations_df$code[locations_df$has_poly]
 
   } else {
-    # Handle empty case
-    locations_df <- data.frame(code = character(), name = character(),
-                               type = character(), stringsAsFactors = FALSE)
-    coordinates_df <- data.frame(code = character(), lat = numeric(),
-                                 long = numeric(), stringsAsFactors = FALSE)
+    locs_out <- data.frame(code = character(), name = character(),
+                            type = character(), stringsAsFactors = FALSE)
+    coords_out <- data.frame(code = character(), lat = numeric(),
+                              long = numeric(), stringsAsFactors = FALSE)
     relationships_df <- data.frame(sub = character(), super = character(),
-                                   complete = logical(), stringsAsFactors = FALSE)
+                                    complete = logical(), stringsAsFactors = FALSE)
     locations_with_polygons <- character()
   }
 
-  # Return all data in simple structures
   list(
     types = mgr_private$types,
     type.matrix = mgr_private$type.matrix,
-    locations = locations_df,
-    coordinates = coordinates_df,
+    locations = locs_out,
+    coordinates = coords_out,
     relationships = relationships_df,
     alias.codes = mgr_private$alias.codes,
     alias.names = mgr_private$alias.names,
