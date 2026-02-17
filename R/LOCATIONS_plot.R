@@ -1,5 +1,3 @@
-library(ggplot2)
-
 #'@title location.plot
 #'@description Create a plot of various points in the US from a data frame
 #'
