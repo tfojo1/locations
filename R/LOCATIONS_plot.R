@@ -1,5 +1,4 @@
 library(ggplot2)
-library(ggmap) #register_stadiamaps
 
 #'@title location.plot
 #'@description Create a plot of various points in the US from a data frame
@@ -67,6 +66,11 @@ location.plot <- function(data,
                           map_water_color = "#C0C0C0",
                           stadia_api_key=Sys.getenv("STADIA_MAPS_API_KEY"))
 {
+  if (!requireNamespace("ggmap", quietly = TRUE)) {
+    stop("Package 'ggmap' is required for location.plot() but is not installed.\n",
+         "Install it with: install.packages('ggmap')")
+  }
+
   # Check to make sure that 'data' is a data.frame
   if (!is.data.frame(data)) {
     stop("Parameter 'data' is not a data.frame")
@@ -195,8 +199,8 @@ location.plot <- function(data,
     bb = c(left=-125,bottom=24,right=-66, top=50)
   }
   # Loading the stamen/stadia tiles
-  register_stadiamaps(stadia_api_key)
-  MAP = get_stadiamap(bbox=bb, zoom = calc_zoom(bb), maptype = "stamen_toner_background")
+  ggmap::register_stadiamaps(stadia_api_key)
+  MAP = ggmap::get_stadiamap(bbox=bb, zoom = ggmap::calc_zoom(bb), maptype = "stamen_toner_background")
   
   attr_map = attr(MAP, "bb")    # save attributes from original
   # 
@@ -209,7 +213,7 @@ location.plot <- function(data,
   class(MAP) = c("ggmap", "raster")
   attr(MAP, "bb") = attr_map
   
-  plot = ggmap(MAP)
+  plot = ggmap::ggmap(MAP)
   
   if (nrow(point.df) > 0) {
     # Plotting points
