@@ -28,46 +28,21 @@ remove.non.locale = function(string_list) {
   })
 }
 
-modify.south.dakota.codes = function(LM) {
-  # Zoe asked me to remove 46131, which was in the new_fips_codes.csv file
-  # 46131 was combined with another county in 1979. I have removed it.
-  # We also wish to create an alias for county 46113, which changed its code
-  # to 46102 in 2015.  46113 is also in the new_fips_codes.csv file, which
-  # I have also removed.  46102 is in the fips_codes.csv file, so all I need
-  # here is to create the alias to make 46113 equivalent to 46102
-  
-  LM$register.code.aliases("46102", "46113")
-  LM
-}
+register.code.aliases.from.csv = function(LM, csv.path) {
+  # Register code aliases from a CSV file instead of hardcoding them.
+  # CSV must have columns: canonical_code, alias_code
+  # Optional columns: state, reason, effective_year (for documentation)
+  aliases <- read.csv(csv.path, stringsAsFactors = FALSE)
 
-modify.connecticut.codes = function(LM) {
-  # In 2020 Connecticut changed their county codes
-  # We want to make aliases for the previous codes
-  
-  # In the following list, the first entry ("09110")
-  # is the new, correct fips code, and the second ("09001") is the
-  # old code that will become the alias for the new code.  
-  # The new codes are properly created from the
-  # new_fips_codes.csv file, so this function needs to be
-  # called after the one that operates on that file 
-  # (register.additional.fips())
-  # The old codes have been removed from the fips_codes.csv data file
-  
-  ct.code.map = list (  "09110" = "09001",
-                        "09120" = "09003",
-                        "09130" = "09005",
-                        "09140" = "09007",
-                        "09150" = "09009",
-                        "09160" = "09011",
-                        "09170" = "09013",
-                        "09180" = "09015")
-  
-  for (i in seq_along(ct.code.map)) {
-    correct.code = names(ct.code.map)[i]
-    alias.for.code = ct.code.map[i]
-    LM$register.code.aliases(correct.code, alias.for.code)
+  for (i in seq_len(nrow(aliases))) {
+    canonical <- as.character(aliases$canonical_code[i])
+    alias <- as.character(aliases$alias_code[i])
+    # Pad to 5 digits if needed (FIPS codes)
+    if (nchar(canonical) < 5) canonical <- sprintf("%05d", as.integer(canonical))
+    if (nchar(alias) < 5) alias <- sprintf("%05d", as.integer(alias))
+    LM$register.code.aliases(canonical, alias)
   }
-  
+
   LM
 }
 
@@ -815,8 +790,7 @@ LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
-LOCATION.MANAGER = modify.connecticut.codes(LOCATION.MANAGER)
-LOCATION.MANAGER = modify.south.dakota.codes(LOCATION.MANAGER)
+LOCATION.MANAGER = register.code.aliases.from.csv(LOCATION.MANAGER, file.path(DATA.DIR, "code_aliases.csv"))
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
 LOCATION.MANAGER = register.cbsa.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_cbsa_national.txt")) #Set the known longitude and latitude for cbsa locations
 LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
