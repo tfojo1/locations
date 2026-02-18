@@ -296,7 +296,7 @@ get.containing.locations <- function(locations, super.type,
 #'
 #'@description Check to see if the passed-in value matches any location code or alias
 #'
-#'@param location A character vector representing potential locations
+#'@param locations A character vector representing potential locations
 #'@param suggest.options A boolean indicating whether to check the aliases for potential matches
 #'
 #'@return A vector of boolean values whether the passed-in value is a location codes.  If false, this function will display a list of possibilities.
@@ -456,7 +456,7 @@ register.locations <- function(type,
 #'
 #'@param location A single, previously registered location code or a registered location code alias.
 #'@param location.aliases A character vector of aliases for this location name
-#'@param location.alias.names A character vector names for the particular alias 'short','no spaces', 'full', etc
+#'@param location.aliases.names A character vector names for the particular alias 'short','no spaces', 'full', etc
 #'
 #'@details There is no error checking here; we assume that multiple locations with the same name are possible at different resolutions/types.
 #'@export
@@ -509,11 +509,11 @@ register.code.aliases <- function(location = NA,
 #'@export
 register.lat.and.long <- function(location = NA, lat = NA, long = NA)
 {
-  if (anyNA(c(location,location.aliases))) {
-    stop("register.code.aliases: NA values not allowed for location or location.aliases")
+  if (is.na(location)) {
+    stop("register.lat.and.long: NA value not allowed for location")
   }
   if (length(location) > 1) {
-    stop("register.code.aliases: You can only provide one location code at a time")
+    stop("register.lat.and.long: You can only provide one location code at a time")
   }
   #Check the lat and long
   # The latitude must be a number between -90 and 90 and the longitude between -180 and 180.

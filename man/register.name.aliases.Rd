@@ -15,7 +15,7 @@ register.name.aliases(
 
 \item{location.aliases}{A character vector of aliases for this location name}
 
-\item{location.alias.names}{A character vector names for the particular alias 'short','no spaces', 'full', etc}
+\item{location.aliases.names}{A character vector names for the particular alias 'short','no spaces', 'full', etc}
 }
 \description{
 Register name aliases for specific location

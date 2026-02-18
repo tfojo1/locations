@@ -1,3 +1,4 @@
+#' @importFrom R6 R6Class
 Location.Manager = R6::R6Class("LocationManager",
   class = FALSE,
   clone = FALSE,

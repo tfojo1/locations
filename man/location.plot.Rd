@@ -42,30 +42,25 @@ the dimensions of the locations to automatically bound the graph (using the bb.e
 as an edge buffer), or a named character vector of the format c(left=-125,bottom=24,right=-66, top=50),
 outlining the dimensions of the bounding box in latitude and longitude.  Defaults to the continental US.}
 
-\item{bb.edge}{If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the 
+\item{bb.edge}{If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the
 automatically generated bounding box, as a proportion of the size of the plotted locations.  Defaults
-to 0.1, or 10% of the bounding box.}
+to 0.1, or 10\% of the bounding box.}
 
-\item{size.range}{If 'size' is used, this will scale the values in the size column between the two size values 
-specified.  Defaults to 1-5}
+\item{size.range}{If size is used, this will scale the values in the size column between the two size values specified. Defaults to c(1,5).}
 
-\item{color.range}{The color ranges to span for the 'color' and 'fill' parameters. Defaults to c('blue','red'),
-so lower values will be more blue, and higher values will be more red.  The parameter can also include
-three values (for use with scale_fill/color_gradient2) or more (for use with scale_fill/color_gradientn)}
+\item{color.range}{The color ranges to span for the color and fill parameters. Defaults to c("blue","red"). Can also include three values (for gradient2) or more (for gradientn).}
 
-\item{pch}{The shape of the point when plotting by points; see https://sape.inf.usi.ch/quick-reference/ggplot2/shape
-for a detailed list. Defaults to 19, a circle.}
+\item{pch}{The shape of the point when plotting by points. Defaults to 19, a circle.}
 
-\item{size.label}{A label to give to the size in the legend.  Defaults to blank.}
+\item{size.label}{A label to give to the size in the legend. Defaults to blank.}
 
-\item{color.label}{A label to give to the color/fill in the legend.  Defaults to blank.}
+\item{color.label}{A label to give to the color/fill in the legend. Defaults to blank.}
 
-\item{alpha}{An alpha blending/transparency value for the 'color'/'fill' parameter. Between 0 and 1. Defaults to 1, or no transparency.}
+\item{alpha}{An alpha blending/transparency value. Between 0 and 1. Defaults to 1 (no transparency).}
 
 \item{map_water_color}{A hex color value for the color of any water on the map. Defaults to a light gray.}
 
-\item{stadia_api_key}{The api key to access the stamen/stadia toner map tiles.  Defaults to looking for the
-key in the STADIA_MAPS_API_KEY environment variable}
+\item{stadia_api_key}{The API key to access the Stadia/Stamen toner map tiles. Defaults to the STADIA_MAPS_API_KEY environment variable.}
 }
 \value{
 Returns the ggplot2 object/plot

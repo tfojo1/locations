@@ -1,6 +1,12 @@
 #'@title location.plot
 #'@description Create a plot of various points in the US from a data frame
 #'
+#'@importFrom ggplot2 geom_point geom_polygon aes sym .data theme element_rect
+#'  element_blank element_text ggtitle scale_size_continuous scale_fill_gradient
+#'  scale_color_gradient scale_fill_gradient2 scale_color_gradient2
+#'  scale_fill_gradientn scale_color_gradientn
+#'@importFrom stats setNames
+#'
 #'@param data A data frame with a column labeled 'location', containing a location code, and columns to be mapped
 #'            by color or size.
 #'
@@ -20,30 +26,18 @@
 #'          as an edge buffer), or a named character vector of the format c(left=-125,bottom=24,right=-66, top=50),
 #'          outlining the dimensions of the bounding box in latitude and longitude.  Defaults to the continental US.
 #'         
-#'@param bb.edge If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the 
+#'@param bb.edge If param 'bb' is 'AUTO', this will be used to create a buffer space around the outside of the
 #'               automatically generated bounding box, as a proportion of the size of the plotted locations.  Defaults
-#'               to 0.1, or 10% of the bounding box. 
+#'               to 0.1, or 10\% of the bounding box.
 #'              
-#'@param size.range If 'size' is used, this will scale the values in the size column between the two size values 
-#'                  specified.  Defaults to 1-5
-#'                  
-#'@param color.range The color ranges to span for the 'color' and 'fill' parameters. Defaults to c('blue','red'),
-#'                   so lower values will be more blue, and higher values will be more red.  The parameter can also include
-#'                   three values (for use with scale_fill/color_gradient2) or more (for use with scale_fill/color_gradientn)
-#'                   
-#'@param pch The shape of the point when plotting by points; see https://sape.inf.usi.ch/quick-reference/ggplot2/shape
-#'           for a detailed list. Defaults to 19, a circle.
-#'
-#'@param size.label A label to give to the size in the legend.  Defaults to blank.
-#'
-#'@param color.label A label to give to the color/fill in the legend.  Defaults to blank.
-#'
-#'@param alpha An alpha blending/transparency value for the 'color'/'fill' parameter. Between 0 and 1. Defaults to 1, or no transparency.
-#'
+#'@param size.range If size is used, this will scale the values in the size column between the two size values specified. Defaults to c(1,5).
+#'@param color.range The color ranges to span for the color and fill parameters. Defaults to c("blue","red"). Can also include three values (for gradient2) or more (for gradientn).
+#'@param pch The shape of the point when plotting by points. Defaults to 19, a circle.
+#'@param size.label A label to give to the size in the legend. Defaults to blank.
+#'@param color.label A label to give to the color/fill in the legend. Defaults to blank.
+#'@param alpha An alpha blending/transparency value. Between 0 and 1. Defaults to 1 (no transparency).
 #'@param map_water_color A hex color value for the color of any water on the map. Defaults to a light gray.
-#'
-#'@param stadia_api_key The api key to access the stamen/stadia toner map tiles.  Defaults to looking for the
-#'                      key in the STADIA_MAPS_API_KEY environment variable
+#'@param stadia_api_key The API key to access the Stadia/Stamen toner map tiles. Defaults to the STADIA_MAPS_API_KEY environment variable.
 #'            
 #'@return Returns the ggplot2 object/plot
 #'
@@ -105,9 +99,6 @@ location.plot <- function(data,
     indexes.with.point.data = sapply(data[['locations']], LOCATION.MANAGER$has.lat.lon)
     point.df = data [ indexes.with.point.data, ]
     no.data = data [ !indexes.with.point.data, ][['locations']]
-    if (!is.null(groups)) {
-      warning("The groups parameter is non-null; it will be ignored as we are looking at point data")
-    }
   }
   # If there are any locations without the relevant data, display a list
   
@@ -216,14 +207,14 @@ location.plot <- function(data,
   if (nrow(point.df) > 0) {
     # Plotting points
     plot = plot + geom_point(data=point.df, 
-                             aes(x=longitude, y=latitude, size=!!sym(size), color=!!sym(color), fill=!!sym(fill)), 
+                             aes(x=.data[["longitude"]], y=.data[["latitude"]], size=!!sym(size), color=!!sym(color), fill=!!sym(fill)),
                              shape = pch, alpha = alpha)
   }
   
   if (nrow(poly.df) > 0) {
     # Plotting simple polygons
     plot = plot + geom_polygon(data = final.poly.df, 
-                               aes(x=longitude, y=latitude, color=.data[[color]], fill=.data[[fill]], group=poly), 
+                               aes(x=.data[["longitude"]], y=.data[["latitude"]], color=.data[[color]], fill=.data[[fill]], group=.data[["poly"]]),
                                alpha = alpha)
   }
   

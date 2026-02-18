@@ -7,9 +7,9 @@
 is.location.valid(locations, suggest.options = F)
 }
 \arguments{
-\item{suggest.options}{A boolean indicating whether to check the aliases for potential matches}
+\item{locations}{A character vector representing potential locations}
 
-\item{location}{A character vector representing potential locations}
+\item{suggest.options}{A boolean indicating whether to check the aliases for potential matches}
 }
 \value{
 A vector of boolean values whether the passed-in value is a location codes.  If false, this function will display a list of possibilities.
