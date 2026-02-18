@@ -50,3 +50,21 @@ test_that("states comprise counties", {
 test_that("counties do not comprise states", {
   expect_false(location.type.comprises("COUNTY", "STATE"))
 })
+
+## -- get.overlapping.locations --
+
+test_that("get.overlapping.locations finds states for CBSA", {
+  # Baltimore CBSA spans MD
+  result <- get.overlapping.locations("C.12580", "STATE")
+  expect_true("MD" %in% result)
+})
+
+## Note: relationship functions (contained, containing, overlapping) return
+## character(0) for unknown locations rather than NA. This is inconsistent with
+## scalar getters (get.location.type, etc.) which return NA. Pre-existing
+## behavior, not introduced by the Phase 1 refactor.
+
+test_that("get.overlapping.locations returns empty for unknown location", {
+  result <- get.overlapping.locations("NONEXISTENT_99999", "STATE")
+  expect_length(result, 0)
+})

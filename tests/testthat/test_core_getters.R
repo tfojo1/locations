@@ -64,3 +64,31 @@ test_that("get.all.for.type returns NA for unregistered type", {
   result <- get.all.for.type("NONEXISTENT_TYPE")
   expect_true(is.na(result))
 })
+
+## -- get.location.coords --
+
+test_that("get.location.coords returns coords for county", {
+  coords <- get.location.coords("24005")
+  expect_true(!is.na(coords))
+  expect_match(coords, "^-?[0-9.]+,-?[0-9.]+$")
+})
+
+test_that("get.location.coords returns NA for location without coords", {
+  coords <- get.location.coords("MD")
+  expect_true(is.na(unname(coords)))
+})
+
+## -- polygons --
+
+test_that("has.polygon works for state", {
+  mgr <- locations:::LOCATION.MANAGER
+  expect_true(mgr$has.polygon("MD"))
+})
+
+test_that("get.polys.for.type returns data.frame with expected columns", {
+  mgr <- locations:::LOCATION.MANAGER
+  polys <- mgr$get.polys.for.type("STATE")
+  expect_true(is.data.frame(polys))
+  expect_true(nrow(polys) > 0)
+  expect_true(all(c("latitude", "longitude", "poly", "location.code") %in% names(polys)))
+})
