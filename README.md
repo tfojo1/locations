@@ -133,6 +133,10 @@ get.contained.locations("R.SOUTH", "STATE")
 
 ## Recent Changes
 
+**v0.3.1** (2026-06) - Fixes
+- `register.relationship.between.types()` now accepts lowercase type names (was the only registration function that required uppercase)
+- Bumped package version to match documented releases (`packageVersion("locations")` was stuck at 0.1.0)
+
 **v0.3.0** (2026-02) - Internal Modernization
 - Replaced internal Location R6 objects with data.frame + hash map storage
 - Hierarchical queries now use BFS traversal (was recursive)

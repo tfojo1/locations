@@ -22,3 +22,11 @@ test_that("is.location.valid works for known and unknown codes", {
   expect_true(is.location.valid("MD"))
   expect_false(is.location.valid("ZZZZZ_FAKE_99"))
 })
+
+test_that("register.relationship.between.types accepts lowercase type names", {
+  # Regression: this was the only registration function that did not uppercase
+  # its arguments, so lowercase type names failed with "Couldn't find type".
+  register.types("test_tga", "ttga.", "Test TGA")
+  register.relationship.between.types("test_tga", "county", TRUE)
+  expect_true(location.type.comprises("TEST_TGA", "COUNTY"))
+})

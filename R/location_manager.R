@@ -666,6 +666,8 @@ Location.Manager = R6::R6Class("LocationManager",
       result
     },
     register.type.relationship = function (super.type, sub.type, b) {
+      super.type <- toupper(super.type)
+      sub.type <- toupper(sub.type)
       iterations = length(super.type)
       for (i in 1:iterations) {
         if (super.type[i] %in% rownames(private$type.matrix)) {
