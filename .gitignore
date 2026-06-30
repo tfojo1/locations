@@ -5,6 +5,7 @@
 .Rbuildignore
 .Renviron
 *.Rproj
+.DS_Store
 
 # Development files (local-only reference docs, scripts, logs)
 dev/
