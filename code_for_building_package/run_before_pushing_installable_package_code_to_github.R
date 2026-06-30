@@ -23,8 +23,8 @@
 cat("\n------------------------------\nBUILDING LOCATION MANAGER...\n")
 
 # Source the initialization functions (needed for extract_location_data)
-source('R/LOCATIONS_impl.R')
-source('R/LOCATIONS_init.R')
+source('R/location_manager.R')
+source('R/location_init.R')
 
 # Build the location manager (creates LOCATION.MANAGER)
 source('code_for_building_package/set_up_cached_location_manager.R')

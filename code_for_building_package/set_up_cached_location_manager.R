@@ -11,9 +11,9 @@
 # CBSA: "CBSA", 'C.' prefix (location code is 5 digit cbsa code)
 # zipcode : "ZIPCODE", 'Z.' prefix (location code is zip code)
 
-source("R/LOCATIONS_location_manager.R") 
-source("R/LOCATIONS_impl.R")
-source("R/LOCATIONS_plot.R")
+source("R/location_api.R")
+source("R/location_manager.R")
+source("R/location_plot.R")
 
 library("stringi")
 
@@ -445,6 +445,38 @@ register.cbsa = function(LM, filename, cbsa.typename = "cbsa", fips.typename = "
   LM
 }
 
+register.tgas = function(LM, filename, tga.typename = "tga", county.typename = "county") {
+  # TGAs (Ryan White Part A Transitional Grant Areas) are made up of whole
+  # counties. The CSV has one row per member county, with columns:
+  #   tga_code, tga_name, county_fips
+  tga.typename <- toupper(tga.typename)
+  county.typename <- toupper(county.typename)
+
+  if (!file.exists(filename)) {
+    stop(paste0("LOCATION.MANAGER: Cannot find the tga file with filename ", filename))
+  }
+  # colClasses character so county FIPS keep their leading zeros (e.g. "06001")
+  tga.data = read.csv(file = filename, colClasses = "character")
+
+  tga.prefix = LM$get.prefix(tga.typename)
+
+  for (raw.code in unique(tga.data$tga_code)) {
+    rows = tga.data[tga.data$tga_code == raw.code, ]
+    tga.name = rows$tga_name[1]
+    prefixed.code = toupper(paste0(tga.prefix, raw.code))
+
+    # Register the TGA location (the prefix is added inside $register())
+    LM$register(tga.typename, tga.name, raw.code)
+
+    # Each member county is fully contained by the TGA
+    for (county.fips in rows$county_fips) {
+      LM$register.hierarchy(county.fips, prefixed.code, TRUE)
+    }
+  }
+
+  LM
+}
+
 register.cbsa.lat.and.long = function(LM, filename) {
   #Set the known longitude and latitude for cbsa locations
   lat.long.data = read.csv(file=filename, stringsAsFactors=FALSE, sep ="\t")
@@ -737,11 +769,13 @@ register.type.relationships = function(LM) {
   LM$register.type.relationship("STATE","COUNTY",TRUE)
   LM$register.type.relationship("CBSA", "COUNTY", TRUE)
   LM$register.type.relationship("NSDUH", "COUNTY", TRUE)
+  LM$register.type.relationship("TGA", "COUNTY", TRUE)
   LM$register.type.relationship("COUNTRY", "STATE", TRUE)
   LM$register.type.relationship("COUNTRY", "COUNTY", TRUE)
   LM$register.type.relationship("COUNTRY", "NSDUH", TRUE)
   LM$register.type.relationship("COUNTRY", "ZIPCODE", TRUE)
   LM$register.type.relationship("COUNTRY", "CBSA", TRUE)
+  LM$register.type.relationship("COUNTRY", "TGA", TRUE)
   
   LM
 }
@@ -772,12 +806,16 @@ phd.type = "phd"
 phd.prefix = "ph."
 phd.prefix.longform = "State level public health districts"
 
+tga.type = "tga"
+tga.prefix = "tga."
+tga.prefix.longform = "Transitional Grant Area"
+
 # Create the initial LOCATION.MANAGER object
 LOCATION.MANAGER = Location.Manager$new()
 
-LOCATION.MANAGER$register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type,            phd.type), #Typename
-                                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix,          phd.prefix), #Prefix
-                                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform, phd.prefix.longform)) #Longform Name
+LOCATION.MANAGER$register.types(c(county.type,            zipcode.type,            cbsa.type,            state.type,            nsduh.type,            phd.type,            tga.type), #Typename
+                                c(county.prefix,          zipcode.prefix,          cbsa.prefix,          state.prefix,          nsduh.prefix,          phd.prefix,          tga.prefix), #Prefix
+                                c(county.prefix.longform, zipcode.prefix.longform, cbsa.prefix.longform, state.prefix.longform, nsduh.prefix.longform, phd.prefix.longform, tga.prefix.longform)) #Longform Name
 
 LOCATION.MANAGER = register.united.states(LOCATION.MANAGER)
 
@@ -792,6 +830,7 @@ LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_cod
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.code.aliases.from.csv(LOCATION.MANAGER, file.path(DATA.DIR, "code_aliases.csv"))
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
+LOCATION.MANAGER = register.tgas(LOCATION.MANAGER, file.path(DATA.DIR, "tga_definitions.csv"), tga.typename = tga.type, county.typename = county.type) #Ryan White Transitional Grant Areas (county groupings)
 LOCATION.MANAGER = register.cbsa.lat.and.long(LOCATION.MANAGER, file.path(DATA.DIR,"2021_Gaz_cbsa_national.txt")) #Set the known longitude and latitude for cbsa locations
 LOCATION.MANAGER = register.nsduh(LOCATION.MANAGER, file.path(DATA.DIR, "nsduh-county.csv"), file.path(DATA.DIR, "nsduh-tract.csv"), nsduh.typename = nsduh.type) #Sets only the NSDUH typename
 # LOCATION.MANAGER = register.zipcodes(LOCATION.MANAGER, file.path(DATA.DIR, "zip_codes.csv"), fips.typename = county.type, zip.typename = zipcode.type)

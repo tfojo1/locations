@@ -1,7 +1,7 @@
 Package: locations
 Type: Package
 Title: Location Manager For The Jheem2 Project
-Version: 0.3.1
+Version: 0.4.0
 Author: Jeffrey Pennington
 Maintainer: Jeffrey Pennington <jpennin6@jhu.edu>
 Description: Manages the locations used in the Jheem2 US HIV model

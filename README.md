@@ -133,6 +133,11 @@ get.contained.locations("R.SOUTH", "STATE")
 
 ## Recent Changes
 
+**v0.4.0** (2026-06) - TGA Location Type
+- Added `TGA` (Ryan White Transitional Grant Area) as a data-driven location type
+- Oakland TGA (Alameda + Contra Costa counties) registered from `data-raw/tga_definitions.csv`
+- New TGAs can be added by appending rows to that CSV and rebuilding
+
 **v0.3.1** (2026-06) - Fixes
 - `register.relationship.between.types()` now accepts lowercase type names (was the only registration function that required uppercase)
 - Bumped package version to match documented releases (`packageVersion("locations")` was stuck at 0.1.0)
