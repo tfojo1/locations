@@ -20,6 +20,9 @@ jobs:
       - name: Validate raw-data source manifest
         run: Rscript code_for_building_package/validate_source_manifest.R
 
+      - name: Validate known data issues
+        run: Rscript code_for_building_package/validate_known_data_issues.R
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck

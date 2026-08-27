@@ -7,6 +7,7 @@ code_aliases.csv,locations maintainers,Curated location code aliases,mixed,repos
 county_geom_data.csv,UNKNOWN,Derived low-resolution county polygon coordinates,UNKNOWN,UNKNOWN,UNKNOWN,unknown,53073a5e4668ce778d93d8d3eb1bb66a,Upstream geometry source and derivation need documentation
 fips_codes.csv,U.S. Census Bureau,Geographic code inventory,UNKNOWN,UNKNOWN,US-government-work,partial,a4b819e911ca15d75804411b7329e94a,Exact Census product and vintage need verification
 fips_state_aliases.csv,locations maintainers,State FIPS to postal abbreviation crosswalk,UNKNOWN,repository,DEFERRED,curated,106773719977cd179289450aabf92b3c,Derived from standard Census and USPS identifiers; source citation needed
+KNOWN_DATA_ISSUES.csv,locations maintainers,Known data issue registry,ongoing,repository,PROJECT-METADATA,curated,eeee01186eeeeb64c09c55a43da8b979,Machine-readable release blockers and required resolutions
 new_fips_codes.csv,locations maintainers,Curated current and historical county-equivalent additions,mixed,repository,DEFERRED,curated,ca114ac700184996a40bdd9428e192bb,Must be replaced by a sourced temporal location-code table
 nsduh-county.csv,SAMHSA,NSDUH substate definitions by county,SBST18 schema,UNKNOWN,UNKNOWN,partial,32037608155b312c5794e63bd64b6072,Exact source publication and vintage need verification
 nsduh-tract.csv,SAMHSA,NSDUH substate definitions by census tract,SBST18 schema,UNKNOWN,UNKNOWN,partial,0774834e4c0b3acd467842ecbd8b06c3,Exact source publication and vintage need verification
