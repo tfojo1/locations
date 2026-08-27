@@ -19,6 +19,7 @@
 ##--------------------------------------------------##
 
 source('code_for_building_package/validate_source_manifest.R')
+source('code_for_building_package/validate_known_data_issues.R')
 
 
 ##---------------------------------------------------------##
