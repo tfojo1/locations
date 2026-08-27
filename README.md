@@ -73,15 +73,21 @@ is.location.valid(c("MD", "FAKE123"))
 #>      MD FAKE123
 #>    TRUE   FALSE
 
+# Track code and bundled-data releases independently
+packageVersion("locations")
+locations.data.version()
+
 # Look up a location code by name
 get.location.code("Baltimore County", "COUNTY")
 ```
 
 ## Code Aliases
 
-Some FIPS codes have changed over time. The package handles this transparently:
+Some FIPS codes have changed over time. The package currently recognizes these
+legacy aliases:
 
-- **Connecticut** (2022): 8 historic counties reorganized into 9 planning regions. Old codes (09001, 09003, ...) automatically resolve to new codes (09110, 09120, ...).
+- **Connecticut** (2022): the package currently maps 8 historic county codes to
+  8 of the 9 planning regions for backward compatibility.
 - **South Dakota**: County 46113 (Shannon) renamed to 46102 (Oglala Lakota) in 2015.
 
 ```r
@@ -90,6 +96,15 @@ sanitize("09001")
 #> 09001
 #> "09110"
 ```
+
+**Connecticut warning:** the old counties and new planning regions have
+different boundaries, so the current one-to-one aliases are not valid
+geographic crosswalks. Do not use them to transform historical Connecticut
+county data. They remain temporarily to avoid breaking existing consumers and
+will be replaced by an explicit vintage-aware, many-to-many crosswalk API.
+
+See [API_COMPATIBILITY.md](API_COMPATIBILITY.md) for the compatibility and data
+correction policy.
 
 ## Plotting
 
