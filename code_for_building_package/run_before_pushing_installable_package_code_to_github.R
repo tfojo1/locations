@@ -14,6 +14,13 @@
 ##--------------------------------------------------------------------------------------------##
 
 
+##--------------------------------------------------##
+##-- STEP 0: Validate Raw Source Data Inventory   --##
+##--------------------------------------------------##
+
+source('code_for_building_package/validate_source_manifest.R')
+
+
 ##---------------------------------------------------------##
 ##-- STEP 1: Build and Store the Cached Location Manager --##
 ##---------------------------------------------------------##
@@ -24,6 +31,7 @@ cat("\n------------------------------\nBUILDING LOCATION MANAGER...\n")
 
 # Source the initialization functions (needed for extract_location_data)
 source('R/location_manager.R')
+source('R/location_validation.R')
 source('R/location_init.R')
 
 # Build the location manager (creates LOCATION.MANAGER)
@@ -32,6 +40,7 @@ source('code_for_building_package/set_up_cached_location_manager.R')
 # Extract the data from LOCATION.MANAGER into simple structures
 cat("Extracting location data from LOCATION.MANAGER...\n")
 .location_data <- extract_location_data(LOCATION.MANAGER)
+validate_location_data(.location_data)
 
 # Store the data structures (not the R6 object) to internal file
 # Note: using .location_data (with dot prefix) to indicate it's internal

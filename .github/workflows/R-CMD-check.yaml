@@ -17,6 +17,9 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Validate raw-data source manifest
+        run: Rscript code_for_building_package/validate_source_manifest.R
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck

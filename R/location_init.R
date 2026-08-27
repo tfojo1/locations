@@ -8,7 +8,8 @@
 #' @keywords internal
 build_location_manager <- function(location_data) {
 
-  # Validate input data structure
+  # Keep package-load validation intentionally lightweight. The full graph,
+  # alias, and source validations run in the build pipeline and test suite.
   required_fields <- c("types", "type.matrix", "locations", "coordinates",
                        "relationships", "alias.codes", "alias.names",
                        "compressed.poly.data", "poly.index", "locations.with.polygons")
