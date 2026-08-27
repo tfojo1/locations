@@ -23,6 +23,14 @@ test_that("get.location.name returns correct names", {
   expect_equal(unname(result), "Maryland")
 })
 
+test_that("historical Montana county-equivalent is not mislabeled as Yellowstone County", {
+  expect_equal(
+    unname(get.location.name("30113")),
+    "Yellowstone National Park (historical county equivalent)"
+  )
+  expect_equal(unname(get.location.name("30111")), "Yellowstone County")
+})
+
 test_that("get.location.name returns NA for unknown codes", {
   result <- get.location.name("NONEXISTENT_99999")
   expect_true(is.na(unname(result)))

@@ -44,6 +44,9 @@ md_counties <- get.contained.locations("MD", "COUNTY")  # 24 counties
 county_list <- get.contained.locations(c("MD", "CA"), "COUNTY", return.list = TRUE)
 # Returns a named list: county_list[["MD"]], county_list[["CA"]]
 
+# Include a county that overlaps a tract-defined region but is not wholly contained
+cook_county <- get.contained.locations("IL.1", "COUNTY", include.partial = TRUE)
+
 # Find which state a county belongs to
 get.containing.locations("24005", "STATE")
 #> Maryland

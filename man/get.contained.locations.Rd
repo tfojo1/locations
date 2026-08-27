@@ -8,7 +8,8 @@ get.contained.locations(
   locations,
   sub.type,
   return.list = F,
-  throw.error.if.unregistered.type = T
+  throw.error.if.unregistered.type = T,
+  include.partial = F
 )
 }
 \arguments{
@@ -19,10 +20,12 @@ get.contained.locations(
 \item{return.list}{A single logical value indicating whether the return value should be a list with one element for each location, or whether all sub-locations should be 'unlisted' into a vector}
 
 \item{throw.error.if.unregistered.type}{A single logical value indicating whether the function should throw an error if sub.type has not been registered as a location type}
+
+\item{include.partial}{A single logical value indicating whether locations that are only partially contained should also be returned. The default is FALSE to preserve complete-containment semantics.}
 }
 \value{
-If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations
+If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations. When include.partial is TRUE, directly registered partial overlaps are included.
 }
 \description{
-Get Locations that Fall Completely Within a Location
+Get Locations that Fall Within or Overlap a Location
 }

@@ -29,6 +29,35 @@ test_that("get.contained.locations CT returns new codes", {
   expect_false("09001" %in% ct_counties)
 })
 
+test_that("get.contained.locations can include partial county overlaps", {
+  expected <- list(
+    "IL.1" = "17031", "IL.2" = "17031", "IL.3" = "17031",
+    "IL.4" = "17031", "IL.5" = "17031", "IL.6" = "17031",
+    "IL.7" = "17031", "DC.1" = "11001", "DC.2" = "11001",
+    "DC.3" = "11001", "DC.4" = "11001", "DC.5" = "11001",
+    "DC.6" = "11001", "DC.7" = "11001", "DC.8" = "11001",
+    "DE.2" = "10003", "DE.4" = "10003",
+    "MA.2" = c("25013", "25017", "25021", "25027"),
+    "MA.3" = c("25017", "25021", "25023", "25027")
+  )
+
+  result <- get.contained.locations(
+    names(expected), "COUNTY", return.list = TRUE, include.partial = TRUE
+  )
+
+  for (code in names(expected)) {
+    expect_equal(sort(unname(result[[code]])), sort(expected[[code]]))
+  }
+})
+
+test_that("partial county membership is opt-in", {
+  expect_length(get.contained.locations("IL.1", "COUNTY"), 0)
+  expect_equal(
+    unname(get.contained.locations("IL.1", "COUNTY", include.partial = TRUE)),
+    "17031"
+  )
+})
+
 test_that("get.contained.locations errors on invalid sub.type length", {
   expect_error(get.contained.locations("MD", c("COUNTY", "STATE")),
                "sub.type must be a single character")
@@ -39,6 +68,11 @@ test_that("get.contained.locations errors on invalid sub.type length", {
 test_that("get.containing.locations returns state for county", {
   result <- get.containing.locations("24005", "STATE")
   expect_true("MD" %in% result)
+})
+
+test_that("get.containing.locations can include partial parents", {
+  result <- get.containing.locations("17031", "NSDUH", include.partial = TRUE)
+  expect_true(all(paste0("IL.", 1:7) %in% result))
 })
 
 ## -- location.type.comprises --

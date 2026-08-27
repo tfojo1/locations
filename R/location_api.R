@@ -237,28 +237,30 @@ get.overlapping.locations <- function(locations, type,
 
 #'@title get.contained.locations
 #'
-#'@description Get Locations that Fall Completely Within a Location
+#'@description Get Locations that Fall Within or Overlap a Location
 #'
 #'@param locations A character vector of location codes
 #'@param sub.type The type (geographic resolution) of locations requested for the sub-locations
 #'@param return.list A single logical value indicating whether the return value should be a list with one element for each location, or whether all sub-locations should be 'unlisted' into a vector
 #'@param throw.error.if.unregistered.type A single logical value indicating whether the function should throw an error if sub.type has not been registered as a location type
+#'@param include.partial A single logical value indicating whether locations that are only partially contained should also be returned. The default is FALSE to preserve complete-containment semantics.
 #'
-#'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations
+#'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to sub-locations. If return.list=F, returns a character vector (arbitrary length) containing all sub-locations that fall within ANY of the given locations. When include.partial is TRUE, directly registered partial overlaps are included.
 #'
 #'@export
 get.contained.locations <- function(locations, sub.type,
                                     return.list=F,
-                                    throw.error.if.unregistered.type=T)
+                                    throw.error.if.unregistered.type=T,
+                                    include.partial=F)
 {
    if (length(sub.type) != 1) {
      stop("get.contained.locations: sub.type must be a single character type")
    } 
-   if (!is.logical(c(return.list,throw.error.if.unregistered.type))
-       || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
-     stop("get.contained.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
+   logical.args <- c(return.list, throw.error.if.unregistered.type, include.partial)
+   if (!is.logical(logical.args) || length(logical.args) != 3 || anyNA(logical.args)) {
+     stop("get.contained.locations: return.list, throw.error.if.unregistered.type, and include.partial must each be a single non-missing logical value")
    }
-   LOCATION.MANAGER$get.contained(locations, sub.type, TRUE, return.list, throw.error.if.unregistered.type)
+   LOCATION.MANAGER$get.contained(locations, sub.type, !include.partial, return.list, throw.error.if.unregistered.type)
 }
 
 
@@ -270,22 +272,24 @@ get.contained.locations <- function(locations, sub.type,
 #'@param super.type The type (geographic resolution) of locations requested for the super-locations
 #'@param return.list A single logical value indicating whether the return value should be a list with one element for each location, or whether all super-locations should be 'unlisted' into a vector
 #'@param throw.error.if.unregistered.type A single logical value indicating whether the function should throw an error if super.type has not been registered as a location type
+#'@param include.partial A single logical value indicating whether locations that only partially contain the input should also be returned. The default is FALSE to preserve complete-containment semantics.
 #'
-#'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to super-locations. If return.list=F, returns a character vector (arbitrary length) containing all super-locations that contain ANY of the given locations
+#'@return If return.list==T, a list with length(locations) and names=locations. Each element is itself a character vector with zero or more locations corresponding to super-locations. If return.list=F, returns a character vector (arbitrary length) containing all super-locations that contain ANY of the given locations. When include.partial is TRUE, directly registered partial overlaps are included.
 #'
 #'@export
 get.containing.locations <- function(locations, super.type,
                                     return.list=F,
-                                    throw.error.if.unregistered.type=T)
+                                    throw.error.if.unregistered.type=T,
+                                    include.partial=F)
 {
   if (length(super.type) != 1) {
     stop("get.containing.locations: sub.type must be a single character type")
   } 
-  if (!is.logical(c(return.list,throw.error.if.unregistered.type))
-      || length(c(return.list,throw.error.if.unregistered.type)) != 2) {
-    stop("get.containing.locations: error in one of the logical types return.list or throw.error.if.unregistered.type")
+  logical.args <- c(return.list, throw.error.if.unregistered.type, include.partial)
+  if (!is.logical(logical.args) || length(logical.args) != 3 || anyNA(logical.args)) {
+    stop("get.containing.locations: return.list, throw.error.if.unregistered.type, and include.partial must each be a single non-missing logical value")
   }
-  LOCATION.MANAGER$get.containing(locations, super.type, TRUE, return.list, throw.error.if.unregistered.type)
+  LOCATION.MANAGER$get.containing(locations, super.type, !include.partial, return.list, throw.error.if.unregistered.type)
 }
 
 ##--------------##
