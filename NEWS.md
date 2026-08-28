@@ -1,0 +1,36 @@
+# locations 0.4.1
+
+## User-facing changes
+
+- Added `include.partial = TRUE` to `get.contained.locations()` and
+  `get.containing.locations()`. This exposes partial county footprints for
+  tract-defined NSDUH regions while preserving the existing complete-only
+  default.
+- Added exact regression coverage for the 19 Illinois, District of Columbia,
+  Delaware, and Massachusetts substate regions reported as returning no
+  counties.
+- Corrected the label for historical Montana county-equivalent `30113` and
+  restored three county names that had been truncated during an earlier raw
+  data rewrite.
+- Added `locations.data.version()` so consumers can track bundled-data updates
+  separately from package-code releases.
+
+## Maintenance and data governance
+
+- Added compatibility contracts for existing exports, argument order,
+  defaults, and representative return shapes.
+- Added build-time integrity checks for locations, relationships, aliases,
+  polygons, and relationship cycles.
+- Added a checksum-validated source manifest and provenance audit for every
+  raw input used by the package build.
+- Marked the existing Connecticut county-to-planning-region aliases as a known
+  release-blocking data defect pending a temporal many-to-many crosswalk.
+- Classified the unused legacy ZIP and ZIP-like polygon inputs as dormant. No
+  ZIP data or public functionality was removed.
+
+## Known issues
+
+- The package still mixes current and historical county-equivalent records in
+  legacy county listings. A temporal county layer is planned for the next
+  feature release.
+- The package license and maintainer metadata remain pending owner decisions.

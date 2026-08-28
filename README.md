@@ -151,6 +151,14 @@ get.contained.locations("R.SOUTH", "STATE")
 
 ## Recent Changes
 
+**v0.4.1** (2026-08) - Correctness and Provenance
+- Exposed partial containment through the additive `include.partial` argument
+- Added exact NSDUH substate regression coverage and corrected four historical
+  or truncated county-equivalent labels
+- Added API compatibility contracts, data-integrity validation, independent
+  data versioning, and a checksum-validated source manifest
+- Documented Connecticut aliases as a known temporal crosswalk defect
+
 **v0.4.0** (2026-06) - TGA Location Type
 - Added `TGA` (Ryan White Transitional Grant Area) as a data-driven location type
 - Oakland TGA (Alameda + Contra Costa counties) registered from `data-raw/tga_definitions.csv`
