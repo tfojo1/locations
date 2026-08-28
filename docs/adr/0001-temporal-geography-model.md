@@ -1,6 +1,6 @@
 # ADR 0001: Temporal Geography Identity and Crosswalk Model
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-08-28
 - Decision owners: locations maintainers
 - Tracking issue: [#4](https://github.com/tfojo1/locations/issues/4)
