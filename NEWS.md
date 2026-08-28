@@ -2,6 +2,9 @@
 
 ## Maintenance
 
+- Added ADR 0001 defining stable location identity, versioned geographic
+  definitions, time-bounded codes, typed crosswalk measures, and the legacy API
+  migration boundary for the temporal-county work.
 - Updated package maintainer metadata while preserving original authorship.
 - Clarified that the Connecticut alias defect blocks the temporal-county
   release rather than unrelated maintenance releases.
@@ -35,7 +38,8 @@
 - Added a checksum-validated source manifest and provenance audit for every
   raw input used by the package build.
 - Marked the existing Connecticut county-to-planning-region aliases as a known
-  release-blocking data defect pending a temporal many-to-many crosswalk.
+  high-severity blocker for the temporal-county release pending a many-to-many
+  crosswalk.
 - Classified the unused legacy ZIP and ZIP-like polygon inputs as dormant. No
   ZIP data or public functionality was removed.
 

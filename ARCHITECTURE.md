@@ -6,6 +6,13 @@ This document explains the internal design of the `locations` package for mainta
 
 The package manages US geographic location data using a singleton R6 object (`LOCATION.MANAGER`) that holds all locations, hierarchical relationships, aliases, and polygon data in memory. The public API (exported functions in `location_api.R`) delegates to this singleton. Internally, locations are stored in a flat data.frame with environment-based hash maps for fast lookup.
 
+## Architectural Decision Records
+
+- [ADR 0001: Temporal Geography Identity and Crosswalk Model](docs/adr/0001-temporal-geography-model.md)
+  defines the normalized target model and the compatibility boundary for the
+  0.5.x migration. The runtime structures below describe the current legacy
+  implementation, not that target model.
+
 ## Source Files
 
 | File | Purpose |
@@ -175,7 +182,10 @@ For runtime registration (user-side, not baked into the package), use the public
 ## Known Limitations
 
 - **Global mutable singleton**: All code shares one `LOCATION.MANAGER`. No isolation for testing or parallel use. Accepted tradeoff for API simplicity.
-- **No data validation**: Relationships aren't checked for cycles, alias uniqueness isn't enforced across types (known bug in comments), polygon data can be registered for nonexistent locations.
+- **Structural rather than temporal validation**: Build-time validation now
+  rejects duplicate codes and relationships, missing endpoints, cycles, invalid
+  aliases, and invalid polygon references. It does not yet validate temporal
+  identity, record-level source vintages, active counts, or crosswalk semantics.
 - **Inconsistent NA handling**: Scalar getters (`get.location.type`, `get.location.name`) return `NA` for unknown locations. Relationship functions (`get.contained.locations`, etc.) return `character(0)`. Pre-existing behavior.
 - **Name normalization hardcoded**: Special cases like "Saint Louis" -> "St. Louis" and dash normalization are in R code, not data-driven.
 - **Build script ordering matters**: Some registration calls depend on others having run first (e.g., aliases must be registered after the locations they point to). The ordering is correct but not enforced programmatically.
