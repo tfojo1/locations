@@ -23,12 +23,27 @@ test_that("get.location.name returns correct names", {
   expect_equal(unname(result), "Maryland")
 })
 
-test_that("historical Montana county-equivalent is not mislabeled as Yellowstone County", {
+test_that("historical Montana geography is labeled distinctly", {
   expect_equal(
     unname(get.location.name("30113")),
     "Yellowstone National Park (historical county equivalent)"
   )
   expect_equal(unname(get.location.name("30111")), "Yellowstone County")
+})
+
+test_that("county names retain every word from the source inventory", {
+  expect_equal(
+    unname(get.location.name("02198")),
+    "Prince of Wales-Hyder Census Area"
+  )
+  expect_equal(
+    unname(get.location.name("22095")),
+    "St. John the Baptist Parish"
+  )
+  expect_equal(
+    unname(get.location.name("27077")),
+    "Lake of the Woods County"
+  )
 })
 
 test_that("get.location.name returns NA for unknown codes", {
@@ -98,5 +113,6 @@ test_that("get.polys.for.type returns data.frame with expected columns", {
   polys <- mgr$get.polys.for.type("STATE")
   expect_true(is.data.frame(polys))
   expect_true(nrow(polys) > 0)
-  expect_true(all(c("latitude", "longitude", "poly", "location.code") %in% names(polys)))
+  required_columns <- c("latitude", "longitude", "poly", "location.code")
+  expect_true(all(required_columns %in% names(polys)))
 })

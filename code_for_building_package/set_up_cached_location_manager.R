@@ -127,11 +127,12 @@ register.fips <- function(LM, filename, fips.typename = "county") {
   #Convert the county.codes to 0 padded 5 char
   county.codes = sprintf("%05d", county.codes)
   
-  #Column 7 is only one name; it's actually columns 7-10 that count.
+  # Column 7 onward contains the area name. A historical CSV rewrite split
+  # multiword names across columns, so retain every non-missing name fragment.
   #get a list of all the proper names
   #Paste collapses them into a string, but if there are trailing NAs there are
   #extra spaces at the end; the sub gets rid of them, removing all spaces but anchored at the back
-  proper.county.names = sub("\\s+$", "", apply(counties[7:10], 1, function(row) { paste(row[!is.na(row)],collapse=" ") }))
+  proper.county.names = sub("\\s+$", "", apply(counties[7:ncol(counties)], 1, function(row) { paste(row[!is.na(row)],collapse=" ") }))
   LM$register(types, remove.non.locale(proper.county.names), county.codes)
   
   #There appear to be entries in the county code that don't have a corresponding

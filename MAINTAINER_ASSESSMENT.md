@@ -90,6 +90,25 @@ The existing `LOCATION.MANAGER` can remain as the default compatibility facade. 
 
 ## Roadmap
 
+### Phase 0 implementation status (2026-08-28)
+
+The structural integrity suite, source manifest, API compatibility contracts,
+independent data-bundle version, and machine-readable Connecticut release
+blocker are implemented on the Phase 0 branch. The provenance audit recovered
+authoritative lineage for every active input: the polygon files are exact
+derivatives of 2018 Census cartographic boundaries, the main geographic-code
+inventory descends from the Census Vintage 2016 workbook with documented
+maintainer edits, and the NSDUH inputs are curated extracts of the 2016-2018
+definitions.
+
+The audit also corrected three county names that had been truncated during a
+historical CSV rewrite. Two disabled ZIP inputs remain explicitly dormant and
+must not be enabled without replacement. Four active rows still need data-reuse
+metadata decisions: the maintainer-curated aliases and historical-code table,
+plus the two SAMHSA extracts. The package license and maintainer metadata remain
+deferred owner decisions, so Phase 0 has not reached its zero-warning exit
+criterion.
+
 ### Phase 0 - Correctness guardrails
 
 - Release the partial-containment API and exact NSDUH regression tests.
