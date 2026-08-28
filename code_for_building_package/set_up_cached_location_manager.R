@@ -829,6 +829,9 @@ LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
 LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
 LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
+# Connecticut's former county codes are not valid geographic aliases. Keep
+# them in the legacy manager only for the compatibility schedule in ADR 0001.
+LOCATION.MANAGER = register.code.aliases.from.csv(LOCATION.MANAGER, file.path(DATA.DIR, "legacy_code_aliases.csv"))
 LOCATION.MANAGER = register.code.aliases.from.csv(LOCATION.MANAGER, file.path(DATA.DIR, "code_aliases.csv"))
 LOCATION.MANAGER = register.cbsa(LOCATION.MANAGER, file.path(DATA.DIR, "cbsas.csv"), cbsa.typename = cbsa.type, fips.typename = county.type) #Sets the fips and cbsa typename
 LOCATION.MANAGER = register.tgas(LOCATION.MANAGER, file.path(DATA.DIR, "tga_definitions.csv"), tga.typename = tga.type, county.typename = county.type) #Ryan White Transitional Grant Areas (county groupings)

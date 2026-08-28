@@ -37,5 +37,6 @@ if (!identical(bundle$report, committed_report)) {
 message(
   "Validated deterministic temporal county build (",
   nrow(packaged$entities), " entities; default date ",
-  packaged$metadata$default_reference_date, ")."
+  packaged$metadata$default_reference_date, "; ",
+  nrow(packaged$crosswalk_edges), " crosswalk edges)."
 )

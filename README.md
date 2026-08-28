@@ -83,8 +83,8 @@ get.location.code("Baltimore County", "COUNTY")
 
 ## Code Aliases
 
-Some FIPS codes have changed over time. The package currently recognizes these
-legacy aliases:
+Some FIPS codes have changed over time. The legacy dot-named API currently
+recognizes these compatibility mappings:
 
 - **Connecticut** (2022): the package currently maps 8 historic county codes to
   8 of the 9 planning regions for backward compatibility.
@@ -98,13 +98,17 @@ sanitize("09001")
 ```
 
 **Connecticut warning:** the old counties and new planning regions have
-different boundaries, so the current one-to-one aliases are not valid
+different boundaries, so the one-to-one legacy mappings are not valid
 geographic crosswalks. Do not use them to transform historical Connecticut
-county data. They remain temporarily to avoid breaking existing consumers and
-will be replaced by an explicit vintage-aware, many-to-many crosswalk API.
+county data. The internal temporal store now contains the authoritative
+19-edge, many-to-many Census area crosswalk; the additive public temporal API
+will expose it in the planned 0.5.0 release. The legacy mappings remain
+temporarily so existing consumers do not break.
 
 See [API_COMPATIBILITY.md](API_COMPATIBILITY.md) for the compatibility and data
-correction policy.
+correction policy and
+[Connecticut crosswalk migration](docs/connecticut-crosswalk-migration.md) for
+the crosswalk's direction, measures, and removal schedule.
 
 ## Plotting
 
@@ -157,7 +161,8 @@ get.contained.locations("R.SOUTH", "STATE")
   or truncated county-equivalent labels
 - Added API compatibility contracts, data-integrity validation, independent
   data versioning, and a checksum-validated source manifest
-- Documented Connecticut aliases as a known temporal crosswalk defect
+- Added the internal authoritative Connecticut many-to-many area crosswalk;
+  legacy resolution remains unchanged pending the additive temporal API
 
 **v0.4.0** (2026-06) - TGA Location Type
 - Added `TGA` (Ryan White Transitional Grant Area) as a data-driven location type

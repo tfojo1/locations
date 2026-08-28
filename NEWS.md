@@ -11,9 +11,15 @@
   pinned 2025 Census Gazetteer and county-change sources. Its current view has
   30 Alaska county-equivalents, 9 Connecticut planning regions, and 56 Montana
   counties; legacy historical codes remain time-bounded records, not aliases.
+- Replaced Connecticut's invalid one-to-one modeling in the normalized store
+  with 19 directional former-county-to-planning-region overlap edges derived
+  from the pinned Census ACS22 relationship file. Land and water fractions are
+  explicit; no population weights are inferred.
+- Isolated the eight Connecticut one-to-one mappings in a legacy-only build
+  input. Existing dot-named APIs retain their current behavior through the
+  ADR 0001 migration schedule.
 - Updated package maintainer metadata while preserving original authorship.
-- Clarified that the Connecticut alias defect blocks the temporal-county
-  release rather than unrelated maintenance releases.
+- Resolved the Connecticut crosswalk blocker for the temporal-county release.
 - Added compatibility contracts derived from location workflows used by
   JHEEM2.
 - Updated GitHub Actions checkout to its Node.js 24-based release.
