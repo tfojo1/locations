@@ -51,40 +51,54 @@ The earlier Zoe-related commits explain the downstream concern. Historical FIPS 
 
 1. **No temporal geography model.** There is no `valid_from`, `valid_to`, vintage, active status, successor/predecessor relation, or source on a location record.
 2. **Alias and crosswalk concepts are conflated.** The model assumes an alias resolves to exactly one current canonical code. Real geographic changes are often one-to-many or many-to-many.
-3. **Mixed, weakly documented source vintages.** County, CBSA, NSDUH, gazetteer, and polygon inputs come from different years, and the build does not emit a manifest or enforce compatibility.
-4. **An implicit 844-line build script.** It relies on order, mutates a global manager, has build-time dependencies not declared in a reproducible environment, and mixes ingestion, correction, derivation, and serialization.
+3. **Mixed source vintages without row-level lineage.** County, CBSA, NSDUH, gazetteer, and polygon inputs come from different years. The source manifest now documents inputs, but packaged rows do not carry their source, definition interval, or reference vintage.
+4. **An implicit 845-line build script.** It relies on order, mutates a global manager, has build-time dependencies not declared in a reproducible environment, and mixes ingestion, correction, derivation, and serialization.
 5. **Global mutable runtime state.** The singleton is convenient for compatibility but makes isolation, concurrency, and test fixtures harder.
-6. **Validation is mostly structural, not semantic.** There are no assertions for expected active counts by vintage, state coverage, source uniqueness, temporal overlap, alias footprint equivalence, or graph cycles.
-7. **Package metadata is unfinished.** `R CMD check` reports one warning because `License: What license is it under?`; the maintainer still names the former maintainer, and the description contains a typo. These require owner decisions, not an automated guess.
+6. **Validation is mostly structural, not semantic.** There are no assertions for expected active counts by vintage, state coverage, temporal overlap, alias footprint equivalence, or crosswalk completeness.
+7. **License metadata is unfinished.** `R CMD check` reports one warning because `License: What license is it under?`. The maintainer metadata and description have been corrected; the remaining license decision requires owner approval.
 8. **CI is a minimal single-platform check.** It checks Ubuntu with one R version and fails only on errors, so the current license warning is accepted.
 9. **Documentation and API consistency remain uneven.** There are no checked examples or vignette, unknown-location return shapes vary, and the registered `ZIPCODE` and `PHD` types currently have no runtime records.
 10. **The manager remains a large class.** `R/location_manager.R` is 873 lines and combines storage, resolution, graph traversal, names, geometry, registration, and validation.
 
 ## Recommended target model
 
-Use stable internal entity IDs and treat codes as time-bounded identifiers:
+Use stable internal entity IDs, versioned geographic definitions, and
+time-bounded identifiers. The target is specified in
+[ADR 0001](docs/adr/0001-temporal-geography-model.md); its core separation is:
 
 ```text
-locations
-  location_id, type, preferred_name
+location_entities
+  location_id, entity_kind
+
+location_versions
+  location_version_id, location_id, type, preferred_name,
+  valid_from, valid_to, source_id
 
 location_codes
-  location_id, code_system, code, valid_from, valid_to, status, source_id
+  location_id, code_system, code, valid_from, valid_to, source_id
 
 relationships
-  child_location_id, parent_location_id, relation, valid_from, valid_to, source_id
+  child_version_id, parent_version_id, relation, valid_from, valid_to, source_id
 
 aliases
-  alias, location_id, alias_kind, valid_from, valid_to
+  alias, location_id, alias_kind, valid_from, valid_to, source_id
 
-crosswalks
-  from_location_id, to_location_id, relation, weight_type, weight, vintage, source_id
+crosswalk_edges
+  crosswalk_id, from_version_id, to_version_id, relation, source_id
+
+crosswalk_measures
+  crosswalk_id, measure_type, fraction_of_from, fraction_of_to,
+  reference_date, source_id
 
 sources
   source_id, publisher, title, vintage, url, retrieved_at, checksum
 ```
 
-An alias must resolve without changing footprint. A crosswalk may return multiple targets and must make its weighting and vintage explicit. Historical codes remain valid identifiers without being included in a current-vintage county listing.
+An alias must resolve without changing identity or footprint. Historic official
+codes are code-history records, not aliases. A crosswalk may return multiple
+targets and must identify whether its measurements represent land, water, or a
+specifically sourced population universe. Historical codes remain valid
+identifiers without being included in a current-vintage county listing.
 
 The existing `LOCATION.MANAGER` can remain as the default compatibility facade. Internally, construct an immutable store and allow advanced callers and tests to create independent manager instances.
 
@@ -93,8 +107,8 @@ The existing `LOCATION.MANAGER` can remain as the default compatibility facade. 
 ### Phase 0 implementation status (2026-08-28)
 
 The structural integrity suite, source manifest, API compatibility contracts,
-independent data-bundle version, and machine-readable Connecticut release
-blocker are implemented on the Phase 0 branch. The provenance audit recovered
+independent data-bundle version, and machine-readable Connecticut
+temporal-release blocker are merged into `main`. The provenance audit recovered
 authoritative lineage for every active input: the polygon files are exact
 derivatives of 2018 Census cartographic boundaries, the main geographic-code
 inventory descends from the Census Vintage 2016 workbook with documented
@@ -105,9 +119,9 @@ The audit also corrected three county names that had been truncated during a
 historical CSV rewrite. Two disabled ZIP inputs remain explicitly dormant and
 must not be enabled without replacement. Four active rows still need data-reuse
 metadata decisions: the maintainer-curated aliases and historical-code table,
-plus the two SAMHSA extracts. The package license and maintainer metadata remain
-deferred owner decisions, so Phase 0 has not reached its zero-warning exit
-criterion.
+plus the two SAMHSA extracts. Maintainer metadata is corrected; the package
+license remains a deferred owner decision, so Phase 0 has not reached its
+zero-warning exit criterion.
 
 ### Phase 0 - Correctness guardrails
 
