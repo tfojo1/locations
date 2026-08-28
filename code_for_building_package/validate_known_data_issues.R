@@ -21,7 +21,7 @@ aliases <- read.csv(
 )
 
 required_columns <- c(
-  "issue_id", "severity", "status", "alias_code", "canonical_code",
+  "issue_id", "severity", "status", "blocker_scope", "alias_code", "canonical_code",
   "summary", "required_resolution", "source_url"
 )
 missing_columns <- setdiff(required_columns, names(issues))
@@ -84,11 +84,13 @@ if (length(missing_ct_issues) > 0L) {
 }
 
 ct_issues <- issues[match(ct_keys, issue_keys), , drop = FALSE]
-if (any(ct_issues$severity != "release-blocking") ||
-      any(ct_issues$status != "open")) {
+if (any(ct_issues$severity != "high") ||
+      any(ct_issues$status != "open") ||
+      any(ct_issues$blocker_scope != "temporal-county-release")) {
   stop(
-    "Connecticut compatibility aliases must remain open release-blocking ",
-    "issues until the crosswalk implementation removes them"
+    "Connecticut compatibility aliases must remain open high-severity ",
+    "blockers for the temporal county release until the crosswalk ",
+    "implementation removes them"
   )
 }
 

@@ -115,7 +115,7 @@ criterion.
 - Decide package license and update maintainer metadata; make CI fail on warnings.
 - Add a build-time integrity suite for duplicate codes, missing endpoints, cycles, alias target validity, and expected active counts by state and vintage.
 - Add a machine-readable source manifest with URLs, vintages, retrieval dates, checksums, and licenses.
-- Mark the Connecticut one-to-one mappings as a release-blocking data defect; replace them only alongside an explicit historical-location/crosswalk representation.
+- Mark the Connecticut one-to-one mappings as a high-severity blocker for the temporal-county release; replace them only alongside an explicit historical-location/crosswalk representation.
 
 Exit criterion: every shipped location and relationship has a source and vintage, and `R CMD check` has zero errors, warnings, and notes.
 
