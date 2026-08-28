@@ -182,10 +182,12 @@ For runtime registration (user-side, not baked into the package), use the public
 ## Known Limitations
 
 - **Global mutable singleton**: All code shares one `LOCATION.MANAGER`. No isolation for testing or parallel use. Accepted tradeoff for API simplicity.
-- **Structural rather than temporal validation**: Build-time validation now
-  rejects duplicate codes and relationships, missing endpoints, cycles, invalid
-  aliases, and invalid polygon references. It does not yet validate temporal
-  identity, record-level source vintages, active counts, or crosswalk semantics.
+- **Legacy data is not yet temporal**: Build-time validation rejects duplicate
+  codes and relationships, missing endpoints, cycles, invalid aliases, and
+  invalid polygon references. The first normalized temporal schema and semantic
+  validator now enforce identity, validity intervals, source references, and
+  typed crosswalk measures, but the shipped legacy dataset has not yet been
+  generated from that model and does not expose active-vintage queries.
 - **Inconsistent NA handling**: Scalar getters (`get.location.type`, `get.location.name`) return `NA` for unknown locations. Relationship functions (`get.contained.locations`, etc.) return `character(0)`. Pre-existing behavior.
 - **Name normalization hardcoded**: Special cases like "Saint Louis" -> "St. Louis" and dash normalization are in R code, not data-driven.
 - **Build script ordering matters**: Some registration calls depend on others having run first (e.g., aliases must be registered after the locations they point to). The ordering is correct but not enforced programmatically.

@@ -5,6 +5,8 @@
 - Added ADR 0001 defining stable location identity, versioned geographic
   definitions, time-bounded codes, typed crosswalk measures, and the legacy API
   migration boundary for the temporal-county work.
+- Added executable normalized temporal-data schemas and semantic validators,
+  with representative Connecticut, Alaska, and Montana contract fixtures.
 - Updated package maintainer metadata while preserving original authorship.
 - Clarified that the Connecticut alias defect blocks the temporal-county
   release rather than unrelated maintenance releases.
