@@ -23,6 +23,9 @@ jobs:
       - name: Validate known data issues
         run: Rscript code_for_building_package/validate_known_data_issues.R
 
+      - name: Validate deterministic temporal county build
+        run: Rscript code_for_building_package/validate_temporal_county_build.R
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck

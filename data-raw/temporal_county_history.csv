@@ -1,0 +1,29 @@
+entity_key,entity_kind,preferred_name,geoid,valid_from,valid_from_precision,valid_to,valid_to_precision,end_reason,source_id,successor_geoids,succession_kind
+historic_geoid:09001,statistical,Fairfield County,09001,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09003,statistical,Hartford County,09003,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09005,statistical,Litchfield County,09005,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09007,statistical,Middlesex County,09007,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09009,statistical,New Haven County,09009,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09011,statistical,New London County,09011,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09013,statistical,Tolland County,09013,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:09015,statistical,Windham County,09015,,unknown,2022-01-01,day,superseded,src_changes_2020,,
+historic_geoid:02010,statistical,Aleutian Islands Census Area,02010,1980-01-01,year,1987-10-23,day,split,src_changes_1980,02013;02016,split
+historic_geoid:02030,statistical,Angoon Division,02030,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02040,statistical,Barrow Division,02040,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02080,statistical,Cordova-McCarthy Division,02080,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02120,statistical,Kenai-Cook Inlet Division,02120,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02140,statistical,Kobuk Census Area,02140,1980-01-01,year,1986-06-02,day,superseded,src_changes_1980,02188,replaced_by
+historic_geoid:02160,statistical,Kuskokwim Division,02160,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02190,statistical,Outer Ketchikan Division,02190,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02200,statistical,Prince of Wales Division,02200,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02210,statistical,Seward Division,02210,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02230:1970,statistical,Skagway-Yakutat Division,02230,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,02231,replaced_by
+historic_geoid:02250,statistical,Upper Yukon Division,02250,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02260,statistical,Valdez-Chitina-Whittier Division,02260,1970-01-01,year,1980-01-01,year,superseded,src_changes_1970,,
+historic_geoid:02201,statistical,Prince of Wales-Outer Ketchikan Census Area,02201,1980-01-01,year,2008-05-19,day,split,src_changes_2000,02130;02198,split
+historic_geoid:02231,statistical,Skagway-Yakutat-Angoon Census Area,02231,1980-01-01,year,1992-09-22,day,split,src_changes_1990,02232;02282,split
+historic_geoid:02232,statistical,Skagway-Hoonah-Angoon Census Area,02232,1992-09-22,day,2007-06-20,day,split,src_changes_2000,02105;02230,split
+ansi:01419985,statistical,Wade Hampton Census Area,02270,1980-01-01,year,2015-07-01,day,recoded,src_changes_2010,,
+historic_geoid:02280,statistical,Wrangell-Petersburg Census Area,02280,1980-01-01,year,2008-06-01,day,split,src_changes_2000,02195;02275,split
+historic_geoid:02261,statistical,Valdez-Cordova Census Area,02261,1980-01-01,year,2019-01-02,day,split,src_changes_2010,02063;02066,split
+historic_geoid:30113,statistical,Yellowstone National Park (county equivalent),30113,,unknown,1997-11-07,day,split,src_changes_1990,30031;30067,replaced_by

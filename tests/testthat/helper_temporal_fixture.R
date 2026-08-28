@@ -112,11 +112,11 @@ temporal_county_fixture <- function() {
     ),
     list(
       "ver_mt_gallatin_1997", "loc_mt_gallatin", "Gallatin County",
-      "1997-11-07", "day", "", "unknown", "", "src_mt"
+      "", "unknown", "", "unknown", "", "src_mt"
     ),
     list(
       "ver_mt_park_1997", "loc_mt_park", "Park County",
-      "1997-11-07", "day", "", "unknown", "", "src_mt"
+      "", "unknown", "", "unknown", "", "src_mt"
     )
   )
   for (version in versions) {
