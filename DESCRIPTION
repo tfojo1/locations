@@ -2,7 +2,7 @@ Package: locations
 Type: Package
 Title: Location Manager for the JHEEM2 Project
 Version: 0.4.1
-Config/locations/data-version: 2026-08-28.2
+Config/locations/data-version: 2026-08-28.3
 Authors@R: c(
     person("Jeffrey", "Pennington", role = "aut"),
     person("Nicholas", "Sizemore",

@@ -32,5 +32,6 @@ message(
   nrow(.temporal_county_data$entities), " entities, ",
   nrow(.temporal_county_data$versions), " versions, ",
   nrow(.temporal_county_data$codes), " code assignments, ",
-  nrow(.temporal_county_data$successions), " succession edges."
+  nrow(.temporal_county_data$successions), " succession edges, ",
+  nrow(.temporal_county_data$crosswalk_edges), " crosswalk edges."
 )

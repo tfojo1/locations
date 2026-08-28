@@ -15,7 +15,7 @@ test_that("packaged temporal county data satisfies its semantic schema", {
   ))
   expect_equal(
     locations:::.temporal_county_data$metadata$data_version,
-    "census-counties-2025.1"
+    "census-counties-2025.2"
   )
   expect_equal(
     locations:::.temporal_county_data$metadata$default_reference_date,
@@ -78,6 +78,70 @@ test_that("Connecticut old and new county equivalents stay distinct", {
   expect_equal(nrow(temporal_county_codes_at("09003", "2025-01-01")), 0L)
 })
 
+test_that("Connecticut has the complete directional county crosswalk", {
+  data <- locations:::.temporal_county_data
+  edges <- data$crosswalk_edges
+  version_to_location <- stats::setNames(
+    data$versions$location_id, data$versions$location_version_id
+  )
+  location_to_code <- stats::setNames(data$codes$code, data$codes$location_id)
+  edge_codes <- paste0(
+    unname(location_to_code[version_to_location[edges$from_version_id]]),
+    "->",
+    unname(location_to_code[version_to_location[edges$to_version_id]])
+  )
+
+  expect_setequal(edge_codes, c(
+    "09001->09120", "09001->09140", "09001->09190",
+    "09003->09110", "09003->09140", "09003->09160",
+    "09005->09140", "09005->09160", "09005->09190",
+    "09007->09130", "09009->09140", "09009->09170",
+    "09011->09130", "09011->09150", "09011->09180",
+    "09013->09110", "09013->09150",
+    "09015->09150", "09015->09180"
+  ))
+  expect_true(all(edges$relation_kind == "overlap"))
+  expect_true(all(edges$coverage == "exhaustive"))
+  expect_true(all(edges$source_id == "src_ct_cousub_bg_2022"))
+  expect_equal(nrow(data$aliases), 0L)
+})
+
+test_that("Connecticut crosswalk measures are explicit area fractions", {
+  data <- locations:::.temporal_county_data
+  measures <- merge(
+    data$crosswalk_measures,
+    data$crosswalk_edges[, c(
+      "crosswalk_id", "from_version_id", "to_version_id"
+    )],
+    by = "crosswalk_id", sort = FALSE
+  )
+
+  expect_equal(nrow(measures), 38L)
+  expect_setequal(unique(measures$measure_type), c("land_area", "water_area"))
+  expect_false(any(measures$measure_type == "population"))
+  expect_true(all(measures$population_universe == ""))
+  expect_true(all(measures$reference_date == "2022-01-01"))
+  expect_true(all(measures$numerator >= 0))
+  expect_true(all(measures$denominator > 0))
+
+  from_groups <- split(
+    measures,
+    paste(measures$from_version_id, measures$measure_type, sep = "\r")
+  )
+  expect_true(all(vapply(from_groups, function(group) {
+    abs(sum(group$fraction_of_from) - 1) < 1e-12 &&
+      all(group$denominator == sum(group$numerator))
+  }, logical(1))))
+
+  to_groups <- split(
+    measures,
+    paste(measures$to_version_id, measures$measure_type, sep = "\r")
+  )
+  expect_true(all(vapply(to_groups, function(group) {
+    abs(sum(group$fraction_of_to) - 1) < 1e-12
+  }, logical(1))))
+})
+
 test_that("Montana 30113 remains historical but not current", {
   expect_equal(nrow(temporal_county_codes_at("30113", "1990-01-01")), 1L)
   expect_equal(nrow(temporal_county_codes_at("30113", "2025-01-01")), 0L)
@@ -96,7 +160,7 @@ test_that("Montana 30113 remains historical but not current", {
 
 test_that("every normalized county record has pinned provenance", {
   data <- locations:::.temporal_county_data
-  expect_equal(nrow(data$sources), 7L)
+  expect_equal(nrow(data$sources), 8L)
   expect_true(all(grepl("^md5:[0-9a-f]{32}$", data$sources$checksum)))
   expect_true(all(data$sources$retrieved_at == "2026-08-28"))
 })

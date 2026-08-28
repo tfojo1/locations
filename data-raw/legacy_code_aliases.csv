@@ -1,0 +1,9 @@
+canonical_code,alias_code,state,reason,effective_year,compatibility_scope,removal_schedule
+09110,09001,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09120,09003,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09130,09005,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09140,09007,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09150,09009,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09160,09011,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09170,09013,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release
+09180,09015,CT,Legacy one-to-one resolver compatibility only,2022,legacy-dot-api,1.0.0-or-later-after-warning-release

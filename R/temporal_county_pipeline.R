@@ -95,6 +95,115 @@ read_temporal_county_current <- function(path) {
   current[order(current$GEOID), , drop = FALSE]
 }
 
+read_temporal_county_ct_crosswalk <- function(path) {
+  required <- c(
+    "GEOID_COUSUB_22", "AREALAND_COUSUB_22", "AREAWATER_COUSUB_22",
+    "GEOID_BLKGRP_20", "AREALAND_BLKGRP_20", "AREAWATER_BLKGRP_20",
+    "AREALAND_PART", "AREAWATER_PART"
+  )
+  relationship <- read_temporal_county_input(
+    path, required, separator = "|"
+  )
+
+  if (any(!grepl("^09[0-9]{8}$", relationship$GEOID_COUSUB_22)) ||
+      any(!grepl("^09[0-9]{10}$", relationship$GEOID_BLKGRP_20))) {
+    stop("Connecticut relationship GEOIDs have an unexpected format")
+  }
+  endpoint_key <- paste(
+    relationship$GEOID_COUSUB_22, relationship$GEOID_BLKGRP_20, sep = "\r"
+  )
+  if (anyDuplicated(endpoint_key)) {
+    stop("Connecticut relationship endpoints must be unique")
+  }
+
+  area_columns <- c(
+    "AREALAND_COUSUB_22", "AREAWATER_COUSUB_22",
+    "AREALAND_BLKGRP_20", "AREAWATER_BLKGRP_20",
+    "AREALAND_PART", "AREAWATER_PART"
+  )
+  area <- lapply(relationship[area_columns], function(values) {
+    suppressWarnings(as.numeric(values))
+  })
+  invalid_area <- vapply(area, function(values) {
+    any(is.na(values) | !is.finite(values) | values < 0)
+  }, logical(1))
+  if (any(invalid_area)) {
+    stop(
+      "Connecticut relationship area fields must be finite, non-negative ",
+      "square-meter values: ",
+      paste(area_columns[invalid_area], collapse = ", ")
+    )
+  }
+
+  relationship$old_geoid <- substr(relationship$GEOID_BLKGRP_20, 1L, 5L)
+  relationship$new_geoid <- substr(relationship$GEOID_COUSUB_22, 1L, 5L)
+  relationship$land_area <- area$AREALAND_PART
+  relationship$water_area <- area$AREAWATER_PART
+
+  expected_old <- sprintf("09%03d", seq.int(1L, 15L, by = 2L))
+  expected_new <- sprintf("09%03d", seq.int(110L, 190L, by = 10L))
+  if (!setequal(unique(relationship$old_geoid), expected_old) ||
+      !setequal(unique(relationship$new_geoid), expected_new)) {
+    stop(
+      "Pinned Connecticut relationship coverage changed; review the ",
+      "authoritative source before updating"
+    )
+  }
+
+  verify_endpoint_totals <- function(
+      geoid_column, total_column, part_values, label) {
+    geoids <- relationship[[geoid_column]]
+    totals <- as.numeric(relationship[[total_column]])
+    distinct_total <- vapply(split(totals, geoids), function(values) {
+      unique_values <- unique(values)
+      if (length(unique_values) != 1L) return(NA_real_)
+      unique_values[[1L]]
+    }, numeric(1))
+    part_total <- vapply(split(part_values, geoids), sum, numeric(1))
+    if (anyNA(distinct_total) ||
+        !identical(unname(part_total), unname(distinct_total))) {
+      stop(
+        "Connecticut relationship ", label,
+        " parts do not reproduce published endpoint totals"
+      )
+    }
+  }
+  verify_endpoint_totals(
+    "GEOID_COUSUB_22", "AREALAND_COUSUB_22",
+    relationship$land_area, "county-subdivision land-area"
+  )
+  verify_endpoint_totals(
+    "GEOID_COUSUB_22", "AREAWATER_COUSUB_22",
+    relationship$water_area, "county-subdivision water-area"
+  )
+  verify_endpoint_totals(
+    "GEOID_BLKGRP_20", "AREALAND_BLKGRP_20",
+    relationship$land_area, "block-group land-area"
+  )
+  verify_endpoint_totals(
+    "GEOID_BLKGRP_20", "AREAWATER_BLKGRP_20",
+    relationship$water_area, "block-group water-area"
+  )
+
+  crosswalk <- stats::aggregate(
+    relationship[, c("land_area", "water_area")],
+    relationship[, c("old_geoid", "new_geoid")],
+    sum
+  )
+  crosswalk <- crosswalk[
+    crosswalk$land_area > 0 | crosswalk$water_area > 0,
+    , drop = FALSE
+  ]
+  crosswalk <- crosswalk[order(
+    crosswalk$old_geoid, crosswalk$new_geoid
+  ), , drop = FALSE]
+  rownames(crosswalk) <- NULL
+  if (nrow(crosswalk) != 19L) {
+    stop("Pinned Connecticut county crosswalk must contain 19 overlap edges")
+  }
+  crosswalk
+}
+
 temporal_county_entity_keys <- function(current, history) {
   current_keys <- paste0("ansi:", current$ANSICODE)
   history_only <- setdiff(history$entity_key, current_keys)
@@ -224,6 +333,89 @@ resolve_temporal_county_successor <- function(data, geoid, effective_date) {
   candidates$location_id[[1L]]
 }
 
+resolve_temporal_county_version <- function(data, geoid, as_of) {
+  codes <- data$codes[
+    data$codes$code_system_id == "census_county_geoid" &
+      data$codes$code == geoid &
+      temporal_county_active(
+        data$codes$valid_from, data$codes$valid_to, as_of
+      ),
+    , drop = FALSE
+  ]
+  versions <- data$versions[
+    data$versions$location_id %in% codes$location_id &
+      temporal_county_active(
+        data$versions$valid_from, data$versions$valid_to, as_of
+      ),
+    , drop = FALSE
+  ]
+  if (nrow(versions) != 1L) {
+    stop(
+      "Expected one version for county GEOID ", geoid, " at ", as_of,
+      "; found ", nrow(versions)
+    )
+  }
+  versions$location_version_id[[1L]]
+}
+
+append_temporal_county_ct_crosswalk <- function(data, crosswalk) {
+  reference_date <- "2022-01-01"
+  source_id <- "src_ct_cousub_bg_2022"
+  from_versions <- vapply(crosswalk$old_geoid, function(geoid) {
+    resolve_temporal_county_version(data, geoid, "2021-12-31")
+  }, character(1))
+  to_versions <- vapply(crosswalk$new_geoid, function(geoid) {
+    resolve_temporal_county_version(data, geoid, reference_date)
+  }, character(1))
+
+  for (index in seq_len(nrow(crosswalk))) {
+    row <- crosswalk[index, ]
+    crosswalk_id <- paste0(
+      "cross_ct_", row$old_geoid, "_", row$new_geoid
+    )
+    data <- append_temporal_county_row(data, "crosswalk_edges", list(
+      crosswalk_id = crosswalk_id,
+      from_version_id = from_versions[[index]],
+      to_version_id = to_versions[[index]],
+      relation_kind = "overlap", coverage = "exhaustive",
+      source_id = source_id
+    ))
+
+    for (measure_type in c("land_area", "water_area")) {
+      numerator <- row[[measure_type]]
+      from_denominator <- sum(
+        crosswalk[[measure_type]][
+          crosswalk$old_geoid == row$old_geoid
+        ]
+      )
+      to_denominator <- sum(
+        crosswalk[[measure_type]][
+          crosswalk$new_geoid == row$new_geoid
+        ]
+      )
+      method <- paste0(
+        "Sum Census ",
+        if (measure_type == "land_area") "AREALAND_PART" else "AREAWATER_PART",
+        " square meters by 2020 county GEOID and 2022 county GEOID; ",
+        "denominator is the former-county total"
+      )
+      data <- append_temporal_county_row(data, "crosswalk_measures", list(
+        crosswalk_measure_id = paste0(
+          "measure_ct_", row$old_geoid, "_", row$new_geoid, "_",
+          measure_type
+        ),
+        crosswalk_id = crosswalk_id, measure_type = measure_type,
+        numerator = numerator, denominator = from_denominator,
+        fraction_of_from = numerator / from_denominator,
+        fraction_of_to = numerator / to_denominator,
+        reference_date = reference_date, population_universe = "",
+        method = method, source_id = source_id
+      ))
+    }
+  }
+  data
+}
+
 build_temporal_county_data <- function(
     raw_directory = "data-raw",
     registry_path = file.path(raw_directory, "temporal_county_registry.csv"),
@@ -236,6 +428,9 @@ build_temporal_county_data <- function(
   )
   prior_version_path <- file.path(
     raw_directory, "temporal_county_prior_versions.csv"
+  )
+  ct_crosswalk_path <- file.path(
+    raw_directory, "acs22_cousub22_blkgrp20_st09.txt"
   )
 
   sources <- read_temporal_county_sources(source_path, raw_directory)
@@ -264,6 +459,7 @@ build_temporal_county_data <- function(
       "end_reason", "source_id"
     )
   )
+  ct_crosswalk <- read_temporal_county_ct_crosswalk(ct_crosswalk_path)
   registry <- update_temporal_county_registry(
     current, history, registry_path, write = update_registry
   )
@@ -301,7 +497,7 @@ build_temporal_county_data <- function(
 
   data <- new_temporal_location_data()
   data <- append_temporal_county_row(data, "metadata", list(
-    data_version = "census-counties-2025.1",
+    data_version = "census-counties-2025.2",
     default_reference_date = "2025-01-01"
   ))
   for (index in seq_len(nrow(sources))) {
@@ -448,6 +644,8 @@ build_temporal_county_data <- function(
       ))
     }
   }
+
+  data <- append_temporal_county_ct_crosswalk(data, ct_crosswalk)
 
   validate_temporal_location_data(data)
   current_records <- temporal_county_current_records(data)
