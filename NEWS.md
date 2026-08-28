@@ -7,6 +7,10 @@
   migration boundary for the temporal-county work.
 - Added executable normalized temporal-data schemas and semantic validators,
   with representative Connecticut, Alaska, and Montana contract fixtures.
+- Added a deterministic internal temporal-county data slice built from the
+  pinned 2025 Census Gazetteer and county-change sources. Its current view has
+  30 Alaska county-equivalents, 9 Connecticut planning regions, and 56 Montana
+  counties; legacy historical codes remain time-bounded records, not aliases.
 - Updated package maintainer metadata while preserving original authorship.
 - Clarified that the Connecticut alias defect blocks the temporal-county
   release rather than unrelated maintenance releases.

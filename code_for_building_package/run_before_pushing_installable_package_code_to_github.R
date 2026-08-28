@@ -22,8 +22,25 @@ source('code_for_building_package/validate_source_manifest.R')
 source('code_for_building_package/validate_known_data_issues.R')
 
 
+##------------------------------------------------------##
+##-- STEP 1: Build Normalized Temporal County Data    --##
+##------------------------------------------------------##
+
+source('R/temporal_schema.R')
+source('R/temporal_county_pipeline.R')
+
+temporal.county.bundle <- build_temporal_county_data()
+.temporal_county_data <- temporal.county.bundle$data
+utils::write.csv(
+  temporal.county.bundle$report,
+  'code_for_building_package/temporal_county_build_report.csv',
+  row.names = FALSE,
+  na = ''
+)
+
+
 ##---------------------------------------------------------##
-##-- STEP 1: Build and Store the Cached Location Manager --##
+##-- STEP 2: Build and Store the Cached Location Manager --##
 ##---------------------------------------------------------##
 ## NOTE: This must happen BEFORE documentation, because devtools::document()
 ##       loads the package, which triggers .onLoad(), which needs the data.
@@ -45,13 +62,18 @@ validate_location_data(.location_data)
 
 # Store the data structures (not the R6 object) to internal file
 # Note: using .location_data (with dot prefix) to indicate it's internal
-usethis::use_data(.location_data, internal = T, overwrite = T)
+usethis::use_data(
+  .location_data,
+  .temporal_county_data,
+  internal = TRUE,
+  overwrite = TRUE
+)
 
 cat("DONE BUILDING LOCATION MANAGER\n------------------------------\n")
 
 
 ##-----------------------------------------------------------##
-##-- STEP 2: Update Documentation (updates NAMESPACE file) --##
+##-- STEP 3: Update Documentation (updates NAMESPACE file) --##
 ##-----------------------------------------------------------##
 
 cat("\n-----------------------------\nSETTING UP DOCUMENTATION...\n")
@@ -60,7 +82,7 @@ cat("DONE SETTING UP DOCUMENTATION\n-----------------------------\n")
 
 
 ##-----------------------------------------------------------------##
-##-- STEP 3: Indicate Which Files the Package should NOT include --##
+##-- STEP 4: Indicate Which Files the Package should NOT include --##
 ##-----------------------------------------------------------------##
 
 cat("\n------------------------------------\nSETTING FILES TO IGNORE IN BUILD...\n")

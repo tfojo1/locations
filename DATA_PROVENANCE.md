@@ -36,6 +36,22 @@ two territory display names were shortened locally. HRSA's FY 2025 Part A
 notice verifies that the Oakland TGA comprises Alameda and Contra Costa
 counties.
 
+## Temporal county slice
+
+The internal temporal county store is generated from the pinned 2025 Census
+National Counties Gazetteer. Its default reference date is January 1, 2025,
+and the source file and six Census county-change pages are vendored with
+verified checksums. Curated temporal inputs transcribe effective dates and
+successions for the legacy Alaska, Connecticut, and Montana records; the
+original source snapshots remain alongside those inputs for review.
+
+Opaque `location_id` values live in `temporal_county_registry.csv` and are
+assigned once rather than recalculated from a current code. The deterministic
+build validates its normalized schema, source checksums, referential and
+temporal integrity, target-state current counts, and committed build report.
+This store is additive: the legacy manager and its public API continue to use
+their existing compatibility data until the temporal read APIs are introduced.
+
 ## Dormant ZIP material
 
 ZIP loading and ZIP polygon loading are disabled in the build. The coordinate

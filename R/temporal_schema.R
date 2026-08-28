@@ -467,6 +467,44 @@ validate_temporal_location_data <- function(data, tolerance = 1e-8) {
     "relationships"
   )
 
+  interval_is_covered <- function(record_start, record_end, version_rows) {
+    if (length(version_rows) == 0L) return(FALSE)
+    version_bounds <- interval_bounds(
+      data$versions$valid_from[version_rows],
+      data$versions$valid_to[version_rows]
+    )
+    order_index <- order(version_bounds$start, version_bounds$end)
+    coverage_end <- record_start
+    for (index in order_index) {
+      if (version_bounds$end[[index]] <= coverage_end) next
+      if (version_bounds$start[[index]] > coverage_end) return(FALSE)
+      coverage_end <- max(coverage_end, version_bounds$end[[index]])
+      if (coverage_end >= record_end) return(TRUE)
+    }
+    FALSE
+  }
+  require_version_coverage <- function(table_name) {
+    table <- data[[table_name]]
+    if (nrow(table) == 0L) return(invisible(NULL))
+    record_bounds <- interval_bounds(table$valid_from, table$valid_to)
+    covered <- vapply(seq_len(nrow(table)), function(index) {
+      version_rows <- which(
+        data$versions$location_id == table$location_id[[index]]
+      )
+      interval_is_covered(
+        record_bounds$start[[index]], record_bounds$end[[index]], version_rows
+      )
+    }, logical(1))
+    if (any(!covered)) {
+      add_error(paste0(
+        table_name, " validity must be covered by entity versions"
+      ))
+    }
+  }
+  for (table_name in c("codes", "names", "aliases")) {
+    require_version_coverage(table_name)
+  }
+
   if (nrow(data$relationships) > 0L) {
     version_rows <- match(
       c(

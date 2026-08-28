@@ -1,0 +1,4 @@
+version_record_id,entity_key,preferred_name,valid_from,valid_from_precision,valid_to,valid_to_precision,end_reason,source_id
+ak_02105_2007,ansi:02371430,Hoonah-Angoon Census Area,2007-06-20,day,2013-01-03,day,redefined,src_changes_2010
+ak_02195_2008,ansi:02516404,Petersburg Census Area,2008-06-01,day,2013-01-03,day,redefined,src_changes_2010
+ak_02198_2008,ansi:01419980,Prince of Wales-Hyder Census Area,2008-05-19,day,2013-01-03,day,redefined,src_changes_2010

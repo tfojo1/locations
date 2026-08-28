@@ -171,6 +171,17 @@ test_that("relationship intervals must fit their endpoint versions", {
   )
 })
 
+test_that("code intervals must be covered by entity versions", {
+  data <- temporal_county_fixture()
+  row <- data$codes$location_code_id == "code_ct_capitol"
+  data$codes$valid_from[row] <- "2021-01-01"
+
+  expect_error(
+    locations:::validate_temporal_location_data(data),
+    "codes validity must be covered by entity versions"
+  )
+})
+
 test_that("the normalized schema is strict", {
   data <- temporal_county_fixture()
   data$unexpected <- data.frame(value = character())
