@@ -1,3 +1,14 @@
+# locations (development version)
+
+## Maintenance
+
+- Updated package maintainer metadata while preserving original authorship.
+- Clarified that the Connecticut alias defect blocks the temporal-county
+  release rather than unrelated maintenance releases.
+- Added compatibility contracts derived from location workflows used by
+  JHEEM2.
+- Updated GitHub Actions checkout to its Node.js 24-based release.
+
 # locations 0.4.1
 
 ## User-facing changes
