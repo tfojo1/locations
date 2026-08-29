@@ -34,3 +34,36 @@ one-to-one aliases.
 
 Use `packageVersion("locations")` for the code/API release and
 `locations.data.version()` for the independently versioned bundled dataset.
+
+## Additive temporal API
+
+The snake-case functions are a separate, immutable temporal interface:
+
+- `locations_default_date()` returns the dataset's pinned reference date;
+- `get_locations()` selects versions by type, date, and status;
+- `resolve_location()` returns official code history without legacy aliases;
+- `get_location_history()` returns versions for one durable identity; and
+- `crosswalk_locations()` returns directional, potentially many-to-many edges
+  with a requested and explicitly named measure.
+
+These functions always return data frames with documented stable columns.
+Empty lookups return zero-row data frames with the same columns. Runtime
+registration functions continue to affect only the legacy manager.
+
+Connecticut demonstrates the intentional compatibility boundary:
+
+```r
+# Legacy compatibility behavior remains unchanged during 0.5.x
+sanitize("09003")
+#> "09120"
+
+# Temporal resolution keeps Hartford County historic
+resolve_location("09003")
+
+# Geographic conversion returns Hartford's actual multiple overlaps
+crosswalk_locations("09003", measure = "land_area")
+```
+
+No new warning is added to the legacy call in the first additive release. The
+warning and removal schedule is documented in
+`docs/connecticut-crosswalk-migration.md` and ADR 0001.

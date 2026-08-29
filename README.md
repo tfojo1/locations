@@ -110,6 +110,37 @@ correction policy and
 [Connecticut crosswalk migration](docs/connecticut-crosswalk-migration.md) for
 the crosswalk's direction, measures, and removal schedule.
 
+## Temporal Location API
+
+The additive snake-case API queries the immutable, versioned county store. It
+does not use legacy aliases or silently convert historic official codes to a
+current geography.
+
+```r
+# The default is pinned data metadata, not today's date
+locations_default_date()
+
+# Current or historical county versions at an explicit vintage
+current_counties <- get_locations("COUNTY")
+counties_in_2021 <- get_locations("COUNTY", "2021-01-01")
+historic_counties <- get_locations("COUNTY", status = "historical")
+
+# Without a date, return every identity that has used this code
+resolve_location("02230")
+
+# Historic CT codes remain historic records; they are not canonicalized
+resolve_location("09003", as_of = "2021-01-01")
+
+# A real former-county to planning-region crosswalk can have many targets
+hartford_land <- crosswalk_locations("09003", measure = "land_area")
+hartford_land[, c("to_code", "fraction_of_from", "measure_type")]
+```
+
+Temporal functions return data frames with durable IDs, version IDs, code and
+version validity intervals, the date used to classify status, and source URLs.
+Crosswalk measure names are explicit. Requesting an unavailable population
+measure produces an error; the package never substitutes land or water area.
+
 ## Plotting
 
 The `location.plot()` function creates maps with points or filled polygons. Requires the `ggmap` package and a [Stadia Maps API key](https://stadiamaps.com/).

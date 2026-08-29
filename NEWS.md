@@ -20,6 +20,10 @@
   ADR 0001 migration schedule.
 - Updated package maintainer metadata while preserving original authorship.
 - Resolved the Connecticut crosswalk blocker for the temporal-county release.
+- Added explicit temporal read APIs for querying locations by date and status,
+  resolving complete official code history, inspecting durable identity, and
+  returning typed many-to-many crosswalk results. Existing dot-named APIs and
+  runtime registration behavior remain unchanged.
 - Added compatibility contracts derived from location workflows used by
   JHEEM2.
 - Updated GitHub Actions checkout to its Node.js 24-based release.

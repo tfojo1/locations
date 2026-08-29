@@ -38,18 +38,35 @@ identified dataset, universe, vintage, and derivation method.
 
 ## Compatibility schedule
 
-This internal data change does not alter an existing exported function,
+The additive temporal API does not alter an existing exported function,
 default, or return shape. In particular, the legacy dot-named API continues to
 resolve the eight former county codes one-to-one during the 0.5.x migration
 period. Those mappings are isolated in `data-raw/legacy_code_aliases.csv`; they
 are not aliases in the normalized temporal store and must not be used as
 geographic weights.
 
+Use temporal resolution to inspect the historic record and the crosswalk API
+to transform its geographic footprint:
+
+```r
+hartford <- resolve_location("09003")
+stopifnot(hartford$preferred_name == "Hartford County")
+
+targets <- crosswalk_locations("09003", measure = "land_area")
+targets[, c("to_code", "to_name", "fraction_of_from")]
+stopifnot(abs(sum(targets$fraction_of_from) - 1) < 1e-8)
+```
+
+`crosswalk_locations()` is directional and never follows the legacy mapping.
+For example, former Hartford County overlaps Capitol, Naugatuck Valley, and
+Northwest Hills planning regions; it does not resolve to the legacy
+one-to-one target Greater Bridgeport.
+
 The migration schedule follows
 [ADR 0001](adr/0001-temporal-geography-model.md):
 
-1. Version 0.5.0 adds temporal read and crosswalk APIs without changing legacy
-   defaults or adding legacy warnings.
+1. Version 0.5.0 publishes the additive temporal read and crosswalk APIs
+   without changing legacy defaults or adding legacy warnings.
 2. A later 0.x release adds one classed warning per session for unsafe legacy
    Connecticut resolution, with a documented batch-migration opt-out.
 3. Version 1.0.0 or later may remove the one-to-one compatibility mappings only
