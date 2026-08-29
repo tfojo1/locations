@@ -1,0 +1,62 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+name: JHEEM2-integration
+
+jobs:
+  downstream-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out candidate locations package
+        uses: actions/checkout@v5
+
+      - name: Read pinned JHEEM2 revision
+        id: jheem2-revision
+        shell: bash
+        run: echo "ref=$(tr -d '[:space:]' < integration/jheem2/REVISION)" >> "$GITHUB_OUTPUT"
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Create clean integration library
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/locations-jheem2-library"
+          echo "R_LIBS_USER=$RUNNER_TEMP/locations-jheem2-library" >> "$GITHUB_ENV"
+
+      - name: Install package and downstream dependencies
+        shell: Rscript {0}
+        run: |
+          install.packages(c(
+            "R6", "ggplot2", "Rcpp", "reshape2", "deSolve", "ggsci",
+            "plotly", "ungroup"
+          ))
+
+      - name: Install candidate locations package
+        shell: bash
+        run: R CMD INSTALL --library="$R_LIBS_USER" .
+
+      - name: Check out pinned JHEEM2
+        uses: actions/checkout@v5
+        with:
+          repository: CIPHER-Epi/jheem2
+          ref: ${{ steps.jheem2-revision.outputs.ref }}
+          path: jheem2
+
+      - name: Verify pinned JHEEM2 checkout
+        shell: bash
+        run: test "$(git -C jheem2 rev-parse HEAD)" = "${{ steps.jheem2-revision.outputs.ref }}"
+
+      - name: Install pinned JHEEM2 package
+        shell: bash
+        run: R CMD INSTALL --library="$R_LIBS_USER" jheem2
+
+      - name: Run locations-focused JHEEM2 contract
+        shell: bash
+        run: Rscript integration/jheem2/run.R

@@ -26,6 +26,9 @@
   runtime registration behavior remain unchanged.
 - Added compatibility contracts derived from location workflows used by
   JHEEM2.
+- Added a separately pinned downstream integration workflow that installs the
+  candidate package with JHEEM2 and exercises its real validation,
+  sanitization, metadata, containment, overlap, and name-to-code paths.
 - Updated GitHub Actions checkout to its Node.js 24-based release.
 
 # locations 0.4.1
