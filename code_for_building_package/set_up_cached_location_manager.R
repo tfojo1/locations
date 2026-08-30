@@ -12,6 +12,7 @@
 # zipcode : "ZIPCODE", 'Z.' prefix (location code is zip code)
 
 source("R/location_api.R")
+source("R/legacy_county_compatibility.R")
 source("R/location_manager.R")
 source("R/location_plot.R")
 
@@ -98,89 +99,6 @@ register.state.fips.aliases <- function(LM, filename, fips.typename = "county") 
   for ( i in 1:nrow(fips.state.alias.data) ) {
     LM$register.code.aliases (fips.state.alias.data[[3]][i], fips.codes[i])  
   }
-  LM
-}
-
-register.fips <- function(LM, filename, fips.typename = "county") {
-  
-  fips.typename <- toupper(fips.typename)
-  #Check if the file exists
-  if (!file.exists(filename)) {
-    stop(paste0("LOCATION.MANAGER: Cannot find the fips file with filename ", filename))
-  }
-  
-  fips.data = read.csv(file = filename)
-  
-  #States
-  states = fips.data[ fips.data[1] == 040, ] #Get only the state data from the fips info
-  
-  #Column 2 is the state code
-  state.codes = sprintf("%02d",states[[2]])
-  
-  #Counties
-  counties = fips.data[ fips.data[1] == 050, ] #Get only the county data from the fips info.
-  #Column 3 is the county code
-  county.codes = counties[[2]] * 1000 + counties[[3]]
-  
-  types = rep(fips.typename,length(county.codes))
-  
-  #Convert the county.codes to 0 padded 5 char
-  county.codes = sprintf("%05d", county.codes)
-  
-  # Column 7 onward contains the area name. A historical CSV rewrite split
-  # multiword names across columns, so retain every non-missing name fragment.
-  #get a list of all the proper names
-  #Paste collapses them into a string, but if there are trailing NAs there are
-  #extra spaces at the end; the sub gets rid of them, removing all spaces but anchored at the back
-  proper.county.names = sub("\\s+$", "", apply(counties[7:ncol(counties)], 1, function(row) { paste(row[!is.na(row)],collapse=" ") }))
-  LM$register(types, remove.non.locale(proper.county.names), county.codes)
-  
-  #There appear to be entries in the county code that don't have a corresponding
-  #registered state.  Refrain from trying to create a connection to the non-existent
-  #state
-  #This list is checked against the state.codes above to make sure the state
-  #is registered before we create a hierarchy.
-  possible.state.codes = sprintf("%02d",counties[[2]])
-  #Get only the counties with proper states
-  counties.of.states = county.codes [ possible.state.codes %in% state.codes ]
-  corresponding.states = possible.state.codes [ possible.state.codes %in% state.codes ] 
-  
-  counties.of.states.with.fips.prefix = sprintf("%s%s",LM$get.prefix(fips.typename), counties.of.states)
-  # corresponding.states.with.fips.prefix = sprintf("%s%s",LM$get.prefix(fips.typename), corresponding.states)
-  #Where previously I could use the code alias here, I can instead use the fips state number and the type
-  corresponding.states.location.code = LM$get.by.alias (corresponding.states, "STATE")
-  #Register the counties as completely contained by the states
-  LM$register.hierarchy(counties.of.states.with.fips.prefix, corresponding.states.location.code, rep(TRUE,length(counties.of.states)))
-  LM
-}
-
-register.additional.fips = function(LM, filename, fips.typename) {
-  fips.typename = toupper(fips.typename)
-  
-  #Registers additional fips locations that were not previously registered
-  #We have moved them to the csv file
-  
-  new_fips = read.csv(file=filename, stringsAsFactors=FALSE)
-  
-  codes = sprintf("%05d",new_fips[['fipscode']])
-  names = new_fips[['name']]
-  states = new_fips[['state']]
-  
-  # Register the fips counties
-  LM$register(rep(fips.typename,length(codes)), names, codes)
-  
-  # Register them to their states
-  LM$register.hierarchy(codes,states,rep(TRUE,length(codes)),T)
-  
-  # We have two cases of fips codes that were renumbered.  We wish to add
-  # code aliases for both of these.  They are:
-  
-  # - Dade County, FL (12025) renamed/renumbered to Miami-Dade County (12086)
-  # - Ste. Genevieve, MO (29193) renumbered to 29186
-  
-  LM$register.code.aliases("12086","12025")
-  LM$register.code.aliases("29186","29193")
-  
   LM
 }
 
@@ -827,8 +745,17 @@ DATA.DIR = 'data-raw'
 
 LOCATION.MANAGER = register.state.abbrev(LOCATION.MANAGER, file.path(DATA.DIR, "us_state_abbreviations.csv"))
 LOCATION.MANAGER = register.state.fips.aliases(LOCATION.MANAGER, file.path(DATA.DIR, "fips_state_aliases.csv"), fips.typename= county.type) #Set the fips typename
-LOCATION.MANAGER = register.fips(LOCATION.MANAGER, file.path(DATA.DIR, "fips_codes.csv"), fips.typename = county.type) #Set the fips typename
-LOCATION.MANAGER = register.additional.fips(LOCATION.MANAGER, file.path(DATA.DIR,"new_fips_codes.csv"), fips.typename = county.type) #Set the fips typename
+LOCATION.MANAGER = register.legacy.county.compatibility.view(
+  LOCATION.MANAGER,
+  .temporal_county_data,
+  file.path(DATA.DIR, "legacy_county_compatibility.csv"),
+  file.path(DATA.DIR, "legacy_code_aliases.csv"),
+  fips.typename = county.type
+)
+# Preserve the registration order of the two long-standing semantic aliases.
+# They predate the CSV alias inventory and remain part of the legacy API.
+LOCATION.MANAGER$register.code.aliases("12086", "12025")
+LOCATION.MANAGER$register.code.aliases("29186", "29193")
 # Connecticut's former county codes are not valid geographic aliases. Keep
 # them in the legacy manager only for the compatibility schedule in ADR 0001.
 LOCATION.MANAGER = register.code.aliases.from.csv(LOCATION.MANAGER, file.path(DATA.DIR, "legacy_code_aliases.csv"))
