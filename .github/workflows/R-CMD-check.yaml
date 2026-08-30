@@ -28,8 +28,13 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: |
+            any::rcmdcheck
+            any::stringi
           needs: check
+
+      - name: Validate exact legacy county manager parity
+        run: Rscript code_for_building_package/validate_legacy_county_compatibility.R
 
       - uses: r-lib/actions/check-r-package@v2
         with:

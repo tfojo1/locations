@@ -408,6 +408,11 @@ The implementation must not extend the monolithic build script with a second
 implicit temporal model. County ingestion should be the first source-specific
 pipeline module.
 
+Implementation step 5 is complete. The legacy manager now projects counties
+from the normalized store using the explicit order and label overlay documented
+in [Legacy County Compatibility View](../legacy-county-compatibility.md). CI
+requires exact parity across the complete serialized legacy manager.
+
 ## Consequences
 
 ### Benefits

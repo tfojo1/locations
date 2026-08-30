@@ -1,0 +1,47 @@
+code,append_order,legacy_name,reason
+02063,1,,Preserve legacy registration tail order
+02066,2,,Preserve legacy registration tail order
+09110,3,Capital Planning Region,Preserve legacy registration tail order and display label
+09120,4,,Preserve legacy registration tail order
+09130,5,,Preserve legacy registration tail order
+09140,6,,Preserve legacy registration tail order
+09150,7,,Preserve legacy registration tail order
+09160,8,,Preserve legacy registration tail order
+09170,9,,Preserve legacy registration tail order
+09180,10,,Preserve legacy registration tail order
+09190,11,,Preserve legacy registration tail order
+02270,12,Wade-Hampton Census Area,Preserve legacy registration tail order and display label
+02201,13,Ketchikan Census Area,Preserve legacy registration tail order and display label
+02280,14,,Preserve legacy registration tail order
+02231,15,,Preserve legacy registration tail order
+02232,16,,Preserve legacy registration tail order
+30113,17,Yellowstone National Park (historical county equivalent),Preserve legacy registration tail order and display label
+02010,18,Aleutian Islands,Preserve legacy registration tail order and display label
+02030,19,Angoon,Preserve legacy registration tail order and display label
+02040,20,Barrow,Preserve legacy registration tail order and display label
+02080,21,Cordova-Mc Carthy,Preserve legacy registration tail order and display label
+02120,22,Kenai-Cook Inlet,Preserve legacy registration tail order and display label
+02140,23,Kobuk,Preserve legacy registration tail order and display label
+02160,24,Kuskokwim,Preserve legacy registration tail order and display label
+02190,25,Outer Ketchikan,Preserve legacy registration tail order and display label
+02200,26,Prince Of Wales,Preserve legacy registration tail order and display label
+02210,27,Seward,Preserve legacy registration tail order and display label
+02250,28,Upper Yukon,Preserve legacy registration tail order and display label
+02260,29,Valdez-Chitina-Whittier,Preserve legacy registration tail order and display label
+35013,,Do-a Ana County,Preserve ASCII-normalized legacy display label
+72011,,A-asco Municipio,Preserve ASCII-normalized legacy display label
+72021,,Bayam-n Municipio,Preserve ASCII-normalized legacy display label
+72029,,Can-vanas Municipio,Preserve ASCII-normalized legacy display label
+72033,,Cata-o Municipio,Preserve ASCII-normalized legacy display label
+72045,,Comer-o Municipio,Preserve ASCII-normalized legacy display label
+72055,,Gu-nica Municipio,Preserve ASCII-normalized legacy display label
+72075,,Juana D-az Municipio,Preserve ASCII-normalized legacy display label
+72083,,Las Mar-as Municipio,Preserve ASCII-normalized legacy display label
+72087,,Lo-za Municipio,Preserve ASCII-normalized legacy display label
+72091,,Manat- Municipio,Preserve ASCII-normalized legacy display label
+72097,,Mayag-ez Municipio,Preserve ASCII-normalized legacy display label
+72111,,Pe-uelas Municipio,Preserve ASCII-normalized legacy display label
+72117,,Rinc-n Municipio,Preserve ASCII-normalized legacy display label
+72119,,R-o Grande Municipio,Preserve ASCII-normalized legacy display label
+72125,,San Germ-n Municipio,Preserve ASCII-normalized legacy display label
+72131,,San Sebasti-n Municipio,Preserve ASCII-normalized legacy display label

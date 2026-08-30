@@ -37,6 +37,10 @@
 - Added a separately pinned downstream integration workflow that installs the
   candidate package with JHEEM2 and exercises its real validation,
   sanitization, metadata, containment, overlap, and name-to-code paths.
+- Generated the legacy county manager from the normalized temporal store plus
+  an explicit order-and-label compatibility overlay. A full-manager CI parity
+  gate protects existing codes, names, aliases, relationships, coordinates,
+  and polygon behavior.
 - Updated GitHub Actions checkout to its Node.js 24-based release.
 
 # locations 0.4.1
