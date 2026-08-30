@@ -101,9 +101,9 @@ sanitize("09001")
 different boundaries, so the one-to-one legacy mappings are not valid
 geographic crosswalks. Do not use them to transform historical Connecticut
 county data. The internal temporal store now contains the authoritative
-19-edge, many-to-many Census area crosswalk; the additive public temporal API
-will expose it in the planned 0.5.0 release. The legacy mappings remain
-temporarily so existing consumers do not break.
+19-edge, many-to-many Census area crosswalk, exposed through
+`crosswalk_locations()`. The legacy mappings remain temporarily so existing
+consumers do not break.
 
 See [API_COMPATIBILITY.md](API_COMPATIBILITY.md) for the compatibility and data
 correction policy and
@@ -140,6 +140,29 @@ Temporal functions return data frames with durable IDs, version IDs, code and
 version validity intervals, the date used to classify status, and source URLs.
 Crosswalk measure names are explicit. Requesting an unavailable population
 measure produces an error; the package never substitutes land or water area.
+
+### Legacy and temporal county results
+
+The two interfaces intentionally answer different questions during the 0.5.x
+migration:
+
+- `get.all.for.type("COUNTY")` retains its 3,241-record, all-vintage legacy
+  compatibility result;
+- `get_locations("COUNTY")` returns 3,222 county equivalents current at the
+  pinned 2025-01-01 reference date; and
+- the 19 legacy-only records are 18 historical Alaska county equivalents and
+  Montana's historical `30113`. No current temporal county code is absent from
+  the legacy enumeration.
+
+Historic Connecticut county codes are legacy aliases rather than enumerated
+legacy locations. The temporal API instead returns them as eight distinct
+historical records and exposes their real many-to-many crosswalk. Preferred
+names may also differ where the temporal store preserves official diacritics
+or a more precise historical label while the compatibility view remains
+unchanged.
+
+See the [0.5.0 release-readiness audit](docs/0.5.0-release-readiness.md) for the
+remaining engineering and governance gates.
 
 ## Plotting
 
@@ -186,14 +209,19 @@ get.contained.locations("R.SOUTH", "STATE")
 
 ## Recent Changes
 
+**v0.5.0** (development) - Temporal County Model
+- Added explicit current, historical, identity-history, and crosswalk APIs
+- Added the authoritative Connecticut many-to-many area crosswalk while
+  preserving the legacy dot-named API
+- Added a pinned real-JHEEM2 downstream integration gate
+- Documented exact legacy-versus-current county result differences
+
 **v0.4.1** (2026-08) - Correctness and Provenance
 - Exposed partial containment through the additive `include.partial` argument
 - Added exact NSDUH substate regression coverage and corrected four historical
   or truncated county-equivalent labels
 - Added API compatibility contracts, data-integrity validation, independent
   data versioning, and a checksum-validated source manifest
-- Added the internal authoritative Connecticut many-to-many area crosswalk;
-  legacy resolution remains unchanged pending the additive temporal API
 
 **v0.4.0** (2026-06) - TGA Location Type
 - Added `TGA` (Ryan White Transitional Grant Area) as a data-driven location type
