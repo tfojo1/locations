@@ -14,7 +14,28 @@ source("code_for_building_package/set_up_cached_location_manager.R")
 
 generated <- extract_location_data(LOCATION.MANAGER)
 validate_location_data(generated)
-comparison <- all.equal(generated, baseline, check.attributes = TRUE)
+
+# bzip2 output is not byte-stable across platforms or R versions. Compare the
+# exact polygon objects seen by consumers, not their platform-specific storage
+# bytes. Every other serialized manager field remains unmodified and strict.
+decompress_polygons <- function(compressed) {
+  lapply(compressed, function(value) {
+    unserialize(memDecompress(value, type = "bzip2"))
+  })
+}
+generated_comparison <- generated
+baseline_comparison <- baseline
+generated_comparison$compressed.poly.data <- decompress_polygons(
+  generated$compressed.poly.data
+)
+baseline_comparison$compressed.poly.data <- decompress_polygons(
+  baseline$compressed.poly.data
+)
+comparison <- all.equal(
+  generated_comparison,
+  baseline_comparison,
+  check.attributes = TRUE
+)
 if (!isTRUE(comparison)) {
   stop(
     "Generated manager changed the serialized legacy consumer boundary:\n",

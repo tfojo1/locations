@@ -29,7 +29,9 @@ The former full inventories remain in `data-raw` as dormant provenance and
 migration-audit artifacts. They are not manager-build inputs.
 
 `code_for_building_package/validate_legacy_county_compatibility.R` rebuilds the
-entire manager and requires exact equality with the packaged legacy data. CI
-therefore protects codes, registration order, names, aliases, containment and
-other relationships, coordinates, and polygon structures—not just record
-counts.
+entire manager and requires exact equality with the packaged legacy data. The
+comparison decompresses polygon objects first because bzip2 storage bytes are
+not portable across platforms; the polygon data returned to consumers remains
+exact. CI therefore protects codes, registration order, names, aliases,
+containment and other relationships, coordinates, and polygon behavior—not
+just record counts.
