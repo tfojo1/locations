@@ -133,12 +133,13 @@ get.location.code.if.unique <- function(location.names, types, search.aliases = 
 #'@param locations A character vector of location code aliases
 #'@param types A single type or a vector of types the same length as locations
 #'
-#'@return A character vector of true location codes, or NA
+#'@return A named list of canonical location codes, or `NA` for aliases that
+#'  are not registered for the requested type.
 #'
 #'@export
 get.code.by.alias <- function(locations, types)
 {
-  if (length(types) != 1 || length(types) != length(locations)) {
+  if (length(types) != 1 && length(types) != length(locations)) {
     stop("get.code.by.alias: types must have a length either 1 or same as locations")
   }
   LOCATION.MANAGER$get.by.alias(locations, types)

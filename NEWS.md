@@ -1,5 +1,13 @@
 # locations (development version)
 
+## User-facing changes
+
+- Fixed `get.code.by.alias()` so one type can be applied to multiple aliases
+  and a same-length type vector can be paired with the aliases, as documented.
+  Scalar behavior and the named-list return shape are unchanged.
+- Documented the exact differences between legacy all-vintage county results
+  and the pinned current temporal view.
+
 ## Maintenance
 
 - Added ADR 0001 defining stable location identity, versioned geographic
@@ -64,7 +72,8 @@
 
 ## Known issues
 
-- The package still mixes current and historical county-equivalent records in
-  legacy county listings. A temporal county layer is planned for the next
-  feature release.
-- The package license and maintainer metadata remain pending owner decisions.
+- Legacy county enumeration intentionally remains all-vintage for compatibility;
+  use `get_locations("COUNTY")` for the pinned current view.
+- Package and active curated-data reuse terms remain pending owner decisions in
+  issue #3. Maintainer metadata has been updated but still requires final
+  confirmation for the release checklist.

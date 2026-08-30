@@ -111,6 +111,34 @@ test_that("legacy lookup return shapes remain compatible", {
   expect_named(sanitized, c("md", "c.12580"))
 })
 
+test_that("code alias lookup supports its documented vector inputs", {
+  one_type <- get.code.by.alias(c("24", "09"), "STATE")
+  expect_type(one_type, "list")
+  expect_named(one_type, c("24", "09"))
+  expect_equal(unname(one_type), list("MD", "CT"))
+
+  paired_types <- get.code.by.alias(c("24", "09003"), c("STATE", "COUNTY"))
+  expect_equal(unname(paired_types), list("MD", "09120"))
+
+  expect_error(
+    get.code.by.alias(c("24", "09"), c("STATE", "STATE", "STATE")),
+    "length either 1 or same as locations"
+  )
+})
+
+test_that("legacy and temporal county enumeration diverge only as documented", {
+  legacy <- unname(get.all.for.type("COUNTY"))
+  current <- unique(get_locations("COUNTY")$code)
+  expected_legacy_only <- c(
+    "02010", "02030", "02040", "02080", "02120", "02140", "02160",
+    "02190", "02200", "02201", "02210", "02231", "02232", "02250",
+    "02260", "02261", "02270", "02280", "30113"
+  )
+
+  expect_setequal(setdiff(legacy, current), expected_legacy_only)
+  expect_length(setdiff(current, legacy), 0L)
+})
+
 test_that("data bundle version is explicit and independent", {
   expect_type(locations.data.version(), "character")
   expect_length(locations.data.version(), 1L)

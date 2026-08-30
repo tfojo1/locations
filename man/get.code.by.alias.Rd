@@ -12,7 +12,8 @@ get.code.by.alias(locations, types)
 \item{types}{A single type or a vector of types the same length as locations}
 }
 \value{
-A character vector of true location codes, or NA
+A named list of canonical location codes, or `NA` for aliases that
+ are not registered for the requested type.
 }
 \description{
 Get a location code by its code alias and type
