@@ -1,4 +1,4 @@
-# locations (development version)
+# locations 0.5.0.9000 (development version)
 
 ## User-facing changes
 
@@ -10,6 +10,9 @@
 
 ## Maintenance
 
+- Adopted a GitHub development pre-release policy so unresolved software and
+  bundled-data licensing does not block continued engineering. Stable public
+  or CRAN publication remains deferred until those terms are resolved.
 - Added ADR 0001 defining stable location identity, versioned geographic
   definitions, time-bounded codes, typed crosswalk measures, and the legacy API
   migration boundary for the temporal-county work.
@@ -79,5 +82,6 @@
 - Legacy county enumeration intentionally remains all-vintage for compatibility;
   use `get_locations("COUNTY")` for the pinned current view.
 - Package and active curated-data reuse terms remain pending owner decisions in
-  issue #3. Maintainer metadata has been updated but still requires final
-  confirmation for the release checklist.
+  issue #3. Development snapshots do not grant general permission to reuse,
+  modify, or redistribute the package. Maintainer metadata has been updated;
+  its final institutional confirmation is deferred with stable publication.
