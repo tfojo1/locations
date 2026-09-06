@@ -8,6 +8,12 @@ Hierarchical US geographic location manager for the [jheem2](https://github.com/
 devtools::install_github("tfojo1/locations")
 ```
 
+`main` is the supported development line. Periodic GitHub pre-releases provide
+pin-able development snapshots; they are not CRAN or stable open-source
+releases. Package and bundled-data reuse terms remain unresolved, so these
+snapshots do not grant general permission to reuse, modify, or redistribute
+the package.
+
 ## Location Types
 
 | Type | Description | Prefix | Example Code | Example Name |
@@ -162,7 +168,8 @@ or a more precise historical label while the compatibility view remains
 unchanged.
 
 See the [0.5.0 release-readiness audit](docs/0.5.0-release-readiness.md) for the
-remaining engineering and governance gates.
+development-snapshot policy and the separately deferred stable-publication
+governance work.
 
 ## Plotting
 
@@ -209,7 +216,7 @@ get.contained.locations("R.SOUTH", "STATE")
 
 ## Recent Changes
 
-**v0.5.0** (development) - Temporal County Model
+**v0.5.0.9000** (development) - Temporal County Model
 - Added explicit current, historical, identity-history, and crosswalk APIs
 - Added the authoritative Connecticut many-to-many area crosswalk while
   preserving the legacy dot-named API

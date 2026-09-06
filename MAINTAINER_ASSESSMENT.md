@@ -120,18 +120,23 @@ historical CSV rewrite. Two disabled ZIP inputs remain explicitly dormant and
 must not be enabled without replacement. Four active rows still need data-reuse
 metadata decisions: the maintainer-curated aliases and historical-code table,
 plus the two SAMHSA extracts. Maintainer metadata is corrected; the package
-license remains a deferred owner decision, so Phase 0 has not reached its
-zero-warning exit criterion.
+license remains a deferred owner decision. This prevents stable or CRAN
+publication but does not block later engineering phases or explicitly labeled
+GitHub development pre-releases.
 
 ### Phase 0 - Correctness guardrails
 
 - Release the partial-containment API and exact NSDUH regression tests.
-- Decide package license and update maintainer metadata; make CI fail on warnings.
+- Track the deferred package and bundled-data license decisions separately from
+  development; require them before stable or CRAN publication.
 - Add a build-time integrity suite for duplicate codes, missing endpoints, cycles, alias target validity, and expected active counts by state and vintage.
 - Add a machine-readable source manifest with URLs, vintages, retrieval dates, checksums, and licenses.
 - Mark the Connecticut one-to-one mappings as a high-severity blocker for the temporal-county release; replace them only alongside an explicit historical-location/crosswalk representation.
 
-Exit criterion: every shipped location and relationship has a source and vintage, and `R CMD check` has zero errors, warnings, and notes.
+Engineering exit criterion: every shipped location and relationship has a
+source and vintage, and `R CMD check` has no finding other than the explicitly
+accepted license warning. Stable-publication exit additionally requires the
+license warning to be resolved.
 
 ### Phase 1 - Temporal county layer
 
